@@ -50,7 +50,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href=""
+                                <a href="<?php echo site_url('signup');?>"
                                    class="btn btn-sm btn-transparent">
                                     Register&nbsp;
                                     <i class="fa fa-user"></i>
