@@ -19,23 +19,23 @@
 </head>
 <body class="background-dark">
     <?php if (@$user_profile):  // call var_dump($user_profile) to view all data ?>
- <?php // var_dump($user_profile) ?>
+    <?php // var_dump($user_profile) ?>
         <div class="logo">
         <h4><a href="index.html">Havana <strong>Youth</strong></a></h4>
         </div>
         <nav id="sidebar" class="sidebar nav-collapse collapse">
             <ul id="side-nav" class="side-nav">
-                <li class="">
-                    <a href="index.html"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
+                <li class="active">
+                    <a href="<?php echo base_url('rprofile');?>"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
                 </li>
                 <li class="">
-                    <a href="index.html"><i class="fa fa-area-chart"></i> <span class="name">Statistics</span></a>
+                    <a href="<?php echo site_url('statistics');?>"><i class="fa fa-area-chart"></i> <span class="name">Statistics</span></a>
                 </li>
                 <li class="">
                     <a href="index.html"><i class="fa fa-th"></i> <span class="name">Notifications</span></a>
                 </li>
                 <li class="">
-                    <a href="index.html"><i class="fa fa-calendar"></i> <span class="name">Calender</span></a>
+                    <a href="<?php echo site_url('calender');?>"><i class="fa fa-calendar"></i> <span class="name">Calender</span></a>
                 </li>
                 <li class="">
                     <a href="index.html"><i class="fa fa-inbox"></i> <span class="name">Inbox</span></a>
@@ -44,12 +44,13 @@
                     <a class="accordion-toggle collapsed" data-toggle="collapse"
                        data-parent="#side-nav" href="#ui-collapse"><i class="fa fa-magic"></i> <span class="name">Search</span></a>
                     <ul id="ui-collapse" class="panel-collapse collapse ">
-                        <li class=""><a href="ui_buttons.html">Unemployed Youth</a></li>
+                        <li class=""><a href="<?php echo site_url('youthsearch');?>">Unemployed Youth</a></li>
                         <li class=""><a href="ui_dialogs.html">Jobs</a></li>
                     </ul>
                 </li>
                 <li class="visible-xs">
                     <a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out"></i> <span class="name">Sign Out</span></a>
+                    <p><?php echo anchor("$logout_url",'<span class="name"><i class="fa fa-sign-out" style="color:white"></i>Sign Out</span>' ) ?></p>
                 </li>
             </ul>
         
@@ -266,7 +267,8 @@
                             <i class="fa fa-bars"></i>
                         </a>
                     </li>
-                    <li class="hidden-xs"><a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out"></i></a></li>
+                    <li class="hidden-xs"><a href="<?= $logout_url ?>"><i class="fa fa-sign-out"></i></a></li>
+                    <?php echo $logout_url;?>
                 </ul>
                 <form id="search-form" class="navbar-form pull-right" role="search">
                     <input type="search" class="form-control search-query" placeholder="Search...">
@@ -287,7 +289,7 @@
                     <div class="body">
                         <ul id="myTab" class="nav nav-tabs">
                             <li class="active"><a href="#information" data-toggle="tab">Personal Information</a></li>
-                            <li><a href="#profile" data-toggle="tab">Technical Skills & Qualifications</a></li>
+                            <li><a href="#profile" data-toggle="tab">History</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -387,18 +389,30 @@
                                 </div>
                             </div>
                                 <div>
-                                <legend class="section">Technical Skils</legend>
-                                <h5><label class="col-sm-4" for="prefix">Name:</label></h5>
-                                <div class="col-sm-4"><a><?=$user_profile['first_name']?></a></div></br></br>
-                                <h5><label class="col-sm-4" for="prefix">Surname:</label></h5>
-                                <div class="col-sm-4"><a><?=$user_profile['last_name']?></a></div></br></br>
-                                <h5><label class="col-sm-4" for="prefix">Gender:</label></h5>
-                                <div class="col-sm-4"><a><?=$user_profile['gender']?></a></div></br></br>
-                                <h5><label class="col-sm-4" for="prefix">Date of Birth:</label></h5>
-                                <div class="col-sm-4"><a><?=$user_profile['last_name']?></a></div></br></br>
-                                </div>
-                                <div>
-                                <legend class="section">Qualifications</legend>
+                                <legend class="section">Jobs</legend>
+                                <div class="col-sm-4"><h5><labelfor="prefix">Job Type:</label></h5>
+                                <a>Plumbing</a></div>
+                                <div class="col-sm-4"><h5><label for="prefix">By who:</label></h5>
+                                <a><?php echo $user_profile['name']; ?></a></div>
+                                <div class="col-sm-4"><h5><label  for="prefix">Date of Activity:</label></h5>
+                                <a>13/10/2014</a></div>
+                                <legend></legend>
+                                <div class="col-sm-4">
+                                <h5><label for="prefix">Job Type:</label></h5>
+                                <a>Tiling</a> </div>
+                                <div class="col-sm-4">
+                                <h5><label for="prefix">By who:</label></h5>
+                                <a><?=$user_profile['name']?></a></div>
+                                <div class="col-sm-4"><h5><label for="prefix"><strong>Date of Activity:</strong></label></h5>
+                                <a>17/11/2014</a></div>
+                                <legend></legend>
+                                 <div class="col-sm-4"><h5><label for="prefix"><strong>Job Type:</strong></label></h5>
+                                Car Wash</div>
+                                <div class="col-sm-4"><h5><label for="prefix"<strong>By who:</strong></label></h5>
+                                <a><?=$user_profile['name']?></a></div>
+                                <div class="col-sm-4"><h5><label for="prefix"><strong>Date of activity:</strong></label></h5>
+                                <a>21/10/2014</a></div>
+                                <legend></legend>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="dropdown3">
@@ -407,6 +421,58 @@
                             <div class="tab-pane fade" id="dropdown4">
                                 <p>They sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
                             </div>
+                            <div class="tab-pane fade" id="dropdown6">
+                                <div class="row">
+                                          <div class="col-md-5 col-sm-6 col-xs-12">
+                                                <div class="well with-header">
+                                                <div class="header bordered-blue">Add / Update Contacts</div>
+                                                <div>
+                                                            <form action="/havanayouth/createcontacts" method="post" accept-charset="utf-8">	
+                                                                 <div class="footer-col-inner">
+                                                                        <div class="form-group">
+                                                                           <?php if(isset($user)) : foreach($user as $row) :  ?>  
+                                                                           <?php $fbid = $user_profile['id']; ?>
+                                                                           <?php if($fbid == $row->fbid):?>
+                                                                           <input type="hidden" name="fbid"  value="<?=$user_profile['id']?>" />
+                                                                           <input name="tel" type="text" id="tel" class="form-control" value="<?php echo $row->tel?>" /><br>
+                                                                           <input name="mobile" type="text" id="mobile" class="form-control" value="<?php echo $row->mobile?>" /><br>
+                                                                           <input name="fax" type="text" id="fax" class="form-control" value="<?php echo $row->fax?>" /><br>
+                                                                           <input name="email" type="text" id="email" class="form-control" value="<?php echo $row->email?>" />
+                                                                           <?php endif;?>
+                                                                            <?php  endforeach;?>
+                                                                            <?php else : ?>
+                                                                            <h6>No records </h6>
+                                                                            <?php endif; ?>
+                                                                           <br>
+                                                                            <input type="submit" id="submit" name="dsubmit" value="Update">
+                                                                        </div>
+                                                                   </div><!--//footer-col-inner-->
+                                                            </form>
+                                                            
+                                                   </div> <!-- /content -->
+                                               </div><!--//row-->
+                                            </div>
+                                          <div class="footer-col col-md-7 col-sm-8 newsletter">
+                                              <div class="well with-header">
+                                                      <div class="header bordered-blue">Your Current Details</div>
+                                                                
+                                                                <?php if(isset($user)) : foreach($user as $row) :  ?>  
+                                                                <?php $fbid = $user_profile['id']; ?>
+                                                                <?php if($fbid == $row->fbid):?>
+                                                                <h0><strong>Mobile: </strong><?php echo $row->mobile?></h0></br>
+                                                                <h0><strong>Tel: </strong><?php echo $row->tel?></h0></br>
+                                                                <h0><strong>Fax: </strong><?php echo $row->fax?></h0></br>
+                                                                <h0><strong>Email: </strong><?php echo $row->email?></h0></br>
+                                                                 <p><?php echo anchor("/delete/$row->id/contacts",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete contact</span>' ) ?></p>                                          
+                                                                <?php endif;?>
+                                                                <?php  endforeach;?>
+                                                                <?php else : ?>
+                                                                <h6>No records </h6>
+                                                                <?php endif; ?>
+                                              </div>
+                                          </div>
+                                          </div>
+                           </div>
                         </div>
                     </div>
                 </section>
@@ -593,9 +659,6 @@
                 </section>
             </div>
         </div>
-        </div>
-        <div class="loader-wrap hiding hide">
-            <i class="fa fa-circle-o-notch fa-spin"></i>
         </div>
     </div>
 <!-- common libraries. required for every page-->

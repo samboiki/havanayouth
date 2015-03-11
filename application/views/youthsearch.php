@@ -182,7 +182,8 @@
                     <small>Provide required notes</small>
                 </div>
             </div>
-        </nav>    <div class="wrap">
+        </nav>    
+    <div class="wrap">
         <header class="page-header">
             <div class="navbar">
                 <ul class="nav navbar-nav navbar-right pull-right">
@@ -364,32 +365,10 @@
                     </div>
                 </div>
             </div>
-        </header>        <div class="content container">
+        </header>        
+        <div class="content container">
         <h2 class="page-title">Tables - <span class="fw-semi-bold">Dynamic</span></h2>
-        <section class="widget">
-            <header>
-                <h4>
-                    Table <span class="fw-semi-bold">Styles</span>
-                </h4>
-                <div class="widget-controls">
-                    <div class="width-200">
-                        <div class="input-group input-group-sm input-group-transparent input-group-rounded">
-                            <span class="input-group-addon">
-                                <i class="fa fa-search"></i>
-                            </span>
-                            <input class="form-control input-transparent" id="search-countries" type="text" placeholder="Search Countries">
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <div class="body">
-                <p>
-                    Editable, validatable, filterable and sortable table made with
-                    <a href="http://backgridjs.com/" target="_blank">Backgrid.js</a>
-                </p>
-                <div id="table-dynamic"></div>
-            </div>
-        </section>
+        
         <section class="widget">
             <header>
                 <h4>Table <span class="fw-semi-bold">Styles</span></h4>
@@ -846,15 +825,15 @@
         </div>
     </div>
 <!-- common libraries. required for every page-->
-<script src="lib/jquery/dist/jquery.min.js"></script>
-<script src="lib/jquery-pjax/jquery.pjax.js"></script>
-<script src="lib/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
-<script src="lib/widgster/widgster.js"></script>
-<script src="lib/underscore/underscore.js"></script>
+<script src="assets/lib/jquery/dist/jquery.min.js"></script>
+<script src="assets/lib/jquery-pjax/jquery.pjax.js"></script>
+<script src="assets/lib/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+<script src="assets/lib/widgster/widgster.js"></script>
+<script src="assets/lib/underscore/underscore.js"></script>
 
 <!-- common application js -->
-<script src="js/app.js"></script>
-<script src="js/settings.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/settings.js"></script>
 
 <!-- common templates -->
 <script type="text/template" id="settings-template">
@@ -908,16 +887,16 @@
 
     <!-- page specific scripts -->
         <!-- page specific libs -->
-        <script src="lib/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-        <script src="lib/underscore/underscore.js"></script>
-        <script src="lib/backbone/backbone.js"></script>
-        <script src="lib/backbone.paginator/lib/backbone.paginator.min.js"></script>
-        <script src="lib/backgrid/lib/backgrid.min.js"></script>
-        <script src="lib/backgrid-paginator/backgrid-paginator.js"></script>
-        <script src="lib/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script src="assets/lib/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+        <script src="assets/lib/underscore/underscore.js"></script>
+        <script src="assets/lib/backbone/backbone.js"></script>
+        <script src="assets/lib/backbone.paginator/lib/backbone.paginator.min.js"></script>
+        <script src="assets/lib/backgrid/lib/backgrid.min.js"></script>
+        <script src="assets/lib/backgrid-paginator/backgrid-paginator.js"></script>
+        <script src="assets/lib/datatables/media/js/jquery.dataTables.min.js"></script>
 
         <!-- page application js -->
-        <script src="js/tables-dynamic.js"></script>
+        <script src="assets/js/tables-dynamic.js"></script>
 
 </body>
 </html>

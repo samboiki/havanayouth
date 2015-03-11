@@ -25,10 +25,7 @@ class crud extends CI_Model {
          return false;
      }
     }
-    function  get_cust(){
-        $query = $this->db->get('regproducts');
-        return $query->result();
-    }
+
     function  get_news(){
         $query = $this->db->get('news');
         return $query->result();
@@ -52,37 +49,11 @@ class crud extends CI_Model {
         return $query->result();
         }
     }
-    function  get_testimonials(){
-        $query = $this->db->get('testimonials');
-        return $query->result();
-    }
-    function  get_contacts(){
-        $query = $this->db->get('contacts');
-        return $query->result();
-    }
+   
+    
     function  get_user($fbid){
         $this->db->where('fbid',$fbid);
         $query = $this->db->get('user');
-        return $query->result();
-    }
-    function  get_gencontacts(){
-        $query = $this->db->get('gencon');
-        return $query->result();
-    }
-    function  get_wvideos(){
-        $query = $this->db->get('wvideos');
-        return $query->result();
-    }
-    function  get_mvideos(){
-        $query = $this->db->get('mvideos');
-        return $query->result();
-    }
-    function  get_dcontacts(){
-        $query = $this->db->get('dcontacts');
-        return $query->result();
-    }
-    function  get_content(){
-        $query = $this->db->get('content');
         return $query->result();
     }
     function add_news($data){
@@ -95,21 +66,10 @@ class crud extends CI_Model {
       $this->db->insert('news',$data);
       }
     }
-    function add_wvideos($data){
-      $this->db->insert('wvideos',$data);
-    }
-    function add_mvideos($data){
-      $this->db->insert('mvideos',$data);
-    }
-    function add_contacts($data, $title){
-        $this->db->where('intro',$title);
-         $q = $this->db->get('contacts');
-      if ( $q->num_rows() > 0 ) {
-         $this->db->where('intro',$title);
-         $this->db->update('contacts',$data);
-      } else {
-      $this->db->insert('contacts',$data);
-      }
+   
+    function add_contactsinfo($data, $id){
+        $this->db->where('fbid',$id);
+        $this->db->update('user',$data);
     }
     function add_dcontacts($data, $title){
         $this->db->where('name',$title);

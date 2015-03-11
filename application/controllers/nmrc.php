@@ -11,7 +11,33 @@ class Nmrc extends Main_Controller {
       $this->load->helper('url');
       $this->load->view('index');
    }
+   public function fbcheck() {
+       $this->load->library('facebook');
+      $user = $this->facebook->getUser();
+      if ($user) {
+            try {
+                $data['user_profile'] = $this->facebook->api('/me');
+            } catch (FacebookApiException $e) {
+                $user = null;
+            }
+        }else {
+            $this->facebook->destroySession();
+        }
+      if ($user) {
+            $data['logout_url'] = site_url('logout'); // Logs off application
+            $data['logout_url'] = $this->facebook->getLogoutUrl();// Logs off FB!
+        } else {
+        }
+        
+        return $data;
+   }
    
+   public function header(){
+      $this->load->helper('form');
+      $this->load->helper('url');
+      $this->load->view('include/header',$data);
+    }
+
     public function signin(){
       $this->load->library('facebook');
       $user = $this->facebook->getUser();
@@ -95,12 +121,47 @@ class Nmrc extends Main_Controller {
         }
         $this->load->view('login',$data);
 	}
+   
     public function test(){
-            $this->load->helper('form');
+      $this->load->helper('form');
       $this->load->helper('url');
       $this->load->view('test');
         }
-       
+    
+    public function calendar(){
+      $this->load->helper('form');
+      $this->load->helper('url');
+      $this->load->view('calendar');
+    }
+        
+    public function statistics(){
+       $this->load->library('facebook');
+      $user = $this->facebook->getUser();
+      if ($user) {
+            try {
+                $data['user_profile'] = $this->facebook->api('/me');
+            } catch (FacebookApiException $e) {
+                $user = null;
+            }
+        }else {
+            $this->facebook->destroySession();
+        }
+      if ($user) {
+            $data['logout_url'] = site_url('logout'); // Logs off application
+            $data['logout_url'] = $this->facebook->getLogoutUrl();// Logs off FB!
+        } else {
+        }
+      $this->load->helper('form');
+      $this->load->helper('url');
+      $this->load->view('statistics',$fbdat);
+    }
+    
+    public function youthsearch(){
+      $this->load->helper('form');
+      $this->load->helper('url');
+      $this->load->view('youthsearch');
+    }
+        
     public function yprofile(){
     $this->load->library('facebook');
     $this->load->model('crud');
@@ -128,6 +189,8 @@ class Nmrc extends Main_Controller {
     }
     
     public function rprofile(){
+        $this->load->model('crud');
+        
     $this->load->library('facebook');
       $user = $this->facebook->getUser();
       if ($user) {
@@ -144,6 +207,8 @@ class Nmrc extends Main_Controller {
             $data['logout_url'] = $this->facebook->getLogoutUrl();// Logs off FB!
         } else {
         }
+        $fbid = $data['user_profile']['id'];
+        $data['user'] = $this->crud->get_user($fbid);
     $this->load->helper('form');
     $this->load->helper('url');
     $this->load->view('rprofile',$data);   
@@ -178,11 +243,27 @@ class Nmrc extends Main_Controller {
         redirect('signin');
     }
     
+    public function createcontacts(){
+        $this->load->model('crud');
+       $id = $this->input->post('fbid');
+      
+       $data = array(
+           'tel' => $this->input->post('tel'),
+           'mobile' => $this->input->post('mobile'),
+           'fax' => $this->input->post('fax'),
+           'email' => $this->input->post('email'),);
+       $this->crud->add_contactsinfo($data,$id);    
+       redirect('rprofile');
+   } 
+    
     public function logout(){
+        
         $this->load->helper('url');
         $this->load->library('facebook');
+        $logout = $this->uri->segment(2); 
+        
         // Logs off session from website
-        $this->facebook->destroySession();
+        $this->facebook->destroySession($logout);
         // Make sure you destory website session as well.
         redirect('index.php');
     }
