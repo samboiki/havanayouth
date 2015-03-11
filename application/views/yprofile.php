@@ -315,7 +315,7 @@
                                             </div>
                                    <div class="info"><strong>Tiling</strong></div>
                                             <div class="progress progress-small">
-                                                <div class="progress-bar progress-bar-warning" style="width: 50%;"></div>
+                                                <div class="progress-bar progress-bar-warning" style="width: 80%;"></div>
                                             </div> 
                                    <div class="info"><strong>Plastering</strong></div>
                                             <div class="progress progress-small">

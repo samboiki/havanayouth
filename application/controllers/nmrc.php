@@ -11,8 +11,9 @@ class Nmrc extends Main_Controller {
       $this->load->helper('url');
       $this->load->view('index');
    }
-   public function fbcheck() {
-       $this->load->library('facebook');
+  
+    public function fbcheck() {
+     $this->load->library('facebook');
       $user = $this->facebook->getUser();
       if ($user) {
             try {
@@ -32,12 +33,12 @@ class Nmrc extends Main_Controller {
         return $data;
    }
    
-   public function header(){
+    public function header(){
       $this->load->helper('form');
       $this->load->helper('url');
       $this->load->view('include/header',$data);
     }
-
+   
     public function signin(){
       $this->load->library('facebook');
       $user = $this->facebook->getUser();
@@ -135,31 +136,22 @@ class Nmrc extends Main_Controller {
     }
         
     public function statistics(){
-       $this->load->library('facebook');
-      $user = $this->facebook->getUser();
-      if ($user) {
-            try {
-                $data['user_profile'] = $this->facebook->api('/me');
-            } catch (FacebookApiException $e) {
-                $user = null;
-            }
-        }else {
-            $this->facebook->destroySession();
-        }
-      if ($user) {
-            $data['logout_url'] = site_url('logout'); // Logs off application
-            $data['logout_url'] = $this->facebook->getLogoutUrl();// Logs off FB!
-        } else {
-        }
+     
       $this->load->helper('form');
       $this->load->helper('url');
-      $this->load->view('statistics',$fbdat);
+      $this->load->view('statistics',  $this->fbcheck());
+    }
+    public function notifications(){
+      $this->load->helper('form');
+      $this->load->helper('url');
+      $this->load->view('notifications',  $this->fbcheck());
     }
     
     public function youthsearch(){
+        
       $this->load->helper('form');
       $this->load->helper('url');
-      $this->load->view('youthsearch');
+      $this->load->view('youthsearch',$this->fbcheck());
     }
         
     public function yprofile(){
@@ -260,10 +252,8 @@ class Nmrc extends Main_Controller {
         
         $this->load->helper('url');
         $this->load->library('facebook');
-        $logout = $this->uri->segment(2); 
-        
         // Logs off session from website
-        $this->facebook->destroySession($logout);
+        $this->facebook->destroySession();
         // Make sure you destory website session as well.
         redirect('index.php');
     }

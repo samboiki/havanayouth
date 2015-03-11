@@ -32,7 +32,7 @@
                     <a href="<?php echo site_url('statistics');?>"><i class="fa fa-area-chart"></i> <span class="name">Statistics</span></a>
                 </li>
                 <li class="">
-                    <a href="index.html"><i class="fa fa-th"></i> <span class="name">Notifications</span></a>
+                    <a href="<?php echo site_url('notifications');?>"><i class="fa fa-th"></i> <span class="name">Notifications</span></a>
                 </li>
                 <li class="">
                     <a href="<?php echo site_url('calender');?>"><i class="fa fa-calendar"></i> <span class="name">Calender</span></a>
@@ -80,24 +80,20 @@
             <div class="sidebar-alerts">
                 <div class="alert fade in">
                     <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">Sales Report</span> <br>
-                    <div class="progress progress-xs mt-xs mb-0">
-                        <div class="progress-bar progress-bar-gray-light" style="width: 16%"></div>
-                    </div>
-                    <small>Calculating x-axis bias... 65%</small>
+                    <span class="text-white fw-semi-bold">MTC</span> <br>
+                        <img src="assets/img/jpeg/mtc.jpg" alt="Second slide">
+                    <small>call us 06123456</small>
                 </div>
                 <div class="alert fade in">
                     <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">Personal Responsibility</span> <br>
-                    <div class="progress progress-xs mt-xs mb-0">
-                        <div class="progress-bar progress-bar-danger" style="width: 23%"></div>
-                    </div>
-                    <small>Provide required notes</small>
+                    <span class="text-white fw-semi-bold">Fnb</span> <br>
+                        <img src="assets/img/jpeg/fnb.jpg" alt="Second slide">
+                    <small>call us 06123456</small>
                 </div>
             </div>
         
         </nav>    
-    <div class="wrap">
+        <div class="wrap">
         <header class="page-header">
             <div class="navbar">
                 <ul class="nav navbar-nav navbar-right pull-right">
@@ -267,8 +263,8 @@
                             <i class="fa fa-bars"></i>
                         </a>
                     </li>
-                    <li class="hidden-xs"><a href="<?= $logout_url ?>"><i class="fa fa-sign-out"></i></a></li>
-                    <?php echo $logout_url;?>
+                    <li class="hidden-xs"><a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out"></i></a></li>
+                   
                 </ul>
                 <form id="search-form" class="navbar-form pull-right" role="search">
                     <input type="search" class="form-control search-query" placeholder="Search...">
@@ -742,7 +738,7 @@
         <!-- page application js -->
         <script src="assets/js/forms-account.js"></script>
         <?php else: ?>
-        <?php echo "sam";?>
+        <?php base_url('signin');?>
         <?php endif; ?>
 
 </body>
