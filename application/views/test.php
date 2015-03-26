@@ -22,7 +22,7 @@
          
          $sent_msg = $project->sendMessage(array(
             'content' => "sam your the best", 
-            'to_number' => "+264812222331"
+            'to_number' => "+264814868534"
         ));
         ?>
          </div>

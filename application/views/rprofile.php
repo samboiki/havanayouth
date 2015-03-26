@@ -18,8 +18,6 @@
     </script>
 </head>
 <body class="background-dark">
-    <?php if (@$user_profile):  // call var_dump($user_profile) to view all data ?>
-    <?php // var_dump($user_profile) ?>
         <div class="logo">
         <h4><a href="index.html">Havana <strong>Youth</strong></a></h4>
         </div>
@@ -231,11 +229,10 @@
                         </a>
                         <ul id="account-menu" class="dropdown-menu account" role="menu">
                             <li role="presentation" class="account-picture">
-                                <img src="https://graph.facebook.com/<?=$user_profile['id']?>/picture?type=small" alt="">
-                                <?=$user_profile['first_name']?>
+                                <?=$user->firstname?>
                             </li>
                             <li role="presentation">
-                                <a href="form_account.html" class="link">
+                                <a href="<?php site_url("yprofile");?>" class="link">
                                     <i class="fa fa-user"></i>
                                     Profile
                                 </a>
@@ -272,7 +269,7 @@
             </div>
         </header>       
         <div class="content container">
-       <h4 class="mt-sm mb-xs"><?=$user_profile['name']?><small> Welcome</small></h4>
+       <h4 class="mt-sm mb-xs"><?=$user->firstname?><small> Welcome</small></h4>
         <div class="row">
             <div class="col-md-9">
                 <section class="widget">
@@ -300,9 +297,6 @@
                             <div class="tab-pane fade in active" id="information">
                                 <div class="row">
                                 <div class="col-sm-4">
-                                    <div class="text-align-center">
-                                        <img class="img-circle" src="https://graph.facebook.com/<?=$user_profile['id']?>/picture?type=large" alt="64x64" style="height: 112px;">
-                                    </div>
                                 </div>
                                 <div class="col-sm-8">
                                     <address>
@@ -324,13 +318,13 @@
                                 <div>
                                 <legend class="section">Personal Info</legend>
                                 <h5><label class="col-sm-4" for="prefix">Name:</label></h5>
-                                <div class="col-sm-4"><a><?=$user_profile['first_name']?></a></div></br></br>
+                                <div class="col-sm-4"><a><?=$user->firstname?></a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Surname:</label></h5>
-                                <div class="col-sm-4"><a><?=$user_profile['last_name']?></a></div></br></br>
+                                <div class="col-sm-4"><a><?=$user->lastname?></a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Gender:</label></h5>
-                                <div class="col-sm-4"><a><?=$user_profile['gender']?></a></div></br></br>
+                                <div class="col-sm-4"><a><?=$user->gender?></a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Date of Birth:</label></h5>
-                                <div class="col-sm-4"><a><?=$user_profile['last_name']?></a></div></br></br>
+                                <div class="col-sm-4"><a><?=$user->birth_date?></a></div></br></br>
                                 </div>
                                 <div>
                                 <legend class="section">Contact Info</legend>
@@ -339,9 +333,8 @@
                                 <h5><label class="col-sm-4" for="prefix">Tel:</label></h5>
                                 <div class="col-sm-4"><a>061 303 4900</a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Email:</label></h5>
-                                <div class="col-sm-4"><a href="<?=$user_profile['link']?>"><?=$user_profile['email']?></a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Fax:</label></h5>
-                                <div class="col-sm-4"><a><?=$user_profile['last_name']?></a></div></br></br>
+                                <div class="col-sm-4"><a><?=$contact->fax?></a></div></br></br>
                                 </div>
                                 <div>
                                 <legend class="section">Address</legend>
@@ -350,7 +343,7 @@
                                 <h5><label class="col-sm-4" for="prefix">City:</label></h5>
                                 <div class="col-sm-4"><a>Windhoek</a></div></br>
                                 <h5><label class="col-sm-4" for="prefix">Region:</label></h5>
-                                <div class="col-sm-4"><a href="<?=$user_profile['link']?>">Khomas</a></div></br>
+                                <div class="col-sm-4"><a href="">Khomas</a></div></br>
                                 <h5><label class="col-sm-4" for="prefix">Country:</label></h5>
                                 <div class="col-sm-4"><a>Namibia</a></div></br></br>
                                 </div>
@@ -363,9 +356,7 @@
                             <div class="tab-pane fade " id="profile">
                              <div class="row">
                                 <div class="col-sm-4">
-                                    <div class="text-align-center">
-                                        <img class="img-circle" src="https://graph.facebook.com/<?=$user_profile['id']?>/picture?type=large" alt="64x64" style="height: 112px;">
-                                    </div>
+                                   
                                 </div>
                                 <div class="col-sm-8">
                                     <address>
@@ -426,16 +417,12 @@
                                                             <form action="/havanayouth/createcontacts" method="post" accept-charset="utf-8">	
                                                                  <div class="footer-col-inner">
                                                                         <div class="form-group">
-                                                                           <?php if(isset($user)) : foreach($user as $row) :  ?>  
-                                                                           <?php $fbid = $user_profile['id']; ?>
-                                                                           <?php if($fbid == $row->fbid):?>
-                                                                           <input type="hidden" name="fbid"  value="<?=$user_profile['id']?>" />
-                                                                           <input name="tel" type="text" id="tel" class="form-control" value="<?php echo $row->tel?>" /><br>
-                                                                           <input name="mobile" type="text" id="mobile" class="form-control" value="<?php echo $row->mobile?>" /><br>
-                                                                           <input name="fax" type="text" id="fax" class="form-control" value="<?php echo $row->fax?>" /><br>
-                                                                           <input name="email" type="text" id="email" class="form-control" value="<?php echo $row->email?>" />
-                                                                           <?php endif;?>
-                                                                            <?php  endforeach;?>
+                                                                           <?php if(isset($contact)) :?>  
+                                                                           <input type="hidden" name="id"  value="<?php echo $contact->id?>" />
+                                                                           <input name="mobile" type="text" id="mobile" class="form-control" value="<?php echo $contact->mobile_phone?>" /><br>
+                                                                           <input name="tel" type="text" id="tel" class="form-control" value="<?php echo $contact->telephone?>" /><br>
+                                                                           <input name="fax" type="text" id="fax" class="form-control" value="<?php echo $contact->fax?>" /><br>
+                                                                           <input name="email" type="text" id="email" class="form-control" value="<?php echo $contact->email?>" />
                                                                             <?php else : ?>
                                                                             <h6>No records </h6>
                                                                             <?php endif; ?>
@@ -451,17 +438,13 @@
                                           <div class="footer-col col-md-7 col-sm-8 newsletter">
                                               <div class="well with-header">
                                                       <div class="header bordered-blue">Your Current Details</div>
-                                                                
-                                                                <?php if(isset($user)) : foreach($user as $row) :  ?>  
-                                                                <?php $fbid = $user_profile['id']; ?>
-                                                                <?php if($fbid == $row->fbid):?>
-                                                                <h0><strong>Mobile: </strong><?php echo $row->mobile?></h0></br>
-                                                                <h0><strong>Tel: </strong><?php echo $row->tel?></h0></br>
-                                                                <h0><strong>Fax: </strong><?php echo $row->fax?></h0></br>
-                                                                <h0><strong>Email: </strong><?php echo $row->email?></h0></br>
-                                                                 <p><?php echo anchor("/delete/$row->id/contacts",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete contact</span>' ) ?></p>                                          
-                                                                <?php endif;?>
-                                                                <?php  endforeach;?>
+                                                                <?php if(isset($contact)) :   ?>    
+                                                                <h0><strong>Mobile: </strong><?php echo $contact->mobile_phone?></h0></br>
+                                                                <h0><strong>Tel: </strong><?php echo $contact->telephone?></h0></br>
+                                                                <h0><strong>Fax: </strong><?php echo $contact->fax?></h0></br>
+                                                                <h0><strong>Email: </strong><?php echo $contact->email?></h0></br>
+                                                                 <p><?php echo anchor("/delete/$contact->id/contacts",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete contact</span>' ) ?></p>                                          
+                                                               
                                                                 <?php else : ?>
                                                                 <h6>No records </h6>
                                                                 <?php endif; ?>
@@ -727,19 +710,9 @@
 
     <!-- page specific scripts -->
         <!-- page libs -->
-        <script src="assets/lib/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-        <script src="assets/lib/select2/select2.min.js"></script>
-        <script src="assets/lib/moment/moment.js"></script>
-        <script src="assets/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-        <script src="assets/lib/parsleyjs/dist/parsley.min.js"></script>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script type="text/javascript" src="assets/lib/gmaps/gmaps.js"></script>   
-        <script type="text/javascript" src="assets/js/map.js"></script>
+    
         <!-- page application js -->
-        <script src="assets/js/forms-account.js"></script>
-        <?php else: ?>
-        <?php base_url('signin');?>
-        <?php endif; ?>
+  
 
 </body>
 </html>

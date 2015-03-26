@@ -19,7 +19,7 @@
     </script>
 </head>
 <body class="background-dark">
-    <?php if ($user_profile):?>
+   
     <div class="logo">
         <h4><a href="index.html">Light <strong>Blue</strong></a></h4>
     </div>
@@ -730,7 +730,179 @@
                         </tbody>
                     </table>
                 </div>
+                
             </div>
+            
+
+        </section>
+        <section>
+         <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            <div class="widget">
+                                <div class="widget-header ">
+                                    <span class="widget-caption">Expandable DataTable</span>
+                                    <div class="widget-buttons">
+                                        <a href="#" data-toggle="maximize">
+                                            <i class="fa fa-expand"></i>
+                                        </a>
+                                        <a href="#" data-toggle="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </a>
+                                        <a href="#" data-toggle="dispose">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="widget-body">
+                                    <table class="table table-striped table-bordered table-hover" id="expandabledatatable">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Name
+                                                </th>
+                                                <th>
+                                                    Family
+                                                </th>
+                                                <th>
+                                                    Age
+                                                </th>
+                                                <th>
+                                                    Position
+                                                </th>
+                                                <th>
+                                                    Interests
+                                                </th>
+                                                <th>Picture</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    Nicolai
+                                                </td>
+                                                <td>
+                                                    Larson
+                                                </td>
+                                                <td>
+                                                    27
+                                                </td>
+                                                <td>
+                                                    Software Manager
+                                                </td>
+                                                <td>
+                                                    Swimming
+                                                </td>
+                                                <td>
+                                                    Nicolai-Larson.jpg
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Divya
+                                                </td>
+                                                <td>
+                                                    Johnson
+                                                </td>
+                                                <td>
+                                                    22
+                                                </td>
+                                                <td>
+                                                    Software Developer
+                                                </td>
+                                                <td>
+                                                    Jugging
+                                                </td>
+                                                <td>
+                                                    divyia.jpg
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Javi
+                                                </td>
+                                                <td>
+                                                    Jimenez
+                                                </td>
+                                                <td>
+                                                    32
+                                                </td>
+                                                <td>
+                                                    Software Developer
+                                                </td>
+                                                <td>
+                                                    Gaming
+                                                </td>
+                                                <td>
+                                                    Javi-Jimenez.jpg
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Osvaldus
+                                                </td>
+                                                <td>
+                                                    Valutis
+                                                </td>
+                                                <td>
+                                                    29
+                                                </td>
+                                                <td>
+                                                    Software Analyst
+                                                </td>
+                                                <td>
+                                                    Swimming,Gaming
+                                                </td>
+                                                <td>
+                                                    Osvaldus-Valutis.jpg
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Lee
+                                                </td>
+                                                <td>
+                                                    Munroe
+                                                </td>
+                                                <td>
+                                                    21
+                                                </td>
+                                                <td>
+                                                    Software Developer
+                                                </td>
+                                                <td>
+                                                    Swimming,Gaming
+                                                </td>
+                                                <td>
+                                                    Lee-Munroe.jpg
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Sergey
+                                                </td>
+                                                <td>
+                                                    Azovskiy
+                                                </td>
+                                                <td>
+                                                    40
+                                                </td>
+                                                <td>
+                                                    SEO
+                                                </td>
+                                                <td>
+                                                    Napping
+                                                </td>
+                                                <td>
+                                                    Sergey-Azovskiy.jpg
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
         </section>
         </div>
         <div class="loader-wrap hiding hide">
@@ -739,11 +911,6 @@
     </div>
 <!-- common libraries. required for every page-->
 <script src="assets/lib/jquery/dist/jquery.min.js"></script>
-<script src="assets/lib/jquery-pjax/jquery.pjax.js"></script>
-<script src="assets/lib/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
-<script src="assets/lib/widgster/widgster.js"></script>
-<script src="assets/lib/underscore/underscore.js"></script>
-
 <!-- common application js -->
 <script src="assets/js/app.js"></script>
 <script src="assets/js/settings.js"></script>
@@ -810,8 +977,16 @@
 
         <!-- page application js -->
         <script src="assets/js/tables-dynamic.js"></script>
-        <?php else: ?>
-        <?php base_url('signin');?>
-        <?php endif; ?>
+        <script src="assets/js/datatable/jquery.dataTables.min.js"></script>
+        <script src="assets/js/datatable/ZeroClipboard.js"></script>
+        <script src="assets/js/datatable/dataTables.tableTools.min.js"></script>
+        <script src="assets/js/datatable/dataTables.bootstrap.min.js"></script>
+        <script src="assets/js/datatable/datatables-init.js"></script>
+        <script>
+            InitiateSimpleDataTable.init();
+            InitiateEditableDataTable.init();
+            InitiateExpandableDataTable.init();
+            InitiateSearchableDataTable.init();
+        </script>
 </body>
 </html>

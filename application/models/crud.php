@@ -2,7 +2,7 @@
 
 class crud extends CI_Model {
     public function can_log_in(){
-    $this->db->where('email', $this->input->post('email'));
+    $this->db->where('username', $this->input->post('username'));
     $this->db->where('password', $this->input->post('password'));
     $query = $this->db->get('user');
     if ($query->num_rows() == 1){
@@ -51,11 +51,24 @@ class crud extends CI_Model {
     }
    
     
-    function  get_user($fbid){
+    function  get_user($username){
+        $this->db->where('username',$username);
+        $query = $this->db->get('user');
+        $userdata = $query->row();
+        return $userdata;
+    }
+    function  get_usercontacts($userid){
+        $this->db->where('userid',$userid);
+        $query = $this->db->get('contact');
+        $userdata = $query->row();
+        return $userdata;
+    }
+    function  get_userbyfb($fbid){
         $this->db->where('fbid',$fbid);
         $query = $this->db->get('user');
         return $query->result();
     }
+    
     function add_news($data){
          $this->db->where('title',$title);
          $q = $this->db->get('news');
@@ -66,10 +79,46 @@ class crud extends CI_Model {
       $this->db->insert('news',$data);
       }
     }
+    
+    function get_new_user_id($username){
+         $this->db->where('username',$username);
+         $query = $this->db->get('user');
+            if ($query){
+            $ids = $query->row();
+            $id = array(
+           'id' => $ids->id,
+               );
+                return $id;
+            } else {
+                return false;
+            }
+    }
+    
+    function get_role($userid){
+         $this->db->where('id',$userid);
+         $query = $this->db->get('user');
+         if ($query){
+            $roles = $query->row();
+            $role = array(
+           'role' => $roles->role,
+               );
+                return $role;
+            } else {
+                return false;
+            }
+    }
+    
+    function add_users($signupdata){
+      $this->db->insert('user',$signupdata);
+    }
+    
+    function add_userscontact($signupdatacontact){
+      $this->db->insert('contact',$signupdatacontact);
+    }
    
     function add_contactsinfo($data, $id){
-        $this->db->where('fbid',$id);
-        $this->db->update('user',$data);
+        $this->db->where('id',$id);
+        $this->db->update('contact',$data);
     }
     function add_dcontacts($data, $title){
         $this->db->where('name',$title);

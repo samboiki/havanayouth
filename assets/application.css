@@ -6016,10 +6016,6 @@ a.label:hover, a.label:focus {
 .label-info {
   background-color: #4ab0ce;
 }
-
-.label-custom {
-  background-color: #2f506c;
-}
 /* line 7, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_labels.scss */
 .label-info[href]:hover, .label-info[href]:focus {
   background-color: #3196b4;
@@ -24167,7 +24163,7 @@ a.text-gray-lighter:hover {
 /* line 34, ../../src/sass/_base.scss */
 .parsley-errors-list li {
   list-style: none;
-  color: #e5603b;
+  color: #eac85e;
 }
 
 /***********************************/

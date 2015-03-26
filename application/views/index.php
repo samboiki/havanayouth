@@ -45,16 +45,250 @@
                         <ul class="navbar-buttons pull-right">
                             <li>
                                 <a href="<?php echo site_url('signin');?>" class="btn btn-sm btn-transparent">
-                                    Signin&nbsp;
+                                    login&nbsp;
                                     <i class="fa fa-sign-in"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo site_url('signup');?>"
-                                   class="btn btn-sm btn-transparent">
-                                    Register&nbsp;
-                                    <i class="fa fa-user"></i>
+                                <a href=""
+                              <button type="button" class="btn btn-sm btn-transparent"
+                                data-toggle="modal" data-target="#myModal0" data-backdrop="static">Signin&nbsp<i class="fa fa-user"></i></button>                            
                                 </a>
+                                <div id="myModal0" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                               <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title" id="myModalLabel2">Havana <strong>Youth </strong>account sign in</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                
+                                              <form action="<?php echo site_url('signin_validation')?>"  id="validation-form" class="form-horizontal form-label-left" method="post"
+                                                    data-parsley-priority-enabled="false" accept-charset="utf-8" class="no-margin"
+                                                    novalidate="novalidate">
+
+                                                  <fieldset>
+                                                      <legend class="section">
+                                                      <span class="label label-custom">
+                                                          Please provide your login credentials&nbsp;&nbsp;<i class="fa fa-user"></i>
+                                                      </span>
+                                                      </legend>
+                                                      <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                              Username<span class="required">&nbsp;*</span>
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="username" class="form-control input-transparent input-sm"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                  </fieldset>
+                                                  <fieldset>
+                                                      <div class="form-group">
+                                                          <label class="control-label col-md-2" for="password">
+                                                              Password<span class="required">&nbsp;*</span>
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input placeholder="Please type your password here" type="username" id="password" name="password" class="form-control input-transparent input-sm"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     data-parsley-minlength="6"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                  </fieldset>
+                                                  <fieldset>
+                                                    <legend class="section">  </legend>
+                                                     <div class="form-group">
+                                                            <label class="control-label col-md-6" for="email">
+                                                                <a>I forgot my password</a>
+                                                            </label>
+                                                         </div>
+                                                  </fieldset>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="checkbox checkbox-primary pull-left ">
+                                            <input id="checkbox3" type="checkbox" required data-parsley-mincheck="1">
+                                                        <label for="checkbox3">
+                                                            Remember me
+                                                        </label>
+                                                    </div>
+                                        
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-primary">Login Into Your Account&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
+                                    </div>
+                                        </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
+                            </li>
+                            <li>
+                                <a href=""
+                              <button type="button" class="btn btn-sm btn-transparent"
+                                data-toggle="modal" data-target="#myModal2" data-backdrop="static">Launch Register&nbsp<i class="fa fa-user"></i></button>                            
+                                </a>
+                                <div id="myModal2" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                               <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title" id="myModalLabel2">Havana <strong>Youth </strong>account registration</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                
+                                              <form action="<?php echo site_url('signup_validation')?>"  id="validation-form" class="form-horizontal form-label-left" method="post"
+                                                    data-parsley-priority-enabled="false" accept-charset="utf-8" class="no-margin"
+                                                    novalidate="novalidate">
+
+                                                  <fieldset>
+                                                      <legend class="section">
+                                                      <span class="label label-custom">
+                                                          Personal Info&nbsp;&nbsp;<i class="fa fa-user"></i>
+                                                      </span>
+                                                      </legend>
+                                                      <div class="form-group">
+                                                          <label class="control-label col-md-2" for="firstname">
+                                                          </label>
+                                                          <div class="col-md-5">
+                                                          <label class="control-label" for="firstname">
+                                                              Firstname<span class="required">&nbsp;*</span>
+                                                          </label>
+                                                          
+                                                              <input placeholder="Please type your first name here" type="firstname" id="firstname" name="firstname" class="form-control input-transparent input-sm"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                          <div class="col-md-5">
+                                                           <label class="control-label " for="lastname">
+                                                              Lastname<span class="required">&nbsp;*</span>
+                                                          </label>
+                                                              <input placeholder="Please type your last name / surname here" type="lastname" id="lastname" name="lastname" class="form-control input-transparent input-sm"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                      <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                              Username<span class="required">&nbsp;*</span>
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="username" class="form-control input-transparent input-sm"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                      
+                                                      
+                                                  </fieldset>
+                                                  <fieldset>
+                                                     
+                                                      <div class="form-group">
+                                                            <label class="control-label col-md-2" for="email">
+                                                                E-mail
+                                                            </label>
+                                                            <div class="col-md-10">
+                                                                <div class="input-group">
+                                                                <input placeholder="Please type your email address here"type="email" id="email" name="email" class="form-control input-transparent"
+                                                                       data-parsley-trigger="change"
+                                                                       data-parsley-validation-threshold="1"
+                                                                       required="required"><span style="color: white;"class="input-group-addon" d><i class="fa fa-envelope"></i></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                      <div class="form-group">
+                                                          <label class="control-label col-md-2" for="number">
+                                                             Contact Number
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <div class="input-group">
+                                                              <input placeholder="Please type your contact number here" type="text" id="number" name="number" class="form-control input-transparent"
+                                                                     data-parsley-type="number"
+                                                                     required="required"><span style="color: white;"class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </fieldset>
+                                                  <fieldset>
+                                                      <legend class="section">
+                                                          <span class="label label-custom">
+                                                          Security Details&nbsp;&nbsp;<i class="fa fa-lock"></i>
+                                                          </span>
+                                                      </legend>
+                                                      <div class="form-group">
+                                                          <label class="control-label col-md-2" for="password">
+                                                              Password<span class="required">&nbsp;*</span>
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <div class="input-group">
+                                                              <input placeholder="Type your password here" type="password" id="password" name="password" class="form-control input-transparent"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-minlength="6"
+                                                                     required="required"><span style="color: white;"class="input-group-addon" ><i class="fa fa-lock"></i></span>
+                                                              </div>
+                                                          </div>
+                                                          </div>
+                                                          <div class="form-group">
+                                                          <label class="control-label col-md-2" for="password">
+                                                              Repeat Password<span class="required">&nbsp;*</span>
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <div class="input-group">
+                                                              <input placeholder="Please re-type your password here" type="password" id="password-r" name="password-r" class="form-control input-transparent"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-minlength="6"
+                                                                     data-parsley-equalto="#password"
+                                                                     required="required"><span style="color: white;" class="input-group-addon" ><i class="fa fa-lock"></i></span>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                   
+                                                  </fieldset>
+                                                  <fieldset>
+                                                    <legend class="section">  </legend>
+                                                     <div class="form-group">
+                                                            <label class="control-label col-md-6" for="email">
+                                                                Please select the role you wish to register as
+                                                            </label>
+                                                         <div class="col-md-6">
+                                                            <div class="radio radio-primary pull-left">
+                                                                <input type="radio" name="role" id="radio1" value="youth" checked>
+                                                                <label for="radio1">
+                                                                    Unemployed Youth
+                                                                </label>
+                                                            </div>
+                                                            <div class="radio radio-primary pull-right">
+                                                                <input type="radio" name="role" id="radio2" value="employer">
+                                                                <label for="radio2">
+                                                                    Employer
+                                                                </label>
+                                                            </div>
+                                                          </div>
+                                                         </div>
+                                                  </fieldset>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="checkbox checkbox-primary pull-left col-md-4">
+                                            <input name="checkButton2" type="checkbox" value="1" class="required step5 parsley-validated">
+                                            <input id="checkbox3" type="checkbox" required data-parsley-mincheck="1">
+                                                        <label for="checkbox3">
+                                                            I Read and Agree With The <a href="">Terms & Conditions</a>
+                                                        </label>
+                                                    </div>
+                                        
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-primary">Register Your Account&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
+                                    </div>
+                                        </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
                             </li>
                             
                         </ul>
@@ -477,6 +711,11 @@
 </script>
 
     <!-- page specific scripts -->
+        <!-- page libs -->
+        <script src="assets/lib/parsleyjs/dist/parsley.js"></script>
+
+        <!-- page application js -->
+        <script src="assets/js/forms-validation.js"></script>
 </body>
 
 </html>
