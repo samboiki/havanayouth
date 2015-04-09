@@ -18,7 +18,7 @@
     </script>
 </head>
 <body class="background-dark">
-    <?php if (@$user_profile):  // call var_dump($user_profile) to view all data ?>
+   
  <?php // var_dump($user_profile) ?>
         <div class="logo">
         <h4><a href="index.html">Havana <strong>Youth</strong></a></h4>
@@ -231,8 +231,8 @@
                         </a>
                         <ul id="account-menu" class="dropdown-menu account" role="menu">
                             <li role="presentation" class="account-picture">
-                                <img src="https://graph.facebook.com/<?=$user_profile['id']?>/picture?type=small" alt="">
-                                <?=$user_profile['first_name']?>
+                               
+                                
                             </li>
                             <li role="presentation">
                                 <a href="form_account.html" class="link">
@@ -271,7 +271,7 @@
             </div>
         </header>       
         <div class="content container">
-       <h4 class="mt-sm mb-xs"><?=$user_profile['name']?><small> Welcom Admin</small></h4>
+       <h4 class="mt-sm mb-xs"><small> Welcom Admin</small></h4>
         <div class="row">
             <div class="col-lg-8">
                 <section class="widget">
@@ -908,9 +908,5 @@
         <script type="text/javascript" src="assets/js/map.js"></script>
         <!-- page application js -->
         <script src="assets/js/forms-account.js"></script>
-        <?php else: ?>
-        <?php echo "sam";?>
-        <?php endif; ?>
-
 </body>
 </html>

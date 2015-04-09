@@ -20,33 +20,37 @@
     </script>
 </head>
 <body class="background-dark">
+    
    
       <div class="content container">
         <div class="modal-dialog">
             <div class="modal-content" style="color: black;">
                 <div class="modal-header">
-                    <h4 class="modal-title" >Havana <strong>Youth </strong>account sign in</h4>
+                    <h4 class="modal-title" >Havana <strong>Youth </strong>account sign up</h4>
                 </div>
                     <div class="modal-body">
-                        <form action="<?php echo site_url('signin_validation')?>" id="validation-form" class="form-horizontal form-label-left" method="post"
+                        <form action="<?php echo site_url('fbsignup')?>" id="validation-form" class="form-horizontal form-label-left" method="post"
                               data-parsley-priority-enabled="false"
                               novalidate="novalidate">
                             <fieldset>
                                 <legend class="section">
                                 <span class="label label-custom">
-                                    Please provide your login credentials&nbsp;&nbsp;<i class="fa fa-user"></i>
+                                    Please provide your login credentials incase you are off facebook&nbsp;&nbsp;<i class="fa fa-user"></i>
                                 </span>
                                     
                                 </legend>
-                                 <div class="form-group">
-                                                          <label class="control-label col-md-2" for="username">
-                                                              Username<span class="required">&nbsp;*</span>
+                                                      <div class="form-group">
+                                                          <label class="control-label col-md-2" for="number">
+                                                             Mobile Number<span class="required">&nbsp;*</span>
                                                           </label>
                                                           <div class="col-md-10">
-                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="username" class="form-control input-transparent input-sm"
-                                                                     data-parsley-trigger="change"
-                                                                     data-parsley-validation-threshold="1"
-                                                                     required="required">
+                                                              <div class="input-group">
+                                                              <input placeholder="Please type your cell phone number here" type="text" id="number" name="number" class="form-control input-transparent"
+                                                                     data-parsley-type="number"
+                                                                     required="required"
+                                                                     data-parsley-minlength="10"
+                                                                     required="required"><span style="color: white;"class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                              </div>
                                                           </div>
                                                       </div>
                                                       <div class="form-group">
@@ -63,29 +67,59 @@
                                                               </div>
                                                           </div>
                                                       </div>
+                                                      <div class="form-group">
+                                                          <label class="control-label col-md-2" for="password">
+                                                              Password Repeat<span class="required">&nbsp;*</span>
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <div class="input-group">
+                                                              <input placeholder="Type your password here" type="password" id="password-r" name="password-r" class="form-control input-transparent"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-minlength="6"
+                                                                     data-parsley-equalto="#password"
+                                                                     required="required"><span style="color: white;"class="input-group-addon" ><i class="fa fa-lock"></i></span>
+                                                              
+                                                              </div>
+                                                          </div>
+                                                      </div>
                                                   </fieldset>
                                                   <fieldset>
                                                     <legend class="section">  </legend>
-                                                    
+                                                    <div class="form-group">
+                                                            <label class="control-label col-md-6" for="email">
+                                                                <strong>What are you registering as?</strong>
+                                                            </label>
+                                                         <div class="col-md-6">
+                                                            <div class="radio radio-primary pull-left">
+                                                                <input type="radio" name="role" id="radio1" value="youth" checked>
+                                                                <label for="radio1">
+                                                                    Unemployed Youth
+                                                                </label>
+                                                            </div>
+                                                            <div class="radio radio-primary pull-right">
+                                                                <input type="radio" name="role" id="radio2" value="employer">
+                                                                <label for="radio2">
+                                                                    Employer
+                                                                </label>
+                                                            </div>
+                                                          </div>
+                                                         </div>
                                                      <div class="form-group">
-                                                           <?php echo validation_errors(); ?> 
+                                                           <?php //echo validation_errors(); ?> 
                                                          </div>
                                                   </fieldset>
                                     </div>
                                     <div class="modal-footer">
-                                        <div class="col-md-4 col-sm-4">
-                                        
-                                        <span class="label label-custom pull-left" style="background-color:#3b5998;">   
-                                            <a href="fbsignin" class="btn btn-block btn-social btn-facebook btn-xs"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
-                                        </span>
-                                        <div class="checkbox checkbox-primary pull-left ">
+                                        <div class="checkbox checkbox-primary pull-left col-md-4">
+                                           
+                                            <input name="checkButton2" type="checkbox" value="1" class="required step5 parsley-validated">
                                             <input id="checkbox3" type="checkbox" required data-parsley-mincheck="1">
                                                         <label for="checkbox3">
-                                                            Remember me
+                                                            I Read and Agree With The <a href="">Terms & Conditions</a>
                                                         </label>
-                                            
                                                     </div>
-                                        </div>
+                                     
+                                      
                                         <a href="<?php echo site_url('index.php');?>"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button></a>
                                         <button type="submit" class="btn btn-primary">Login Into Your Account&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
                                     </div>
@@ -93,6 +127,7 @@
                     </div>
             </div>
         </div>
+        
         <div class="loader-wrap hiding hide">
             <i class="fa fa-circle-o-notch fa-spin"></i>
         </div>

@@ -5,7 +5,10 @@
 <head>
     <title>Light Blue - Responsive Admin Dashboard Template</title>
 
-        <link href="css/application.css" rel="stylesheet">
+    <link href="css/application.css" rel="stylesheet">
+    <link href="css/beyond.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -21,11 +24,11 @@
 <body class="background-dark">
    
     <div class="logo">
-        <h4><a href="index.html">Light <strong>Blue</strong></a></h4>
+        <h4><a href="index.html">Havana <strong>Youth</strong></a></h4>
     </div>
-    <nav id="sidebar" class="sidebar nav-collapse collapse">
+    <nav  class="sidebar nav-collapse collapse">
             <ul id="side-nav" class="side-nav">
-                <li class="active">
+                <li>
                     <a href="<?php echo base_url('rprofile');?>"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
                 </li>
                 <li class="">
@@ -40,11 +43,11 @@
                 <li class="">
                     <a href="index.html"><i class="fa fa-inbox"></i> <span class="name">Inbox</span></a>
                 </li>
-                <li class="panel ">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse"
-                       data-parent="#side-nav" href="#ui-collapse"><i class="fa fa-magic"></i> <span class="name">Search</span></a>
-                    <ul id="ui-collapse" class="panel-collapse collapse ">
-                        <li class=""><a href="<?php echo site_url('youthsearch');?>">Unemployed Youth</a></li>
+                <li class="panel active">
+                    <a class="accordion-toggle" data-toggle="collapse"
+                       data-parent="#side-nav" href="#special-collapse"><i class="fa fa-magic"></i> <span class="name">Search</span></a>
+                    <ul id="special-collapse" class="panel-collapse collapse in">
+                        <li class="active"><a href="<?php echo site_url('youthsearch');?>">Unemployed Youth</a></li>
                         <li class=""><a href="ui_dialogs.html">Jobs</a></li>
                     </ul>
                 </li>
@@ -53,48 +56,8 @@
                     <p><?php echo anchor("$logout_url",'<span class="name"><i class="fa fa-sign-out" style="color:white"></i>Sign Out</span>' ) ?></p>
                 </li>
             </ul>
-        
-            <h5 class="sidebar-nav-title">Projects</h5>
-            <!-- A place for sidebar notifications & alerts -->
-            <div class="sidebar-alerts">
-                <div class="alert fade in">
-                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">Sales Report</span> <br>
-                    <div class="progress progress-xs mt-xs mb-0">
-                        <div class="progress-bar progress-bar-gray-light" style="width: 16%"></div>
-                    </div>
-                    <small>Calculating x-axis bias... 65%</small>
-                </div>
-                <div class="alert fade in">
-                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">Personal Responsibility</span> <br>
-                    <div class="progress progress-xs mt-xs mb-0">
-                        <div class="progress-bar progress-bar-danger" style="width: 23%"></div>
-                    </div>
-                    <small>Provide required notes</small>
-                </div>
-            </div>
             
-            <h5 class="sidebar-nav-title">Sponsors</h5>
-            <!-- A place for sidebar notifications & alerts -->
-            <div class="sidebar-alerts">
-                <div class="alert fade in">
-                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">Sales Report</span> <br>
-                    <div class="progress progress-xs mt-xs mb-0">
-                        <div class="progress-bar progress-bar-gray-light" style="width: 16%"></div>
-                    </div>
-                    <small>Calculating x-axis bias... 65%</small>
-                </div>
-                <div class="alert fade in">
-                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">Personal Responsibility</span> <br>
-                    <div class="progress progress-xs mt-xs mb-0">
-                        <div class="progress-bar progress-bar-danger" style="width: 23%"></div>
-                    </div>
-                    <small>Provide required notes</small>
-                </div>
-            </div>
+            <?php $this->load->view('sponsors');?>
         
         </nav> 
     <div class="wrap">
@@ -281,477 +244,13 @@
             </div>
         </header>        
         <div class="content container">
-        <h2 class="page-title">Tables - <span class="fw-semi-bold">Dynamic</span></h2>
-        
-        <section class="widget">
-            <header>
-                <h4>Havana <span class="fw-semi-bold">Youth</span></h4>
-                <div class="widget-controls">
-                    <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
-                    <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
-                    <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
-                </div>
-            </header>
-            <div class="body">
-                <p>
-                    <a href="http://www.datatables.net/" target="_blank">Get your preffered candidate now</a>
-                </p>
-                <div class="mt">
-                    <table id="datatable-table" class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th class="no-sort hidden-xs">Info</th>
-                            <th class="hidden-xs">Description</th>
-                            <th class="hidden-xs">Date</th>
-                            <th class="no-sort">Status</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><span class="fw-semi-bold">Algerd</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; JPEG
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; 200x150
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Palo Alto</a></td>
-                            <td class="hidden-xs">June 27, 2013</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-success" style="width: 29%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><span class="fw-semi-bold">Vitaut</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; PNG
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; 6433x4522
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Vilnia</a></td>
-                            <td class="hidden-xs">January 1, 1442</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-danger" style="width: 19%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><span class="fw-semi-bold">Honar</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; AVI
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; 1440x980
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Berlin</a></td>
-                            <td class="hidden-xs">August 6, 2013</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-gray-light" style="width: 49%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td><span class="fw-semi-bold">Jack</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; PNG
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; 12x43
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">San Francisco</a></td>
-                            <td class="hidden-xs">August 19, 2013</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar" style="width: 69%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><span class="fw-semi-bold">Leon</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; MP4
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; 800x480
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Brasilia</a></td>
-                            <td class="hidden-xs">October 1, 2013</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-gray-light" style="width: 9%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td><span class="fw-semi-bold">Max</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; TXT
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; -
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Helsinki</a></td>
-                            <td class="hidden-xs">October 29, 2013</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-warning" style="width: 38%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td><span class="fw-semi-bold">Pol</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; MOV
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; 640x480
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Radashkovichi</a></td>
-                            <td class="hidden-xs">November 11, 2013</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-danger" style="width: 83%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td><span class="fw-semi-bold">Chrishna</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; DOC
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; -
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Mumbai</a></td>
-                            <td class="hidden-xs">December 2, 2013</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-info" style="width: 40%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td><span class="fw-semi-bold">Leslie</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; AVI
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; 4820x2140
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Singapore</a></td>
-                            <td class="hidden-xs">December 6, 2013</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-warning" style="width: 18%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td><span class="fw-semi-bold">David</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; XML
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; -
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Portland</a></td>
-                            <td class="hidden-xs">December 13, 2013</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-gray-light" style="width: 54%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>11</td>
-                            <td><span class="fw-semi-bold">Andrej</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; VOB
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; 6433x4522
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Minsk</a></td>
-                            <td class="hidden-xs">December 14, 2013</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar" style="width: 25%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>12</td>
-                            <td><span class="fw-semi-bold">Julia</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; JPEG
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; 40x40
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Hrodna</a></td>
-                            <td class="hidden-xs">July 9, 2012</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-warning" style="width: 50%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>13</td>
-                            <td><span class="fw-semi-bold">Ihnat</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; JAVA
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; -
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Los Angeles</a></td>
-                            <td class="hidden-xs">August 2, 2012</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-success" style="width: 8%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>14</td>
-                            <td><span class="fw-semi-bold">Abraham</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; DOCX
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; -
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Panama</a></td>
-                            <td class="hidden-xs">September 3, 2012</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-gray-light" style="width: 80%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>15</td>
-                            <td><span class="fw-semi-bold">Tomas</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; JPEG
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; 1800x1420
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Amsterdam</a></td>
-                            <td class="hidden-xs">November 13, 2012</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-gray-light" style="width: 10%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>16</td>
-                            <td><span class="fw-semi-bold">Scott</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; PNG
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; 240x460
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Sluck</a></td>
-                            <td class="hidden-xs">December 5, 2012</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar" style="width: 93%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>17</td>
-                            <td><span class="fw-semi-bold">Pham</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; MAIL
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; -
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Tokyo</a></td>
-                            <td class="hidden-xs">December 8, 2012</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-danger" style="width: 44%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>18</td>
-                            <td><span class="fw-semi-bold">Peter</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; PNG
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; 8320x6400
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Cape Town</a></td>
-                            <td class="hidden-xs">December 29, 2012</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-gray-light" style="width: 5%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>19</td>
-                            <td><span class="fw-semi-bold">Uladz'</span></td>
-                            <td class="hidden-xs">
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; JPEG
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; 2200x1600
-                                </small>
-                            </td>
-                            <td class="hidden-xs"><a href="#">Mahileu</a></td>
-                            <td class="hidden-xs">December 7, 2013</td>
-                            <td class="width-150">
-                                <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-gray-light" style="width: 0%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-            </div>
-            
-
-        </section>
+    
         <section>
          <div class="row">
                         <div class="col-xs-12 col-md-12">
                             <div class="widget">
-                                <div class="widget-header ">
-                                    <span class="widget-caption">Expandable DataTable</span>
-                                    <div class="widget-buttons">
-                                        <a href="#" data-toggle="maximize">
-                                            <i class="fa fa-expand"></i>
-                                        </a>
-                                        <a href="#" data-toggle="collapse">
-                                            <i class="fa fa-minus"></i>
-                                        </a>
-                                        <a href="#" data-toggle="dispose">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
+                                <div class="well youth-border" style=" border-bottom: 3px; border-bottom-color: aquamarine;">
+                                    <strong>Search Unemployed Youth</strong>
                                 </div>
                                 <div class="widget-body">
                                     <table class="table table-striped table-bordered table-hover" id="expandabledatatable">
@@ -761,142 +260,52 @@
                                                     Name
                                                 </th>
                                                 <th>
-                                                    Family
+                                                    Surname
                                                 </th>
                                                 <th>
                                                     Age
                                                 </th>
                                                 <th>
-                                                    Position
+                                                    Gender 
                                                 </th>
                                                 <th>
-                                                    Interests
+                                                    Technical Skills
+                                                </th>
+                                                <th>
+                                                    Request 
                                                 </th>
                                                 <th>Picture</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
+                                             <?php if(isset($users)) : foreach($users as $row) :  ?>
                                             <tr>
                                                 <td>
-                                                    Nicolai
+                                                <?php echo $row->firstname; ?>
                                                 </td>
                                                 <td>
-                                                    Larson
+                                                <?php echo $row->lastname; ?>
                                                 </td>
                                                 <td>
-                                                    27
+                                                <?php echo $row->age;?>
                                                 </td>
                                                 <td>
-                                                    Software Manager
+                                                <?php echo $row->gender;?>
                                                 </td>
                                                 <td>
-                                                    Swimming
+                                                <?php echo $row->skills;?>
                                                 </td>
                                                 <td>
-                                                    Nicolai-Larson.jpg
+                                                <?php echo anchor("/jobrequest/$row->id/$row->mobile_phone",'<span class="btn btn-primary btn-xs">ask '."$row->firstname".' for quotation request <i class="fa fa-comments" style="color:white"></i></span>' ) ?>
+                                                </td>
+                                                <td>
+                                                <img class="" src="<?=$row->path;?>" width="100" height="100" alt="" />
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    Divya
-                                                </td>
-                                                <td>
-                                                    Johnson
-                                                </td>
-                                                <td>
-                                                    22
-                                                </td>
-                                                <td>
-                                                    Software Developer
-                                                </td>
-                                                <td>
-                                                    Jugging
-                                                </td>
-                                                <td>
-                                                    divyia.jpg
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Javi
-                                                </td>
-                                                <td>
-                                                    Jimenez
-                                                </td>
-                                                <td>
-                                                    32
-                                                </td>
-                                                <td>
-                                                    Software Developer
-                                                </td>
-                                                <td>
-                                                    Gaming
-                                                </td>
-                                                <td>
-                                                    Javi-Jimenez.jpg
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Osvaldus
-                                                </td>
-                                                <td>
-                                                    Valutis
-                                                </td>
-                                                <td>
-                                                    29
-                                                </td>
-                                                <td>
-                                                    Software Analyst
-                                                </td>
-                                                <td>
-                                                    Swimming,Gaming
-                                                </td>
-                                                <td>
-                                                    Osvaldus-Valutis.jpg
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Lee
-                                                </td>
-                                                <td>
-                                                    Munroe
-                                                </td>
-                                                <td>
-                                                    21
-                                                </td>
-                                                <td>
-                                                    Software Developer
-                                                </td>
-                                                <td>
-                                                    Swimming,Gaming
-                                                </td>
-                                                <td>
-                                                    Lee-Munroe.jpg
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Sergey
-                                                </td>
-                                                <td>
-                                                    Azovskiy
-                                                </td>
-                                                <td>
-                                                    40
-                                                </td>
-                                                <td>
-                                                    SEO
-                                                </td>
-                                                <td>
-                                                    Napping
-                                                </td>
-                                                <td>
-                                                    Sergey-Azovskiy.jpg
-                                                </td>
-                                            </tr>
+                                                <?php  endforeach;?>
+                                                <?php else : ?><h6>No records </h6>
+                                            <?php endif; ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -973,7 +382,6 @@
         <script src="assets/lib/backbone.paginator/lib/backbone.paginator.min.js"></script>
         <script src="assets/lib/backgrid/lib/backgrid.min.js"></script>
         <script src="assets/lib/backgrid-paginator/backgrid-paginator.js"></script>
-        <script src="assets/lib/datatables/media/js/jquery.dataTables.min.js"></script>
 
         <!-- page application js -->
         <script src="assets/js/tables-dynamic.js"></script>
@@ -986,7 +394,6 @@
             InitiateSimpleDataTable.init();
             InitiateEditableDataTable.init();
             InitiateExpandableDataTable.init();
-            InitiateSearchableDataTable.init();
         </script>
 </body>
 </html>

@@ -34,7 +34,7 @@
                     <a href="<?php echo site_url('notifications');?>"><i class="fa fa-th"></i> <span class="name">Notifications</span></a>
                 </li>
                 <li class="">
-                    <a href="<?php echo site_url('calender');?>"><i class="fa fa-calendar"></i> <span class="name">Calender</span></a>
+                    <a href="<?php echo site_url('calendar');?>"><i class="fa fa-calendar"></i> <span class="name">Calender</span></a>
                 </li>
                 <li class="">
                     <a href="index.html"><i class="fa fa-inbox"></i> <span class="name">Inbox</span></a>

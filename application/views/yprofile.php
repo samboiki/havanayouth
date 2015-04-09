@@ -22,19 +22,19 @@
         <div class="logo">
         <h4><a href="index.html">Havana <strong>Youth</strong></a></h4>
         </div>
-        <nav id="sidebar" class="sidebar nav-collapse collapse">
+        <nav  class="sidebar nav-collapse collapse">
             <ul id="side-nav" class="side-nav">
-                <li class="">
-                    <a href="index.html"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
+                <li class="active">
+                    <a href="<?php echo base_url('yprofile');?>"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
                 </li>
                 <li class="">
-                    <a href="index.html"><i class="fa fa-area-chart"></i> <span class="name">Statistics</span></a>
+                    <a href="<?php echo base_url('statistics');?>"><i class="fa fa-area-chart"></i> <span class="name">Statistics</span></a>
                 </li>
                 <li class="">
-                    <a href="index.html"><i class="fa fa-th"></i> <span class="name">Notifications</span></a>
+                    <a href="<?php echo site_url('notifications');?>"><i class="fa fa-th"></i> <span class="name">Notifications</span></a>
                 </li>
                 <li class="">
-                    <a href="index.html"><i class="fa fa-calendar"></i> <span class="name">Calender</span></a>
+                    <a href="<?php echo site_url('calendar');?>"><i class="fa fa-calendar"></i> <span class="name">Calender</span></a>
                 </li>
                 <li class="">
                     <a href="index.html"><i class="fa fa-inbox"></i> <span class="name">Inbox</span></a>
@@ -43,56 +43,17 @@
                     <a class="accordion-toggle collapsed" data-toggle="collapse"
                        data-parent="#side-nav" href="#ui-collapse"><i class="fa fa-magic"></i> <span class="name">Search</span></a>
                     <ul id="ui-collapse" class="panel-collapse collapse ">
-                        <li class=""><a href="ui_buttons.html">Unemployed Youth</a></li>
+                        <li class=""><a href="<?php echo site_url('youthsearch');?>">Unemployed Youth</a></li>
                         <li class=""><a href="ui_dialogs.html">Jobs</a></li>
                     </ul>
                 </li>
                 <li class="visible-xs">
                     <a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out"></i> <span class="name">Sign Out</span></a>
+                    <p><?php echo anchor("$logout_url",'<span class="name"><i class="fa fa-sign-out" style="color:white"></i>Sign Out</span>' ) ?></p>
                 </li>
             </ul>
         
-            <h5 class="sidebar-nav-title">Projects</h5>
-            <!-- A place for sidebar notifications & alerts -->
-            <div class="sidebar-alerts">
-                <div class="alert fade in">
-                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">Sales Report</span> <br>
-                    <div class="progress progress-xs mt-xs mb-0">
-                        <div class="progress-bar progress-bar-gray-light" style="width: 16%"></div>
-                    </div>
-                    <small>Calculating x-axis bias... 65%</small>
-                </div>
-                <div class="alert fade in">
-                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">Personal Responsibility</span> <br>
-                    <div class="progress progress-xs mt-xs mb-0">
-                        <div class="progress-bar progress-bar-danger" style="width: 23%"></div>
-                    </div>
-                    <small>Provide required notes</small>
-                </div>
-            </div>
-            
-            <h5 class="sidebar-nav-title">Sponsors</h5>
-            <!-- A place for sidebar notifications & alerts -->
-            <div class="sidebar-alerts">
-                <div class="alert fade in">
-                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">Sales Report</span> <br>
-                    <div class="progress progress-xs mt-xs mb-0">
-                        <div class="progress-bar progress-bar-gray-light" style="width: 16%"></div>
-                    </div>
-                    <small>Calculating x-axis bias... 65%</small>
-                </div>
-                <div class="alert fade in">
-                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">Personal Responsibility</span> <br>
-                    <div class="progress progress-xs mt-xs mb-0">
-                        <div class="progress-bar progress-bar-danger" style="width: 23%"></div>
-                    </div>
-                    <small>Provide required notes</small>
-                </div>
-            </div>
+            <?php $this->load->view('sponsors');?>
         
         </nav>    
     <div class="wrap">
@@ -296,6 +257,9 @@
                                     <li><a href="#dropdown4" data-toggle="tab">Technical Skills </a></li>
                                     <li><a href="#dropdown5" data-toggle="tab">Qualifications</a></li>
                                     <li><a href="#dropdown6" data-toggle="tab">Contact Details</a></li>
+                                    <li><a href="#dropdown7" data-toggle="tab">Work History</a></li>
+                                    <li><a href="#dropdown8" data-toggle="tab">Profile Picture</a></li>
+                                    <li><a href="#dropdown9" data-toggle="tab">Address Details</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -304,8 +268,13 @@
                                 <div class="row">
                                 <div class="col-sm-4">
                                     <div class="text-align-center">
-                                        <img class="img-circle" src="">
-                                    </div>
+                                        <?php if(isset($img)) : foreach($img as $rows) :  ?>    
+                                        <p><img class="img-circle" src="<?=$rows->path;?>" width="150" height="150" alt="" /></p>
+                                        <?php  endforeach;?>
+                                        <?php else : ?>
+                                        <h6>No profile picture</h6>
+                                    <?php endif; ?>
+                                </div>
                                 </div>
                                 <div class="col-sm-8">
                                     <address>
@@ -342,9 +311,9 @@
                                 <h5><label class="col-sm-4" for="prefix">Tel:</label></h5>
                                 <div class="col-sm-4"><a><?=$contact->telephone?></a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Email:</label></h5>
-                                <div class="col-sm-4"><a href=""><?=$user->email;?></a></div></br></br>
+                                <div class="col-sm-4"><a href=""><?=$contact->email;?></a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Fax:</label></h5>
-                                <div class="col-sm-4"><a><?=$user->lastname;?></a></div></br></br>
+                                <div class="col-sm-4"><a><?=$contact->fax;?></a></div></br></br>
                                 </div>
                                 <div>
                                 <legend class="section">Address</legend>
@@ -372,41 +341,151 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <address>
-                                        <div class="info"><strong>Plumbing</strong></div>
-                                            <div class="progress progress-small">
-                                                <div class="progress-bar progress-bar-success" style="width: 90%;"></div>
-                                            </div>
-                                   <div class="info"><strong>Tiling</strong></div>
-                                            <div class="progress progress-small">
-                                                <div class="progress-bar progress-bar-warning" style="width: 50%;"></div>
-                                            </div> 
-                                   <div class="info"><strong>Plastering</strong></div>
-                                            <div class="progress progress-small">
-                                                <div class="progress-bar progress-bar-danger" style="width: 30%;"></div>
-                                            </div>
+                                        <?php $i = 0; ?>
+                                        <?php if(isset($skills)) :  foreach ($skills as $row) : if ($i == 3) { break; }?>    
+                                        <div class="info col-sm-4"><strong><?php echo $row->skill;?></strong></div>
+                                        <?php $rating = $row->rating; if ($rating == 1):?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>
+                                        <?php elseif ($rating == 2): ?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>
+                                        <?php elseif ($rating == 3): ?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>
+                                        <?php elseif ($rating == 4): ?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>
+                                        <?php elseif ($rating == 5): ?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>
+                                        <?php else : ?>
+                                        <h6>Rating out of bound</h6>
+                                        <?php endif; ?>
+                                        
+                                       <br></br>
+                                       <?php $i++; endforeach;?>
+                                        <?php else : ?>
+                                        <h6>No Skills added </h6>
+                                        <?php endif; ?>
                                     </address>
                                 </div>
                             </div>
                                 <div>
                                 <legend class="section">Technical Skils</legend>
-                                <h5><label class="col-sm-4" for="prefix">Name:</label></h5>
-                                <div class="col-sm-4"><a><?=$user->firstname;?></a></div></br></br>
-                                <h5><label class="col-sm-4" for="prefix">Surname:</label></h5>
-                                <div class="col-sm-4"><a><?=$user->lastname;?></a></div></br></br>
-                                <h5><label class="col-sm-4" for="prefix">Gender:</label></h5>
-                                <div class="col-sm-4"><a><?=$user->gender;?></a></div></br></br>
-                                <h5><label class="col-sm-4" for="prefix">Date of Birth:</label></h5>
-                                <div class="col-sm-4"><a><?=$user->lastname;?></a></div></br></br>
+                                <?php if(isset($skills)) :  foreach ($skills as $row) : ?> 
+                                <h5><label class="col-sm-4" for="prefix"><?php echo $row->skill;?>:</label></h5>
+                                <div class="col-sm-4"><a><?php echo $row->rating;?></a></div></br></br>
+                                <?php endforeach;?>
+                                <?php else : ?>
+                                <h6>No Skills added </h6>
+                                <?php endif; ?>
                                 </div>
                                 <div>
                                 <legend class="section">Qualifications</legend>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="dropdown3">
-                                <p>Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+                                <div class="row">
+                                          <div class="col-md-5 col-sm-6 col-xs-12">
+                                                <div class="well with-header">
+                                                <div class="header bordered-blue">Update Your Personal Information</div>
+                                                <div>
+                                                            <form action="/havanayouth/createperson" method="post" accept-charset="utf-8">	
+                                                                 <div class="footer-col-inner">
+                                                                        <div class="form-group">
+                                                                           <?php if(isset($user)) :?>  
+                                                                           <input type="hidden" name="id"  value="<?php echo $user->id?>" />
+                                                                           <label for="firstname">First name</label>
+                                                                           <input name="firstname" type="text" class="form-control" value="<?php echo $user->firstname?>" /><br>
+                                                                           <label for="lastname">Last name</label>
+                                                                           <input name="lastname" type="text"  class="form-control" value="<?php echo $user->lastname?>" /><br>
+                                                                           <label for="exp">Username</label>
+                                                                           <input name="username" type="text"  class="form-control" value="<?php echo $user->username?>" /><br>
+                                                                           <label for="exp">Password</label>
+                                                                           <input name="password" type="text"  class="form-control" value="<?php echo $user->password?>" /><br>
+                                                                           <label for="exp">Gender</label><br>
+                                                                           <div id="gender" class="btn-group" data-toggle="buttons">
+                                                                                <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                                                                    <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
+                                                                                </label>
+                                                                                <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                                                                    <input type="radio" name="gender" value="female" checked> Female
+                                                                                </label>
+                                                                           </div><br><br>
+
+                                                                           <label for="exp">Birth date</label>
+                                                                            <div>
+                                                                                <div class="input-group">
+                                                                                    <input class="form-control date-picker" id="id-date-picker-1" name="birth_date" type="date" data-date-format="YYYY-MM-DD" placeholder="<?php echo $user->birth_date?>">
+                                                                                    <span class="input-group-addon">
+                                                                                        <i class="fa fa-calendar"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <?php else : ?>
+                                                                            <h6>No records </h6>
+                                                                            <?php endif; ?>
+                                                                           <br>
+                                                                            <button type="submit" class="btn btn-primary">Update Details</button>
+                                                                        </div>
+                                                                   </div><!--//footer-col-inner-->
+                                                            </form>
+                                                            
+                                                   </div> <!-- /content -->
+                                               </div><!--//row-->
+                                            </div>
+                                          <div class="footer-col col-md-7 col-sm-8 newsletter">
+                                              <div class="well with-header">
+                                                      <div class="header bordered-blue">User Details</div>
+                                                                <?php if(isset($contact)) :   ?>    
+                                                                <h0><strong>First Name: </strong><?php echo $user->firstname?></h0></br></br>
+                                                                <h0><strong>Last Name: </strong><?php echo $user->lastname?></h0></br></br>
+                                                                <h0><strong>User Name: </strong><?php echo $user->username?></h0></br></br>
+                                                                <h0><strong>Password: </strong><?php echo $user->password?></h0></br></br>
+                                                                <h0><strong>Gender: </strong><?php echo $user->gender?></h0></br></br>
+                                                                <h0><strong>Birth Date: </strong><?php echo $user->birth_date?></h0></br></br>
+                                                                <?php else : ?>
+                                                                <h6>No records </h6>
+                                                                <?php endif; ?>
+                                              </div>
+                                          </div>
+                                          </div>
                             </div>
                             <div class="tab-pane fade" id="dropdown4">
-                                <p>They sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+                                <div class="row">
+                                          <div class="col-md-5 col-sm-6 col-xs-12">
+                                                <div class="well with-header">
+                                                <div class="header bordered-blue">Update Your Skills</div>
+                                                <div>
+                                                            <form action="/havanayouth/createskills" method="post" accept-charset="utf-8">	
+                                                                 <div class="footer-col-inner">
+                                                                        <div class="form-group">
+                                                                           <input type="hidden" name="userid"  value="<?php echo $user->id?>" />
+                                                                           <input type="hidden" name="page"  value="<?php echo "yprofile"?>" />
+                                                                           <label for="exp">Skills</label>
+                                                                           <input name="skill" type="text" id="mobile" class="form-control" value="" placeholder="Enter a skill here" /><br>
+                                                                           <label for="exp">Rating</label>
+                                                                           <input name="rating" type="text" id="tel" class="form-control" value="" placeholder="Enter a rating here" /><br>
+                                                                           <br>
+                                                                            <button type="submit" class="btn btn-primary">Validate &amp; Submit</button>
+                                                                        </div>
+                                                                   </div><!--//footer-col-inner-->
+                                                            </form>
+                                                            
+                                                   </div> <!-- /content -->
+                                               </div><!--//row-->
+                                            </div>
+                                          <div class="footer-col col-md-7 col-sm-8 newsletter">
+                                              <div class="well with-header">
+                                                      <div class="header bordered-blue">Your current skills</div>
+                                                                <?php if(isset($skills)) :  foreach ($skills as $row) : ?>    
+                                                                <h0><strong>Skill: </strong><?php echo $row->skill;?></h0>&nbsp;&nbsp;&nbsp;
+                                                                <h0><strong>Rating: </strong><?php echo $row->rating;?></h0></br>
+                                                                <p><?php echo anchor("/delete/$row->id/skills",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete skill</span>' ) ?></p> </br></br>
+                                                                <?php endforeach;?>
+                                                                <?php else : ?>
+                                                                <h6>No records </h6>
+                                                                <?php endif; ?>
+                                              </div>
+                                          </div>
+                                          </div>
                             </div>
                             <div class="tab-pane fade" id="dropdown6">
                                 <div class="row">
@@ -419,6 +498,7 @@
                                                                         <div class="form-group">
                                                                            <?php if(isset($contact)) :?>  
                                                                            <input type="hidden" name="id"  value="<?php echo $contact->id?>" />
+                                                                           <input type="hidden" name="page"  value="<?php echo "yprofile"?>" />
                                                                            <input name="mobile" type="text" id="mobile" class="form-control" value="<?php echo $contact->mobile_phone?>" /><br>
                                                                            <input name="tel" type="text" id="tel" class="form-control" value="<?php echo $contact->telephone?>" /><br>
                                                                            <input name="fax" type="text" id="fax" class="form-control" value="<?php echo $contact->fax?>" /><br>
@@ -427,7 +507,7 @@
                                                                             <h6>No records </h6>
                                                                             <?php endif; ?>
                                                                            <br>
-                                                                            <input type="submit" id="submit" name="dsubmit" value="Update">
+                                                                            <button type="submit" class="btn btn-primary">Validate &amp; Submit</button>
                                                                         </div>
                                                                    </div><!--//footer-col-inner-->
                                                             </form>
@@ -439,12 +519,11 @@
                                               <div class="well with-header">
                                                       <div class="header bordered-blue">User Details</div>
                                                                 <?php if(isset($contact)) :   ?>    
-                                                                <h0><strong>Mobile: </strong><?php echo $contact->mobile_phone?></h0></br>
-                                                                <h0><strong>Tel: </strong><?php echo $contact->telephone?></h0></br>
-                                                                <h0><strong>Fax: </strong><?php echo $contact->fax?></h0></br>
-                                                                <h0><strong>Email: </strong><?php echo $contact->email?></h0></br>
-                                                                 <p><?php echo anchor("/delete/$contact->id/contacts",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete contact</span>' ) ?></p>                                          
-                                                               
+                                                                <h0><strong>Mobile: </strong><?php echo $contact->mobile_phone?></h0></br></br> 
+                                                                <h0><strong>Tel: </strong><?php echo $contact->telephone?></h0></br></br>
+                                                                <h0><strong>Fax: </strong><?php echo $contact->fax?></h0></br></br>
+                                                                <h0><strong>Email: </strong><?php echo $contact->email?></h0></br></br>
+                                                              
                                                                 <?php else : ?>
                                                                 <h6>No records </h6>
                                                                 <?php endif; ?>
@@ -452,6 +531,88 @@
                                           </div>
                                           </div>
                            </div>
+                            <div class="tab-pane fade" id="dropdown9">
+                                <div class="row">
+                                          <div class="col-md-5 col-sm-6 col-xs-12">
+                                                <div class="well with-header">
+                                                <div class="header bordered-blue">Update Your Residential Details</div>
+                                                <div>
+                                                            <form action="/havanayouth/createaddress" method="post" accept-charset="utf-8">	
+                                                                 <div class="footer-col-inner">
+                                                                        <div class="form-group">
+                                                                           <?php if(isset($address)) :?>  
+                                                                           <input type="hidden" name="id"  value="<?php echo $user->id?>" />
+                                                                           <label for="firstname">Erf</label>
+                                                                           <input name="erf" type="text" class="form-control" value="<?php echo $address->erf?>" /><br>
+                                                                           <label for="lastname">Street</label>
+                                                                           <input name="street" type="text"  class="form-control" value="<?php echo $address->street?>" /><br>
+                                                                           <label for="exp">Suburb</label>
+                                                                           <input name="suburb" type="text"  class="form-control" value="<?php echo $address->suburb?>" /><br>
+                                                                           <label for="exp">City</label>
+                                                                           <input name="city" type="text"  class="form-control" value="<?php echo $address->city?>" /><br>
+                                                                           <label for="exp">Region</label>
+                                                                           <input name="region" type="text"  class="form-control" value="<?php echo $address->region?>" /><br>
+                                                                            <?php else : ?>
+                                                                            <h6>No records </h6>
+                                                                            <?php endif; ?>
+                                                                           <br>
+                                                                            <button type="submit" class="btn btn-primary">Update Details</button>
+                                                                        </div>
+                                                                   </div><!--//footer-col-inner-->
+                                                            </form>
+                                                            
+                                                   </div> <!-- /content -->
+                                               </div><!--//row-->
+                                            </div>
+                                          <div class="footer-col col-md-7 col-sm-8 newsletter">
+                                              <div class="well with-header">
+                                                      <div class="header bordered-blue">Address Details</div>
+                                                                <?php if(isset($address)) :   ?>    
+                                                                <h0><strong>Erf #: </strong><?php echo $address->erf?></h0></br></br>
+                                                                <h0><strong>Street: </strong><?php echo $address->street?></h0></br></br>
+                                                                <h0><strong>Suburb: </strong><?php echo $address->suburb?></h0></br></br>
+                                                                <h0><strong>City: </strong><?php echo $address->city?></h0></br></br>
+                                                                <h0><strong>Region: </strong><?php echo $address->region?></h0></br></br>
+                                                                <?php else : ?>
+                                                                <h6>No records </h6>
+                                                                <?php endif; ?>
+                                              </div>
+                                          </div>
+                                          </div>
+                            </div>
+                            <div class="tab-pane fade" id="dropdown8">
+                                <div class="row">
+                                          <div class="col-md-5 col-sm-6 col-xs-12">
+                                                <div class="well with-header">
+                                                <div class="header bordered-blue">Update Your Residential Details</div>
+                                                <div>
+                                                        <form action="uploadimg" method="post" accept-charset="utf-8" enctype="multipart/form-data">	
+                                                             <div class="footer-col-inner">
+                                                                    <div class="form-group">
+                                                                        <input name="userfile" type="file"  /><br>
+                                                                        <br>
+                                                                        <button type="submit" class="btn btn-primary">Validate &amp; Submit</button>
+                                                                    </div>
+                                                               </div><!--//footer-col-inner-->
+                                                        </form>
+                                                        <?php echo $error;?>
+                                                 </div>
+                                               </div><!--//row-->
+                                            </div>
+                                          <div class="footer-col col-md-7 col-sm-8 newsletter">
+                                              <div class="well with-header">
+                                                <div class="header bordered-red">Lists of images on about page</div>
+                                                <?php if(isset($img)) : foreach($img as $rows) :  ?>    
+                                                 <h0><strong><?php echo $rows->title; ?></strong></h0></br>
+                                                  <p><?php echo anchor("/delete_file/$rows->id/pimages/$rows->title",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete image</span>' ) ?></p>                                          
+                                                 <?php  endforeach;?>
+                                                 <?php else : ?>
+                                                 <h6>No records </h6>
+                                                 <?php endif; ?>
+                                             </div>
+                                          </div>
+                                          </div>
+                            </div>
                         </div>
                     </div>
                 </section>

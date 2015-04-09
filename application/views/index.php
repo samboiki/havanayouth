@@ -52,82 +52,6 @@
                             <li>
                                 <a href=""
                               <button type="button" class="btn btn-sm btn-transparent"
-                                data-toggle="modal" data-target="#myModal0" data-backdrop="static">Signin&nbsp<i class="fa fa-user"></i></button>                            
-                                </a>
-                                <div id="myModal0" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                               <div class="modal-dialog">
-                                <div class="modal-content">
-
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        <h4 class="modal-title" id="myModalLabel2">Havana <strong>Youth </strong>account sign in</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                
-                                              <form action="<?php echo site_url('signin_validation')?>"  id="validation-form" class="form-horizontal form-label-left" method="post"
-                                                    data-parsley-priority-enabled="false" accept-charset="utf-8" class="no-margin"
-                                                    novalidate="novalidate">
-
-                                                  <fieldset>
-                                                      <legend class="section">
-                                                      <span class="label label-custom">
-                                                          Please provide your login credentials&nbsp;&nbsp;<i class="fa fa-user"></i>
-                                                      </span>
-                                                      </legend>
-                                                      <div class="form-group">
-                                                          <label class="control-label col-md-2" for="username">
-                                                              Username<span class="required">&nbsp;*</span>
-                                                          </label>
-                                                          <div class="col-md-10">
-                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="username" class="form-control input-transparent input-sm"
-                                                                     data-parsley-trigger="change"
-                                                                     data-parsley-validation-threshold="1"
-                                                                     required="required">
-                                                          </div>
-                                                      </div>
-                                                  </fieldset>
-                                                  <fieldset>
-                                                      <div class="form-group">
-                                                          <label class="control-label col-md-2" for="password">
-                                                              Password<span class="required">&nbsp;*</span>
-                                                          </label>
-                                                          <div class="col-md-10">
-                                                              <input placeholder="Please type your password here" type="username" id="password" name="password" class="form-control input-transparent input-sm"
-                                                                     data-parsley-trigger="change"
-                                                                     data-parsley-validation-threshold="1"
-                                                                     data-parsley-minlength="6"
-                                                                     required="required">
-                                                          </div>
-                                                      </div>
-                                                  </fieldset>
-                                                  <fieldset>
-                                                    <legend class="section">  </legend>
-                                                     <div class="form-group">
-                                                            <label class="control-label col-md-6" for="email">
-                                                                <a>I forgot my password</a>
-                                                            </label>
-                                                         </div>
-                                                  </fieldset>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <div class="checkbox checkbox-primary pull-left ">
-                                            <input id="checkbox3" type="checkbox" required data-parsley-mincheck="1">
-                                                        <label for="checkbox3">
-                                                            Remember me
-                                                        </label>
-                                                    </div>
-                                        
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-primary">Login Into Your Account&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
-                                    </div>
-                                        </form>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div>
-                            </li>
-                            <li>
-                                <a href=""
-                              <button type="button" class="btn btn-sm btn-transparent"
                                 data-toggle="modal" data-target="#myModal2" data-backdrop="static">Launch Register&nbsp<i class="fa fa-user"></i></button>                            
                                 </a>
                                 <div id="myModal2" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -149,6 +73,9 @@
                                                       <span class="label label-custom">
                                                           Personal Info&nbsp;&nbsp;<i class="fa fa-user"></i>
                                                       </span>
+                                                          <span class="label label-custom pull-right" style="background-color:#3b5998;">   
+                                                                <a href="fbsignupa" class="btn btn-block btn-social btn-facebook btn-xs"><i class="fa fa-facebook"></i> Sign up with Facebook</a>
+                                                          </span>
                                                       </legend>
                                                       <div class="form-group">
                                                           <label class="control-label col-md-2" for="firstname">
@@ -231,30 +158,30 @@
                                                                      data-parsley-trigger="change"
                                                                      data-parsley-minlength="6"
                                                                      required="required"><span style="color: white;"class="input-group-addon" ><i class="fa fa-lock"></i></span>
-                                                              </div>
-                                                          </div>
-                                                          </div>
-                                                          <div class="form-group">
-                                                          <label class="control-label col-md-2" for="password">
-                                                              Repeat Password<span class="required">&nbsp;*</span>
-                                                          </label>
-                                                          <div class="col-md-10">
-                                                              <div class="input-group">
-                                                              <input placeholder="Please re-type your password here" type="password" id="password-r" name="password-r" class="form-control input-transparent"
-                                                                     data-parsley-trigger="change"
-                                                                     data-parsley-minlength="6"
-                                                                     data-parsley-equalto="#password"
-                                                                     required="required"><span style="color: white;" class="input-group-addon" ><i class="fa fa-lock"></i></span>
+                                                              
                                                               </div>
                                                           </div>
                                                       </div>
-                                                   
+                                                      <div class="form-group">
+                                                          <label class="control-label col-md-2" for="password">
+                                                              Password Repeat<span class="required">&nbsp;*</span>
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <div class="input-group">
+                                                              <input placeholder="Type your password here" type="password" id="password-r" name="password-r" class="form-control input-transparent"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-minlength="6"
+                                                                     data-parsley-equalto="#password"
+                                                                     required="required"><span style="color: white;"class="input-group-addon" ><i class="fa fa-lock"></i></span>
+                                                              
+                                                              </div>
+                                                          </div>
+                                                      </div>
                                                   </fieldset>
                                                   <fieldset>
-                                                    <legend class="section">  </legend>
                                                      <div class="form-group">
                                                             <label class="control-label col-md-6" for="email">
-                                                                Please select the role you wish to register as
+                                                                <strong>What are you registering as?</strong>
                                                             </label>
                                                          <div class="col-md-6">
                                                             <div class="radio radio-primary pull-left">
@@ -275,6 +202,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <div class="checkbox checkbox-primary pull-left col-md-4">
+                                           
                                             <input name="checkButton2" type="checkbox" value="1" class="required step5 parsley-validated">
                                             <input id="checkbox3" type="checkbox" required data-parsley-mincheck="1">
                                                         <label for="checkbox3">
@@ -282,8 +210,9 @@
                                                         </label>
                                                     </div>
                                         
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-primary">Register Your Account&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
+                                        <a href="<?php echo site_url('index.php');?>"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button></a>
+                                        <button type="submit" class="btn btn-primary">Register Your Account&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button><br>
+                                        
                                     </div>
                                         </form>
                                 </div><!-- /.modal-content -->
@@ -313,11 +242,11 @@
                                             </p>
                                             <p>
                                                 <a href="#about" class="btn btn-lg btn-white">
-                                                    About US &nbsp; <i class="fa fa-angle-right"></i>
+                                                    About Us &nbsp; <i class="fa fa-angle-right"></i>
                                                 </a>
                                                 <a href="https://wrapbootstrap.com/theme/light-blue-responsive-admin-template-WB0T41TX4"
                                                    class="btn btn-lg btn-transparent">
-                                                    Purchase &nbsp; <i class="fa fa-shopping-cart"></i>
+                                                    Find a labourer at your fingertips today &nbsp; <i class="fa fa-search"></i>
                                                 </a>
                                             </p>
                                         </div>
@@ -539,53 +468,7 @@
                     </p>
                 </div>
             </div>
-            <div id="milestone" class="content bg-black-darker has-bg" data-scrollview="true">
-            <!-- begin content-bg -->
-            <div class="content-bg">
-                <div  style="background-image: url(assets/img/milestone-bg2.jpg); height: 100%; width: 100%; "></div>
-            </div>
-            <!-- end content-bg -->
-            <!-- begin container -->
-            <div class="container">
-                <!-- begin row -->
-                <div class="row">
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-3 milestone-col">
-                        <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="1292">1,292</div>
-                            <div class="title">Themes & Template</div>
-                        </div>
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-3 milestone-col">
-                        <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="9039">9,039</div>
-                            <div class="title">Registered Members</div>
-                        </div>
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-3 milestone-col">
-                        <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="89291">89,291</div>
-                            <div class="title">Items Sold</div>
-                        </div>
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-3 milestone-col">
-                        <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="129">129</div>
-                            <div class="title">Theme Authors</div>
-                        </div>
-                    </div>
-                    <!-- end col-3 -->
-                </div>
-                <!-- end row -->
-            </div>
-            <!-- end container -->
-        </div>
+            
         <!-- start footer-->
             <footer class="footer">
         <div class="footer-content">

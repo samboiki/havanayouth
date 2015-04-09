@@ -51,22 +51,45 @@ class crud extends CI_Model {
     }
    
     
-    function  get_user($username){
-        $this->db->where('username',$username);
+    function  get_user($cellphone){
+        $this->db->where('cellphone',$cellphone);
         $query = $this->db->get('user');
         $userdata = $query->row();
         return $userdata;
     }
+    
+    function  get_users(){
+        $query = $this->db->get('usercontact');
+        return $query->result();
+    }
+    
     function  get_usercontacts($userid){
         $this->db->where('userid',$userid);
         $query = $this->db->get('contact');
         $userdata = $query->row();
         return $userdata;
     }
+    
+    function  get_address($userid){
+        $this->db->where('userid',$userid);
+        $query = $this->db->get('address');
+        $userdata = $query->row();
+        return $userdata;
+    }
+    
+    function  get_skills($userid){
+        $this->db->where('userid',$userid);
+        $query = $this->db->get('skills');
+        return $query->result();
+    }
     function  get_userbyfb($fbid){
         $this->db->where('fbid',$fbid);
         $query = $this->db->get('user');
-        return $query->result();
+        if ($query){
+            return $query->row();
+            } else {
+                return false;
+            }
     }
     
     function add_news($data){
@@ -80,8 +103,8 @@ class crud extends CI_Model {
       }
     }
     
-    function get_new_user_id($username){
-         $this->db->where('username',$username);
+    function get_new_user_id($number){
+         $this->db->where('cellphone',$number);
          $query = $this->db->get('user');
             if ($query){
             $ids = $query->row();
@@ -93,7 +116,19 @@ class crud extends CI_Model {
                 return false;
             }
     }
-    
+    function get_new_user_fbid($fbid){
+        $this->db->where('fbid',$fbid);
+         $query = $this->db->get('user');
+            if ($query){
+            $ids = $query->row();
+            $id = array(
+           'id' => $ids->id,
+               );
+                return $id;
+            } else {
+                return false;
+            }
+    }
     function get_role($userid){
          $this->db->where('id',$userid);
          $query = $this->db->get('user');
@@ -112,6 +147,10 @@ class crud extends CI_Model {
       $this->db->insert('user',$signupdata);
     }
     
+    function add_skills($data){
+      $this->db->insert('skills',$data);
+    }
+    
     function add_userscontact($signupdatacontact){
       $this->db->insert('contact',$signupdatacontact);
     }
@@ -120,6 +159,21 @@ class crud extends CI_Model {
         $this->db->where('id',$id);
         $this->db->update('contact',$data);
     }
+    
+    function add_addresss($data){
+        $this->db->insert('address',$data);
+    }
+    
+    function add_address($data, $id){
+        $this->db->where('userid',$id);
+        $this->db->update('address',$data);
+    }
+    
+    function add_personinfo($data,$id){
+        $this->db->where('id',$id);
+        $this->db->update('user',$data);
+    }
+            
     function add_dcontacts($data, $title){
         $this->db->where('name',$title);
          $q = $this->db->get('dcontacts');
@@ -211,4 +265,13 @@ class crud extends CI_Model {
         $beta = $datas;
         return $beta;
     }   
+    
+    public function insertprofileimg($dataimg) {
+        $this->db->insert('pimages',$dataimg); 
+    }
+    function  get_proimg($userid){
+        $this->db->where('userid',$userid);
+        $query = $this->db->get('pimages');
+        return $query->result();
+    }
 }

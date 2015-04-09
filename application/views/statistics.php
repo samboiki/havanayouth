@@ -20,11 +20,11 @@
     </script>
 </head>
 <body class="background-dark">
-    <?php if (@$user_profile):  // call var_dump($user_profile) to view all data ?>
+   
         <div class="logo">
-        <h4><a href="index.html">Havana <strong>Youth</strong></a></h4>
+            <h4><a href="<?php echo base_url()."index.php"?>">Havana <strong>Youth</strong></a></h4>
         </div>
-        <nav id="sidebar" class="sidebar nav-collapse collapse">
+        <nav  class="sidebar nav-collapse collapse">
             <ul id="side-nav" class="side-nav">
                 <li class="">
                     <a href="<?php echo base_url('rprofile');?>"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
@@ -36,7 +36,7 @@
                     <a href="index.html"><i class="fa fa-th"></i> <span class="name">Notifications</span></a>
                 </li>
                 <li class="">
-                    <a href="<?php echo site_url('calender');?>"><i class="fa fa-calendar"></i> <span class="name">Calender</span></a>
+                    <a href="<?php echo site_url('calendar');?>"><i class="fa fa-calendar"></i> <span class="name">Calender</span></a>
                 </li>
                 <li class="">
                     <a href="index.html"><i class="fa fa-inbox"></i> <span class="name">Inbox</span></a>
@@ -53,48 +53,10 @@
                     <a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out"></i> <span class="name">Sign Out</span></a>
                 </li>
             </ul>
-        
-            <h5 class="sidebar-nav-title">Projects</h5>
-            <!-- A place for sidebar notifications & alerts -->
-            <div class="sidebar-alerts">
-                <div class="alert fade in">
-                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">Sales Report</span> <br>
-                    <div class="progress progress-xs mt-xs mb-0">
-                        <div class="progress-bar progress-bar-gray-light" style="width: 16%"></div>
-                    </div>
-                    <small>Calculating x-axis bias... 65%</small>
-                </div>
-                <div class="alert fade in">
-                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">Personal Responsibility</span> <br>
-                    <div class="progress progress-xs mt-xs mb-0">
-                        <div class="progress-bar progress-bar-danger" style="width: 23%"></div>
-                    </div>
-                    <small>Provide required notes</small>
-                </div>
-            </div>
             
             <h5 class="sidebar-nav-title">Sponsors</h5>
             <!-- A place for sidebar notifications & alerts -->
-            <div class="sidebar-alerts">
-                <div class="alert fade in">
-                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">Sales Report</span> <br>
-                    <div class="progress progress-xs mt-xs mb-0">
-                        <div class="progress-bar progress-bar-gray-light" style="width: 16%"></div>
-                    </div>
-                    <small>Calculating x-axis bias... 65%</small>
-                </div>
-                <div class="alert fade in">
-                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">Personal Responsibility</span> <br>
-                    <div class="progress progress-xs mt-xs mb-0">
-                        <div class="progress-bar progress-bar-danger" style="width: 23%"></div>
-                    </div>
-                    <small>Provide required notes</small>
-                </div>
-            </div>
+            
         
         </nav>
 <div class="wrap">    
@@ -428,9 +390,5 @@
     <% } %>
 </script>
 
-    <!-- page specific scripts -->
-<?php else: ?>
-        <?php echo "sam";?>
-        <?php endif; ?>
 </body>
 </html>
