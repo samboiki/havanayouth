@@ -25,19 +25,19 @@
         <div class="modal-dialog">
             <div class="modal-content" style="color: black;">
                 <div class="modal-header">
-                    <h4 class="modal-title" >Havana <strong>Youth </strong>account sign in</h4>
+                    <h4 class="modal-title" >Havana <strong>Youth </strong>connecting your account to your facebook account</h4>
+                    
                 </div>
                     <div class="modal-body">
-                        <form action="<?php echo site_url('signin_validation')?>" id="validation-form" class="form-horizontal form-label-left" method="post"
+                        <form action="<?php echo site_url('fbconnection')?>" id="validation-form" class="form-horizontal form-label-left" method="post"
                               data-parsley-priority-enabled="false"
                               novalidate="novalidate">
                             <fieldset>
                                 <legend class="section">
-                                <span class="label label-custom">
-                                    Please provide your login credentials&nbsp;&nbsp;<i class="fa fa-user"></i>
-                                </span>
+                              
                                     
                                 </legend>
+                                <input type="hidden" name="fbid"  value="<?= $fbid ?>" />
                                  <div class="form-group">
                                                           <label class="control-label col-md-2" for="cellphone">
                                                               Cellphone<span class="required">&nbsp;*</span>
@@ -75,20 +75,17 @@
                                     <div class="modal-footer">
                                         <div class="col-md-4 col-sm-4">
                                         
-                                        <span class="label label-custom pull-left" style="background-color:#3b5998;">   
-                                            <a href='<?= $login_url ?>' class="btn btn-block btn-social btn-facebook btn-xs"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
-                                            
+                                        <span class="label pull-left">   
+                                            <button type="index.php" class="btn btn-primary">Dont have account&nbsp;&nbsp;</button>
                                         </span>
                                         <div class="checkbox checkbox-primary pull-left ">
                                             <input id="checkbox3" type="checkbox" required data-parsley-mincheck="1">
-                                                        <label for="checkbox3">
-                                                            Remember me
-                                                        </label>
+                                                        
                                             
                                                     </div>
                                         </div>
                                         <a href="<?php echo site_url('index.php');?>"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button></a>
-                                        <button type="submit" class="btn btn-primary">Login Into Your Account&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-facebook"></i>&nbsp;&nbsp;Connect my account with facebook&nbsp;&nbsp;<i class="fa fa-databases"></i></button>
                                     </div>
                         </form>
                     </div>

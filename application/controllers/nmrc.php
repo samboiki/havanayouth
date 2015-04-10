@@ -1,5 +1,6 @@
 <?php if (!defined('BASEPATH')) die();
 class Nmrc extends Main_Controller {
+    public $user = "";
     public function __construct(){
 		parent::__construct();
 
@@ -25,13 +26,13 @@ class Nmrc extends Main_Controller {
    public function signin_validation(){
            $this->load->library('form_validation');
            $this->load->library('session');
-           $this->form_validation->set_rules('username','Username','required|trim|xxs_clean|callback_validate_credentials');           
+           $this->form_validation->set_rules('cellphone','Cellphone','required|trim|xxs_clean|callback_validate_credentials');           
            $this->form_validation->set_rules('password','Password','required|md5|trim');
             
         if ($this->form_validation->run()){
-                $username = $this->input->post('username');
+                $cellphone = $this->input->post('cellphone');
                 
-                $id_of_user = $this->crud->get_new_user_id($username);
+                $id_of_user = $this->crud->get_new_user_id($cellphone);
                 $userid = $id_of_user['id'];
                 //get role
                     $rowarray = $this->crud->get_role($userid);
@@ -39,7 +40,7 @@ class Nmrc extends Main_Controller {
                     
                     //create session variables
                     $data = array(
-                        'username' => $this->input->post('username'),
+                        'cellphone' => $this->input->post('cellphone'),
                         'logged_in' => 1,
                         'role' => $role
                     );
@@ -191,10 +192,11 @@ class Nmrc extends Main_Controller {
                      $this->load->view('yprofile',$data);
                 }
                 else {
+                    echo "because of youth";
                 redirect('restricted'); 
                 }
             } else {
-                redirect('restricted');
+                redirect('signin');;
             }
     }
     
@@ -241,24 +243,28 @@ class Nmrc extends Main_Controller {
       if ($user) {
             try {
                 $data['user_profile'] = $this->facebook->api('/me');
+                $data['login_url'] = $this->facebook->getLoginUrl(array(
+                'redirect_uri' => site_url('fbsignin'), 
+                'scope' => array("email") // permissions here
+            ));
+           // var_dump($data['login_url']);
             } catch (FacebookApiException $e) {
                 $user = null;
             }
-        }else {
-            $this->facebook->destroySession();
+            redirect('fbsignin');
         }
-      if ($user) {
-            $data['logout_url'] = site_url('logout'); // Logs off application
-            $data['logout_url'] = $this->facebook->getLogoutUrl();// Logs off FB!
-        } else {
+     
+         else {
             $data['login_url'] = $this->facebook->getLoginUrl(array(
-                'redirect_uri' => site_url('yprofile'), 
+                'redirect_uri' => site_url('fbsignin'), 
                 'scope' => array("email") // permissions here
             ));
+           // var_dump($data['login_url']);
+             $this->load->helper('form');
+             $this->load->helper('url');
+             $this->load->view('signin',$data);
         }
-      $this->load->helper('form');
-      $this->load->helper('url');
-      $this->load->view('signin',$data);
+            
    }
    
     public function signup(){
@@ -288,30 +294,141 @@ class Nmrc extends Main_Controller {
    public function fbsignupa(){
        $this->load->view('fbsignupform');
    }
+   public function fbconnect(){
+       $this->load->model('crud');
+                $this->load->library('facebook');
+                $user = $this->facebook->getUser();
+                if ($user) {
+                           try {
+                               $data['user_profile'] = $this->facebook->api('/me');
+                               $data['fbid'] = $data['user_profile']['id'];
+                           } catch (FacebookApiException $e) {
+                               $user = null;
+                           }
+                           $this->load->helper('url');
+                           $this->load->view('fbconnect',$data);
+                
+                }
+       
+                          //  var_dump($fbconnectdata);
+   
+      //   echo $fbid;
+      
+   }
+   
+   public function fbconnection(){
+       $this->load->model('crud');
+       $this->load->library('form_validation');
+       $fbid = $this->input->post('fbid');
+       $this->form_validation->set_rules('cellphone','Cellphone','required|trim|xxs_clean|callback_validate_credentials');           
+       $this->form_validation->set_rules('password','Password','required|md5|trim');
+            
+        if ($this->form_validation->run()){
+            $fbdata = array(        
+                                
+                                'fbid' => $this->input->post('fbid')
+                            );
+                          $cellphone = $this->input->post('cellphone');  
+                          $this->crud->insertfbid($fbdata,$cellphone);
+                          
+                          $dataf['fbuser'] = $this->crud->get_userbyfb($fbid);
+                          $role = $dataf['fbuser']->role;
+                       
+                          $data = array(
+                               'cellphone' => $cellphone,
+                               'logged_in' => 1,
+                               'role' => $role
+                           );
+                          
+                                //set the session
+                         $this->session->set_userdata($data);
+
+                         //redirect user to appropriate page 
+                         if($role == 'employer'){
+                            //echo "emp";
+                            redirect('rprofile');
+
+                         } elseif ($role == 'youth') {
+                             //echo "youth";
+                             redirect('yprofile');
+                         }
+                         else {
+                             redirect('aprofile');
+                         }
+        }
+        else {
+           
+                $this->load->helper('form');
+                $this->load->library('facebook');
+                $user = $this->facebook->getUser();
+                if ($user) {
+                           try {
+                               $data['user_profile'] = $this->facebook->api('/me');
+                               $data['fbid'] = $data['user_profile']['id'];
+                           } catch (FacebookApiException $e) {
+                               $user = null;
+                           }
+                           $this->load->helper('url');
+                           $this->load->view('fbconnection',$data);
+                }
+                }
+       
+                          //  var_dump($fbconnectdata);
+   
+      //   echo $fbid;
+   }
    
    public function fbsignin(){
        $this->load->library('facebook');
            $user = $this->facebook->getUser();
+          
             if ($user) {
                   try {
-                      $datas['user_profile'] = $this->facebook->api('/me');
+                      $data['user_profile'] = $this->facebook->api('/me');
                   } catch (FacebookApiException $e) {
                       $user = null;
                   }
-                  echo $e;
-                 echo var_dump($datas);
-        }else { $this->facebook->destroySession();}
+                // echo var_dump($datas);
+        
         
                         //--------------------------------------------------------------------------------------//
                                         //getting current id of user loging in using their fb id
-                                        //$fbid = $data['user_profile']['id'];
+                                        $fbid = $data['user_profile']['id'];
                                         //$id_of_login_user = $this->crud->get_new_user_fbid($fbid);
-                                       // $userid = $id_of_login_user['id'];
+                                        //$userid = $id_of_login_user['id'];
                         //--------------------------------------------------------------------------------------//
-     //   if($this->crud->get_userbyfb()){
-       //     echo "yes";
-        //}
-        //else { echo "sorry we caint help";}
+         if($this->crud->get_userbyfb($fbid)){
+            
+            $dataf['fbuser'] = $this->crud->get_userbyfb($fbid);
+            $role = $dataf['fbuser']->role;
+            $cellphone = $dataf['fbuser']->cellphone;
+  
+         } 
+         else {  redirect('fbconnect');}
+         
+         $data = array(
+                        'cellphone' => $cellphone,
+                        'logged_in' => 1,
+                        'role' => $role
+                    );
+                          
+                    //set the session
+                    $this->session->set_userdata($data);
+                    
+                    //redirect user to appropriate page 
+                    if($role == 'employer'){
+                       //echo "emp";
+                       redirect('rprofile');
+                         
+                    } elseif ($role == 'youth') {
+                        //echo "youth";
+                        redirect('yprofile');
+                    }
+                    else {
+                        redirect('aprofile');
+                    }
+   }
+        else {       redirect('signin');}
    }
    
    public function fbsignup(){
@@ -368,7 +485,7 @@ class Nmrc extends Main_Controller {
                             //--------------------------------------------------------------------------------------//
                             //inserting init data in contacts table
                             $signupdatacontact = array(
-                                            'telephone' => $this->input->post('number'),
+                                            'cellphone' => $this->input->post('number'),
                                             'email' => $email,
                                             'userid' => $userid,
                             );
@@ -384,14 +501,14 @@ class Nmrc extends Main_Controller {
                           //  }
                     //--------------------------------------------------------------------------------------//
                             // adding image of user to database so when the log in next time it will automaticly pull from the db
-                            $pic = file_get_contents("https://graph.facebook.com/".$userid."/picture?type=large");
+                            $pic = file_get_contents("https://graph.facebook.com/".$fbid."/picture?type=large");
                             $file = "images". DIRECTORY_SEPARATOR . $lastname.".jpg"; 
                             $fp = fopen($file, "w");
                             fwrite($fp, $pic);
                             fclose($fp);
 
                                 $path= base_url().$file;
-                                $title = $firstname.".jpg";  
+                                $title = $lastname.".jpg";  
                                 $dataimg = array(
                                             'path' => $path,
                                             'title' => $title,
@@ -401,7 +518,7 @@ class Nmrc extends Main_Controller {
                     //-------------------------------------------------------------------------------------//
                             // now im setting up session data
                     $data = array(
-                        'mobile_phone' => $this->input->post('number'),
+                        'cellphone' => $this->input->post('number'),
                         'logged_in' => 1,
                         'role' => $this->input->post('role')
                     );
@@ -426,7 +543,7 @@ class Nmrc extends Main_Controller {
        }
    }
    
-    public function login(){
+   public function login(){
                 $this->load->helper('file');
 		$this->load->library('facebook'); // Automatically picks appId and secret from config
         // OR
@@ -464,7 +581,7 @@ class Nmrc extends Main_Controller {
          //$this->load->view('login',$data);
 	}
    
-    public function test(){
+   public function test(){
       $this->load->helper('form');
       $this->load->helper('url');
       $this->load->view('test');

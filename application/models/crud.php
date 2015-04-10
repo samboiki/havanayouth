@@ -2,7 +2,7 @@
 
 class crud extends CI_Model {
     public function can_log_in(){
-    $this->db->where('username', $this->input->post('username'));
+    $this->db->where('cellphone', $this->input->post('cellphone'));
     $this->db->where('password', $this->input->post('password'));
     $query = $this->db->get('user');
     if ($query->num_rows() == 1){
@@ -86,7 +86,8 @@ class crud extends CI_Model {
         $this->db->where('fbid',$fbid);
         $query = $this->db->get('user');
         if ($query){
-            return $query->row();
+            $fbuser = $query->row();
+            return $fbuser;
             } else {
                 return false;
             }
@@ -167,6 +168,11 @@ class crud extends CI_Model {
     function add_address($data, $id){
         $this->db->where('userid',$id);
         $this->db->update('address',$data);
+    }
+    
+    function insertfbid($fbdata,$cellphone){
+        $this->db->where('cellphone',$cellphone);
+        $this->db->update('user',$fbdata);
     }
     
     function add_personinfo($data,$id){

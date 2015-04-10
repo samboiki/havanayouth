@@ -278,18 +278,28 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <address>
-                                        <div class="info"><strong>Plumbing</strong></div>
-                                            <div class="progress progress-small">
-                                                <div class="progress-bar progress-bar-success" style="width: 90%;"></div>
-                                            </div>
-                                   <div class="info"><strong>Tiling</strong></div>
-                                            <div class="progress progress-small">
-                                                <div class="progress-bar progress-bar-warning" style="width: 80%;"></div>
-                                            </div> 
-                                   <div class="info"><strong>Plastering</strong></div>
-                                            <div class="progress progress-small">
-                                                <div class="progress-bar progress-bar-danger" style="width: 30%;"></div>
-                                            </div>
+                                        <?php $i = 0; ?>
+                                        <?php if(isset($skills)) :  foreach ($skills as $row) : if ($i == 3) { break; }?>    
+                                        <div class="info col-sm-4"><strong><?php echo $row->skill;?></strong></div>
+                                        <?php $rating = $row->rating; if ($rating == 1):?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>
+                                        <?php elseif ($rating == 2): ?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>
+                                        <?php elseif ($rating == 3): ?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>
+                                        <?php elseif ($rating == 4): ?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>
+                                        <?php elseif ($rating == 5): ?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>
+                                        <?php else : ?>
+                                        <h6>Rating out of bound</h6>
+                                        <?php endif; ?>
+                                        
+                                       <br></br>
+                                       <?php $i++; endforeach;?>
+                                        <?php else : ?>
+                                        <h6>No Skills added </h6>
+                                        <?php endif; ?>
                                     </address>
                                 </div>
                             </div>
@@ -336,8 +346,13 @@
                              <div class="row">
                                 <div class="col-sm-4">
                                     <div class="text-align-center">
-                                        <img class="img-circle" src="" alt="64x64" style="height: 112px;">
-                                    </div>
+                                        <?php if(isset($img)) : foreach($img as $rows) :  ?>    
+                                        <p><img class="img-circle" src="<?=$rows->path;?>" width="150" height="150" alt="" /></p>
+                                        <?php  endforeach;?>
+                                        <?php else : ?>
+                                        <h6>No profile picture</h6>
+                                    <?php endif; ?>
+                                </div>
                                 </div>
                                 <div class="col-sm-8">
                                     <address>
