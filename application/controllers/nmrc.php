@@ -599,7 +599,12 @@ class Nmrc extends Main_Controller {
       $this->load->helper('url');
       $this->load->view('statistics');
     }
-    public function notifications(){
+    public function vacancy(){
+      $this->load->helper('form');
+      $this->load->helper('url');
+      $this->load->view('vacancy');
+    }
+     public function notifications(){
       $this->load->helper('form');
       $this->load->helper('url');
       $this->load->view('notifications');

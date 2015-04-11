@@ -27,16 +27,10 @@
                     <a href="<?php echo base_url('rprofile');?>"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
                 </li>
                 <li class="">
-                    <a href="<?php echo base_url('statistics');?>"><i class="fa fa-area-chart"></i> <span class="name">Statistics</span></a>
-                </li>
-                <li class="">
-                    <a href="<?php echo site_url('notifications');?>"><i class="fa fa-th"></i> <span class="name">Notifications</span></a>
+                    <a href="<?php echo site_url('vacancy');?>"><i class="fa fa-th"></i> <span class="name">Vacancy</span></a>
                 </li>
                 <li class="">
                     <a href="<?php echo site_url('calendar');?>"><i class="fa fa-calendar"></i> <span class="name">Calender</span></a>
-                </li>
-                <li class="">
-                    <a href="index.html"><i class="fa fa-inbox"></i> <span class="name">Inbox</span></a>
                 </li>
                 <li class="panel ">
                     <a class="accordion-toggle collapsed" data-toggle="collapse"
@@ -210,7 +204,7 @@
                             <li role="presentation">
                                 <a href="#" class="link">
                                     <i class="fa fa-inbox"></i>
-                                    Inbox
+                                    Post Vacancy
                                 </a>
                             </li>
                         </ul>
