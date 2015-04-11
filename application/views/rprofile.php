@@ -252,8 +252,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="#dropdown3" data-toggle="tab">Personal Information</a></li>
                                     <li><a href="#dropdown4" data-toggle="tab">Technical Skills </a></li>
-                                    <li><a href="#dropdown5" data-toggle="tab">Qualifications</a></li>
-                                    <li><a href="#dropdown6" data-toggle="tab">Contact Details</a></li>
+                                 <li><a href="#dropdown6" data-toggle="tab">Contact Details</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -261,22 +260,6 @@
                             <div class="tab-pane fade in active" id="information">
                                 <div class="row">
                                 <div class="col-sm-4">
-                                </div>
-                                <div class="col-sm-8">
-                                    <address>
-                                        <div class="info"><strong>Plumbing</strong></div>
-                                            <div class="progress progress-small">
-                                                <div class="progress-bar progress-bar-success" style="width: 90%;"></div>
-                                            </div>
-                                   <div class="info"><strong>Tiling</strong></div>
-                                            <div class="progress progress-small">
-                                                <div class="progress-bar progress-bar-warning" style="width: 50%;"></div>
-                                            </div> 
-                                   <div class="info"><strong>Plastering</strong></div>
-                                            <div class="progress progress-small">
-                                                <div class="progress-bar progress-bar-danger" style="width: 30%;"></div>
-                                            </div>
-                                    </address>
                                 </div>
                             </div>
                                 <div>
@@ -322,22 +305,7 @@
                                 <div class="col-sm-4">
                                    
                                 </div>
-                                <div class="col-sm-8">
-                                    <address>
-                                        <div class="info"><strong>Plumbing</strong></div>
-                                            <div class="progress progress-small">
-                                                <div class="progress-bar progress-bar-success" style="width: 90%;"></div>
-                                            </div>
-                                   <div class="info"><strong>Tiling</strong></div>
-                                            <div class="progress progress-small">
-                                                <div class="progress-bar progress-bar-warning" style="width: 50%;"></div>
-                                            </div> 
-                                   <div class="info"><strong>Plastering</strong></div>
-                                            <div class="progress progress-small">
-                                                <div class="progress-bar progress-bar-danger" style="width: 30%;"></div>
-                                            </div>
-                                    </address>
-                                </div>
+                             
                             </div>
                                 <div>
                                 <legend class="section">Jobs</legend>

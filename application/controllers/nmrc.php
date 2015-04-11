@@ -211,9 +211,9 @@ class Nmrc extends Main_Controller {
             
                     if($this->session->userdata('role') == "employer"){            
                     // var_dump($this->session->all_userdata());
-                     $username = $this->session->userdata('username');
+                     $Cellphone = $this->session->userdata('cellphone');
 
-                     $data['user'] = $this->crud->get_user($username);
+                     $data['user'] = $this->crud->get_user($Cellphone);
                      $userid = $data['user']->id;
                      $data['contact'] = $this->crud->get_usercontacts($userid);
                     // echo $data['contact']->id;
