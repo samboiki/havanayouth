@@ -61,7 +61,7 @@ class Nmrc extends Main_Controller {
                 
             } else {
                 $this->load->helper('form');
-                $this->load->view('signin'); 
+                $this->load->view('signin_validation'); 
                 }
         } 
         
@@ -251,7 +251,7 @@ class Nmrc extends Main_Controller {
             } catch (FacebookApiException $e) {
                 $user = null;
             }
-            redirect('fbsignin');
+            $this->load->view('signin',$data);
         }
      
          else {

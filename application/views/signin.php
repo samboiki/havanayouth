@@ -68,7 +68,6 @@
                                                     <legend class="section">  </legend>
                                                     
                                                      <div class="form-group">
-                                                           <?php echo validation_errors(); ?> 
                                                          </div>
                                                   </fieldset>
                                     </div>
@@ -76,7 +75,7 @@
                                         <div class="col-md-4 col-sm-4">
                                         
                                         <span class="label label-custom pull-left" style="background-color:#3b5998;">   
-                                            <a href='<?= $login_url ?>' class="btn btn-block btn-social btn-facebook btn-xs"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
+                                            <a href='<?php echo $login_url;?>' class="btn btn-block btn-social btn-facebook btn-xs"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
                                             
                                         </span>
                                         <div class="checkbox checkbox-primary pull-left ">
