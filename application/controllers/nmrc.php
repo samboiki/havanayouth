@@ -600,9 +600,32 @@ class Nmrc extends Main_Controller {
       $this->load->view('statistics');
     }
     public function vacancy(){
-      $this->load->helper('form');
-      $this->load->helper('url');
-      $this->load->view('vacancy');
+      //loading required libraries and model
+        $this->load->library('facebook');
+        $this->load->library('session');
+        $this->load->model('crud');
+        
+        //check to see if user is logged in else redirect to restricted page
+            if($this->session->userdata('logged_in')){
+            
+                    if($this->session->userdata('role') == "employer"){            
+                    // var_dump($this->session->all_userdata());
+                     $Cellphone = $this->session->userdata('cellphone');
+
+                     $data['user'] = $this->crud->get_user($Cellphone);
+                     $userid = $data['user']->id;
+                     $data['contact'] = $this->crud->get_usercontacts($userid);
+                    // echo $data['contact']->id;
+                     $this->load->helper('form');
+                     $this->load->helper('url');
+                     $this->load->view('Vacancy',$data);
+                     }
+                else {
+                redirect('restricted'); 
+                }
+            } else {
+                redirect('restricted');
+            } 
     }
      public function notifications(){
       $this->load->helper('form');
