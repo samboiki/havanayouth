@@ -25157,7 +25157,7 @@ a.text-gray-lighter:hover {
 }
 /* line 108, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_vendor-prefixes.scss */
 .form-control.input-transparent::-webkit-input-placeholder {
-  color: rgba(238, 238, 238, 0.76);
+  color: #000;
 }
 /* line 917, ../../src/sass/_base.scss */
 .form-control.input-transparent:focus {
