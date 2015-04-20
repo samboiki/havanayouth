@@ -894,6 +894,18 @@ var_dump($data);
        $this->crud->update_qualification($data, $id);
        redirect('yprofile');
     }
+    public function edit_skill(){
+      $this->load->model('crud');
+      $id = $this->input->post('id');
+      
+      $data = array(
+          'skill' => $this->input->post('skill'),
+          'rating' => $this->input->post('rating'),
+      );
+      $this->crud->edit_skill($data, $id);
+      redirect('yprofile');
+              
+   }
      
   
     
