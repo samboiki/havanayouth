@@ -67,11 +67,11 @@ class Nmrc extends Main_Controller {
            // var_dump($data['login_url']);
         }
            $this->load->library('session');
-           $this->form_validation->set_rules('cellphone','Cellphone','required|trim|xxs_clean|callback_validate_credentials');           
+           $this->form_validation->set_rules('username','Username','required|trim|xxs_clean|callback_validate_credentials');           
            $this->form_validation->set_rules('password','Password','required|md5|trim');
             
         if ($this->form_validation->run()){
-                $username = $this->input->post('cellphone');
+                $username = $this->input->post('username');
                 
                 $id_of_user = $this->crud->get_new_user_id($username);
                 $userid = $id_of_user['id'];
@@ -81,7 +81,7 @@ class Nmrc extends Main_Controller {
                     
                     //create session variables
                     $data = array(
-                        'cellphone' => $this->input->post('cellphone'),
+                        'username' => $this->input->post('username'),
                         'logged_in' => 1,
                         'role' => $role
                     );
@@ -269,9 +269,9 @@ class Nmrc extends Main_Controller {
             
                     if($this->session->userdata('role') == "employer"){            
                     // var_dump($this->session->all_userdata());
-                     $Cellphone = $this->session->userdata('cellphone');
+                     $username = $this->session->userdata('username');
 
-                     $data['user'] = $this->crud->get_user($Cellphone);
+                     $data['user'] = $this->crud->get_user($username);
                      $userid = $data['user']->id;
                      $data['contact'] = $this->crud->get_usercontacts($userid);
                     // echo $data['contact']->id;

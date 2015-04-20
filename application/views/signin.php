@@ -39,11 +39,11 @@
                                     
                                 </legend>
                                  <div class="form-group">
-                                                          <label class="control-label col-md-2" for="cellphone">
+                                                          <label class="control-label col-md-2" for="username">
                                                               Username<span class="required">&nbsp;*</span>
                                                           </label>
                                                           <div class="col-md-10">
-                                                              <input placeholder="Please type your Username here"   name="cellphone" class="form-control input-transparent input-sm"
+                                                              <input placeholder="Please type your Username here"   name="username" class="form-control input-transparent input-sm"
                                                                      data-parsley-trigger="change"
                                                                      data-parsley-validation-threshold="1"
                                                                      required="required">

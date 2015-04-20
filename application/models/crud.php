@@ -2,7 +2,7 @@
 
 class crud extends CI_Model {
     public function can_log_in(){
-    $this->db->where('cellphone', $this->input->post('cellphone'));
+    $this->db->where('username', $this->input->post('username'));
     $this->db->where('password', $this->input->post('password'));
     $query = $this->db->get('user');
     if ($query->num_rows() == 1){
@@ -51,8 +51,8 @@ class crud extends CI_Model {
     }
    
     
-    function  get_user($cellphone){
-        $this->db->where('cellphone',$cellphone);
+    function  get_user($username){
+        $this->db->where('username',$username);
         $query = $this->db->get('user');
         $userdata = $query->row();
         return $userdata;
@@ -104,8 +104,8 @@ class crud extends CI_Model {
       }
     }
     
-    function get_new_user_id($cellphone){
-         $this->db->where('cellphone',$cellphone);
+    function get_new_user_id($username){
+         $this->db->where('username',$username);
          $query = $this->db->get('user');
             if ($query){
             $ids = $query->row();
