@@ -305,4 +305,9 @@ class crud extends CI_Model {
         $query = $this->db->get('qualifications');
         return $query->result();
     }
+    
+    function edit_skill($data, $id){
+        $this->db->where('id',$id);
+        $this->db->update('skills',$data);
+    }
 }
