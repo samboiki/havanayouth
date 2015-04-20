@@ -283,4 +283,26 @@ class crud extends CI_Model {
         $query = $this->db->get('pimages');
         return $query->result();
     }
+    
+    function add_qualification($data){
+        $this->db->insert('qualifications', $data);
+        
+    }
+    
+    function update_qualification($data, $id){
+        $this->db->where('id',$id);
+        $this->db->update('qualifications',$data);
+    }
+    
+    function get_qualifications($id){
+        $this->db->where('userid',$id);
+        $query = $this->db->get('qualifications');
+        return $query->result();
+    }
+    
+    function get_qualification($id){
+        $this->db->where('id',$id);
+        $query = $this->db->get('qualifications');
+        return $query->result();
+    }
 }
