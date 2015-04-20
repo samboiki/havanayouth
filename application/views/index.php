@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta charset="utf-8">
-    <script>
+    <script>     
         /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
            chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
                       https://code.google.com/p/chromium/issues/detail?id=332189
