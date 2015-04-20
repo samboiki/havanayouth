@@ -242,6 +242,7 @@ class Nmrc extends Main_Controller {
                      $data['contact'] = $this->crud->get_usercontacts($userid);
                      $data['skills'] = $this->crud->get_skills($userid);
                      $data['address'] = $this->crud->get_address($userid);
+                     $data['qualifications']= $this->crud->get_qualifications($userid);
                      $data['img'] = $this->crud->get_proimg($userid);
                      //$img = $data['img'];
                     // var_dump($img);
