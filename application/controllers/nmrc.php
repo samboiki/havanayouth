@@ -23,6 +23,24 @@ class Nmrc extends Main_Controller {
        $time = now();
        echo $time;
    }
+   public function post_vacancy(){
+       
+       $this->load->model('crud');
+                    $vacancydata = array(
+                                  
+                                    'type' => $this->input->post('type'),
+                                    'location' => $this->input->post('location'),
+                                    'description' => $this->input->post('description'),
+                                    'date' => $this->input->post('date'),
+                                    'user_id' => $this->input->post('id'),
+                                   
+                    );
+                    
+                    $this->crud->add_vacancy($vacancydata); 
+                    redirect('rprofile');
+            
+   }
+   
    public function signin_validation(){
            $this->load->library('form_validation');
            $this->load->library('facebook');
@@ -53,9 +71,9 @@ class Nmrc extends Main_Controller {
            $this->form_validation->set_rules('password','Password','required|md5|trim');
             
         if ($this->form_validation->run()){
-                $cellphone = $this->input->post('cellphone');
+                $username = $this->input->post('cellphone');
                 
-                $id_of_user = $this->crud->get_new_user_id($cellphone);
+                $id_of_user = $this->crud->get_new_user_id($username);
                 $userid = $id_of_user['id'];
                 //get role
                     $rowarray = $this->crud->get_role($userid);
@@ -87,7 +105,23 @@ class Nmrc extends Main_Controller {
                 $this->load->view('signin_validation',$data); 
                 }
         } 
-        
+   
+        public function signup_validationtest() {
+            $signupdata = array(
+                                            
+                                            
+                                            'type' => $this->input->post('type'),
+                                            'location' => $this->input->post('location'),
+                'description' => $this->input->post('description'),
+                'date' => $this->input->post('date'),
+                'user_id' => $this->input->post('id'),
+                
+                                            
+                            );
+                            var_dump($signupdata);
+           // $role = $this->input->post('role');
+            //echo $role;
+        }
         
    public function signup_validation() {
        $this->load->library('form_validation');
@@ -109,7 +143,8 @@ class Nmrc extends Main_Controller {
                                     'lastname' => $this->input->post('lastname'),
                                     'username' => $this->input->post('username'),
                                     'password' => $this->input->post('password'),
-                                    'role' => $this->input->post('role')
+                                    'role' => $this->input->post('role'),
+                                    'cellphone' => $this->input->post('number')
                     );
                     
                     $this->crud->add_users($signupdata);
@@ -627,7 +662,18 @@ var_dump($data);
       $this->load->helper('url');
       $this->load->view('calendar');
     }
-        
+      public function termsyouth(){
+      $this->load->helper('form');
+      $this->load->helper('url');
+      $this->load->view('termsyouth');
+    }
+    
+     public function termsemployer(){
+      $this->load->helper('form');
+      $this->load->helper('url');
+      $this->load->view('termsemployer');
+    }
+    
     public function statistics(){
      
       $this->load->helper('form');

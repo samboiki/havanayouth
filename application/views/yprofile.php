@@ -27,9 +27,9 @@
                 <li class="active">
                     <a href="<?php echo base_url('yprofile');?>"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
                 </li>
-                <li class="">
+<!--                <li class="">
                     <a href="<?php echo base_url('statistics');?>"><i class="fa fa-area-chart"></i> <span class="name">Statistics</span></a>
-                </li>
+                </li>-->
                 <li class="">
                     <a href="<?php echo site_url('notifications');?>"><i class="fa fa-th"></i> <span class="name">Notifications</span></a>
                 </li>

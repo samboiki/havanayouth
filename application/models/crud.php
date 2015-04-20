@@ -104,8 +104,8 @@ class crud extends CI_Model {
       }
     }
     
-    function get_new_user_id($number){
-         $this->db->where('cellphone',$number);
+    function get_new_user_id($cellphone){
+         $this->db->where('cellphone',$cellphone);
          $query = $this->db->get('user');
             if ($query){
             $ids = $query->row();
@@ -147,7 +147,10 @@ class crud extends CI_Model {
     function add_users($signupdata){
       $this->db->insert('user',$signupdata);
     }
-    
+    function add_vacancy($vacancydata)
+    {
+        $this->db->insert('vacancy',$vacancydata);
+    }
     function add_skills($data){
       $this->db->insert('skills',$data);
     }

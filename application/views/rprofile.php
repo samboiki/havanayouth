@@ -23,23 +23,22 @@
         </div>
         <nav  class="sidebar nav-collapse collapse">
             <ul id="side-nav" class="side-nav">
-                <li class="active">
-                    <a href="<?php echo base_url('rprofile');?>"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
+                 <li class="">
+                    <a href="<?php echo base_url('rprofile');?>"><i class="fa fa-home"></i> <span class="name">Home</span></a>
                 </li>
                 <li class="">
                     <a href="<?php echo site_url('vacancy');?>"><i class="fa fa-th"></i> <span class="name">Vacancy</span></a>
                 </li>
                 <li class="">
+                   <a href="<?php echo site_url('youthsearch');?>"><i class="fa fa-th"></i> <span class="name">Recruitment</span></a>
+                </li>
+                <li class="active">
+                    <a href="<?php echo base_url('rprofile');?>"><i class="fa fa-gear"></i> <span class="name">Profile</span></a>
+                </li>
+                <li class="">
                     <a href="<?php echo site_url('calendar');?>"><i class="fa fa-calendar"></i> <span class="name">Calender</span></a>
                 </li>
-                <li class="panel ">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse"
-                       data-parent="#side-nav" href="#ui-collapse"><i class="fa fa-magic"></i> <span class="name">Search</span></a>
-                    <ul id="ui-collapse" class="panel-collapse collapse ">
-                        <li class=""><a href="<?php echo site_url('youthsearch');?>">Unemployed Youth</a></li>
-                        <li class=""><a href="ui_dialogs.html">Jobs</a></li>
-                    </ul>
-                </li>
+               
                 <li class="visible-xs">
                     <a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out"></i> <span class="name">Sign Out</span></a>
                     <p><?php echo anchor("$logout_url",'<span class="name"><i class="fa fa-sign-out" style="color:white"></i>Sign Out</span>' ) ?></p>
@@ -52,174 +51,17 @@
         <div class="wrap">
         <header class="page-header">
             <div class="navbar">
-                <ul class="nav navbar-nav navbar-right pull-right">
+                 <ul class="nav navbar-nav navbar-right pull-right">
                     <li class="visible-phone-landscape">
                         <a href="#" id="search-toggle">
                             <i class="fa fa-search"></i>
                         </a>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" title="Messages" id="messages"
-                           class="dropdown-toggle"
-                           data-toggle="dropdown">
-                            <i class="fa fa-comments"></i>
-                        </a>
-                        <ul id="messages-menu" class="dropdown-menu messages" role="menu">
-                            <li role="presentation">
-                                <a href="#" class="message">
-                                    <img src="img/1.jpg" alt="">
-                                    <div class="details">
-                                        <div class="sender">Jane Hew</div>
-                                        <div class="text">
-                                            Hey, John! How is it going? ...
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="message">
-                                    <img src="img/2.jpg" alt="">
-                                    <div class="details">
-                                        <div class="sender">Alies Rumiancaŭ</div>
-                                        <div class="text">
-                                            I'll definitely buy this template
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="message">
-                                    <img src="img/3.jpg" alt="">
-                                    <div class="details">
-                                        <div class="sender">Michał Rumiancaŭ</div>
-                                        <div class="text">
-                                            Is it really Lore ipsum? Lore ...
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="text-align-center see-all">
-                                    See all messages <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" title="8 support tickets"
-                           class="dropdown-toggle"
-                           data-toggle="dropdown">
-                            <i class="fa fa-group"></i>
-                            <span class="count">8</span>
-                        </a>
-                        <ul id="support-menu" class="dropdown-menu support" role="menu">
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-important"><i class="fa fa-bell-o"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        Check out this awesome ticket
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-warning"><i class="fa fa-question-circle"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        "What is the best way to get ...
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-success"><i class="fa fa-tag"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        This is just a simple notification
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-info"><i class="fa fa-info-circle"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        12 new orders has arrived today
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-important"><i class="fa fa-plus"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        One more thing that just happened
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="text-align-center see-all">
-                                    See all tickets <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li class="hidden-xs">
-                        <a href="#" id="settings"
-                           title="Settings"
-                           data-toggle="popover"
-                           data-placement="bottom">
-                            <i class="fa fa-cog"></i>
-                        </a>
-                    </li>
-                    <li class="hidden-xs dropdown">
-                        <a href="#" title="Account" id="account"
-                           class="dropdown-toggle"
-                           data-toggle="dropdown">
-                            <i class="fa fa-user"></i>
-                        </a>
-                        <ul id="account-menu" class="dropdown-menu account" role="menu">
-                            <li role="presentation" class="account-picture">
-                                <?=$user->firstname?>
-                            </li>
-                            <li role="presentation">
-                                <a href="<?php site_url("yprofile");?>" class="link">
-                                    <i class="fa fa-user"></i>
-                                    Profile
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="component_calendar.html" class="link">
-                                    <i class="fa fa-calendar"></i>
-                                    Calendar
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="link">
-                                    <i class="fa fa-inbox"></i>
-                                    Post Vacancy
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="visible-xs">
-                        <a href="#"
-                           class="btn-navbar"
-                           data-toggle="collapse"
-                           data-target=".sidebar"
-                           title="">
-                            <i class="fa fa-bars"></i>
-                        </a>
-                    </li>
-                    <li class="hidden-xs"><a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out"></i></a></li>
-                   
+                    
+                    
+                    <li class="divider"></li>          
+                 
+                    <li class="hidden-xs"><a href="<?= site_url('logout'); ?>"> <i class="fa fa-sign-out">logout</i></a></li>
                 </ul>
                 <form id="search-form" class="navbar-form pull-right" role="search">
                     <input type="search" class="form-control search-query" placeholder="Search...">
@@ -239,13 +81,13 @@
                     </header>
                     <div class="body">
                         <ul id="myTab" class="nav nav-tabs">
-                            <li class="active"><a href="#information" data-toggle="tab">Personal Information</a></li>
-                            <li><a href="#profile" data-toggle="tab">History</a></li>
+                            <li class="active"><a href="#information" data-toggle="tab">Personal Info</a></li>
+                            <li><a href="#profile" data-toggle="tab">Account info</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#dropdown3" data-toggle="tab">Personal Information</a></li>
-                                    <li><a href="#dropdown4" data-toggle="tab">Technical Skills </a></li>
+<!--                                    <li><a href="#dropdown3" data-toggle="tab">Personal Information</a></li>-->
+                                    <li><a href="#dropdown4" data-toggle="tab">Edit Profile</a></li>
                                  <li><a href="#dropdown6" data-toggle="tab">Contact Details</a></li>
                                 </ul>
                             </li>
@@ -256,6 +98,13 @@
                                 <div class="col-sm-4">
                                 </div>
                             </div>
+                                <div align="right">
+                                        
+                                        
+                                        <button type="button" class="btn btn-primary"
+                                data-toggle="modal" data-target="#myModal2" data-backdrop="static">Edit Profile</button>
+                                        
+                                    </div>
                                 <div>
                                 <legend class="section">Personal Info</legend>
                                 <h5><label class="col-sm-4" for="prefix">Name:</label></h5>
@@ -270,10 +119,11 @@
                                 <div>
                                 <legend class="section">Contact Info</legend>
                                 <h5><label class="col-sm-4" for="prefix">Mobile:</label></h5>
-                                <div class="col-sm-4"><a>0812222331</a></div></br></br>
+                                <div class="col-sm-4"><a><?=$contact->mobile_phone?></a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Tel:</label></h5>
-                                <div class="col-sm-4"><a>061 303 4900</a></div></br></br>
+                                <div class="col-sm-4"><a><?=$contact->telephone?></a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Email:</label></h5>
+                                <div class="col-sm-4"><a><?=$contact->email?></a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Fax:</label></h5>
                                 <div class="col-sm-4"><a><?=$contact->fax?></a></div></br></br>
                                 </div>
@@ -288,44 +138,341 @@
                                 <h5><label class="col-sm-4" for="prefix">Country:</label></h5>
                                 <div class="col-sm-4"><a>Namibia</a></div></br></br>
                                 </div>
-                                <div>
-                                <article class="map-section">
-                                    <div id="map"></div><!--//map-->
-                                </article>
-                                </div>
+                                
+                                
                             </div>
+                                                            <div id="myModal2" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                               <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title" id="myModalLabel2">Updating <strong>Profile </strong>Information</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                
+                                              <form action="<?php echo site_url('#')?>"  id="validation-form" class="form-horizontal form-label-left" method="post"
+                                                    data-parsley-priority-enabled="false" accept-charset="utf-8" class="no-margin"
+                                                    novalidate="novalidate">
+
+                                                  
+                                                                                  <fieldset>
+                                                      <legend class="section">
+                                                      <span class="label label-custom">
+                                                          Personal Info&nbsp;&nbsp;<i class="fa fa-user"></i>
+                                                      </span>
+                                                         
+                                                      </legend>
+                                                      
+                                                      <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                              Name
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input value=" <?php echo $user->firstname?>" type="username" id="lastname" name="username" class="form-control"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                       <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                              Surname
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input value=" <?php echo $user->lastname?>" type="username" id="lastname" name="username" class="form-control"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                       <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                             Gender
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input value=" <?php echo $user->gender?>" type="username" id="lastname" name="username" class="form-control"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                       <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                              Date of Birth
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input value=" <?php echo $user->birth_date?>" type="username" id="lastname" name="username" class="form-control"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                      
+                                                  </fieldset>
+                                                  
+                                                  <fieldset>
+                                                      <legend class="section">
+                                                      <span class="label label-custom">
+                                                          Contact Info&nbsp;&nbsp;<i class="fa fa-user"></i>
+                                                      </span>
+                                                         
+                                                      </legend>
+                                                      
+                                                      <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                              Mobile
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input value="<?php echo $contact->mobile_phone?>" type="username" id="lastname" name="username" class="form-control"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                       <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                              Tel:
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input value="<?php echo $contact->telephone?>" type="username" id="lastname" name="username" class="form-control"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                       <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                             Email
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input value="<?php echo $contact->email?>" type="username" id="lastname" name="username" class="form-control"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                       <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                             Fax
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input value="<?php echo $contact->fax?>" type="username" id="lastname" name="username" class="form-control"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                      
+                                                  </fieldset>
+                                                <fieldset>
+                                                      <legend class="section">
+                                                      <span class="label label-custom">
+                                                          Location Info&nbsp;&nbsp;<i class="fa fa-user"></i>
+                                                      </span>
+                                                         
+                                                      </legend>
+                                                      
+                                                      <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                              Address
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="username" class="form-control"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                       <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                              City
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="username" class="form-control"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                       <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                             Region
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="username" class="form-control"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                       <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                             Country
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input value="kephas" type="username" id="lastname" name="username" class="form-control"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                      
+                                                  </fieldset>
+                                                  
+                                                
+                                                 
+                                                  
+                                    </div>
+                                  
+                                    <div class="modal-footer">
+                                        
+                                        
+                                        <a href="<?php echo site_url('rprofile.php');?>"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button></a>
+                                        <button type="submit" class="btn btn-primary">Update</button><br>
+                                        
+                                    </div>
+                                        </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
+                            
+                            
+                             <div id="myModal21" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                               <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title" id="myModalLabel2">Updating <strong>Account </strong>Info</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                
+                                              <form action="<?php echo site_url('#')?>"  id="validation-form" class="form-horizontal form-label-left" method="post"
+                                                    data-parsley-priority-enabled="false" accept-charset="utf-8" class="no-margin"
+                                                    novalidate="novalidate">
+
+                                                  
+                                                                                  
+                                                  
+                                                  <fieldset>
+                                                      <legend class="section">
+                                                      <span class="label label-custom">
+                                                          Password Info&nbsp;&nbsp;<i class="fa fa-user"></i>
+                                                      </span>
+                                                         
+                                                      </legend>
+                                                      
+                                                      
+                                                      
+                                                       <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                              Current Password:
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input value="<?php echo $contact->telephone?>" type="username" id="lastname" name="username" class="form-control"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                       <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                            New Password
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input value="<?php echo $contact->email?>" type="username" id="lastname" name="username" class="form-control"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                       <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                             Confirm Password
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input value="<?php echo $contact->fax?>" type="username" id="lastname" name="username" class="form-control"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                      
+                                                  </fieldset>
+                                                <fieldset>
+                                                      <legend class="section">
+                                                      <span class="label label-custom">
+                                                          Profile Pic&nbsp;&nbsp;<i class="fa fa-user"></i>
+                                                      </span>
+                                                         
+                                                      </legend>
+                                                      
+                                                     
+                                                       <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                              City
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="username" class="form-control"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                       <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                             Region
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="username" class="form-control"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
+                                                       
+                                                      
+                                                  </fieldset>
+                                                  
+                                                
+                                                 
+                                                  
+                                    </div>
+                                  
+                                    <div class="modal-footer">
+                                        
+                                        
+                                        <a href="<?php echo site_url('rprofile.php');?>"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button></a>
+                                        <button type="submit" class="btn btn-primary">Update</button><br>
+                                        
+                                    </div>
+                                        </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
+               
+                            
+                            
+                            
+                            
                             <div class="tab-pane fade " id="profile">
-                             <div class="row">
-                                <div class="col-sm-4">
-                                   
-                                </div>
                              
-                            </div>
+                             
+                            <div align="right">
+                                        
+                                        
+                                        <button type="button" class="btn btn-primary"
+                                data-toggle="modal" data-target="#myModal21" data-backdrop="static">Edit</button>
+                                        
+                                    </div>
                                 <div>
-                                <legend class="section">Jobs</legend>
-                                <div class="col-sm-4"><h5><labelfor="prefix">Job Type:</label></h5>
-                                <a>Plumbing</a></div>
-                                <div class="col-sm-4"><h5><label for="prefix">By who:</label></h5>
-                                <a><?php echo $user_profile['name']; ?></a></div>
-                                <div class="col-sm-4"><h5><label  for="prefix">Date of Activity:</label></h5>
-                                <a>13/10/2014</a></div>
-                                <legend></legend>
-                                <div class="col-sm-4">
-                                <h5><label for="prefix">Job Type:</label></h5>
-                                <a>Tiling</a> </div>
-                                <div class="col-sm-4">
-                                <h5><label for="prefix">By who:</label></h5>
-                                <a><?=$user_profile['name']?></a></div>
-                                <div class="col-sm-4"><h5><label for="prefix"><strong>Date of Activity:</strong></label></h5>
-                                <a>17/11/2014</a></div>
-                                <legend></legend>
-                                 <div class="col-sm-4"><h5><label for="prefix"><strong>Job Type:</strong></label></h5>
-                                Car Wash</div>
-                                <div class="col-sm-4"><h5><label for="prefix"<strong>By who:</strong></label></h5>
-                                <a><?=$user_profile['name']?></a></div>
-                                <div class="col-sm-4"><h5><label for="prefix"><strong>Date of activity:</strong></label></h5>
-                                <a>21/10/2014</a></div>
-                                <legend></legend>
+                                <legend class="section">Account </legend>
+                                <h5><label class="col-sm-4" for="prefix">Username:</label></h5>
+                                <div class="col-sm-4"><a><?=$user->username?></a></div></br></br>
+                                <h5><label class="col-sm-4" for="prefix">password:</label></h5>
+                                <div class="col-sm-4"><a>*******</a></div></br></br>
+                              
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="dropdown3">

@@ -100,18 +100,8 @@
                                                                      required="required">
                                                           </div>
                                                       </div>
-                                                      <div class="form-group">
-                                                          <label class="control-label col-md-2" for="username">
-                                                              Username<span class="required">&nbsp;*</span>
-                                                          </label>
-                                                          <div class="col-md-10">
-                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="username" class="form-control input-transparent input-sm"
-                                                                     data-parsley-trigger="change"
-                                                                     data-parsley-validation-threshold="1"
-                                                                     required="required">
-                                                          </div>
-                                                      </div>
                                                       
+                                                                                                          
                                                       
                                                   </fieldset>
                                                   <fieldset>
@@ -129,6 +119,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                      
                                                       <div class="form-group">
                                                           <label class="control-label col-md-2" for="number">
                                                              Contact Number
@@ -148,6 +139,17 @@
                                                           Security Details&nbsp;&nbsp;<i class="fa fa-lock"></i>
                                                           </span>
                                                       </legend>
+                                                      <div class="form-group">
+                                                          <label class="control-label col-md-2" for="username">
+                                                              Username<span class="required">&nbsp;*</span>
+                                                          </label>
+                                                          <div class="col-md-10">
+                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="username" class="form-control input-transparent input-sm"
+                                                                     data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required">
+                                                          </div>
+                                                      </div>
                                                       <div class="form-group">
                                                           <label class="control-label col-md-2" for="password">
                                                               Password<span class="required">&nbsp;*</span>
@@ -183,32 +185,55 @@
                                                             <label class="control-label col-md-6" for="email">
                                                                 <strong>What are you registering as?</strong>
                                                             </label>
-                                                         <div class="col-md-6">
-                                                            <div class="radio radio-primary pull-left">
-                                                                <input type="radio" name="role" id="radio1" value="youth" checked>
-                                                                <label for="radio1">
-                                                                    Unemployed Youth
-                                                                </label>
-                                                            </div>
-                                                            <div class="radio radio-primary pull-right">
-                                                                <input type="radio" name="role" id="radio2" value="employer">
-                                                                <label for="radio2">
-                                                                    Employer
-                                                                </label>
-                                                            </div>
+                                                         
+                                                          <div class="col-md-6">
+                                                              
+                                                         <select class=" select2 select-block-level " name="role" autopostback="true" data-width="off" >
+                                                              
+                                                                             <option href="#dropdown4" data-toggle="tab" selected="selected" value="youth">Unemployed Youth</option>
+                                                                             <option href="#dropdown6" data-toggle="tab" value="employer" >Employer</option>
+                                                                              </select> <br> 
+                                                           
                                                           </div>
+                                                         
+                                                         
                                                          </div>
                                                   </fieldset>
+                                                  
                                     </div>
-                                    <div class="modal-footer">
-                                        <div class="checkbox checkbox-primary pull-left col-md-4">
+                                   <fieldset>
+                                       <label class="control-label col-md-2" for="firstname">
+                                                          </label>
+                                       <div class="checkbox checkbox-primary pull-left ">
                                            
                                             <input name="checkButton2" type="checkbox" value="1" class="required step5 parsley-validated">
-                                            <input id="checkbox3" type="checkbox" required data-parsley-mincheck="1">
-                                                        <label for="checkbox3">
-                                                            I Read and Agree With The <a href="">Terms & Conditions</a>
+                                            <input id="checkbox3" type="checkbox" required="required" data-parsley-mincheck="1">
+                                                        <label  for="checkbox3">
+                                                            
                                                         </label>
                                                     </div>
+                                     <div id="myTabContent" class="tab-content" >
+                                     <div class="tab-pane fade in active" id="dropdown4">
+                                
+                                           
+                                                        <label  for="checkbox3">
+                                                            I Read and Agree With The <a href="<?php echo site_url('termsyouth');?>"  target="new" onclick="window.open('','new','menubar=no,toolbar=no,statusbar=no,scrollbars=yes,height=400,width=400,left=700px,top=300px')">Terms and Condition</a>
+                                                        </label>
+                                                
+                            </div>
+                            <div class="tab-pane fade" id="dropdown6">
+                              
+                                           
+                                           
+                                                        <label  for="checkbox3">
+                                                            I Read and Agree With The <a href="<?php echo site_url('termsemployer');?>"  target="new" onclick="window.open('','new','menubar=no,toolbar=no,statusbar=no,scrollbars=yes,height=400,width=400,left=700px,top=300px')">Terms and Condition</a> 
+                                                        </label>
+                                                 
+                            </div>
+                                     </div>
+                                   </fieldset>
+                                    <div class="modal-footer">
+                                        
                                         
                                         <a href="<?php echo site_url('index.php');?>"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button></a>
                                         <button type="submit" class="btn btn-primary">Register Your Account&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button><br>
@@ -236,18 +261,15 @@
                                 <div class="row">
                                     <div class="col-xs-6">
                                         <div class="animated fadeInLeftBig">
-                                            <h1 class="slide-one-header">Havana <strong>Youth</strong> Jobs <br>Buidling Opportunities</h1>
+                                            <h1 class="slide-one-header">Havana <strong>Youth</strong> Jobs <br>Building Opportunities</h1>
                                             <p class="lead hidden-xs">
-                                                Where <strong>recruiters</strong> meet <strong>seekers</strong> 
+                                              
                                             </p>
                                             <p>
                                                 <a href="#about" class="btn btn-lg btn-white">
                                                     About Us &nbsp; <i class="fa fa-angle-right"></i>
                                                 </a>
-                                                <a href="https://wrapbootstrap.com/theme/light-blue-responsive-admin-template-WB0T41TX4"
-                                                   class="btn btn-lg btn-transparent">
-                                                    Find a labourer at your fingertips today &nbsp; <i class="fa fa-search"></i>
-                                                </a>
+                                              
                                             </p>
                                         </div>
                                     </div>

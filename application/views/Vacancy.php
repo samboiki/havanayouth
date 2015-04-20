@@ -17,23 +17,22 @@
         </div>
         <nav  class="sidebar nav-collapse collapse">
             <ul id="side-nav" class="side-nav">
+                <li class="">
+                    <a href="<?php echo base_url('rprofile');?>"><i class="fa fa-home"></i> <span class="name">Home</span></a>
+                </li>
                 <li class="active">
-                    <a href="<?php echo base_url('rprofile');?>"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
+                    <a href="<?php echo site_url('vacancy');?>"><i class="fa fa-th"></i> <span class="name">Vacancy</span></a>
                 </li>
                 <li class="">
-                    <a href="<?php echo site_url('vacancy');?>"><i class="fa fa-th"></i> <span class="name">Vacancy</span></a>
+                   <a href="<?php echo site_url('youthsearch');?>"><i class="fa fa-th"></i> <span class="name">Recruitment</span></a>
+                </li>
+                <li class="">
+                    <a href="<?php echo base_url('rprofile');?>"><i class="fa fa-gear"></i> <span class="name">Profile</span></a>
                 </li>
                 <li class="">
                     <a href="<?php echo site_url('calendar');?>"><i class="fa fa-calendar"></i> <span class="name">Calender</span></a>
                 </li>
-                <li class="panel ">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse"
-                       data-parent="#side-nav" href="#ui-collapse"><i class="fa fa-magic"></i> <span class="name">Search</span></a>
-                    <ul id="ui-collapse" class="panel-collapse collapse ">
-                        <li class=""><a href="<?php echo site_url('youthsearch');?>">Unemployed Youth</a></li>
-                        <li class=""><a href="ui_dialogs.html">Jobs</a></li>
-                    </ul>
-                </li>
+                
                 <li class="visible-xs">
                     <a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out"></i> <span class="name">Sign Out</span></a>
                     <p><?php echo anchor("$logout_url",'<span class="name"><i class="fa fa-sign-out" style="color:white"></i>Sign Out</span>' ) ?></p>
@@ -46,174 +45,17 @@
         <div class="wrap">
         <header class="page-header">
             <div class="navbar">
-                <ul class="nav navbar-nav navbar-right pull-right">
+                 <ul class="nav navbar-nav navbar-right pull-right">
                     <li class="visible-phone-landscape">
                         <a href="#" id="search-toggle">
                             <i class="fa fa-search"></i>
                         </a>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" title="Messages" id="messages"
-                           class="dropdown-toggle"
-                           data-toggle="dropdown">
-                            <i class="fa fa-comments"></i>
-                        </a>
-                        <ul id="messages-menu" class="dropdown-menu messages" role="menu">
-                            <li role="presentation">
-                                <a href="#" class="message">
-                                    <img src="img/1.jpg" alt="">
-                                    <div class="details">
-                                        <div class="sender">Jane Hew</div>
-                                        <div class="text">
-                                            Hey, John! How is it going? ...
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="message">
-                                    <img src="img/2.jpg" alt="">
-                                    <div class="details">
-                                        <div class="sender">Alies Rumiancaŭ</div>
-                                        <div class="text">
-                                            I'll definitely buy this template
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="message">
-                                    <img src="img/3.jpg" alt="">
-                                    <div class="details">
-                                        <div class="sender">Michał Rumiancaŭ</div>
-                                        <div class="text">
-                                            Is it really Lore ipsum? Lore ...
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="text-align-center see-all">
-                                    See all messages <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" title="8 support tickets"
-                           class="dropdown-toggle"
-                           data-toggle="dropdown">
-                            <i class="fa fa-group"></i>
-                            <span class="count">8</span>
-                        </a>
-                        <ul id="support-menu" class="dropdown-menu support" role="menu">
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-important"><i class="fa fa-bell-o"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        Check out this awesome ticket
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-warning"><i class="fa fa-question-circle"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        "What is the best way to get ...
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-success"><i class="fa fa-tag"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        This is just a simple notification
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-info"><i class="fa fa-info-circle"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        12 new orders has arrived today
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-important"><i class="fa fa-plus"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        One more thing that just happened
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="text-align-center see-all">
-                                    See all tickets <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li class="hidden-xs">
-                        <a href="#" id="settings"
-                           title="Settings"
-                           data-toggle="popover"
-                           data-placement="bottom">
-                            <i class="fa fa-cog"></i>
-                        </a>
-                    </li>
-                    <li class="hidden-xs dropdown">
-                        <a href="#" title="Account" id="account"
-                           class="dropdown-toggle"
-                           data-toggle="dropdown">
-                            <i class="fa fa-user"></i>
-                        </a>
-                        <ul id="account-menu" class="dropdown-menu account" role="menu">
-                            <li role="presentation" class="account-picture">
-                            <?=$user->firstname?> 
-                           </li>
-                            <li role="presentation">
-                                <a href="<?php site_url("yprofile");?>" class="link">
-                                    <i class="fa fa-user"></i>
-                                    Profile
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="component_calendar.html" class="link">
-                                    <i class="fa fa-calendar"></i>
-                                    Calendar
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="link">
-                                    <i class="fa fa-inbox"></i>
-                                    Post Vacancy
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="visible-xs">
-                        <a href="#"
-                           class="btn-navbar"
-                           data-toggle="collapse"
-                           data-target=".sidebar"
-                           title="">
-                            <i class="fa fa-bars"></i>
-                        </a>
-                    </li>
-                    <li class="hidden-xs"><a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out"></i></a></li>
-                   
+                    
+                    
+                    <li class="divider"></li>          
+                 
+                    <li class="hidden-xs"><a href="<?= site_url('logout'); ?>"> <i class="fa fa-sign-out">logout</i></a></li>
                 </ul>
                 <form id="search-form" class="navbar-form pull-right" role="search">
                     <input type="search" class="form-control search-query" placeholder="Search...">
@@ -223,7 +65,7 @@
         <div class="content container">
        <h4 class="mt-sm mb-xs">
 <!--<?=$user->firstname?> -->
-        <?=$user->firstname?>  <small> Welcome</small></h4>
+        <?php echo $user->firstname?>  <small> Welcome</small></h4>
         <div class="row">
             <div class="col-md-9">
                 <section class="widget">
@@ -236,7 +78,7 @@
                     <div class="body">
                         <ul id="myTab" class="nav nav-tabs">
                             <li class="active"><a href="#profile1" data-toggle="tab">Post Vacancy</a></li>
-                            <li><a href="#information" data-toggle="tab">Recruitment</a></li>
+                            <li><a href="#information" data-toggle="tab">History</a></li>
                             <li><a href="#profile" data-toggle="tab">Rate</a></li>
                         </ul>
                         <div id="myTabContent" class="tab-content" >
@@ -247,23 +89,25 @@
                                                 <div class="well with-header">
                                                 <div class="header bordered-blue">Fill in </div>
                                                 <div>
-                                                            <form action="/havanayouth/createaddress" method="post" accept-charset="utf-8">	
+                                                            <form action="<?php echo site_url('post_vacancy')?>" id="validation_form" method="post" data-parsley-priority-enabled="false"
+                                                                          novalidate="novalidate">
+                                                                <input name="id" type="hidden" value=" <?php echo $user->id?>">
                                                                  <div class="footer-col-inner">
                                                                         <div class="form-group">
                                                                           
                                                                          
-                                                                           <label for="firstname">Type</label>
-                                                                            <select class="form-control">
-                                                                             <option value="Full-Time">Full-Time</option>
+                                                                           <label for="type">Type</label>
+                                                                            <select class="form-control" name="type">
+                                                                             <option selected="selected" value="Full-Time">Full-Time</option>
                                                                              <option value="Part-Time">Part-Time</option>
                                                                             
                                                                              </select> <br>                                                                 
-                                                                           <label for="lastname">Location</label>
-                                                                           <input name="street" type="text" class="form-control"  /><br>
-                                                                           <label for="exp">Description</label>
-                                                                         <textarea class="form-control" name="term" id="term" cols="40" rows="4"></textarea><br>
-                                                                           <label for="exp">Closing date</label>
-                                                                           <input name="city" type="date" data-date-format="YYYY-MM-DD" placeholder="2015-01-01"  class="form-control"  /><br>
+                                                                           <label for="location">Location</label>
+                                                                           <input name="location" type="text" class="form-control"  /><br>
+                                                                           <label for="description">Description</label>
+                                                                         <textarea class="form-control" name="description" id="term" cols="40" rows="4"></textarea><br>
+                                                                           <label for="date">Closing date</label>
+                                                                           <input name="date" type="date" data-date-format="YYYY-MM-DD" placeholder="2015-01-01"  class="form-control"  /><br>
                                                                            
                                                                          
                                                                            <br>

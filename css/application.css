@@ -25143,8 +25143,8 @@ a.text-gray-lighter:hover {
 /* line 911, ../../src/sass/_base.scss */
 .form-control.input-transparent {
   border: none;
-  color: #f8f8f8;
-  background-color: rgba(51, 51, 51, 0.4);
+  color: #000;
+  background-color: #f8f8f8;
 }
 /* line 103, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_vendor-prefixes.scss */
 .form-control.input-transparent::-moz-placeholder {
@@ -25161,7 +25161,7 @@ a.text-gray-lighter:hover {
 }
 /* line 917, ../../src/sass/_base.scss */
 .form-control.input-transparent:focus {
-  color: #f8f8f8;
+  color: #000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
 }

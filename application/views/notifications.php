@@ -314,7 +314,7 @@
                             </div>
                             <div class="col-sm-3 text-align-center">
                                 <p class="value3 mt-sm">
-                                    $9, 700
+                                    N$9, 700
                                 </p>
                                 <p class="fs-mini text-muted">
                                     PER WEEK
@@ -345,7 +345,7 @@
                             </div>
                             <div class="col-sm-3 text-align-center">
                                 <p class="value3 mt-sm">
-                                    $10, 300
+                                    N$10, 300
                                 </p>
                                 <p class="fs-mini text-muted">
                                     PER WEEK
@@ -375,7 +375,7 @@
                             </div>
                             <div class="col-sm-3 text-align-center">
                                 <p class="value3 mt-sm">
-                                    $3, 200
+                                    N$3, 200
                                 </p>
                                 <p class="fs-mini text-muted">
                                     PER WEEK
@@ -405,7 +405,7 @@
                             </div>
                             <div class="col-sm-3 text-align-center">
                                 <p class="value3 mt-sm">
-                                    $2, 400
+                                    N$2, 400
                                 </p>
                                 <p class="fs-mini text-muted">
                                     PER MONTH
