@@ -235,9 +235,9 @@ class Nmrc extends Main_Controller {
             
                 if($this->session->userdata('role') == "youth"){                  
                     // var_dump($this->session->all_userdata());
-                     $cellphone = $this->session->userdata('cellphone');
+                     $username = $this->session->userdata('username');
                 
-                     $data['user'] = $this->crud->get_user($cellphone);
+                     $data['user'] = $this->crud->get_user($username);
                      $userid = $data['user']->id;
                      $data['contact'] = $this->crud->get_usercontacts($userid);
                      $data['skills'] = $this->crud->get_skills($userid);
@@ -792,13 +792,11 @@ var_dump($data);
        $data = array(
            'firstname' => $this->input->post('firstname'),
            'lastname' => $this->input->post('lastname'),
-           'username' => $this->input->post('username'),
-           'password' => $this->input->post('password'),
            'gender' => $this->input->post('gender'),
            'birth_date' => $this->input->post('birth_date'),);
-      
-       $this->crud->add_personinfo($data,$id);    
-       redirect('yprofile');
+       var_dump($data);
+       //$this->crud->add_personinfo($data,$id);    
+       //redirect('yprofile');
    } 
    
    public function createaddress(){
