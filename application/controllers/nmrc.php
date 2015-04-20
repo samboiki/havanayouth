@@ -882,6 +882,19 @@ var_dump($data);
         $this->crud->add_qualification($data);
         redirect('yprofile');
     }
+        public function edit_qualification(){
+       $this->load->model('crud');
+       $id = $this->input->post('id');
+       
+       $data = array(
+           'name' => $this->input->post('name'),
+           'institution' =>$this->input->post('institution'),
+           'date'        => $this->input->post('date'),
+       );
+       $this->crud->update_qualification($data, $id);
+       redirect('yprofile');
+    }
+     
   
     
     
