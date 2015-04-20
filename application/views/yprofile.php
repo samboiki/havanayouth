@@ -25,33 +25,19 @@
         <nav  class="sidebar nav-collapse collapse">
             <ul id="side-nav" class="side-nav">
                 <li class="active">
-                    <a href="<?php echo base_url('yprofile');?>"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
+                    <a href="<?php echo base_url('yprofile');?>"><i class="fa fa-home"></i> <span class="name">Home</span></a>
                 </li>
-<!--                <li class="">
-                    <a href="<?php echo base_url('statistics');?>"><i class="fa fa-area-chart"></i> <span class="name">Statistics</span></a>
-                </li>-->
+                <li class="">
+                    <a href="<?php echo site_url('notifications');?>"><i class="fa fa-th"></i> <span class="name">Jobs</span></a>
+                </li>
                 <li class="">
                     <a href="<?php echo site_url('notifications');?>"><i class="fa fa-th"></i> <span class="name">Notifications</span></a>
                 </li>
-                <li class="">
-                    <a href="<?php echo site_url('calendar');?>"><i class="fa fa-calendar"></i> <span class="name">Calender</span></a>
-                </li>
-                <li class="">
-                    <a href="index.html"><i class="fa fa-inbox"></i> <span class="name">Inbox</span></a>
-                </li>
-                <li class="panel ">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse"
-                       data-parent="#side-nav" href="#ui-collapse"><i class="fa fa-magic"></i> <span class="name">Search</span></a>
-                    <ul id="ui-collapse" class="panel-collapse collapse ">
-                        <li class=""><a href="<?php echo site_url('youthsearch');?>">Unemployed Youth</a></li>
-                        <li class=""><a href="ui_dialogs.html">Jobs</a></li>
-                    </ul>
-                </li>
                 <li class="visible-xs">
                     <a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out"></i> <span class="name">Sign Out</span></a>
-                    <p><?php echo anchor("$logout_url",'<span class="name"><i class="fa fa-sign-out" style="color:white"></i>Sign Out</span>' ) ?></p>
+                    <p><?php echo anchor("$",'<span class="name"><i class="fa fa-sign-out" style="color:white"></i>Sign Out</span>' ) ?></p>
                 </li>
-            </ul>
+            </ul><br><br><br><br>
         
             <?php $this->load->view('sponsors');?>
         
@@ -64,6 +50,118 @@
                         <a href="#" id="search-toggle">
                             <i class="fa fa-search"></i>
                         </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" title="Messages" id="messages"
+                           class="dropdown-toggle"
+                           data-toggle="dropdown">
+                            <i class="fa fa-comments"></i>
+                        </a>
+                        <ul id="messages-menu" class="dropdown-menu messages" role="menu">
+                            <li role="presentation">
+                                <a href="#" class="message">
+                                    <img src="img/1.jpg" alt="">
+                                    <div class="details">
+                                        <div class="sender">Jane Hew</div>
+                                        <div class="text">
+                                            Hey, John! How is it going? ...
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="message">
+                                    <img src="img/2.jpg" alt="">
+                                    <div class="details">
+                                        <div class="sender">Alies Rumiancaŭ</div>
+                                        <div class="text">
+                                            I'll definitely buy this template
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="message">
+                                    <img src="img/3.jpg" alt="">
+                                    <div class="details">
+                                        <div class="sender">Michał Rumiancaŭ</div>
+                                        <div class="text">
+                                            Is it really Lore ipsum? Lore ...
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="text-align-center see-all">
+                                    See all messages <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" title="8 support tickets"
+                           class="dropdown-toggle"
+                           data-toggle="dropdown">
+                            <i class="fa fa-group"></i>
+                            <span class="count">8</span>
+                        </a>
+                        <ul id="support-menu" class="dropdown-menu support" role="menu">
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-important"><i class="fa fa-bell-o"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        Check out this awesome ticket
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-warning"><i class="fa fa-question-circle"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        "What is the best way to get ...
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-success"><i class="fa fa-tag"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        This is just a simple notification
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-info"><i class="fa fa-info-circle"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        12 new orders has arrived today
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-important"><i class="fa fa-plus"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        One more thing that just happened
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="text-align-center see-all">
+                                    See all tickets <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="divider"></li>
                     <li class="hidden-xs">
@@ -135,77 +233,45 @@
                     </header>
                     <div class="body">
                         <ul id="myTab" class="nav nav-tabs">
-                            <li class="active"><a href="#information" data-toggle="tab">Personal Information</a></li>
-                            <li><a href="#profile" data-toggle="tab">Technical Skills & Qualifications</a></li>
+                            <li class="active"><a href="#information" data-toggle="tab">Info</a></li>
+                            <li><a href="#profile" data-toggle="tab">Qualifications & Skills </a></li>
                             <li><a href="#work" data-toggle="tab">Work History</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#dropdown3" data-toggle="tab">Personal Information</a></li>
-                                    <li><a href="#dropdown4" data-toggle="tab">Technical Skills </a></li>
-                                    <li><a href="#dropdown5" data-toggle="tab">Qualifications</a></li>
-                                    <li><a href="#dropdown6" data-toggle="tab">Contact Details</a></li>
-                                    <li><a href="#dropdown7" data-toggle="tab">Work History</a></li>
-                                    <li><a href="#dropdown8" data-toggle="tab">Profile Picture</a></li>
-                                    <li><a href="#dropdown9" data-toggle="tab">Address Details</a></li>
-                                </ul>
-                            </li>
+                           
                         </ul>
                         <div id="myTabContent" class="tab-content" >
                             <div class="tab-pane fade in active" id="information">
+                                <legend class="section">Profile picture</legend>
                                 <div class="row">
                                 <div class="col-sm-4">
+                                    
                                     <div class="text-align-center">
                                         <?php if(isset($img)) : foreach($img as $rows) :  ?>    
-                                        <p><img class="img-circle" src="<?=$rows->path;?>" width="150" height="150" alt="" /></p>
+                                        <p><img class="img-circle" src="<?=$rows->path;?>" width="100" height="100" alt="" /></p>
                                         <?php  endforeach;?>
                                         <?php else : ?>
                                         <h6>No profile picture</h6>
                                     <?php endif; ?>
                                 </div>
                                 </div>
-                                <div class="col-sm-8">
-                                    <address>
-                                        <?php $i = 0; ?>
-                                        <?php if(isset($skills)) :  foreach ($skills as $row) : if ($i == 3) { break; }?>    
-                                        <div class="info col-sm-4"><strong><?php echo $row->skill;?></strong></div>
-                                        <?php $rating = $row->rating; if ($rating == 1):?>
-                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>
-                                        <?php elseif ($rating == 2): ?>
-                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>
-                                        <?php elseif ($rating == 3): ?>
-                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>
-                                        <?php elseif ($rating == 4): ?>
-                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>
-                                        <?php elseif ($rating == 5): ?>
-                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>
-                                        <?php else : ?>
-                                        <h6>Rating out of bound</h6>
-                                        <?php endif; ?>
-                                        
-                                       <br></br>
-                                       <?php $i++; endforeach;?>
-                                        <?php else : ?>
-                                        <h6>No Skills added </h6>
-                                        <?php endif; ?>
-                                    </address>
-                                </div>
+                              
                             </div>
                                 <div>
                                 <legend class="section">Personal Info</legend>
                                 <h5><label class="col-sm-4" for="prefix">Name:</label></h5>
-                                <div class="col-sm-4"><a><?=$user->firstname;?></a></div></br></br>
+                                <div class="col-sm-4"><a><?=$user->firstname;?></a></div><div class="col-sm-2"></div><div class="col-sm-2"><a  class="btn btn-danger" href="#personalInfo" data-toggle="modal"><i class="fa fa-pencil" style="color:white"></i> edit</a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Surname:</label></h5>
                                 <div class="col-sm-4"><a><?=$user->lastname;?></a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Gender:</label></h5>
                                 <div class="col-sm-4"><a><?=$user->gender;?></a></div></br></br>
+                                <h5><label class="col-sm-4" for="prefix">ID/Passport no:</label></h5>
+                                <div class="col-sm-4"><a>90092300123</a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Date of Birth:</label></h5>
                                 <div class="col-sm-4"><a><?=$user->birth_date;?></a></div></br></br>
                                 </div>
                                 <div>
                                 <legend class="section">Contact Info</legend>
                                 <h5><label class="col-sm-4" for="prefix">Mobile:</label></h5>
-                                <div class="col-sm-4"><a><?=$contact->mobile_phone?></a></div></br></br>
+                                <div class="col-sm-4"><a><?=$contact->mobile_phone?></a></div><div class="col-sm-2"></div><div class="col-sm-2"><a  class="btn btn-danger" href="#contacts" data-toggle="modal"><i class="fa fa-pencil" style="color:white"></i> edit</a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Tel:</label></h5>
                                 <div class="col-sm-4"><a><?=$contact->telephone?></a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Email:</label></h5>
@@ -216,13 +282,13 @@
                                 <div>
                                 <legend class="section">Address</legend>
                                 <h5><label class="col-sm-4" for="prefix">Adress:</label></h5>
-                                <div class="col-sm-4"><a><?=$address->erf?> <?=$address->street?> Street, <?=$address->suburb?> </a></div></br>
-                                <h5><label class="col-sm-4" for="prefix">City:</label></h5>
-                                <div class="col-sm-4"><a><?=$address->city?></a></div></br>
+                                <div class="col-sm-4"><a> <?=$address->address;?> </a></div><div class="col-sm-2"></div><div class="col-sm-2"><a  class="btn btn-danger" href="#address" data-toggle="modal"><i class="fa fa-pencil" style="color:white"></i> edit</a></div></br>
+                                <h5><label class="col-sm-4" for="prefix">City</label></h5>
+                                <div class="col-sm-4"><a><?php echo $address->city?></a></div></br>
                                 <h5><label class="col-sm-4" for="prefix">Region:</label></h5>
-                                <div class="col-sm-4"><a href=""><?=$address->region?></a></div></br>
+                                <div class="col-sm-4"><a href=""><?php echo $address->region?></a></div></br>
                                 <h5><label class="col-sm-4" for="prefix">Country:</label></h5>
-                                <div class="col-sm-4"><a>Namibia</a></div></br></br>
+                                <div class="col-sm-4"><a><?php echo $address->country?></a></div></br></br>
                                 </div>
                                 <div>
                                 <article class="map-section">
@@ -233,21 +299,57 @@
                             <div class="tab-pane fade " id="profile">
                              <div class="row">
                                 <div class="col-sm-4">
-                                    <div class="text-align-center">
-                                        <?php if(isset($img)) : foreach($img as $rows) :  ?>    
-                                        <p><img class="img-circle" src="<?=$rows->path;?>" width="150" height="150" alt="" /></p>
-                                        <?php  endforeach;?>
-                                        <?php else : ?>
-                                        <h6>No profile picture</h6>
-                                    <?php endif; ?>
-                                </div>
+                                    
                                 </div>
                                 <div class="col-sm-8">
-                                    <address>
-                                        <?php $i = 0; ?>
-                                        <?php if(isset($skills)) :  foreach ($skills as $row) : if ($i == 3) { break; }?>    
-                                        <div class="info col-sm-4"><strong><?php echo $row->skill;?></strong></div>
-                                        <?php $rating = $row->rating; if ($rating == 1):?>
+                                  
+                                </div>
+                            </div>
+                                <div>
+                                <legend class="section">Qualifications</legend>
+                                 <table class="table table-striped table-bordered table-hover" id="expandabledatatable">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Qualification name</th>
+                                            <th>Institution</th>
+                                            <th>Date obtained</th>
+                                        </tr>
+                                        <?php if(isset($qualifications)) :  foreach ($qualifications as $row) : ?>                       
+                                        <tr>
+                                            <td>
+                                                <a href="#edit_qualification"   onclick="fill_qual_edit('<?php echo $row->id ?>', '<?php echo $row->institution ?>', '<?php echo $row->date ?>', '<?php echo $row->name ?>', '<?php echo $row->date ?>');" data-toggle="modal"><span class="btn btn-danger btn-xs"><i class="fa fa-pencil" style="color:white"></i>edit</span></a>
+                                                <?php echo anchor("/delete/$row->id/qualifications",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete</span>' )?>
+                                            </td>
+                                            <td><?php echo $row->name;?></td>
+                                            <td><?php echo $row->institution;?></td>
+                                            <td><?php echo $row->date;?></td>
+                                        </tr> 
+                                        
+                                         <?php endforeach;?>
+                                                                
+                                                                
+                                        <?php else : ?>
+                                                                <h6>No records </h6>
+                                        <?php endif; ?>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
+                                <div class="col-sm-3"><label></div>
+                                <div class="col-sm-3"><label></div>
+                                 <div class="col-sm-3"><label></div>
+                                <div class="col-sm-3"><a  class="btn btn-danger" href="#new_qualification" data-toggle="modal"><i class="fa fa-plus" style="color:white"></i> Add qualification</a></div>
+                                <br><br>
+                                <legend class="section">Skills</legend>
+                                <?php if(isset($skills)) :  foreach ($skills as $row) : ?> 
+                                <div class="col-sm-3"> <a href="#edit_skill" onclick="fill_skill_edit('<?php echo $row->id?>', '<?php echo $row->skill?>', '<?php echo $row->rating?>')"  data-toggle="modal"><span class="btn btn-danger btn-xs"><i class="fa fa-pencil" style="color:white"></i>edit</span></a> <?php echo anchor("/delete/$row->id/skills",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete</span>' )?></div>
+                                <h5><label class="col-sm-2" for="prefix"><?php echo $row->skill;?>:</label></h5>
+                               
+                                <div class="col-sm-2"><a><?php echo $row->rating;?></a></div>
+                                <div class="col-sm-4">
+                                    <?php $rating = $row->rating; if ($rating == 1):?>
                                         <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>
                                         <?php elseif ($rating == 2): ?>
                                         <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>
@@ -258,99 +360,351 @@
                                         <?php elseif ($rating == 5): ?>
                                         <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>
                                         <?php else : ?>
-                                        <h6>Rating out of bound</h6>
                                         <?php endif; ?>
-                                        
-                                       <br></br>
-                                       <?php $i++; endforeach;?>
-                                        <?php else : ?>
-                                        <h6>No Skills added </h6>
-                                        <?php endif; ?>
-                                    </address>
-                                </div>
-                            </div>
-                                <div>
-                                <legend class="section">Technical Skils</legend>
-                                <?php if(isset($skills)) :  foreach ($skills as $row) : ?> 
-                                <h5><label class="col-sm-4" for="prefix"><?php echo $row->skill;?>:</label></h5>
-                                <div class="col-sm-4"><a><?php echo $row->rating;?></a></div></br></br>
+                                </div></br></br>
                                 <?php endforeach;?>
                                 <?php else : ?>
                                 <h6>No Skills added </h6>
                                 <?php endif; ?>
                                 </div>
                                 <div>
-                                <legend class="section">Qualifications</legend>
+                               
                                 </div>
+                                <div class="col-sm-3"><label></div>
+                                <div class="col-sm-3"><label></div>
+                                 <div class="col-sm-3"><label></div>
+                                <div class="col-sm-3"><a  class="btn btn-danger" href="#new_skill" data-toggle="modal"><i class="fa fa-plus" style="color:white"></i> Add skill</a></div>
                             </div>
                             <div class="tab-pane fade" id="dropdown3">
-                                <div class="row">
-                                          <div class="col-md-5 col-sm-6 col-xs-12">
-                                                <div class="well with-header">
-                                                <div class="header bordered-blue">Update Your Personal Information</div>
-                                                <div>
-                                                            <form action="/havanayouth/createperson" method="post" accept-charset="utf-8">	
-                                                                 <div class="footer-col-inner">
+                                 
+                            </div>
+                            
+                            <div id="personalInfo" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                               <div class="modal-dialog">
+                                <div class="modal-content">
+                                     <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Update Personal Info</strong></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row" style="margin-left:5px; margin-right: 5px">
+                                            <form action="/havanayouth/createperson" method="post" accept-charset="utf-8">	
+                                                          <div class="footer-col-inner">
                                                                         <div class="form-group">
                                                                            <?php if(isset($user)) :?>  
                                                                            <input type="hidden" name="id"  value="<?php echo $user->id?>" />
-                                                                           <label for="firstname">First name</label>
-                                                                           <input name="firstname" type="text" class="form-control" value="<?php echo $user->firstname?>" /><br>
-                                                                           <label for="lastname">Last name</label>
-                                                                           <input name="lastname" type="text"  class="form-control" value="<?php echo $user->lastname?>" /><br>
-                                                                           <label for="exp">Username</label>
-                                                                           <input name="username" type="text"  class="form-control" value="<?php echo $user->username?>" /><br>
-                                                                           <label for="exp">Password</label>
-                                                                           <input name="password" type="text"  class="form-control" value="<?php echo $user->password?>" /><br>
-                                                                           <label for="exp">Gender</label><br>
-                                                                           <div id="gender" class="btn-group" data-toggle="buttons">
+                                                                           <div class="col-md-3"><label for="firstname">First name</label></div>
+                                                                           <div class="col-md-8"><input name="firstname" type="text" class="form-control" value="<?php echo $user->firstname?>" /></div>
+                                                                           <br><br>
+                                                                           <input type="hidden" name="id"  value="<?php echo $user->id?>" />
+                                                                           <div class="col-md-3"><label for="lastname">Lastname</label></div>
+                                                                           <div class="col-md-8"><input name="lastname" type="text" class="form-control" value="<?php echo $user->lastname?>" /></div>
+                                                                           
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="id_or_passport">ID/Passport no.</label></div>
+                                                                           <div class="col-md-8"><input name="id_or_passport" type="text"  class="form-control" value="90092300123" /></div>
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="exp">Gender</label></div>
+                                                                           <div id="gender" class="btn-group col-md-8" data-toggle="buttons">
                                                                                 <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                                                                                     <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
                                                                                 </label>
                                                                                 <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                                                                                     <input type="radio" name="gender" value="female" checked> Female
                                                                                 </label>
-                                                                           </div><br><br>
-
-                                                                           <label for="exp">Birth date</label>
-                                                                            <div>
+                                                                           </div>
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="exp">Birth date</label></div>
+                                                                           
+                                                                            <div class="col-md-8">
                                                                                 <div class="input-group">
                                                                                     <input class="form-control date-picker" id="id-date-picker-1" name="birth_date" type="date" data-date-format="YYYY-MM-DD" placeholder="<?php echo $user->birth_date?>">
                                                                                     <span class="input-group-addon">
                                                                                         <i class="fa fa-calendar"></i>
                                                                                     </span>
                                                                                 </div>
-                                                                            </div>
+                                                                            </div><br><br>
 
                                                                             <?php else : ?>
                                                                             <h6>No records </h6>
                                                                             <?php endif; ?>
                                                                            <br>
-                                                                            <button type="submit" class="btn btn-primary">Update Details</button>
+                                                                            
                                                                         </div>
                                                                    </div><!--//footer-col-inner-->
-                                                            </form>
                                                             
-                                                   </div> <!-- /content -->
-                                               </div><!--//row-->
-                                            </div>
-                                          <div class="footer-col col-md-7 col-sm-8 newsletter">
-                                              <div class="well with-header">
-                                                      <div class="header bordered-blue">User Details</div>
-                                                                <?php if(isset($contact)) :   ?>    
-                                                                <h0><strong>First Name: </strong><?php echo $user->firstname?></h0></br></br>
-                                                                <h0><strong>Last Name: </strong><?php echo $user->lastname?></h0></br></br>
-                                                                <h0><strong>User Name: </strong><?php echo $user->username?></h0></br></br>
-                                                                <h0><strong>Password: </strong><?php echo $user->password?></h0></br></br>
-                                                                <h0><strong>Gender: </strong><?php echo $user->gender?></h0></br></br>
-                                                                <h0><strong>Birth Date: </strong><?php echo $user->birth_date?></h0></br></br>
-                                                                <?php else : ?>
-                                                                <h6>No records </h6>
-                                                                <?php endif; ?>
-                                              </div>
-                                          </div>
-                                          </div>
-                            </div>
+                                        </div>           
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Update</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        </form>
+                                    </div>
+                                        </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
+                            <div id="contacts" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                               <div class="modal-dialog">
+                                <div class="modal-content">
+                                     <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Update Contact Info</strong></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row" style="margin-left:5px; margin-right: 5px">
+                                            <form action="/havanayouth/createcontacts" method="post" accept-charset="utf-8">	
+                                                          <div class="footer-col-inner">
+                                                                        <div class="form-group">
+                                                                           <?php if(isset($contact)) :?>  
+                                                                            <input type="hidden" name="id"  value="<?php echo $contact->id?>" />
+                                                                           <input type="hidden" name="page"  value="<?php echo "yprofile"?>" />
+                                                                           <div class="col-md-3"><label for="mobile">Cellpnone</label></div>
+                                                                           <div class="col-md-8"><input name="mobile" type="text" id="mobile" class="form-control" value="<?php echo $contact->mobile_phone?>" /></div>
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="lastname">Telephone</label></div>
+                                                                           <div class="col-md-8"><input name="tel" type="text" id="tel" class="form-control" value="<?php echo $contact->telephone?>" /></div>
+                                                                           
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="id_or_passport">Fax</label></div>
+                                                                           <div class="col-md-8"><input name="fax" type="text" id="fax" class="form-control" value="<?php echo $contact->fax?>" /></div>
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="id_or_passport">Email</label></div>
+                                                                           <div class="col-md-8"><input name="email" type="text" id="email" class="form-control" value="<?php echo $contact->email?>" /></div>
+                                                                           <br>   
+                                                                           
+                                                                            <?php else : ?>
+                                                                            <h6>No records </h6>
+                                                                            <?php endif; ?>
+                                                                           <br>
+                                                                            
+                                                                        </div>
+                                                                   </div><!--//footer-col-inner-->
+                                                            
+                                        </div>           
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Update</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        </form>
+                                    </div>
+                                        </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
+                            <div id="address" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                               <div class="modal-dialog">
+                                <div class="modal-content">
+                                     <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Update Address Info</strong></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row" style="margin-left:5px; margin-right: 5px">
+                                            <form action="/havanayouth/createaddress" method="post" accept-charset="utf-8">	
+                                                          <div class="footer-col-inner">
+                                                                        <div class="form-group">
+                                                                           <?php if(isset($address)) :?>  
+                                                                           <input type="hidden" name="id"  value="<?php echo $user->id?>" />
+                                                                           <input type="hidden" name="page"  value="<?php echo "yprofile"?>" />
+                                                                           <div class="col-md-3"><label for="address">Address</label></div>
+                                                                           <div class="col-md-8"><textarea name="address" type="text" id="address" class="form-control" value="" ><?php echo $address->address?></textarea></div>
+                                                                           <br><br><br>
+                                                                           <div class="col-md-3"><label for="city">City</label></div>
+                                                                           <div class="col-md-8"><input name="city" type="text" id="tel" class="form-control" value="<?php echo $address->city?>" /></div>
+                                                                           
+                                                                           <br><br><br>
+                                                                           <div class="col-md-3"><label for="region">Region</label></div>
+                                                                           <div class="col-md-8"><input name="region" type="text" id="region" class="form-control" value="<?php echo $address->region?>" /></div>
+                                                                           <br><br><br>
+                                                                           <div class="col-md-3"><label for="country">Country</label></div>
+                                                                           <div class="col-md-8"><input name="country" type="text" id="country" class="form-control" value="<?php echo $address->country?>" /></div>
+                                                                           <br>   
+                                                                           
+                                                                            <?php else : ?>
+                                                                            <h6>No records </h6>
+                                                                            <?php endif; ?>
+                                                                           <br>
+                                                                            
+                                                                        </div>
+                                                                   </div><!--//footer-col-inner-->
+                                                            
+                                        </div>           
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Update</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        </form>
+                                    </div>
+                                        </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
+                            <div id="new_qualification" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                               <div class="modal-dialog">
+                                <div class="modal-content">
+                                     <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Add qualification</strong></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row" style="margin-left:5px; margin-right: 5px">
+                                            <form action="/havanayouth/addQualification" method="post" accept-charset="utf-8">	
+                                                          <div class="footer-col-inner">
+                                                                        <div class="form-group">  
+                                                                            <input type="hidden" name="id"  value="<?php echo $user->id?>" />
+                                                                           <input type="hidden" name="page"  value="<?php echo "yprofile"?>" />
+                                                                           <div class="col-md-3"><label for="name">Qualification name</label></div>
+                                                                           <div class="col-md-8"><input name="name" type="text" id="name" class="form-control" value="" /></div>
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="institution">Institution</label></div>
+                                                                           <div class="col-md-8"><input name="institution" type="text" id="institution" class="form-control" value="" /></div>
+                                                                           
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="date">Date obtained</label></div>
+                                                                           <div class="col-md-8"><input name="date" type="date" id="date" class="form-control" value="" /></div>
+                                                                           <br><br>   
+                                                                          
+                                                                            
+                                                                        </div>
+                                                                   </div><!--//footer-col-inner-->
+                                                            
+                                        </div>           
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Save</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        </form>
+                                    </div>
+                                        </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
+                        <div id="edit_qualification" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                               <div class="modal-dialog">
+                                <div class="modal-content">
+                                     <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Edit qualification</strong></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row" style="margin-left:5px; margin-right: 5px">
+                                            <form action="/havanayouth/edit_qualification" method="post" accept-charset="utf-8">	
+                                                          <div class="footer-col-inner">
+                                                                        <div class="form-group">  
+                                                                            <input type="hidden" name="id" id="q_id" value="" />
+                                                                           <input type="hidden" name="page"  value="" />
+                                                                           <div class="col-md-3"><label for="name">Qualification name</label></div>
+                                                                           <div class="col-md-8"><input name="name" id="q_name" type="text" id="name" class="form-control" value="" /></div>
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="institution">Institution</label></div>
+                                                                           <div class="col-md-8"><input name="institution" type="text" id="inst" class="form-control" value="" /></div>
+                                                                           
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="date">Date obtained</label></div>
+                                                                           <div class="col-md-8"><input name="date" type="date" id="o_date" class="form-control" value="" /></div>
+                                                                           <br><br>   
+                                                                          
+                                                                            
+                                                                        </div>
+                                                                   </div><!--//footer-col-inner-->
+                                                            
+                                        </div>           
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Update</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        </form>
+                                    </div>
+                                        </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>    
+                          <div id="new_skill" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                               <div class="modal-dialog">
+                                <div class="modal-content">
+                                     <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Add skill</strong></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row" style="margin-left:5px; margin-right: 5px">
+                                            <form action="/havanayouth/createskills" method="post" accept-charset="utf-8">	
+                                                          <div class="footer-col-inner">
+                                                                        <div class="form-group">  
+                                                                            <input type="hidden" name="userid"  value="<?php echo $user->id?>" />
+                                                                           <input type="hidden" name="page"  value="<?php echo "yprofile"?>" />
+                                                                           <div class="col-md-3"><label for="name">Skill name</label></div>
+                                                                           <div class="col-md-8"><input name="skill" type="text" id="skill" class="form-control" value="" /></div>
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="rating">Rating</label></div>
+                                                                           <div class="col-md-8">
+                                                                               <select name="rating" type="text" id="rating" class="form-control">
+                                                                                   <option></option>
+                                                                                   <option>1</option>
+                                                                                   <option>2</option>
+                                                                                   <option>3</option>
+                                                                                   <option>4</option>
+                                                                                   <option>5</option>
+                                                                               </select>
+                                                                           </div>
+                                                                           
+                                                                           <br><br>  
+                                                                          
+                                                                            
+                                                                        </div>
+                                                                   </div><!--//footer-col-inner-->
+                                                            
+                                        </div>           
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Save</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        </form>
+                                    </div>
+                                        </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>                            
+                           <div id="edit_skill" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                               <div class="modal-dialog">
+                                <div class="modal-content">
+                                     <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Edit skill</strong></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row" style="margin-left:5px; margin-right: 5px">
+                                            <form action="/havanayouth/edit_skill" method="post" accept-charset="utf-8">	
+                                                          <div class="footer-col-inner">
+                                                                        <div class="form-group">  
+                                                                           <input type="hidden" name="id"  id="sid" value="" />
+                                                                           <input type="hidden" name="page"  value="" />
+                                                                           <div class="col-md-3"><label for="name">Skill name</label></div>
+                                                                           <div class="col-md-8"><input name="skill" type="text" id="sskill" class="form-control" value="" /></div>
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="rating">Rating</label></div>
+                                                                           <div class="col-md-8">
+                                                                               <select name="rating" type="text" id="rrating" class="form-control">
+                                                                                   <option></option>
+                                                                                   <option>1</option>
+                                                                                   <option>2</option>
+                                                                                   <option>3</option>
+                                                                                   <option>4</option>
+                                                                                   <option>5</option>
+                                                                               </select>
+                                                                           </div>
+                                                                           
+                                                                           <br><br>  
+                                                                          
+                                                                            
+                                                                        </div>
+                                                                   </div><!--//footer-col-inner-->
+                                                            
+                                        </div>           
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Save</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        </form>
+                                    </div>
+                                        </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>  
                             <div class="tab-pane fade" id="dropdown4">
                                 <div class="row">
                                           <div class="col-md-5 col-sm-6 col-xs-12">
@@ -524,7 +878,7 @@
                 <section class="widget large">
                     <header>
                         <h4>
-                            Alerts Feed &nbsp;
+                            New jobs &nbsp;
                             <span class="label label-success">412</span>
                         </h4>
                         <div class="actions">
@@ -535,91 +889,43 @@
                         <div id="feed" class="feed">
                             <div class="wrapper">
                                 <div class="vertical-line"></div>
+                                <br><br>
                                 <section class="feed-item">
                                     <div class="icon pull-left">
                                         <i class="fa fa-comment"></i>
                                     </div>
                                     <div class="feed-item-body">
                                         <div class="text">
-                                            <a href="#">John Doe</a> commented on <a href="#">What Makes Good Code Good</a>.
+                                            <a href="#">A plumber needed</a>.
                                         </div>
                                         <div class="time pull-left">
-                                            3 h
+                                            3 h ago
                                         </div>
                                     </div>
                                 </section>
                                 <section class="feed-item">
                                     <div class="icon pull-left">
-                                        <i class="fa fa-check color-green"></i>
+                                        <i class="fa fa-comment"></i>
                                     </div>
                                     <div class="feed-item-body">
                                         <div class="text">
-                                            <a href="#">Merge request #42</a> has been approved by <a href="#">Jessica Lori</a>.
+                                            <a href="#">A hair dresser needed</a>.
                                         </div>
                                         <div class="time pull-left">
-                                            10 h
+                                            3 h ago
                                         </div>
                                     </div>
                                 </section>
                                 <section class="feed-item">
                                     <div class="icon pull-left">
-                                        <img src="img/14.jpg" class="img-circle" alt="">
+                                        <i class="fa fa-comment"></i>
                                     </div>
                                     <div class="feed-item-body">
                                         <div class="text">
-                                            New user <a href="#">Greg Wilson</a> registered.
+                                            <a href="#">A gardener needed</a>.
                                         </div>
                                         <div class="time pull-left">
-                                            Today
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-bolt color-orange"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            Server fail level raises above normal. <a href="#">See logs</a> for details.
-                                        </div>
-                                        <div class="time pull-left">
-                                            Yesterday
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-database"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">Database usage report</a> is ready.
-                                        </div>
-                                        <div class="time pull-left">
-                                            Yesterday
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-shopping-cart"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">Order #233985</a> needs additional processing.
-                                        </div>
-                                        <div class="time pull-left">
-                                            Wednesday
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-arrow-down"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">Load more...</a>
+                                            5 h
                                         </div>
                                     </div>
                                 </section>
@@ -627,79 +933,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="widget" id="news-widget" data-widgster-load="server/php/widgets/news.php">
-                    <header>
-                        <h5>
-                            News & Events <span class="badge badge-success">17</span>
-                        </h5>
-                        <span class="text-muted">spinning refresh button & close prompt</span>
-                        <div class="widget-controls">
-                            <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-plus"></i></a>
-                            <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-minus"></i></a>
-                            <a data-widgster="load" title="I am spinning!" href="#"><i class="glyphicon glyphicon-refresh"></i></a>
-                            <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
-                        </div>
-                    </header>
-                    <div class="body">
-                        <ul class="news-list stretchable">
-                            <li>
-                                <span class="icon background-warning">
-                                    <i class="fa fa-star"></i>
-                                </span>
-                                <div class="news-item-info">
-                                    <h5 class="name"><a href="#">First Human Colony on Mars</a></h5>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit............
-                                    </p>
-                                    <div class="time"><i class="fa fa-clock-o"></i> Mar 20, 18:46</div>
-                                    <div class="location"><i class="fa fa-map-marker"></i> Windhoek</div>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="icon background-info">
-                                    <i class="fa fa-microphone"></i>
-                                </span>
-                                <div class="news-item-info">
-                                    <h5 class="name"><a href="#">Light Blue reached $300</a></h5>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    </p>
-                                    <div class="time"><i class="fa fa-clock-o"></i> Sep 25, 11:59</div>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="icon background-lime">
-                                    <i class="fa fa-eye"></i>
-                                </span>
-                                <div class="news-item-info">
-                                    <h5 class="name"><a href="#">No more spying</a></h5>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    </p>
-                                    <div class="time"><i class="fa fa-clock-o"></i>Mar 20, 18:46</div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="news-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="news-close-modal-label" aria-hidden="true" style="display: none;">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    <h4 class="modal-title" id="news-close-modal-label">Sure?</h4>
-                                </div>
-                                <div class="modal-body">
-                                    Do you really want to unrevertably remove this super news widget?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                                    <button type="button" class="btn btn-danger" id="news-widget-remove">Yes, remove widget</button>
-                                </div>
 
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div>
-                </section>
             </div>
         </div>
         </div>
@@ -786,7 +1020,21 @@
         <script type="text/javascript" src="assets/js/map.js"></script>
         <!-- page application js -->
         <script src="assets/js/forms-account.js"></script>
-
+        <script type="text/javascript">
+            function fill_qual_edit(id, inst, date, qname){
+               $("#q_id").val(id);
+               $("#inst").val(inst);
+               $("#o_date").val(date);
+               $("#q_name").val(qname);
+               
+            }
+            function fill_skill_edit(id, skill, rating){
+               $("#sid").val(id);
+               $("#sskill").val(skill);
+               $("#rrating").val(rating);
+            }
+            
+        </script>
         
     
 </body>
