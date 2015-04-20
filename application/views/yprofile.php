@@ -328,11 +328,11 @@
                                 <div>
                                 <legend class="section">Address</legend>
                                 <h5><label class="col-sm-4" for="prefix">Adress:</label></h5>
-                                <div class="col-sm-4"><a>15 Rurh Street Windhoek West </a></div></br>
+                                <div class="col-sm-4"><a><?=$address->erf?> <?=$address->street?> Street, <?=$address->suburb?> </a></div></br>
                                 <h5><label class="col-sm-4" for="prefix">City:</label></h5>
-                                <div class="col-sm-4"><a>Windhoek</a></div></br>
+                                <div class="col-sm-4"><a><?=$address->city?></a></div></br>
                                 <h5><label class="col-sm-4" for="prefix">Region:</label></h5>
-                                <div class="col-sm-4"><a href="">Khomas</a></div></br>
+                                <div class="col-sm-4"><a href=""><?=$address->region?></a></div></br>
                                 <h5><label class="col-sm-4" for="prefix">Country:</label></h5>
                                 <div class="col-sm-4"><a>Namibia</a></div></br></br>
                                 </div>

@@ -25,6 +25,29 @@ class Nmrc extends Main_Controller {
    }
    public function signin_validation(){
            $this->load->library('form_validation');
+           $this->load->library('facebook');
+      $user = $this->facebook->getUser();
+      if ($user) {
+            try {
+                $data['user_profile'] = $this->facebook->api('/me');
+                $data['login_url'] = $this->facebook->getLoginUrl(array(
+                'redirect_uri' => site_url('fbsignin'), 
+                'scope' => array("email") // permissions here
+            ));
+           // var_dump($data['login_url']);
+            } catch (FacebookApiException $e) {
+                $user = null;
+            }
+            $this->load->view('signin',$data);
+        }
+     
+         else {
+            $data['login_url'] = $this->facebook->getLoginUrl(array(
+                'redirect_uri' => site_url('fbsignin'), 
+                'scope' => array("email") // permissions here
+            ));
+           // var_dump($data['login_url']);
+        }
            $this->load->library('session');
            $this->form_validation->set_rules('cellphone','Cellphone','required|trim|xxs_clean|callback_validate_credentials');           
            $this->form_validation->set_rules('password','Password','required|md5|trim');
@@ -61,7 +84,7 @@ class Nmrc extends Main_Controller {
                 
             } else {
                 $this->load->helper('form');
-                $this->load->view('signin_validation'); 
+                $this->load->view('signin_validation',$data); 
                 }
         } 
         
@@ -430,6 +453,19 @@ class Nmrc extends Main_Controller {
    }
         else {       redirect('signin');}
    }
+   public function fbcheck(){
+       $this->load->library('facebook');
+       $user = $this->facebook->getUser();
+                            if ($user) {
+                                 try {
+                                     $token = $this->facebook->getAccessToken();
+                                     $data['user_profile'] = $this->facebook->api('/me/');
+                                 } catch (FacebookApiException $e) {
+                                     $user = null; }
+                                 $token = $this->facebook->getAccessToken();
+                              }
+var_dump($data);
+   }
    
    public function fbsignup(){
        //loading my models
@@ -462,7 +498,7 @@ class Nmrc extends Main_Controller {
                              $firstname = $data['user_profile']['first_name'];
                              $lastname = $data['user_profile']['last_name'];
                              $gender = $data['user_profile']['gender'];
-                             $email = $data['user_profile']['email'];
+                             //$email = $data['user_profile']['email'];
                         //--------------------------------------------------------------------------------------//
                             //--------------------------------------------------------------------------------------//
                             $signupdata = array(
@@ -485,8 +521,7 @@ class Nmrc extends Main_Controller {
                             //--------------------------------------------------------------------------------------//
                             //inserting init data in contacts table
                             $signupdatacontact = array(
-                                            'cellphone' => $this->input->post('number'),
-                                            'email' => $email,
+                                            'mobile_phone' => $this->input->post('number'),
                                             'userid' => $userid,
                             );
                              // invoking add_userscontact() method to add the user
