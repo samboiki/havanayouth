@@ -731,9 +731,9 @@ var_dump($data);
         $this->load->model('crud');
         
         //check to see if user is logged in else redirect to restricted page
-            if($this->session->userdata('logged_in')){
+        //    if($this->session->userdata('logged_in')){
             
-                    if($this->session->userdata('role') == "admin"){            
+                  //  if($this->session->userdata('role') == "admin"){            
                     // var_dump($this->session->all_userdata());
                      $username = $this->session->userdata('username');
 
@@ -744,13 +744,13 @@ var_dump($data);
                      $this->load->helper('form');
                      $this->load->helper('url');
                      $this->load->view('aprofile',$data);
-                     }
-                else {
-                redirect('restricted'); 
-                }
-            } else {
-                redirect('restricted');
-            }    
+            //         }
+              //  else {
+             //   redirect('restricted'); 
+            //    }
+         //   } else {
+          //      redirect('restricted');
+         //   }    
     }
 
     public function fblogout(){
@@ -828,7 +828,7 @@ var_dump($data);
            $error = array('error' =>  $this->upload->display_errors());
            
            echo 'couldnt upload';
-           
+           var_dump($error);
        } else {
            $file = $this->upload->data();
                 $config['image_library'] = 'gd2';
@@ -842,9 +842,13 @@ var_dump($data);
                 
            $path= base_url().'/images/'.$file['file_name'];
            $title = $file['file_name'];
-         
            
-           $this->crud->insertprofileimg($path,$title);
+           $dataimg = array(
+           'userid' => $this->input->post('id'),
+           'path' => $path,
+           'title' => $title,);
+           
+           $this->crud->insertprofileimg($dataimg);
            redirect('yprofile');
           // var_dump($file);
        }
