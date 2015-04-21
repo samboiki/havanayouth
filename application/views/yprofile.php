@@ -28,7 +28,7 @@
                     <a href="<?php echo base_url('yprofile');?>"><i class="fa fa-home"></i> <span class="name">Home</span></a>
                 </li>
                 <li class="">
-                    <a href="<?php echo site_url('notifications');?>"><i class="fa fa-th"></i> <span class="name">Jobs</span></a>
+                    <a href="<?php echo site_url('notifications');?>"><i class="fa fa-briefcase"></i> <span class="name">Jobs</span></a>
                 </li>
                 <li class="">
                     <a href="<?php echo site_url('notifications');?>"><i class="fa fa-th"></i> <span class="name">Notifications</span></a>
@@ -50,118 +50,6 @@
                         <a href="#" id="search-toggle">
                             <i class="fa fa-search"></i>
                         </a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" title="Messages" id="messages"
-                           class="dropdown-toggle"
-                           data-toggle="dropdown">
-                            <i class="fa fa-comments"></i>
-                        </a>
-                        <ul id="messages-menu" class="dropdown-menu messages" role="menu">
-                            <li role="presentation">
-                                <a href="#" class="message">
-                                    <img src="img/1.jpg" alt="">
-                                    <div class="details">
-                                        <div class="sender">Jane Hew</div>
-                                        <div class="text">
-                                            Hey, John! How is it going? ...
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="message">
-                                    <img src="img/2.jpg" alt="">
-                                    <div class="details">
-                                        <div class="sender">Alies Rumiancaŭ</div>
-                                        <div class="text">
-                                            I'll definitely buy this template
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="message">
-                                    <img src="img/3.jpg" alt="">
-                                    <div class="details">
-                                        <div class="sender">Michał Rumiancaŭ</div>
-                                        <div class="text">
-                                            Is it really Lore ipsum? Lore ...
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="text-align-center see-all">
-                                    See all messages <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" title="8 support tickets"
-                           class="dropdown-toggle"
-                           data-toggle="dropdown">
-                            <i class="fa fa-group"></i>
-                            <span class="count">8</span>
-                        </a>
-                        <ul id="support-menu" class="dropdown-menu support" role="menu">
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-important"><i class="fa fa-bell-o"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        Check out this awesome ticket
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-warning"><i class="fa fa-question-circle"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        "What is the best way to get ...
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-success"><i class="fa fa-tag"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        This is just a simple notification
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-info"><i class="fa fa-info-circle"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        12 new orders has arrived today
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-important"><i class="fa fa-plus"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        One more thing that just happened
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="text-align-center see-all">
-                                    See all tickets <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     <li class="divider"></li>
                     <li class="hidden-xs">
@@ -222,7 +110,7 @@
         <div class="content container">
        <h4 class="mt-sm mb-xs"><?=$user->firstname;?><small> Welcome</small></h4>
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <section class="widget">
                     <header>
                         <h5>
@@ -236,6 +124,7 @@
                             <li class="active"><a href="#information" data-toggle="tab">Info</a></li>
                             <li><a href="#profile" data-toggle="tab">Qualifications & Skills </a></li>
                             <li><a href="#work" data-toggle="tab">Work History</a></li>
+                            <li><a href="#images" data-toggle="tab">Images</a></li>                            
                            
                         </ul>
                         <div id="myTabContent" class="tab-content" >
@@ -257,38 +146,38 @@
                             </div>
                                 <div>
                                 <legend class="section">Personal Info</legend>
-                                <h5><label class="col-sm-4" for="prefix">Name:</label></h5>
-                                <div class="col-sm-4"><a><?=$user->firstname;?></a></div><div class="col-sm-2"></div><div class="col-sm-2"><a  class="btn btn-danger" href="#personalInfo" data-toggle="modal"><i class="fa fa-pencil" style="color:white"></i> edit</a></div></br></br>
+                                <h5><label class="col-sm-4" for="prefix">Name:</label></h4>
+                                <div class="col-sm-4"><strong><?=$user->firstname;?></strong></div><div class="col-sm-2"></div><div class="col-sm-2"><a  class="btn btn-primary" href="#personalInfo" data-toggle="modal"><i class="fa fa-pencil" style="color:white"></i> edit</a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Surname:</label></h5>
-                                <div class="col-sm-4"><a><?=$user->lastname;?></a></div></br></br>
+                                <div class="col-sm-4"><strong><?=$user->lastname;?></strong></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Gender:</label></h5>
-                                <div class="col-sm-4"><a><?=$user->gender;?></a></div></br></br>
+                                <div class="col-sm-4"><strong><?=$user->gender;?></strong></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">ID/Passport no:</label></h5>
-                                <div class="col-sm-4"><a>90092300123</a></div></br></br>
+                                <div class="col-sm-4"><strong>90092300123</strong></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Date of Birth:</label></h5>
-                                <div class="col-sm-4"><a><?=$user->birth_date;?></a></div></br></br>
+                                <div class="col-sm-4"><strong><?=$user->birth_date;?></strong></div></br></br>
                                 </div>
                                 <div>
                                 <legend class="section">Contact Info</legend>
                                 <h5><label class="col-sm-4" for="prefix">Mobile:</label></h5>
-                                <div class="col-sm-4"><a><?=$contact->mobile_phone?></a></div><div class="col-sm-2"></div><div class="col-sm-2"><a  class="btn btn-danger" href="#contacts" data-toggle="modal"><i class="fa fa-pencil" style="color:white"></i> edit</a></div></br></br>
+                                <div class="col-sm-4"><strong><?=$contact->mobile_phone?></strong></div><div class="col-sm-2"></div><div class="col-sm-2"><a  class="btn btn-primary" href="#contacts" data-toggle="modal"><i class="fa fa-pencil" style="color:white"></i> edit</a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Tel:</label></h5>
-                                <div class="col-sm-4"><a><?=$contact->telephone?></a></div></br></br>
+                                <div class="col-sm-4"><strong><?=$contact->telephone?></strong></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Email:</label></h5>
-                                <div class="col-sm-4"><a href=""><?=$contact->email;?></a></div></br></br>
+                                <div class="col-sm-4"><strong><?=$contact->email;?></strong></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Fax:</label></h5>
-                                <div class="col-sm-4"><a><?=$contact->fax;?></a></div></br></br>
+                                <div class="col-sm-4"><strong><?=$contact->fax;?></strong></div></br></br>
                                 </div>
                                 <div>
                                 <legend class="section">Address</legend>
-                                <h5><label class="col-sm-4" for="prefix">Adress:</label></h5>
-                                <div class="col-sm-4"><a> <?=$address->address;?> </a></div><div class="col-sm-2"></div><div class="col-sm-2"><a  class="btn btn-danger" href="#address" data-toggle="modal"><i class="fa fa-pencil" style="color:white"></i> edit</a></div></br>
+                                <h5><label class="col-sm-4" for="prefix">Address:</label></h5>
+                                <div class="col-sm-4"><strong><?=$address->erf?> <?=$address->street?> Street, <?=$address->suburb?></strong></div><div class="col-sm-2 pull-right"><a  class="btn btn-primary" href="#address" data-toggle="modal"><i class="fa fa-pencil" style="color:white"></i> edit</a></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">City</label></h5>
-                                <div class="col-sm-4"><a><?php echo $address->city?></a></div></br>
+                                <div class="col-sm-4"><strong><?php echo $address->city?></strong></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Region:</label></h5>
-                                <div class="col-sm-4"><a href=""><?php echo $address->region?></a></div></br>
+                                <div class="col-sm-4"><strong><?php echo $address->region?></strong></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Country:</label></h5>
-                                <div class="col-sm-4"><a><?php echo $address->country?></a></div></br></br>
+                                <div class="col-sm-4"><strong><?php echo $address->country?></strong></div></br></br>
                                 </div>
                                 <div>
                                 <article class="map-section">
@@ -347,7 +236,7 @@
                                 <div class="col-sm-3"> <a href="#edit_skill" onclick="fill_skill_edit('<?php echo $row->id?>', '<?php echo $row->skill?>', '<?php echo $row->rating?>')"  data-toggle="modal"><span class="btn btn-danger btn-xs"><i class="fa fa-pencil" style="color:white"></i>edit</span></a> <?php echo anchor("/delete/$row->id/skills",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete</span>' )?></div>
                                 <h5><label class="col-sm-2" for="prefix"><?php echo $row->skill;?>:</label></h5>
                                
-                                <div class="col-sm-2"><a><?php echo $row->rating;?></a></div>
+                                <div class="col-sm-2"><?php echo $row->rating;?></a></div>
                                 <div class="col-sm-4">
                                     <?php $rating = $row->rating; if ($rating == 1):?>
                                         <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>&nbsp&nbsp&nbsp&nbsp<span class="starred"><i class="fa fa-star"></i></span>
@@ -499,18 +388,23 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="row" style="margin-left:5px; margin-right: 5px">
-                                            <form action="/havanayouth/createaddress" method="post" accept-charset="utf-8">	
+                                            <form action="createaddress" method="post" accept-charset="utf-8">	
                                                           <div class="footer-col-inner">
                                                                         <div class="form-group">
                                                                            <?php if(isset($address)) :?>  
                                                                            <input type="hidden" name="id"  value="<?php echo $user->id?>" />
                                                                            <input type="hidden" name="page"  value="<?php echo "yprofile"?>" />
-                                                                           <div class="col-md-3"><label for="address">Address</label></div>
-                                                                           <div class="col-md-8"><textarea name="address" type="text" id="address" class="form-control" value="" ><?php echo $address->address?></textarea></div>
+                                                                           <div class="col-md-3"><label for="erf">Erf</label></div>
+                                                                           <div class="col-md-8"><input name="erf" type="text" id="address" class="form-control" value="<?php echo $address->erf?>" /></div>
+                                                                           <br><br><br>
+                                                                           <div class="col-md-3"><label for="street">Street</label></div>
+                                                                           <div class="col-md-8"><input name="street" type="text" id="tel" class="form-control" value="<?php echo $address->street?>" /></div>
+                                                                           <br><br><br>
+                                                                           <div class="col-md-3"><label for="suburb">Suburb</label></div>
+                                                                           <div class="col-md-8"><input name="suburb" type="text" id="suburb" class="form-control" value="<?php echo $address->suburb?>" /></div>
                                                                            <br><br><br>
                                                                            <div class="col-md-3"><label for="city">City</label></div>
                                                                            <div class="col-md-8"><input name="city" type="text" id="tel" class="form-control" value="<?php echo $address->city?>" /></div>
-                                                                           
                                                                            <br><br><br>
                                                                            <div class="col-md-3"><label for="region">Region</label></div>
                                                                            <div class="col-md-8"><input name="region" type="text" id="region" class="form-control" value="<?php echo $address->region?>" /></div>
@@ -772,20 +666,7 @@
                                                    </div> <!-- /content -->
                                                </div><!--//row-->
                                             </div>
-                                          <div class="footer-col col-md-7 col-sm-8 newsletter">
-                                              <div class="well with-header">
-                                                      <div class="header bordered-blue">User Details</div>
-                                                                <?php if(isset($contact)) :   ?>    
-                                                                <h0><strong>Mobile: </strong><?php echo $contact->mobile_phone?></h0></br></br> 
-                                                                <h0><strong>Tel: </strong><?php echo $contact->telephone?></h0></br></br>
-                                                                <h0><strong>Fax: </strong><?php echo $contact->fax?></h0></br></br>
-                                                                <h0><strong>Email: </strong><?php echo $contact->email?></h0></br></br>
-                                                              
-                                                                <?php else : ?>
-                                                                <h6>No records </h6>
-                                                                <?php endif; ?>
-                                              </div>
-                                          </div>
+                                       
                                           </div>
                            </div>
                             <div class="tab-pane fade" id="dropdown9">
@@ -837,7 +718,7 @@
                                           </div>
                                           </div>
                             </div>
-                            <div class="tab-pane fade" id="dropdown8">
+                            <div class="tab-pane fade" id="images">
                                 <div class="row">
                                           <div class="col-md-5 col-sm-6 col-xs-12">
                                                 <div class="well with-header">
@@ -846,13 +727,13 @@
                                                         <form action="uploadimg" method="post" accept-charset="utf-8" enctype="multipart/form-data">	
                                                              <div class="footer-col-inner">
                                                                     <div class="form-group">
+                                                                        <input type="hidden" name="id"  value="<?php echo $user->id?>" />
                                                                         <input name="userfile" type="file"  /><br>
                                                                         <br>
                                                                         <button type="submit" class="btn btn-primary">Validate &amp; Submit</button>
                                                                     </div>
                                                                </div><!--//footer-col-inner-->
                                                         </form>
-                                                        <?php echo $error;?>
                                                  </div>
                                                </div><!--//row-->
                                             </div>
@@ -874,11 +755,11 @@
                     </div>
                 </section>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <section class="widget large">
                     <header>
                         <h4>
-                            New jobs &nbsp;
+                            Jobs Alert &nbsp;
                             <span class="label label-success">412</span>
                         </h4>
                         <div class="actions">
