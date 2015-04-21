@@ -808,6 +808,7 @@ var_dump($data);
            'street' => $this->input->post('street'),
            'suburb' => $this->input->post('suburb'),
            'city' => $this->input->post('city'),
+           'country' => $this->input->post('country'),
            'region' => $this->input->post('region'),);
       
        $this->crud->add_address($data,$id);    
