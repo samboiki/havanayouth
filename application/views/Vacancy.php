@@ -125,26 +125,36 @@
                      
                         </div>
                             <div class="tab-pane fade " id="information">
-                                      <div>
+                                      <div class="row">
+                                <div class="col-sm-4">
+                                    
+                                </div>
+                                <div class="col-sm-8">
+                                  
+                                </div>
+                            </div>
+                                <div>
                                 <legend class="section">Qualifications</legend>
-                                 <table class="table table-striped table-bordered table-hover" id="expandabledatatable">
+                                 <table class="table table-striped table-bordered " id="expandabledatatable">
                                     <thead>
                                         <tr>
                                             <th></th>
-                                            <th>Qualification name</th>
-                                            <th>Institution</th>
-                                            <th>Date obtained</th>
+                                            <th>Type</th>
+                                            <th>Location</th>
+                                            <th>Description</th>
+                                            <th> Due Date</th>
                                         </tr>
                                         <?php if(isset($vacancy)) :  foreach ($vacancy as $row) : ?>                       
                                         <tr>
                                             <td>
-                                                <a href="#edit_qualification"   onclick="fill_qual_edit('<?php echo $row->ID ?>', '<?php echo $row->Type ?>', '<?php echo $row->Location ?>', '<?php echo $row->Description ?>', '<?php echo $row->Date ?>');" data-toggle="modal"><span class="btn btn-danger btn-xs"><i class="fa fa-pencil" style="color:white"></i>edit</span></a>
-                                                <?php echo anchor("/delete/$row->ID/qualifications",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete</span>' )?>
+                                                <a href="#edit_qualification"   onclick="fill_qual_edit('<?php echo $row->ID ?>', '<?php echo $row->Type ?>', '<?php echo $row->Location ?>', '<?php echo $row->Description ?>', '<?php echo $row->Date ?>');" data-toggle="modal"><span class="btn btn-primary"><i class="fa fa-pencil" style="color:white"></i>edit</span></a>
+                                       
                                             </td>
                                             <td><?php echo $row->Type;?></td>
                                             <td><?php echo $row->Location;?></td>
                                             <td><?php echo $row->Description;?></td>
                                             <td><?php echo $row->Date;?></td>
+                                              <td><?php echo anchor("/delete/$row->ID/qualifications",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete</span>' )?></td>
                                         </tr> 
                                         
                                          <?php endforeach;?>
@@ -161,10 +171,10 @@
                                 <div class="col-sm-3"><label></div>
                                 <div class="col-sm-3"><label></div>
                                  <div class="col-sm-3"><label></div>
-                                <div class="col-sm-3"><a  class="btn btn-danger" href="#new_qualification" data-toggle="modal"><i class="fa fa-plus" style="color:white"></i> Add qualification</a></div>
                                 
+                                </div>
                                 
-                            </div>
+                            
                             <div class="tab-pane fade " id="profile">
                              <div class="row">
                                 <div class="col-sm-4">
@@ -175,10 +185,11 @@
                              
                             </div>
                         
-
+   </div>
                 </section>
             </div>
             <div class="col-md-3">
+             
                 <section class="widget large">
                     <header>
                         <h4>
@@ -438,15 +449,11 @@
         <script src="assets/lib/backbone.paginator/lib/backbone.paginator.min.js"></script>
         <script src="assets/lib/backgrid/lib/backgrid.min.js"></script>
         <script src="assets/lib/backgrid-paginator/backgrid-paginator.js"></script>
-        <script src="assets/lib/datatables/media/js/jquery.dataTables.min.js"></script>
+      
 
         <!-- page application js -->
-        <script src="assets/js/tables-dynamic.js"></script>
-        <script src="assets/js/datatable/jquery.dataTables.min.js"></script>
-        <script src="assets/js/datatable/ZeroClipboard.js"></script>
-        <script src="assets/js/datatable/dataTables.tableTools.min.js"></script>
-        <script src="assets/js/datatable/dataTables.bootstrap.min.js"></script>
-        <script src="assets/js/datatable/datatables-init.js"></script>
+       
+     
         <script>
             InitiateSimpleDataTable.init();
             InitiateEditableDataTable.init();

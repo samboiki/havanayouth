@@ -37,7 +37,7 @@ class Nmrc extends Main_Controller {
                     );
                     
                     $this->crud->add_vacancy($vacancydata); 
-                    redirect('rprofile');
+                    redirect('vacancy');
             
    }
    
