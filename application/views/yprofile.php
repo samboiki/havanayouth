@@ -728,7 +728,7 @@
                                                              <div class="footer-col-inner">
                                                                     <div class="form-group">
                                                                         <input type="hidden" name="id"  value="<?php echo $user->id?>" />
-                                                                        <input name="userfile" type="file"  /><br>
+                                                                        <input name="userfile" type="file" size="100"   /><br>
                                                                         <br>
                                                                         <button type="submit" class="btn btn-primary">Validate &amp; Submit</button>
                                                                     </div>
@@ -742,7 +742,7 @@
                                                 <div class="header bordered-red">Lists of images on about page</div>
                                                 <?php if(isset($img)) : foreach($img as $rows) :  ?>    
                                                  <h0><strong><?php echo $rows->title; ?></strong></h0></br>
-                                                  <p><?php echo anchor("/delete_file/$rows->id/pimages/$rows->title",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete image</span>' ) ?></p>                                          
+                                                  <p><?php echo anchor("/delete_files/$rows->id/$rows->title",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete image</span>' ) ?></p>                                          
                                                  <?php  endforeach;?>
                                                  <?php else : ?>
                                                  <h6>No records </h6>

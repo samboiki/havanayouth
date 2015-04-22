@@ -267,7 +267,13 @@ class crud extends CI_Model {
     function delete_row($table){
         $this->db->where('id',$this->uri->segment(2));
         $this->db->delete($table);
-    }  
+    }
+    
+    function delete_image(){
+        $this->db->where('id',$this->uri->segment(2));
+        $this->db->delete('pimages');
+    } 
+    
     function resetp(){
         $this->db->where('id',$this->uri->segment(3));
         $data = array(
