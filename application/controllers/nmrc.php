@@ -216,13 +216,13 @@ class Nmrc extends Main_Controller {
     }  
     
     //function to delete a specific row in table
-    public function delete(){
-       $this->load->model('crud');
-       $table = $this->uri->segment(3); 
-       $this->crud->delete_row($table);
+    function delete_files(){  
+        $item = $this->uri->segment(3);
+        unlink('./images/'.$item);
+        $this->crud->delete_image();
         redirect('yprofile');
-   }
-    
+    }
+   
    //youth profile function , loads the required libraries , and view, gets data from db and passes it to view
     public function yprofile(){
         //loading required libraries and model
@@ -823,6 +823,7 @@ var_dump($data);
       $this->load->helper('url');
        $config['upload_path']= "./images/";
        $config['allowed_types']='*';
+       $config['max_size']  = 100;
        $this->load->library('upload',$config);
        
        if( !$this->upload->do_upload()){
@@ -867,7 +868,7 @@ var_dump($data);
        redirect('yprofile');
    } 
     
-    public function logout(){
+   public function logout(){
         $this->session->sess_destroy();
         $this->load->library('facebook');
         // Logs off session from website
@@ -876,7 +877,7 @@ var_dump($data);
         redirect('index.php');
     }
     
-     public function addQualification() {
+   public function addQualification() {
         $this->load->model('crud');
         $data = array(
             'userid' => $this->input->post('id'),
@@ -887,7 +888,8 @@ var_dump($data);
         $this->crud->add_qualification($data);
         redirect('yprofile');
     }
-        public function edit_qualification(){
+    
+   public function edit_qualification(){
        $this->load->model('crud');
        $id = $this->input->post('id');
        
@@ -899,7 +901,8 @@ var_dump($data);
        $this->crud->update_qualification($data, $id);
        redirect('yprofile');
     }
-    public function edit_skill(){
+   
+   public function edit_skill(){
       $this->load->model('crud');
       $id = $this->input->post('id');
       
