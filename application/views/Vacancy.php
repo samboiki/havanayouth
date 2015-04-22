@@ -125,24 +125,45 @@
                      
                         </div>
                             <div class="tab-pane fade " id="information">
-                                <div class="row">
-                                <div class="col-sm-4">
-                                </div>
-                            </div>
-                                <div>
-                              
-                                </div>
-                                <div>
+                                      <div>
+                                <legend class="section">Qualifications</legend>
+                                 <table class="table table-striped table-bordered table-hover" id="expandabledatatable">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Qualification name</th>
+                                            <th>Institution</th>
+                                            <th>Date obtained</th>
+                                        </tr>
+                                        <?php if(isset($vacancy)) :  foreach ($vacancy as $row) : ?>                       
+                                        <tr>
+                                            <td>
+                                                <a href="#edit_qualification"   onclick="fill_qual_edit('<?php echo $row->ID ?>', '<?php echo $row->Type ?>', '<?php echo $row->Location ?>', '<?php echo $row->Description ?>', '<?php echo $row->Date ?>');" data-toggle="modal"><span class="btn btn-danger btn-xs"><i class="fa fa-pencil" style="color:white"></i>edit</span></a>
+                                                <?php echo anchor("/delete/$row->ID/qualifications",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete</span>' )?>
+                                            </td>
+                                            <td><?php echo $row->Type;?></td>
+                                            <td><?php echo $row->Location;?></td>
+                                            <td><?php echo $row->Description;?></td>
+                                            <td><?php echo $row->Date;?></td>
+                                        </tr> 
+                                        
+                                         <?php endforeach;?>
+                                                                
+                                                                
+                                        <?php else : ?>
+                                                                <h6>No records </h6>
+                                        <?php endif; ?>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
+                                <div class="col-sm-3"><label></div>
+                                <div class="col-sm-3"><label></div>
+                                 <div class="col-sm-3"><label></div>
+                                <div class="col-sm-3"><a  class="btn btn-danger" href="#new_qualification" data-toggle="modal"><i class="fa fa-plus" style="color:white"></i> Add qualification</a></div>
                                 
-                                </div>
-                                <div>
-                               
-                                </div>
-                                <div>
-                                <article class="map-section">
-                                    <div id="map"></div><!--//map-->
-                                </article>
-                                </div>
+                                
                             </div>
                             <div class="tab-pane fade " id="profile">
                              <div class="row">

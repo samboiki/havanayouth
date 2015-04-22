@@ -32,7 +32,7 @@ class Nmrc extends Main_Controller {
                                     'location' => $this->input->post('location'),
                                     'description' => $this->input->post('description'),
                                     'date' => $this->input->post('date'),
-                                    'user_id' => $this->input->post('id'),
+                                    'userid' => $this->input->post('id'),
                                    
                     );
                     
@@ -692,11 +692,12 @@ var_dump($data);
             
                     if($this->session->userdata('role') == "employer"){            
                     // var_dump($this->session->all_userdata());
-                     $Cellphone = $this->session->userdata('cellphone');
+                     $Username = $this->session->userdata('username');
 
-                     $data['user'] = $this->crud->get_user($Cellphone);
+                     $data['user'] = $this->crud->get_user($Username);
                      $userid = $data['user']->id;
                      $data['contact'] = $this->crud->get_usercontacts($userid);
+                      $data['vacancy']= $this->crud->get_vacancy($userid);
                     // echo $data['contact']->id;
                      $this->load->helper('form');
                      $this->load->helper('url');

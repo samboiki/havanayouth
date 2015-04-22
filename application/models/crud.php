@@ -57,9 +57,10 @@ class crud extends CI_Model {
         $userdata = $query->row();
         return $userdata;
     }
-    function  get_vacancy($userID){
-        $this->db->where('user_id',$userID);
-       $query = $this->db->get('vacancy');
+    function  get_vacancy($id){
+        
+        $this->db->where('userid',161);
+        $query = $this->db->get('vacancy');
         return $query->result();
     }
     
