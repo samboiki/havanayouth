@@ -715,7 +715,11 @@ var_dump($data);
       $this->load->helper('url');
       $this->load->view('notifications');
     }
-    
+     public function registration(){
+      $this->load->helper('form');
+      $this->load->helper('url');
+      $this->load->view('registration');
+    }
     public function youthsearch(){
       $this->load->model('crud');
       $data['users'] = $this->crud->get_users(); 

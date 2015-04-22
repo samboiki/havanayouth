@@ -116,7 +116,7 @@
                                 <h5><label class="col-sm-4" for="prefix">Date of Birth:</label></h5>
                                 <div class="col-sm-4"><a><?=$user->birth_date?></a></div></br></br>
                                 </div>
-                                <div>
+                                <div> 
                                 <legend class="section">Contact Info</legend>
                                 <h5><label class="col-sm-4" for="prefix">Mobile:</label></h5>
                                 <div class="col-sm-4"><a><?=$contact->mobile_phone?></a></div></br></br>
