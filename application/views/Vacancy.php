@@ -82,10 +82,10 @@
                             <li><a href="#profile" data-toggle="tab">Rate</a></li>
                         </ul>
                         <div id="myTabContent" class="tab-content" >
-                                <div class="tab-pane fade in active " id="profile1">
+                                <div class="tab-pane fade in active "  id="profile1">
                            
                          
-                                          <div class="col-md-5 col-sm-6 col-xs-12" id="profile1">
+                                          <div class="col-md-8 col-sm-4 col-xs-12" id="profile1">
                                                 <div class="well with-header">
                                                 <div class="header bordered-blue">Fill in </div>
                                                 <div>
@@ -103,9 +103,11 @@
                                                                             
                                                                              </select> <br>                                                                 
                                                                            <label for="location">Location</label>
-                                                                           <input name="location" type="text" class="form-control"  /><br>
+                                                                           <input name="location" type="text" class="form-control" data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required" /><br>
                                                                            <label for="description">Description</label>
-                                                                         <textarea class="form-control" name="description" id="term" cols="40" rows="4"></textarea><br>
+                                                                           <textarea class="form-control" name="description"  id="term" cols="40" rows="4"></textarea><br>
                                                                            <label for="date">Closing date</label>
                                                                            <input name="date" type="date" data-date-format="YYYY-MM-DD" placeholder="2015-01-01"  class="form-control"  /><br>
                                                                            
@@ -134,7 +136,7 @@
                                 </div>
                             </div>
                                 <div>
-                                <legend class="section">Qualifications</legend>
+                                <legend class="section">Job I Posted</legend>
                                  <table class="table table-striped table-bordered " id="expandabledatatable">
                                     <thead>
                                         <tr>
@@ -443,6 +445,7 @@
 
     <!-- page specific scripts -->
         <!-- page libs -->
+         <script src="assets/lib/parsleyjs/dist/parsley.js"></script>
     <script src="assets/lib/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
         <script src="assets/lib/underscore/underscore.js"></script>
         <script src="assets/lib/backbone/backbone.js"></script>
