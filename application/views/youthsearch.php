@@ -128,7 +128,7 @@
                                                 <?php echo $row->skills;?>
                                                 </td>
                                                 <td>
-                                                <?php echo anchor("/jobrequest/$row->id/$row->mobile_phone",'<span class="btn btn-primary btn-xs">sent '."$row->firstname".' a job notification <i class="fa fa-comments" style="color:white"></i></span>' ) ?>
+                                                <?php echo anchor("/jobrequest/$row->id/$user->id",'<span class="btn btn-primary btn-xs">sent '."$row->firstname".' a job notification <i class="fa fa-comments" style="color:white"></i></span>' ) ?> 
                                                 </td>
                                                 <td>
                                                 <img class="" src="<?=$row->path;?>" width="100" height="100" alt="" />
@@ -142,7 +142,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>   
+                    </div>  
         </section>
         </div>
         <div class="loader-wrap hiding hide">

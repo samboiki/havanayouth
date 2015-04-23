@@ -171,9 +171,9 @@ class Nmrc extends Main_Controller {
                     $dataid = array(
                                     'userid' => $userid,
                     );
-                    if($this->input->post('role')=="youth"){
+                    
                        $this->crud->add_addresss($dataid);
-                    }
+                  
                     
                     // now im setting up session data
                     $data = array(
@@ -202,6 +202,43 @@ class Nmrc extends Main_Controller {
                 redirect();
             }
    }
+   
+   public function jobrequest(){
+      
+      $this->load->model('crud');
+      $this->load->library('facebook');
+      $this->load->library('session');
+      if($this->session->userdata('logged_in')){
+            
+                    if($this->session->userdata('role') == "employer"){            
+                    // var_dump($this->session->all_userdata());
+                     $Username = $this->session->userdata('username');
+
+                     $data['user'] = $this->crud->get_user($Username);
+                     $userid = $data['user']->id;
+                     $data['contact'] = $this->crud->get_usercontacts($userid);
+                     $data['users'] = $this->crud->get_users();
+                     $data['vacancy']= $this->crud->get_vacancy($userid);
+                    // echo $data['contact']->id;
+                     $this->load->helper('form');
+                     $this->load->helper('url');
+                     $data['requestorid'] = $this->uri->segment(3);
+                     $data['youthid'] = $this->uri->segment(2);
+                    // $this->jobrequests($data);
+                     redirect('jobrequests',$data);
+                     }
+                else {
+                redirect('restricted'); 
+                }
+            } else {
+                redirect('restricted');
+            } 
+   }
+   public function jobrequests($data){
+       //var_dump($data);
+       $this->load->view('jobrequest',$data);
+   }
+   
    
     public function validate_credentials(){
             $this->load->library('form_validation');
@@ -681,6 +718,8 @@ var_dump($data);
       $this->load->helper('url');
       $this->load->view('statistics');
     }
+    
+    
     public function vacancy(){
       //loading required libraries and model
         $this->load->library('facebook');
@@ -697,7 +736,7 @@ var_dump($data);
                      $data['user'] = $this->crud->get_user($Username);
                      $userid = $data['user']->id;
                      $data['contact'] = $this->crud->get_usercontacts($userid);
-                      $data['vacancy']= $this->crud->get_vacancy($userid);
+                     $data['vacancy']= $this->crud->get_vacancy($userid);
                     // echo $data['contact']->id;
                      $this->load->helper('form');
                      $this->load->helper('url');
@@ -718,11 +757,30 @@ var_dump($data);
     
     public function youthsearch(){
       $this->load->model('crud');
-      $data['users'] = $this->crud->get_users(); 
-      
-      $this->load->helper('form');
-      $this->load->helper('url');
-      $this->load->view('youthsearch',$data);
+      $this->load->library('facebook');
+      $this->load->library('session');
+      if($this->session->userdata('logged_in')){
+            
+                    if($this->session->userdata('role') == "employer"){            
+                    // var_dump($this->session->all_userdata());
+                     $Username = $this->session->userdata('username');
+
+                     $data['user'] = $this->crud->get_user($Username);
+                     $userid = $data['user']->id;
+                     $data['contact'] = $this->crud->get_usercontacts($userid);
+                     $data['users'] = $this->crud->get_users();
+                     $data['vacancy']= $this->crud->get_vacancy($userid);
+                    // echo $data['contact']->id;
+                     $this->load->helper('form');
+                     $this->load->helper('url');
+                     $this->load->view('youthsearch',$data);
+                     }
+                else {
+                redirect('restricted'); 
+                }
+            } else {
+                redirect('restricted');
+            } 
     }
 
     public function aprofile(){
