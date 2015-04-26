@@ -156,6 +156,12 @@ class crud extends CI_Model {
     {
         $this->db->insert('vacancy',$vacancydata);
     }
+    
+    function edit_vacancy($data,$id)
+    {
+        $this->db->where('id',$id);
+        $this->db->update('vacancy',$data);
+    }
     function add_skills($data){
       $this->db->insert('skills',$data);
     }

@@ -23,6 +23,41 @@ class Nmrc extends Main_Controller {
        $time = now();
        echo $time;
    }
+   
+   public function edit_vacancy(){
+       $this->load->model('crud');
+                    $vacancydata = array(
+                                  
+                                    'type' => $this->input->post('type'),
+                                    'location' => $this->input->post('location'),
+                                    'description' => $this->input->post('description'),
+                                    'date' => $this->input->post('date'),
+                                  
+                                   
+                    );
+                   $UsID = $this->input->post('id');
+                    $this->crud->edit_vacancy($vacancydata,$UsID); 
+                    redirect('vacancy');
+   }
+  public function edit_rprofile(){
+       $this->load->model('crud');
+                    $vacancydata = array(
+                                  
+                                    'type' => $this->input->post('type'),
+                                    'location' => $this->input->post('location'),
+                                    'description' => $this->input->post('description'),
+                                    'date' => $this->input->post('date'),
+                                  
+                                   
+                    );
+                   $UsID = $this->input->post('id');
+                    $this->crud->edit_vacancy($vacancydata,$UsID); 
+                     echo '<script>alert("Updated successful");
+                window.location = "/havanayouth/vacancy";
+                </script>';
+                   
+   }
+
    public function post_vacancy(){
        
        $this->load->model('crud');
@@ -37,7 +72,10 @@ class Nmrc extends Main_Controller {
                     );
                     
                     $this->crud->add_vacancy($vacancydata); 
-                    redirect('vacancy');
+                     echo '<script>alert("Vacancy posted successful");
+                window.location = "/havanayouth/vacancy";
+                </script>';
+                  
             
    }
    
@@ -312,6 +350,7 @@ class Nmrc extends Main_Controller {
                      $data['user'] = $this->crud->get_user($username);
                      $userid = $data['user']->id;
                      $data['contact'] = $this->crud->get_usercontacts($userid);
+                      $data['img'] = $this->crud->get_proimg($userid);
                     // echo $data['contact']->id;
                      $this->load->helper('form');
                      $this->load->helper('url');

@@ -23,9 +23,7 @@
         </div>
         <nav  class="sidebar nav-collapse collapse">
             <ul id="side-nav" class="side-nav">
-                 <li class="">
-                    <a href="<?php echo base_url('rprofile');?>"><i class="fa fa-home"></i> <span class="name">Home</span></a>
-                </li>
+                 
                 <li class="">
                     <a href="<?php echo site_url('vacancy');?>"><i class="fa fa-th"></i> <span class="name">Vacancy</span></a>
                 </li>
@@ -35,9 +33,7 @@
                 <li class="active">
                     <a href="<?php echo base_url('rprofile');?>"><i class="fa fa-gear"></i> <span class="name">Profile</span></a>
                 </li>
-                <li class="">
-                    <a href="<?php echo site_url('calendar');?>"><i class="fa fa-calendar"></i> <span class="name">Calender</span></a>
-                </li>
+               
                
                 <li class="visible-xs">
                     <a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out"></i> <span class="name">Sign Out</span></a>
@@ -151,7 +147,7 @@
                                     </div>
                                     <div class="modal-body">
                                 
-                                              <form action="<?php echo site_url('#')?>"  id="validation-form" class="form-horizontal form-label-left" method="post"
+                                              <form action="<?php echo site_url('edit_rprofile')?>"  id="validation-form" class="form-horizontal form-label-left" method="post"
                                                     data-parsley-priority-enabled="false" accept-charset="utf-8" class="no-margin"
                                                     novalidate="novalidate">
 
@@ -169,7 +165,7 @@
                                                               Name
                                                           </label>
                                                           <div class="col-md-10">
-                                                              <input value=" <?php echo $user->firstname?>" type="username" id="lastname" name="username" class="form-control"
+                                                              <input value=" <?php echo $user->firstname?>" type="username" id="lastname" name="firstname" class="form-control"
                                                                      data-parsley-trigger="change"
                                                                      data-parsley-validation-threshold="1"
                                                                      required="required">
@@ -180,7 +176,7 @@
                                                               Surname
                                                           </label>
                                                           <div class="col-md-10">
-                                                              <input value=" <?php echo $user->lastname?>" type="username" id="lastname" name="username" class="form-control"
+                                                              <input value=" <?php echo $user->lastname?>" type="username" id="lastname" name="lastname" class="form-control"
                                                                      data-parsley-trigger="change"
                                                                      data-parsley-validation-threshold="1"
                                                                      required="required">
@@ -190,19 +186,23 @@
                                                           <label class="control-label col-md-2" for="username">
                                                              Gender
                                                           </label>
-                                                          <div class="col-md-10">
-                                                              <input value=" <?php echo $user->gender?>" type="username" id="lastname" name="username" class="form-control"
-                                                                     data-parsley-trigger="change"
-                                                                     data-parsley-validation-threshold="1"
-                                                                     required="required">
-                                                          </div>
+                                                         
+                                                              <div id="gender" class="btn-group col-md-10" data-toggle="buttons">
+                                                                                <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                                                                    <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
+                                                                                </label>
+                                                                                <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                                                                    <input type="radio" name="gender" value="female" checked> Female
+                                                                                </label>
+                                                                           </div>
+                                                          
                                                       </div>
                                                        <div class="form-group">
                                                           <label class="control-label col-md-2" for="username">
                                                               Date of Birth
                                                           </label>
                                                           <div class="col-md-10">
-                                                              <input value=" <?php echo $user->birth_date?>" type="username" id="lastname" name="username" class="form-control"
+                                                              <input value=" <?php echo $user->birth_date?>" type="date" id="date" name="date" class="form-control"
                                                                      data-parsley-trigger="change"
                                                                      data-parsley-validation-threshold="1"
                                                                      required="required">
@@ -224,7 +224,7 @@
                                                               Mobile
                                                           </label>
                                                           <div class="col-md-10">
-                                                              <input value="<?php echo $contact->mobile_phone?>" type="username" id="lastname" name="username" class="form-control"
+                                                              <input value="<?php echo $contact->mobile_phone?>" type="username" id="lastname" name="mobile" class="form-control"
                                                                      data-parsley-trigger="change"
                                                                      data-parsley-validation-threshold="1"
                                                                      required="required">
@@ -235,7 +235,7 @@
                                                               Tel:
                                                           </label>
                                                           <div class="col-md-10">
-                                                              <input value="<?php echo $contact->telephone?>" type="username" id="lastname" name="username" class="form-control"
+                                                              <input value="<?php echo $contact->telephone?>" type="username" id="lastname" name="telephone" class="form-control"
                                                                      data-parsley-trigger="change"
                                                                      data-parsley-validation-threshold="1"
                                                                      required="required">
@@ -246,7 +246,7 @@
                                                              Email
                                                           </label>
                                                           <div class="col-md-10">
-                                                              <input value="<?php echo $contact->email?>" type="username" id="lastname" name="username" class="form-control"
+                                                              <input value="<?php echo $contact->email?>" type="username" id="lastname" name="email" class="form-control"
                                                                      data-parsley-trigger="change"
                                                                      data-parsley-validation-threshold="1"
                                                                      required="required">
@@ -257,7 +257,7 @@
                                                              Fax
                                                           </label>
                                                           <div class="col-md-10">
-                                                              <input value="<?php echo $contact->fax?>" type="username" id="lastname" name="username" class="form-control"
+                                                              <input value="<?php echo $contact->fax?>" type="username" id="lastname" name="fax" class="form-control"
                                                                      data-parsley-trigger="change"
                                                                      data-parsley-validation-threshold="1"
                                                                      required="required">
@@ -278,7 +278,7 @@
                                                               Address
                                                           </label>
                                                           <div class="col-md-10">
-                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="username" class="form-control"
+                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="address" class="form-control"
                                                                      data-parsley-trigger="change"
                                                                      data-parsley-validation-threshold="1"
                                                                      required="required">
@@ -289,7 +289,7 @@
                                                               City
                                                           </label>
                                                           <div class="col-md-10">
-                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="username" class="form-control"
+                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="city" class="form-control"
                                                                      data-parsley-trigger="change"
                                                                      data-parsley-validation-threshold="1"
                                                                      required="required">
@@ -300,7 +300,7 @@
                                                              Region
                                                           </label>
                                                           <div class="col-md-10">
-                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="username" class="form-control"
+                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="region" class="form-control"
                                                                      data-parsley-trigger="change"
                                                                      data-parsley-validation-threshold="1"
                                                                      required="required">
@@ -311,7 +311,7 @@
                                                              Country
                                                           </label>
                                                           <div class="col-md-10">
-                                                              <input value="kephas" type="username" id="lastname" name="username" class="form-control"
+                                                              <input value="kephas" type="username" id="lastname" name="country" class="form-control"
                                                                      data-parsley-trigger="change"
                                                                      data-parsley-validation-threshold="1"
                                                                      required="required">

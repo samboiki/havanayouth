@@ -17,9 +17,7 @@
         </div>
         <nav  class="sidebar nav-collapse collapse">
             <ul id="side-nav" class="side-nav">
-                <li class="">
-                    <a href="<?php echo base_url('rprofile');?>"><i class="fa fa-home"></i> <span class="name">Home</span></a>
-                </li>
+               
                 <li class="active">
                     <a href="<?php echo site_url('vacancy');?>"><i class="fa fa-th"></i> <span class="name">Vacancy</span></a>
                 </li>
@@ -29,9 +27,7 @@
                 <li class="">
                     <a href="<?php echo base_url('rprofile');?>"><i class="fa fa-gear"></i> <span class="name">Profile</span></a>
                 </li>
-                <li class="">
-                    <a href="<?php echo site_url('calendar');?>"><i class="fa fa-calendar"></i> <span class="name">Calender</span></a>
-                </li>
+               
                 
                 <li class="visible-xs">
                     <a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out"></i> <span class="name">Sign Out</span></a>
@@ -81,6 +77,10 @@
                             <li><a href="#information" data-toggle="tab">History</a></li>
                             <li><a href="#profile" data-toggle="tab">Rate</a></li>
                         </ul>
+                        
+                        
+                        
+                        
                         <div id="myTabContent" class="tab-content" >
                                 <div class="tab-pane fade in active "  id="profile1">
                            
@@ -89,8 +89,9 @@
                                                 <div class="well with-header">
                                                 <div class="header bordered-blue">Fill in </div>
                                                 <div>
-                                                            <form action="<?php echo site_url('post_vacancy')?>" id="validation_form" method="post" data-parsley-priority-enabled="false"
-                                                                          novalidate="novalidate">
+                                                           <form action="<?php echo site_url('post_vacancy')?>"  id="validation-form" class="form-horizontal form-label-left" method="post"
+                                                    data-parsley-priority-enabled="false" accept-charset="utf-8" class="no-margin"
+                                                    novalidate="novalidate">
                                                                 <input name="id" type="hidden" value=" <?php echo $user->id?>">
                                                                  <div class="footer-col-inner">
                                                                         <div class="form-group">
@@ -107,13 +108,19 @@
                                                                      data-parsley-validation-threshold="1"
                                                                      required="required" /><br>
                                                                            <label for="description">Description</label>
-                                                                           <textarea class="form-control" name="description"  id="term" cols="40" rows="4"></textarea><br>
+                                                                           <textarea class="form-control" name="description"  id="term" cols="40" rows="4"  data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required"></textarea><br>
                                                                            <label for="date">Closing date</label>
-                                                                           <input name="date" type="date" data-date-format="YYYY-MM-DD" placeholder="2015-01-01"  class="form-control"  /><br>
+                                                                          
+                                                                           
+                                                                           <input name="date" type="date" data-date-format="YYYY-MM-DD" placeholder="2015-01-01"  class="form-control"  data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required" /><br>
                                                                            
                                                                          
                                                                            <br>
-                                                                            <button type="submit" class="btn btn-primary">Post Vacancy</button>
+                                                                              <button type="submit" class="btn btn-primary">Post vacancy</button><br>
                                                                         </div>
                                                                    </div><!--//footer-col-inner-->
                                                             </form>
@@ -136,27 +143,28 @@
                                 </div>
                             </div>
                                 <div>
-                                <legend class="section">Job I Posted</legend>
+                                <legend class="section">Jobs Posted</legend>
                                  <table class="table table-striped table-bordered " id="expandabledatatable">
                                     <thead>
                                         <tr>
-                                            <th></th>
+                                           
                                             <th>Type</th>
                                             <th>Location</th>
                                             <th>Description</th>
                                             <th> Due Date</th>
+                                             <th></th>
                                         </tr>
                                         <?php if(isset($vacancy)) :  foreach ($vacancy as $row) : ?>                       
                                         <tr>
-                                            <td>
-                                                <a href="#edit_qualification"   onclick="fill_qual_edit('<?php echo $row->ID ?>', '<?php echo $row->Type ?>', '<?php echo $row->Location ?>', '<?php echo $row->Description ?>', '<?php echo $row->Date ?>');" data-toggle="modal"><span class="btn btn-primary"><i class="fa fa-pencil" style="color:white"></i>edit</span></a>
-                                       
-                                            </td>
+                                          
                                             <td><?php echo $row->Type;?></td>
                                             <td><?php echo $row->Location;?></td>
                                             <td><?php echo $row->Description;?></td>
                                             <td><?php echo $row->Date;?></td>
-                                              <td><?php echo anchor("/delete/$row->ID/qualifications",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete</span>' )?></td>
+                                               <td>
+                                                <a href="#edit_qualification"   onclick="fill_vacancy_edit('<?php echo $row->ID ?>', '<?php echo $row->Type ?>', '<?php echo $row->Location ?>', '<?php echo $row->Description ?>', '<?php echo $row->Date ?>');" data-toggle="modal"><span class="btn btn-primary"><i class="fa fa-pencil" style="color:white"></i>edit</span></a>
+                                       
+                                            </td> 
                                         </tr> 
                                         
                                          <?php endforeach;?>
@@ -174,6 +182,62 @@
                                 <div class="col-sm-3"><label></div>
                                  <div class="col-sm-3"><label></div>
                                 
+                                 
+                                 
+                                   <div id="edit_qualification" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                               <div class="modal-dialog">
+                                <div class="modal-content">
+                                     <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Add skill</strong></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row" style="margin-left:5px; margin-right: 5px">
+                                            <form action="<?php echo site_url('edit_vacancy')?>"  id="validation-form" class="form-horizontal form-label-left" method="post"
+                                                    data-parsley-priority-enabled="false" accept-charset="utf-8" class="no-margin"
+                                                    novalidate="novalidate">
+                                              
+                                                          <div class="footer-col-inner">
+                                                                        <div class="form-group">  
+                                                                          
+                                                                           <input type="hidden" name="id" id="V_id" value="" />
+                                                                           <div class="col-md-3"><label for="name">Location</label></div>
+                                                                           <div class="col-md-8"><input name="location" type="text" id="v_location" class="form-control" value="" /></div>
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="name">Description</label></div>
+                                                                           <div class="col-md-8"><input name="description" type="text" id="v_description" class="form-control" value="" data-parsley-trigger="change"
+                                                                                   data-parsley-validation-threshold="1"
+                                                                                     required="required" /></div>
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="name">Date</label></div>
+                                                                           <div class="col-md-8"><input name="date" type="date" id="v_date" class="form-control" value="" /></div>
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="rating">Rating</label></div>
+                                                                           <div class="col-md-8">
+                                                                               <select name="type" type="text" id="type"  class="form-control">
+                                                                                 
+                                                                                   <option >Part-Time</option>
+                                                                                   <option >Full-Time</option>
+                                                                                   
+                                                                               </select>
+                                                                           </div>
+                                                                           
+                                                                           <br><br>  
+                                                                          
+                                                                            
+                                                                        </div>
+                                                                   </div><!--//footer-col-inner-->
+                                                            
+                                        </div>           
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Save</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                     
+                                    </div>
+                                        </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div> 
                                 </div>
                                 
                             
@@ -385,14 +449,7 @@
 <!-- common application js -->
 <script src="assets/js/app.js"></script>
 <script src="assets/js/settings.js"></script>
-<script src="assets/lib/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="assets/lib/jquery.sparkline/index.js"></script>
 
-<script src="assets/lib/d3/d3.min.js"></script>
-        <script src="assets/lib/nvd3/nv.d3.min.js"></script>
-
-        <!-- page application js -->
-        <script src="assets/js/index.js"></script>
 <!-- common templates -->
 <script type="text/template" id="settings-template">
     <div class="setting clearfix">
@@ -445,26 +502,22 @@
 
     <!-- page specific scripts -->
         <!-- page libs -->
-         <script src="assets/lib/parsleyjs/dist/parsley.js"></script>
-    <script src="assets/lib/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-        <script src="assets/lib/underscore/underscore.js"></script>
-        <script src="assets/lib/backbone/backbone.js"></script>
-        <script src="assets/lib/backbone.paginator/lib/backbone.paginator.min.js"></script>
-        <script src="assets/lib/backgrid/lib/backgrid.min.js"></script>
-        <script src="assets/lib/backgrid-paginator/backgrid-paginator.js"></script>
-      
+        <script src="assets/lib/parsleyjs/dist/parsley.min.js"></script>
 
         <!-- page application js -->
-       
-     
-        <script>
-            InitiateSimpleDataTable.init();
-            InitiateEditableDataTable.init();
-            InitiateExpandableDataTable.init();
-            InitiateSearchableDataTable.init();
+        <script src="assets/js/forms-validation.js"></script>
+
+    <script type="text/javascript">
+            function fill_vacancy_edit(id, type, location,description, date){
+               $("#V_id").val(id);
+               $("#type").val(type);
+               $("#v_location").val(location);
+               $("#v_description").val(description);
+               $("#v_date").val(date);
+               
+            }
+          
+            
         </script>
-        <!-- page application js -->
-  
-
 </body>
 </html>
