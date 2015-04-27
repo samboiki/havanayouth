@@ -135,6 +135,14 @@ class crud extends CI_Model {
                 return false;
             }
     }
+    function get_rating($userid)
+    {
+         $this->db->where('empid',$userid);
+        $query = $this->db->get('rateyouthview');
+        return $query->result();
+        
+    }
+    
     function get_role($userid){
          $this->db->where('id',$userid);
          $query = $this->db->get('user');
@@ -155,6 +163,11 @@ class crud extends CI_Model {
     function add_vacancy($vacancydata)
     {
         $this->db->insert('vacancy',$vacancydata);
+    }
+    function edit_rate($data,$id)
+    {
+        $this->db->where('id',$id);
+        $this->db->update('rateyouth',$data);
     }
     
     function edit_vacancy($data,$id)

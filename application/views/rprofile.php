@@ -17,7 +17,7 @@
         */
     </script>
 </head>
-<body class="background-dark">
+<body >
         <div class="logo">
         <h4><a href="index.html">Havana <strong>Youth</strong></a></h4>
         </div>
@@ -370,9 +370,9 @@
                                                               Current Password:
                                                           </label>
                                                           <div class="col-md-10">
-                                                              <input value="<?php echo $contact->telephone?>" type="username" id="lastname" name="username" class="form-control"
+                                                              <input  placeholder="Type your password here" type="password" id="password" name="password" class="form-control input-transparent"
                                                                      data-parsley-trigger="change"
-                                                                     data-parsley-validation-threshold="1"
+                                                                     data-parsley-minlength="6"
                                                                      required="required">
                                                           </div>
                                                       </div>
@@ -381,24 +381,13 @@
                                                             New Password
                                                           </label>
                                                           <div class="col-md-10">
-                                                              <input value="<?php echo $contact->email?>" type="username" id="lastname" name="username" class="form-control"
+                                                              <input  placeholder="Type your password here" type="password" id="password" name="Newpassword" class="form-control input-transparent"
                                                                      data-parsley-trigger="change"
-                                                                     data-parsley-validation-threshold="1"
+                                                                     data-parsley-minlength="6"
                                                                      required="required">
                                                           </div>
                                                       </div>
-                                                       <div class="form-group">
-                                                          <label class="control-label col-md-2" for="username">
-                                                             Confirm Password
-                                                          </label>
-                                                          <div class="col-md-10">
-                                                              <input value="<?php echo $contact->fax?>" type="username" id="lastname" name="username" class="form-control"
-                                                                     data-parsley-trigger="change"
-                                                                     data-parsley-validation-threshold="1"
-                                                                     required="required">
-                                                          </div>
-                                                      </div>
-                                                      
+                                                                                                        
                                                   </fieldset>
                                                 <fieldset>
                                                       <legend class="section">
@@ -420,17 +409,7 @@
                                                                      required="required">
                                                           </div>
                                                       </div>
-                                                       <div class="form-group">
-                                                          <label class="control-label col-md-2" for="username">
-                                                             Region
-                                                          </label>
-                                                          <div class="col-md-10">
-                                                              <input placeholder="Please type your user name here" type="username" id="lastname" name="username" class="form-control"
-                                                                     data-parsley-trigger="change"
-                                                                     data-parsley-validation-threshold="1"
-                                                                     required="required">
-                                                          </div>
-                                                      </div>
+                                                      
                                                        
                                                       
                                                   </fieldset>

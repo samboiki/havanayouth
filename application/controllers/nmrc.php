@@ -24,6 +24,22 @@ class Nmrc extends Main_Controller {
        echo $time;
    }
    
+   public function edit_rating(){
+       $this->load->model('crud');
+                    $ratingdata = array(
+                                  
+                                    'comment' => $this->input->post('comment'),
+                                    'rating' => $this->input->post('rate'),
+                                   
+                                  
+                                   
+                    );
+                   $rateID = $this->input->post('id');
+                    $this->crud->edit_rate($ratingdata,$rateID); 
+                    redirect('vacancy');
+       
+   }
+   
    public function edit_vacancy(){
        $this->load->model('crud');
                     $vacancydata = array(
@@ -776,6 +792,7 @@ var_dump($data);
                      $userid = $data['user']->id;
                      $data['contact'] = $this->crud->get_usercontacts($userid);
                      $data['vacancy']= $this->crud->get_vacancy($userid);
+                     $data['rating']= $this->crud->get_rating($userid);
                     // echo $data['contact']->id;
                      $this->load->helper('form');
                      $this->load->helper('url');

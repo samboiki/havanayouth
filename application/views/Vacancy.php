@@ -75,7 +75,7 @@
                         <ul id="myTab" class="nav nav-tabs">
                             <li class="active"><a href="#profile1" data-toggle="tab">Post Vacancy</a></li>
                             <li><a href="#information" data-toggle="tab">History</a></li>
-                            <li><a href="#profile" data-toggle="tab">Rate</a></li>
+                            <li><a href="#rate" data-toggle="tab">Rate</a></li>
                         </ul>
                         
                         
@@ -189,7 +189,7 @@
                                 <div class="modal-content">
                                      <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Add skill</strong></h4>
+                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Updating Vacancy</strong></h4>
                                     </div>
                                     <div class="modal-body">
                                         <div class="row" style="margin-left:5px; margin-right: 5px">
@@ -212,7 +212,7 @@
                                                                            <div class="col-md-3"><label for="name">Date</label></div>
                                                                            <div class="col-md-8"><input name="date" type="date" id="v_date" class="form-control" value="" /></div>
                                                                            <br><br>
-                                                                           <div class="col-md-3"><label for="rating">Rating</label></div>
+                                                                           <div class="col-md-3"><label for="rating">Type</label></div>
                                                                            <div class="col-md-8">
                                                                                <select name="type" type="text" id="type"  class="form-control">
                                                                                  
@@ -252,7 +252,140 @@
                             </div>
                         
    </div>
-                </section>
+                            
+                            <div class="tab-pane fade " id="rate">
+                                      <div class="row">
+                                <div class="col-sm-4">
+                                    
+                                </div>
+                                <div class="col-sm-8">
+                                  
+                                </div>
+                            </div>
+                                <div>
+                                <legend class="section">Youth that worked for you</legend>
+                                 <table class="table table-striped table-bordered " id="expandabledatatable">
+                                    <thead>
+                                        <tr>
+                                           
+                                            <th >Name</th>
+                                            <th>Surname</th>
+                                            <th>Comment</th>
+                                            <th> Rate</th>
+                                             <th></th>
+                                        </tr>
+                                        <?php if(isset($rating)) :  foreach ($rating as $row) : ?>                       
+                                        <tr>
+                                          
+                                            <td ><?php echo $row->firstname;?></td>
+                                            <td><?php echo $row->lastname;?></td>
+                                            <td style=""><?php echo $row->comment;?></td>
+                                            <td> 
+                                <div class="col-sm-11">
+                                    <?php $rating = $row->rate; if ($rating == 1):?>
+                                     <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star"></i></span><span class="starred"><i class="fa fa-star"></i></span><span class="starred"><i class="fa fa-star"></i></span><span class="starred"><i class="fa fa-star"></i></span>
+                                        <?php elseif ($rating == 2): ?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star"></i></span><span class="starred"><i class="fa fa-star"></i></span><span class="starred"><i class="fa fa-star"></i></span>
+                                        <?php elseif ($rating == 3): ?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star"></i></span><span class="starred"><i class="fa fa-star"></i></span>
+                                        <?php elseif ($rating == 4): ?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star"></i></span>
+                                        <?php elseif ($rating == 5): ?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>
+                                        <?php else : ?>
+                                        <?php endif; ?>
+                                </div></td>
+                                               <td>
+                                                <a href="#edit_rating"   onclick="fill_rate_edit('<?php echo $row->rateid ?>', '<?php echo $row->comment ?>', '<?php echo $row->rate ?>');" data-toggle="modal"><span class="btn btn-primary"><i class="fa fa-pencil" style="color:white"></i>edit</span></a>
+                                       
+                                            </td> 
+                                        </tr> 
+                                        
+                                         <?php endforeach;?>
+                                                                
+                                                                
+                                        <?php else : ?>
+                                                                <h6>No records </h6>
+                                        <?php endif; ?>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
+                                <div class="col-sm-3"><label></div>
+                                <div class="col-sm-3"><label></div>
+                                 <div class="col-sm-3"><label></div>
+                                
+                                 
+                                 
+                                   <div id="edit_rating" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                               <div class="modal-dialog">
+                                <div class="modal-content">
+                                     <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Add skill</strong></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row" style="margin-left:5px; margin-right: 5px">
+                                            <form action="<?php echo site_url('edit_rating')?>"  id="validation-form" class="form-horizontal form-label-left" method="post"
+                                                    data-parsley-priority-enabled="false" accept-charset="utf-8" class="no-margin"
+                                                    novalidate="novalidate">
+                                              
+                                                          <div class="footer-col-inner">
+                                                                        <div class="form-group">  
+                                                                          
+                                                                           <input type="hidden" name="id" id="r_id" value="" />
+                                                                           
+                                                                           <div class="col-md-3"><label for="name">Comment</label></div>
+                                                                           <div class="col-md-8"><input name="comment" type="text" id="r_comment" class="form-control" value="" /></div>
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="rating">Rating</label></div>
+                                                                           <div class="col-md-8">
+                                                                               <select name="rate" type="text" id="r_rate"  class="form-control">
+                                                                                 
+                                                                                   
+                                                                                   <option >1</option>
+                                                                                   <option >2</option>
+                                                                                   <option >3</option>
+                                                                                   <option >4</option>
+                                                                                   <option >5</option>
+                                                                                   
+                                                                               </select>
+                                                                           </div>
+                                                                           
+                                                                           <br><br>  
+                                                                          
+                                                                            
+                                                                        </div>
+                                                                   </div><!--//footer-col-inner-->
+                                                            
+                                        </div>           
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Save</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                     
+                                    </div>
+                                        </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div> 
+                                </div>
+                                
+                            
+                            <div class="tab-pane fade " id="profile">
+                             <div class="row">
+                                <div class="col-sm-4">
+                                   
+                                </div>
+                             
+                            </div>
+                             
+                            </div>
+               
+                            
+                            
+                            
+                            </section>
             </div>
             <div class="col-md-3">
              
@@ -516,7 +649,14 @@
                $("#v_date").val(date);
                
             }
-          
+          function fill_rate_edit(id, comment, rate){
+               $("#r_id").val(id);
+               $("#r_comment").val(comment);
+               $("#r_rate").val(rate);
+              
+             
+               
+            }
             
         </script>
 </body>
