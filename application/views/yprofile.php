@@ -152,8 +152,6 @@
                                 <div class="col-sm-4"><strong><?=$user->lastname;?></strong></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Gender:</label></h5>
                                 <div class="col-sm-4"><strong><?=$user->gender;?></strong></div></br></br>
-                                <h5><label class="col-sm-4" for="prefix">ID/Passport no:</label></h5>
-                                <div class="col-sm-4"><strong>90092300123</strong></div></br></br>
                                 <h5><label class="col-sm-4" for="prefix">Date of Birth:</label></h5>
                                 <div class="col-sm-4"><strong><?=$user->birth_date;?></strong></div></br></br>
                                 </div>
@@ -207,8 +205,8 @@
                                         <?php if(isset($qualifications)) :  foreach ($qualifications as $row) : ?>                       
                                         <tr>
                                             <td>
-                                                <a href="#edit_qualification"   onclick="fill_qual_edit('<?php echo $row->id ?>', '<?php echo $row->institution ?>', '<?php echo $row->date ?>', '<?php echo $row->name ?>', '<?php echo $row->date ?>');" data-toggle="modal"><span class="btn btn-danger btn-xs"><i class="fa fa-pencil" style="color:white"></i>edit</span></a>
-                                                <?php echo anchor("/delete/$row->id/qualifications",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete</span>' )?>
+                                                <a href="#edit_qualification"   onclick="fill_qual_edit('<?php echo $row->id ?>', '<?php echo $row->institution ?>', '<?php echo $row->date ?>', '<?php echo $row->name ?>', '<?php echo $row->date ?>');" data-toggle="modal"><span class="btn btn-primary btn-xs"><i class="fa fa-pencil" style="color:white"></i>edit</span></a>
+                                                <a class="btn btn-danger btn-xs" data-toggle="modal" href="#qualification_delete" onclick="getQualificationID('<?php echo $row->id ?>')"><i class="fa fa-trash" style="color:white"></i>delete</a>
                                             </td>
                                             <td><?php echo $row->name;?></td>
                                             <td><?php echo $row->institution;?></td>
@@ -229,11 +227,11 @@
                                 <div class="col-sm-3"><label></div>
                                 <div class="col-sm-3"><label></div>
                                  <div class="col-sm-3"><label></div>
-                                <div class="col-sm-3"><a  class="btn btn-danger" href="#new_qualification" data-toggle="modal"><i class="fa fa-plus" style="color:white"></i> Add qualification</a></div>
+                                <div class="col-sm-3"><a  class="btn btn-primary" href="#new_qualification" data-toggle="modal"><i class="fa fa-plus" style="color:white"></i> Add qualification</a></div>
                                 <br><br>
                                 <legend class="section">Skills</legend>
                                 <?php if(isset($skills)) :  foreach ($skills as $row) : ?> 
-                                <div class="col-sm-3"> <a href="#edit_skill" onclick="fill_skill_edit('<?php echo $row->id?>', '<?php echo $row->skill?>', '<?php echo $row->rating?>')"  data-toggle="modal"><span class="btn btn-danger btn-xs"><i class="fa fa-pencil" style="color:white"></i>edit</span></a> <?php echo anchor("/delete/$row->id/skills",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete</span>' )?></div>
+                                <div class="col-sm-3"> <a href="#edit_skill" onclick="fill_skill_edit('<?php echo $row->id?>', '<?php echo $row->skill?>', '<?php echo $row->rating?>')"  data-toggle="modal"><span class="btn btn-primary btn-xs"><i class="fa fa-pencil" style="color:white"></i>edit</span></a> <a class="btn btn-danger btn-xs" data-toggle="modal" href="#skill_delete" onclick="getSkillID('<?php echo $row->id ?>')"><i class="fa fa-trash" style="color:white"></i>delete</a></div>
                                 <h5><label class="col-sm-2" for="prefix"><?php echo $row->skill;?>:</label></h5>
                                
                                 <div class="col-sm-2"><?php echo $row->rating;?></a></div>
@@ -262,7 +260,7 @@
                                 <div class="col-sm-3"><label></div>
                                 <div class="col-sm-3"><label></div>
                                  <div class="col-sm-3"><label></div>
-                                <div class="col-sm-3"><a  class="btn btn-danger" href="#new_skill" data-toggle="modal"><i class="fa fa-plus" style="color:white"></i> Add skill</a></div>
+                                <div class="col-sm-3"><a  class="btn btn-primary" href="#new_skill" data-toggle="modal"><i class="fa fa-plus" style="color:white"></i> Add skill</a></div>
                             </div>
                             <div class="tab-pane fade" id="dropdown3">
                                  
@@ -290,24 +288,14 @@
                                                                            <div class="col-md-8"><input name="lastname" type="text" class="form-control" value="<?php echo $user->lastname?>" /></div>
                                                                            
                                                                            <br><br>
-                                                                           <div class="col-md-3"><label for="id_or_passport">ID/Passport no.</label></div>
-                                                                           <div class="col-md-8"><input name="id_or_passport" type="text"  class="form-control" value="90092300123" /></div>
-                                                                           <br><br>
-                                                                           <div class="col-md-3"><label for="exp">Gender</label></div>
-                                                                           <div id="gender" class="btn-group col-md-8" data-toggle="buttons">
-                                                                                <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                                    <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
-                                                                                </label>
-                                                                                <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                                    <input type="radio" name="gender" value="female" checked> Female
-                                                                                </label>
-                                                                           </div>
+                                                                           <div class="col-md-3"><label for="gender">Gender</label></div>
+                                                                           <div class="col-md-8"><input name="gender" type="text"  class="form-control" value="<?php echo $user->gender?>" /></div>
                                                                            <br><br>
                                                                            <div class="col-md-3"><label for="exp">Birth date</label></div>
                                                                            
                                                                             <div class="col-md-8">
                                                                                 <div class="input-group">
-                                                                                    <input class="form-control date-picker" id="id-date-picker-1" name="birth_date" type="date" data-date-format="YYYY-MM-DD" placeholder="<?php echo $user->birth_date?>">
+                                                                                    <input class="form-control date-picker" id="id-date-picker-1" name="birth_date" type="date" data-date-format="YYYY-MM-DD" placeholder="" value="<?php echo $user->birth_date?>">
                                                                                     <span class="input-group-addon">
                                                                                         <i class="fa fa-calendar"></i>
                                                                                     </span>
@@ -509,7 +497,34 @@
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                         </div>    
-                          <div id="new_skill" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                          <div id="qualification_delete" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                               <div class="modal-dialog">
+                                <div class="modal-content">
+                                     <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Delete confirmation</strong></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row" style="margin-left:5px; margin-right: 5px">
+                                                          <div class="footer-col-inner">
+                                                                        <div class="form-group">  
+                                                                            <input type="hidden" name="id" id="qq_id" value="" />
+                                                                           <input type="hidden" name="page"  value="" />
+                                                                           <div class="col-md-10"><label for="name">Are you sure you want to permanently delete this qualification?</label></div>
+                                                                            
+                                                                        </div>
+                                                                   </div><!--//footer-col-inner-->
+                                                            
+                                        </div>           
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-danger" onclick="deleteQualification()">Yes</button><button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                                        </form>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div> 
+                            <div id="new_skill" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                <div class="modal-dialog">
                                 <div class="modal-content">
                                      <div class="modal-header">
@@ -599,6 +614,33 @@
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                         </div>  
+                            <div id="skill_delete" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                               <div class="modal-dialog">
+                                <div class="modal-content">
+                                     <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Delete confirmation</strong></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row" style="margin-left:5px; margin-right: 5px">
+                                                          <div class="footer-col-inner">
+                                                                        <div class="form-group">  
+                                                                            <input type="hidden" name="id" id="ss_id" value="" />
+                                                                           <input type="hidden" name="page"  value="" />
+                                                                           <div class="col-md-10"><label for="name">Are you sure you want to permanently delete this skill?</label></div>
+                                                                            
+                                                                        </div>
+                                                                   </div><!--//footer-col-inner-->
+                                                            
+                                        </div>           
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-danger" onclick="deleteSkill()">Yes</button><button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                                        </form>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div> 
                             <div class="tab-pane fade" id="dropdown4">
                                 <div class="row">
                                           <div class="col-md-5 col-sm-6 col-xs-12">
@@ -629,7 +671,7 @@
                                                                 <?php if(isset($skills)) :  foreach ($skills as $row) : ?>    
                                                                 <h0><strong>Skill: </strong><?php echo $row->skill;?></h0>&nbsp;&nbsp;&nbsp;
                                                                 <h0><strong>Rating: </strong><?php echo $row->rating;?></h0></br>
-                                                                <p><?php echo anchor("/delete/$row->id/skills",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete skill</span>' ) ?></p> </br></br>
+                                                                <p><?php echo anchor("/delete/$row->id/skills/profile",'<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete skill</span>' ) ?></p> </br></br>
                                                                 <?php endforeach;?>
                                                                 <?php else : ?>
                                                                 <h6>No records </h6>
@@ -913,6 +955,23 @@
                $("#sid").val(id);
                $("#sskill").val(skill);
                $("#rrating").val(rating);
+            }
+            function getSkillID(id){
+                $("#ss_id").val(id);
+            }
+            
+            function getQualificationID(id){
+                $("#qq_id").val(id);
+            }
+            
+            function deleteQualification(){
+                var id = $("#qq_id").val();
+                location.href = "/havanayouth/delete/"+id+"/qualifications/yprofile";
+            }
+            
+            function deleteSkill(){
+                var id = $("#ss_id").val();
+                location.href = "/havanayouth/delete/"+id+"/skills/yprofile";
             }
             
         </script>
