@@ -345,13 +345,13 @@ class Nmrc extends Main_Controller {
                             );
                 //adding jobs to database 
                 $this->crud->add_jobs($jobs);
-              //var_dump($jobs);
+              var_dump($jobs);
                 echo $message;
                 
                 $sms['to'] = $to;
                 $sms['message'] = $message;
                
-                $this->load->view('test',$sms);
+              //  $this->load->view('test',$sms);
              }
             else {
             redirect('restricted'); 
@@ -410,7 +410,7 @@ class Nmrc extends Main_Controller {
                      $data['skills'] = $this->crud->get_skills($userid);
                      $data['address'] = $this->crud->get_address($userid);
                      $data['qualifications']= $this->crud->get_qualifications($userid);
-                     //$data['workhistory']= $this->crud->get_workhistory($userid);
+                     $data['workhistory']= $this->crud->get_workhistory($userid);
                      $data['img'] = $this->crud->get_proimg($userid);
                      //$img = $data['img'];
                     // var_dump($img);
