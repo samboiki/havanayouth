@@ -267,7 +267,7 @@ class Nmrc extends Main_Controller {
                     if($this->session->userdata('role') == "employer"){            
                     // var_dump($this->session->all_userdata());
                      $Username = $this->session->userdata('username');
-
+                    
                      $data['user'] = $this->crud->get_user($Username);
                      $userid = $data['user']->id;
                      $data['contact'] = $this->crud->get_usercontacts($userid);
@@ -276,10 +276,15 @@ class Nmrc extends Main_Controller {
                     // echo $data['contact']->id;
                      $this->load->helper('form');
                      $this->load->helper('url');
-                     $data['requestorid'] = $this->uri->segment(3);
-                     $data['youthid'] = $this->uri->segment(2);
+                     $requestorid = $this->uri->segment(3);
+                     $youthid = $this->uri->segment(2);
+                     $this->session->set_userdata('youthid', $youthid);
+                     $this->session->set_userdata('requestorid', $requestorid);
+                     //echo $youthid;
+                     //$this->load->view('jobrequest',$data);
+                     //var_dump($data['requestorid']);
                     // $this->jobrequests($data);
-                     redirect('jobrequests',$data);
+                     redirect('jobrequests');
                      }
                 else {
                 redirect('restricted'); 
@@ -288,9 +293,72 @@ class Nmrc extends Main_Controller {
                 redirect('restricted');
             } 
    }
-   public function jobrequests($data){
-       //var_dump($data);
-       $this->load->view('jobrequest',$data);
+   public function jobrequests(){
+     $this->load->library('session');
+     $userid = $this->session->userdata('requestorid');
+     $youthid = $this->session->userdata('youthid');
+     
+     $data['youthuser'] = $this->crud->get_youthid($youthid);
+     $data['youthcontact'] = $this->crud->get_usercontacts($youthid);
+     $data['employercontact'] = $this->crud->get_usercontacts($userid);
+     
+     $Username = $this->session->userdata('username');
+     $data['user'] = $this->crud->get_user($Username);
+     
+     $data['vacancy']= $this->crud->get_vacancy($userid);
+     
+    //var_dump($data);
+     $this->load->view('jobrequest',$data);
+   }
+   
+   public function jobrequested(){
+      $this->load->model('crud');
+      $this->load->library('facebook');
+      $this->load->library('session');
+      $this->load->helper('date');
+      if($this->session->userdata('logged_in')){
+            if($this->session->userdata('role') == "employer"){  
+                $youthid = $this->session->userdata('youthid');
+                $userid = $this->session->userdata('requestorid');
+                
+                $data['youthcontact'] = $this->input->post('youthcontact');
+                $data['employercontact'] = $this->input->post('employercontact');
+                $data['employername'] = $this->input->post('employername');
+                $data['youthname'] = $this->input->post('youthname');
+                $data['vacancy'] = $this->input->post('vacancy');
+                $vacid = $data['vacancy'];
+                echo $vacid;
+                $vdes = $this->crud->getvac_des($vacid);
+                $vdesc = $vdes->Description;
+                $to = $data['youthcontact'];
+                $message = "Hi ".$data['youthname'].", Havana Youth Jobs here. You got a Job request message from ".$data['employername'].
+                " and it reads as follow: ".$vdesc." .Please contact him on ".$data['employercontact']." ASAP";
+               
+                
+                $jobs = array(
+                                            'last_modified' => now(),
+                                            'employerid' => $userid,
+                                            'youthid' => $youthid,
+                                            'vacancyid' => $vacid,
+                                            'status' => 0,
+                                            'message' => $message
+                            );
+                //adding jobs to database 
+                $this->crud->add_jobs($jobs);
+              var_dump($jobs);
+                echo $message;
+                
+                $sms['to'] = $to;
+                $sms['message'] = $message;
+               
+              //  $this->load->view('test',$sms);
+             }
+            else {
+            redirect('restricted'); 
+            }
+        } else {
+            redirect('restricted');
+        } 
    }
    
    

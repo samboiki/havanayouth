@@ -25,6 +25,17 @@ class crud extends CI_Model {
          return false;
      }
     }
+    
+    public function getvac_des($vacid){
+     $this->db->where('ID', $vacid);
+     $query = $this->db->get('vacancy');
+     if ($query){
+            $fbuser = $query->row();
+            return $fbuser;
+            } else {
+                return false;
+            }
+    }
 
     function  get_news(){
         $query = $this->db->get('news');
@@ -57,6 +68,14 @@ class crud extends CI_Model {
         $userdata = $query->row();
         return $userdata;
     }
+    
+    function  get_youthid($youthid){
+        $this->db->where('id',$youthid);
+        $query = $this->db->get('user');
+        $userdata = $query->row();
+        return $userdata;
+    }
+    
     function  get_vacancy($userid){
         $this->db->where('userid',$userid);
         $query = $this->db->get('vacancy');
@@ -160,6 +179,11 @@ class crud extends CI_Model {
     function add_users($signupdata){
       $this->db->insert('user',$signupdata);
     }
+    
+    function jobs($jobs){
+      $this->db->insert('jobs',$jobs);
+    }
+    
     function add_vacancy($vacancydata)
     {
         $this->db->insert('vacancy',$vacancydata);
@@ -190,6 +214,10 @@ class crud extends CI_Model {
     
     function add_addresss($data){
         $this->db->insert('address',$data);
+    }
+    
+    function add_jobs($jobs){
+        $this->db->insert('jobs',$jobs);
     }
     
     function add_address($data, $id){

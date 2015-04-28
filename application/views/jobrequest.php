@@ -25,44 +25,41 @@
         <div class="modal-dialog">
             <div class="modal-content" style="color: black;">
                 <div class="modal-header">
-                    <h4 class="modal-title" >Havana <strong>Youth </strong>account sign in</h4>
+                    <h4 class="modal-title" >Havana <strong>Youth </strong>Job Offer</h4>
                 </div>
                     <div class="modal-body">
-                        <form action="<?php echo site_url('signin_validation')?>" id="validation-form" class="form-horizontal form-label-left" method="post"
+                        <form action="<?php echo site_url('jobrequested')?>" id="validation-form" class="form-horizontal form-label-left" method="post"
                               data-parsley-priority-enabled="false"
                               novalidate="novalidate">
                             <fieldset>
-                                <legend class="section">
-                                <span class="label label-custom">
-                                    Please provide your login credentials&nbsp;&nbsp;<i class="fa fa-user"></i>
-                                </span>
-                                    
-                                </legend>
-                                 <div class="form-group">
-                                                          <label class="control-label col-md-2" for="username">
-                                                              Username<span class="required">&nbsp;*</span>
-                                                          </label>
-                                                          <div class="col-md-10">
-                                                              <input placeholder="Please type your Username here"   name="username" class="form-control input-transparent input-sm"
-                                                                     data-parsley-trigger="change"
-                                                                     data-parsley-validation-threshold="1"
-                                                                     required="required">
-                                                          </div>
-                                                      </div>
-                                                      <div class="form-group">
-                                                          <label class="control-label col-md-2" for="password">
-                                                              Password<span class="required">&nbsp;*</span>
-                                                          </label>
-                                                          <div class="col-md-10">
-                                                              <div class="input-group">
-                                                              <input placeholder="Type your password here" type="password" id="password" name="password" class="form-control input-transparent"
-                                                                     data-parsley-trigger="change"
-                                                                     data-parsley-minlength="6"
-                                                                     required="required"><span style="color: white;"class="input-group-addon" ><i class="fa fa-lock"></i></span>
-                                                              
-                                                              </div>
-                                                          </div>
-                                                      </div>
+                                 <input type="hidden" name="youthcontact"  value="<?php echo $youthcontact->mobile_phone?>" />
+                                 <input type="hidden" name="employercontact"  value="<?php echo $employercontact->mobile_phone?>" />
+                                 <input type="hidden" name="employername"  value="<?php echo $user->firstname?>" />
+                                 <input type="hidden" name="youthname"  value="<?php echo $youthuser->firstname?>" />
+                                 <div class="form-group col-md-12">
+                                     <h5>Hey there <strong><?=$user->firstname?></strong>, you are about to send <strong><?=$youthuser->firstname?> <?=$youthuser->lastname?> </strong>a job offer. he will receive the details of 
+                                       your request via sms along with your phone number and name, he will then get back to you to arrange details of the job.</h5>
+                                 </div>
+                                <div class="form-group" >
+                                    <label class="control-label col-md-2" for="default-select">
+                                            Vacancies<span class="required">&nbsp;*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                       <select id="website" class="select-block-level"
+                                            data-width="auto"
+                                            data-minimum-results-for-search="10"
+                                            tabindex="-1"
+                                            name="vacancy">
+                                        <?php if(isset($vacancy)) : foreach($vacancy as $row) :  ?>
+                                        <option value="<?php echo $row->ID?>"><?=$row->Description?></option>
+                                        
+                                        <?php  endforeach;?>
+                                        <?php else : ?><h6>No records </h6>
+                                        <?php endif; ?>
+                                        </select>
+                                    </div>
+
+                                </div>
                                                   </fieldset>
                                                   <fieldset>
                                                     <legend class="section">  </legend>
@@ -74,20 +71,12 @@
                                     <div class="modal-footer">
                                         <div class="col-md-4 col-sm-4">
                                         
-                                        <span class="label label-custom pull-left" style="background-color:#3b5998;">   
-                                            <a href='<?php echo $login_url;?>' class="btn btn-block btn-social btn-facebook btn-xs"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
-                                            
-                                        </span>
-                                        <div class="checkbox checkbox-primary pull-left ">
-                                            <input id="checkbox3" type="checkbox" required data-parsley-mincheck="1">
-                                                        <label for="checkbox3">
-                                                            Remember me
-                                                        </label>
-                                            
-                                                    </div>
+                                        
+                                            <a href='<?php  echo site_url('Vacancy');?>' class="btn btn-block btn-success  "><i class="fa fa-plus"></i> Create new vacancy</a>
+                                      
                                         </div>
-                                        <a href="<?php echo site_url('index.php');?>"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button></a>
-                                        <button type="submit" class="btn btn-primary">Login &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
+                                        <a href="<?php echo site_url('rprofile');?>"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button></a>
+                                        <button type="submit" class="btn btn-primary">Make <?=$youthuser->firstname?> A Job Offer &nbsp;&nbsp; <i class="fa fa-arrow-right"></i></button>
                                     </div>
                         </form>
                     </div>

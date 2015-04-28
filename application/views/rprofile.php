@@ -23,16 +23,16 @@
         </div>
         <nav  class="sidebar nav-collapse collapse">
             <ul id="side-nav" class="side-nav">
-                 
-                <li class="">
-                    <a href="<?php echo site_url('vacancy');?>"><i class="fa fa-th"></i> <span class="name">Vacancy</span></a>
-                </li>
-                <li class="">
-                   <a href="<?php echo site_url('youthsearch');?>"><i class="fa fa-th"></i> <span class="name">Recruitment</span></a>
-                </li>
                 <li class="active">
-                    <a href="<?php echo base_url('rprofile');?>"><i class="fa fa-gear"></i> <span class="name">Profile</span></a>
+                    <a href="<?php echo base_url('rprofile');?>"><i class="fa fa-user"></i> <span class="name">Profile</span></a>
                 </li>
+                <li class="">
+                    <a href="<?php echo site_url('vacancy');?>"><i class="fa fa-briefcase"></i> <span class="name">Vacancy</span></a>
+                </li>
+                <li class="">
+                   <a href="<?php echo site_url('youthsearch');?>"><i class="fa fa-users"></i> <span class="name">Recruitment</span></a>
+                </li>
+                
                
                
                 <li class="visible-xs">
