@@ -21,8 +21,8 @@
          $project = $tr->initProjectById('PJ610ad49ba7a0c3542ba8d7e9ac4f535a');
          
          $sent_msg = $project->sendMessage(array(
-            'content' => "sam your the best", 
-            'to_number' => "+264814868534"
+            'content' => $message, 
+            'to_number' => $to
         ));
         ?>
          </div>
