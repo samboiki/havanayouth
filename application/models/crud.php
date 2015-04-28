@@ -340,4 +340,25 @@ class crud extends CI_Model {
         $this->db->where('id',$id);
         $this->db->update('skills',$data);
     }
+    
+    function add_workhistory($data){
+        $this->db->insert('work_history', $data);
+        
+    }
+    
+    function update_workhistory($data, $id){
+        $this->db->where('id',$id);
+        $this->db->update('work_history',$data);
+    }
+    
+    function edit_workhistory($data, $id){
+        $this->db->where('id',$id);
+        $this->db->update('work_history',$data);
+    }
+    
+     function get_workhistory($id){
+        $this->db->where('userid',$id);
+        $query = $this->db->get('work_history');
+        return $query->result();
+    }
 }

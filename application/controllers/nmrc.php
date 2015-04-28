@@ -342,6 +342,7 @@ class Nmrc extends Main_Controller {
                      $data['skills'] = $this->crud->get_skills($userid);
                      $data['address'] = $this->crud->get_address($userid);
                      $data['qualifications']= $this->crud->get_qualifications($userid);
+                     $data['workhistory']= $this->crud->get_workhistory($userid);
                      $data['img'] = $this->crud->get_proimg($userid);
                      //$img = $data['img'];
                     // var_dump($img);
@@ -915,15 +916,15 @@ var_dump($data);
    public function createperson(){
        $this->load->model('crud');
        $id = $this->input->post('id');
-      
+       $page = $this->input->post('page');
        $data = array(
            'firstname' => $this->input->post('firstname'),
            'lastname' => $this->input->post('lastname'),
            'gender' => $this->input->post('gender'),
            'birth_date' => $this->input->post('birth_date'),);
        var_dump($data);
-       //$this->crud->add_personinfo($data,$id);    
-       //redirect('yprofile');
+       $this->crud->add_personinfo($data,$id);    
+       redirect($page);
    } 
    
    public function createaddress(){
@@ -1041,7 +1042,34 @@ var_dump($data);
               
    }
      
-  
+   public function add_workhistory() {
+        $this->load->model('crud');
+        
+        $data = array(
+            'userid' => $this->input->post('userid'),
+            'employer'   => $this->input->post('employer'),
+            'contact' => $this->input->post('contact'),
+            'job_title' => $this->input->post('title'),
+            'job_description' => $this->input->post('description'),
+            'date'        => $this->input->post('date'),
+        );
+        $this->crud->add_workhistory($data);
+        redirect('yprofile');
+    }
+    
+    public function edit_workhistory() {
+        $this->load->model('crud');
+        $id = $this->input->post('id');
+        $data = array(
+            'employer'   => $this->input->post('employer'),
+            'contact' => $this->input->post('contact'),
+            'job_title' => $this->input->post('title'),
+            'job_description' => $this->input->post('description'),
+            'date'        => $this->input->post('date'),
+        );
+        $this->crud->update_workhistory($data, $id);
+        redirect('yprofile');
+    }
     
     
        
