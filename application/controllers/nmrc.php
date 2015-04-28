@@ -305,13 +305,21 @@ class Nmrc extends Main_Controller {
                 return false;
             }
     }  
-    
+     
     //function to delete a specific row in table
     function delete_files(){  
         $item = $this->uri->segment(3);
         unlink('./images/'.$item);
         $this->crud->delete_image();
         redirect('yprofile');
+    }
+    
+     public function delete(){
+       $this->load->model('crud');
+       $table = $this->uri->segment(3); 
+       $page  = $this->uri->segment(4);
+       $this->crud->delete_row($table);
+       redirect($page);
     }
    
    //youth profile function , loads the required libraries , and view, gets data from db and passes it to view
