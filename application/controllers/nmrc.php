@@ -381,6 +381,12 @@ class Nmrc extends Main_Controller {
         $this->crud->delete_image();
         redirect('yprofile');
     }
+     function delete_filesr(){  
+        $item = $this->uri->segment(3);
+        unlink('./images/'.$item);
+        $this->crud->delete_image();
+        redirect('rprofile');
+    }
     
      public function delete(){
        $this->load->model('crud');
@@ -403,15 +409,15 @@ class Nmrc extends Main_Controller {
                 if($this->session->userdata('role') == "youth"){                  
                     // var_dump($this->session->all_userdata());
                      $username = $this->session->userdata('username');
-                
+               
                      $data['user'] = $this->crud->get_user($username);
                      $userid = $data['user']->id;
                      $data['contact'] = $this->crud->get_usercontacts($userid);
                      $data['skills'] = $this->crud->get_skills($userid);
-                     $data['address'] = $this->crud->get_address($userid);
                      $data['qualifications']= $this->crud->get_qualifications($userid);
                      $data['workhistory']= $this->crud->get_workhistory($userid);
                      $data['img'] = $this->crud->get_proimg($userid);
+                       $data['address'] = $this->crud->get_address($userid);
                      //$img = $data['img'];
                     // var_dump($img);
                      $this->load->helper('form');
@@ -443,6 +449,7 @@ class Nmrc extends Main_Controller {
                      $data['user'] = $this->crud->get_user($username);
                      $userid = $data['user']->id;
                      $data['contact'] = $this->crud->get_usercontacts($userid);
+                   
                       $data['img'] = $this->crud->get_proimg($userid);
                     // echo $data['contact']->id;
                      $this->load->helper('form');
@@ -971,6 +978,7 @@ var_dump($data);
     public function createcontacts(){
        $this->load->model('crud');
        $id = $this->input->post('id');
+       $page = $this->input->post('page');
       
        $data = array(
            'mobile_phone' => $this->input->post('mobile'),
@@ -978,7 +986,7 @@ var_dump($data);
            'fax' => $this->input->post('fax'),
            'email' => $this->input->post('email'),);
        $this->crud->add_contactsinfo($data,$id);    
-       redirect('yprofile');
+       redirect($page);
    } 
    
    public function createperson(){

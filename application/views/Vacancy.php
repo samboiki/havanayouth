@@ -50,7 +50,14 @@
                     
                     
                     <li class="divider"></li>          
-                 
+                  <li class="hidden-xs">
+                            <a href="#" id="settings"
+                               title="Settings"
+                               data-toggle="popover"
+                               data-placement="bottom">
+                                <i class="fa fa-cog"></i>
+                            </a>
+                        </li>
                     <li class="hidden-xs"><a href="<?= site_url('logout'); ?>"> <i class="fa fa-sign-out">logout</i></a></li>
                 </ul>
                 <form id="search-form" class="navbar-form pull-right" role="search">
@@ -74,8 +81,8 @@
                     <div class="body">
                         <ul id="myTab" class="nav nav-tabs">
                             <li class="active"><a href="#profile1" data-toggle="tab">Post Vacancy</a></li>
-                            <li><a href="#information" data-toggle="tab">History</a></li>
-                            <li><a href="#rate" data-toggle="tab">Rate</a></li>
+                            <li><a href="#information" data-toggle="tab">Posted Jobs</a></li>
+                            <li><a href="#rate" data-toggle="tab">Rating</a></li>
                         </ul>
                         
                         
@@ -143,7 +150,7 @@
                                 </div>
                             </div>
                                 <div>
-                                <legend class="section">Jobs Posted</legend>
+                                <legend class="section">Viewing Posted Jobs</legend>
                                  <table class="table table-striped table-bordered " id="expandabledatatable">
                                     <thead>
                                         <tr>
@@ -263,7 +270,7 @@
                                 </div>
                             </div>
                                 <div>
-                                <legend class="section">Youth that worked for you</legend>
+                                <legend class="section">Rate youth that worked for you</legend>
                                  <table class="table table-striped table-bordered " id="expandabledatatable">
                                     <thead>
                                         <tr>
@@ -388,186 +395,64 @@
                             </section>
             </div>
             <div class="col-md-3">
-             
-                <section class="widget large">
-                    <header>
-                        <h4>
-                            Alerts Feed &nbsp;
-                            <span class="label label-success">412</span>
-                        </h4>
-                        <div class="actions">
-                            <button class="btn btn-transparent btn-xs">Show All <i class="fa fa-arrow-down"></i></button>
-                        </div>
-                    </header>
-                    <div class="body">
-                        <div id="feed" class="feed">
-                            <div class="wrapper">
-                                <div class="vertical-line"></div>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-comment"></i>
+           <section class="widget large">
+                            <header>
+                                <h4>
+                                    Jobs Alert &nbsp;
+                                    <span class="label label-success">412</span>
+                                </h4>
+                                <div class="actions">
+                                    <button class="btn btn-transparent btn-xs">Show All <i class="fa fa-arrow-down"></i></button>
+                                </div>
+                            </header>
+                            <div class="body">
+                                <div id="feed" class="feed">
+                                    <div class="wrapper">
+                                        <div class="vertical-line"></div>
+                                        <br><br>
+                                        <section class="feed-item">
+                                            <div class="icon pull-left">
+                                                <i class="fa fa-comment"></i>
+                                            </div>
+                                            <div class="feed-item-body">
+                                                <div class="text">
+                                                    <a href="#">A plumber needed</a>.
+                                                </div>
+                                                <div class="time pull-left">
+                                                    3 h ago
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <section class="feed-item">
+                                            <div class="icon pull-left">
+                                                <i class="fa fa-comment"></i>
+                                            </div>
+                                            <div class="feed-item-body">
+                                                <div class="text">
+                                                    <a href="#">A hair dresser needed</a>.
+                                                </div>
+                                                <div class="time pull-left">
+                                                    3 h ago
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <section class="feed-item">
+                                            <div class="icon pull-left">
+                                                <i class="fa fa-comment"></i>
+                                            </div>
+                                            <div class="feed-item-body">
+                                                <div class="text">
+                                                    <a href="#">A gardener needed</a>.
+                                                </div>
+                                                <div class="time pull-left">
+                                                    5 h
+                                                </div>
+                                            </div>
+                                        </section>
                                     </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">John Doe</a> commented on <a href="#">What Makes Good Code Good</a>.
-                                        </div>
-                                        <div class="time pull-left">
-                                            3 h
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-check color-green"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">Merge request #42</a> has been approved by <a href="#">Jessica Lori</a>.
-                                        </div>
-                                        <div class="time pull-left">
-                                            10 h
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <img src="img/14.jpg" class="img-circle" alt="">
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            New user <a href="#">Greg Wilson</a> registered.
-                                        </div>
-                                        <div class="time pull-left">
-                                            Today
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-bolt color-orange"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            Server fail level raises above normal. <a href="#">See logs</a> for details.
-                                        </div>
-                                        <div class="time pull-left">
-                                            Yesterday
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-database"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">Database usage report</a> is ready.
-                                        </div>
-                                        <div class="time pull-left">
-                                            Yesterday
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-shopping-cart"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">Order #233985</a> needs additional processing.
-                                        </div>
-                                        <div class="time pull-left">
-                                            Wednesday
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-arrow-down"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">Load more...</a>
-                                        </div>
-                                    </div>
-                                </section>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="widget" id="news-widget" data-widgster-load="server/php/widgets/news.php">
-                    <header>
-                        <h5>
-                            News & Events <span class="badge badge-success">17</span>
-                        </h5>
-                        <span class="text-muted">spinning refresh button & close prompt</span>
-                        <div class="widget-controls">
-                            <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-plus"></i></a>
-                            <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-minus"></i></a>
-                            <a data-widgster="load" title="I am spinning!" href="#"><i class="glyphicon glyphicon-refresh"></i></a>
-                            <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
-                        </div>
-                    </header>
-                    <div class="body">
-                        <ul class="news-list stretchable">
-                            <li>
-                                <span class="icon background-warning">
-                                    <i class="fa fa-star"></i>
-                                </span>
-                                <div class="news-item-info">
-                                    <h5 class="name"><a href="#">First Human Colony on Mars</a></h5>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit............
-                                    </p>
-                                    <div class="time"><i class="fa fa-clock-o"></i> Mar 20, 18:46</div>
-                                    <div class="location"><i class="fa fa-map-marker"></i> Windhoek</div>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="icon background-info">
-                                    <i class="fa fa-microphone"></i>
-                                </span>
-                                <div class="news-item-info">
-                                    <h5 class="name"><a href="#">Light Blue reached $300</a></h5>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    </p>
-                                    <div class="time"><i class="fa fa-clock-o"></i> Sep 25, 11:59</div>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="icon background-lime">
-                                    <i class="fa fa-eye"></i>
-                                </span>
-                                <div class="news-item-info">
-                                    <h5 class="name"><a href="#">No more spying</a></h5>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    </p>
-                                    <div class="time"><i class="fa fa-clock-o"></i>Mar 20, 18:46</div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="news-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="news-close-modal-label" aria-hidden="true" style="display: none;">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    <h4 class="modal-title" id="news-close-modal-label">Sure?</h4>
-                                </div>
-                                <div class="modal-body">
-                                    Do you really want to unrevertably remove this super news widget?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                                    <button type="button" class="btn btn-danger" id="news-widget-remove">Yes, remove widget</button>
-                                </div>
-
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div>
-                </section>
+                        </section>
             </div>
         </div>
         </div>

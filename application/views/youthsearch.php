@@ -5,7 +5,8 @@
 <head>
     <title>havana Youth</title>
 
-    <link href="css/application.css" rel="stylesheet">
+      <link href="css/application.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.png">
     <link href="css/beyond.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/dataTables.bootstrap.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/bootstrap-datetimepicker.min.css" rel="stylesheet">
@@ -61,7 +62,14 @@
                     
                     
                     <li class="divider"></li>          
-                 
+                  <li class="hidden-xs">
+                            <a href="#" id="settings"
+                               title="Settings"
+                               data-toggle="popover"
+                               data-placement="bottom">
+                                <i class="fa fa-cog"></i>
+                            </a>
+                        </li>
                     <li class="hidden-xs"><a href="<?= site_url('logout'); ?>"> <i class="fa fa-sign-out">logout</i></a></li>
                 </ul>
                 <form id="search-form" class="navbar-form pull-right" role="search">
@@ -200,7 +208,16 @@
             class="btn btn-transparent btn-sm">Auto</button>
     <% } %>
 </script>
-
+ <script src="assets/lib/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+        <script src="assets/lib/select2/select2.min.js"></script>
+        <script src="assets/lib/moment/moment.js"></script>
+        <script src="assets/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="assets/lib/parsleyjs/dist/parsley.min.js"></script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <script type="text/javascript" src="assets/lib/gmaps/gmaps.js"></script>   
+        <script type="text/javascript" src="assets/js/map.js"></script>
+        <!-- page application js -->
+        <script src="assets/js/forms-account.js"></script>
     <!-- page specific scripts -->
         <!-- page specific libs -->
         <script src="assets/lib/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
