@@ -373,7 +373,7 @@ class Nmrc extends Main_Controller {
                 return false;
             }
     }  
-     
+    
     //function to delete a specific row in table
     function delete_files(){  
         $item = $this->uri->segment(3);
@@ -381,6 +381,7 @@ class Nmrc extends Main_Controller {
         $this->crud->delete_image();
         redirect('yprofile');
     }
+<<<<<<< HEAD
      function delete_filesr(){  
         $item = $this->uri->segment(3);
         unlink('./images/'.$item);
@@ -395,6 +396,8 @@ class Nmrc extends Main_Controller {
        $this->crud->delete_row($table);
        redirect($page);
     }
+=======
+>>>>>>> origin/master
    
    //youth profile function , loads the required libraries , and view, gets data from db and passes it to view
     public function yprofile(){
