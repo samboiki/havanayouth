@@ -1,65 +1,63 @@
 <!-- light-blue - v3.1.0 - 2014-12-06 -->
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Havana Youth</title>
+    <head>
+        <title>Havana Youth</title>
 
         <link href="css/application.css" rel="stylesheet">
-    <link rel="shortcut icon" href="img/favicon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta charset="utf-8">
-    <script>
-        /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
-           chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
-                      https://code.google.com/p/chromium/issues/detail?id=332189
-        */
-    </script>
-</head>
-
-
+        <link rel="shortcut icon" href="img/favicon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta charset="utf-8">
+        <script>
+            /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
+             chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
+             https://code.google.com/p/chromium/issues/detail?id=332189
+             */
+        </script>
+        <style type="text/css">
+            .modal{
+                color: black;
+            }
+        </style>
+    </head>
     <body class="background-dark">
-     
-          <div class="logo">
-        <h4><a href="index.html">Havana <strong>Youth</strong></a></h4>
+        <?php // var_dump($user_profile) ?>
+        <div class="logo">
+            <h4><a href="index.html">Havana <strong>Youth</strong></a></h4>
         </div>
         <nav  class="sidebar nav-collapse collapse">
             <ul id="side-nav" class="side-nav">
                 <li class="active">
-                    <a href="<?php echo base_url('rprofile');?>"><i class="fa fa-user"></i> <span class="name">Profile</span></a>
+                    <a href="<?php echo base_url('rprofile'); ?>"><i class="fa fa-user"></i> <span class="name">Profile</span></a>
                 </li>
                 <li class="">
-                    <a href="<?php echo site_url('vacancy');?>"><i class="fa fa-briefcase"></i> <span class="name">Vacancy</span></a>
+                    <a href="<?php echo site_url('vacancy'); ?>"><i class="fa fa-briefcase"></i> <span class="name">Vacancy</span></a>
                 </li>
                 <li class="">
-                   <a href="<?php echo site_url('youthsearch');?>"><i class="fa fa-users"></i> <span class="name">Recruitment</span></a>
+                    <a href="<?php echo site_url('youthsearch'); ?>"><i class="fa fa-users"></i> <span class="name">Recruitment</span></a>
                 </li>
-                
-               
-               
                 <li class="visible-xs">
                     <a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out"></i> <span class="name">Sign Out</span></a>
-                    <p><?php echo anchor("$logout_url",'<span class="name"><i class="fa fa-sign-out" style="color:white"></i>Sign Out</span>' ) ?></p>
+                    <p><?php echo anchor("$", '<span class="name"><i class="fa fa-sign-out" style="color:white"></i>Sign Out</span>') ?></p>
                 </li>
-            </ul>
-        
-            <?php $this->load->view('sponsors');?>
-        
+            </ul><br><br><br><br>
+
+            <?php $this->load->view('sponsors'); ?>
+
         </nav>    
         <div class="wrap">
-        <header class="page-header">
-            <div class="navbar">
-                 <ul class="nav navbar-nav navbar-right pull-right">
-                    <li class="visible-phone-landscape">
-                        <a href="#" id="search-toggle">
-                            <i class="fa fa-search"></i>
-                        </a>
-                    </li>
-                    
-                    
-                    <li class="divider"></li>          
-                  <li class="hidden-xs">
+            <header class="page-header">
+                <div class="navbar">
+                    <ul class="nav navbar-nav navbar-right pull-right">
+                        <li class="visible-phone-landscape">
+                            <a href="#" id="search-toggle">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="hidden-xs">
                             <a href="#" id="settings"
                                title="Settings"
                                data-toggle="popover"
@@ -67,66 +65,46 @@
                                 <i class="fa fa-cog"></i>
                             </a>
                         </li>
-                    <li class="hidden-xs"><a href="<?= site_url('logout'); ?>"> <i class="fa fa-sign-out">logout</i></a></li>
-                </ul>
-                <form id="search-form" class="navbar-form pull-right" role="search">
-                    <input type="search" class="form-control search-query" placeholder="Search...">
-                </form>
-            </div>
-        </header>      
+                        
+                      <li class="hidden-xs"><a href="<?= site_url('logout'); ?>"> <i class="fa fa-sign-out">logout</i></a></li>
+                    </ul>
+                    <form id="search-form" class="navbar-form pull-right" role="search">
+                        <input type="search" class="form-control search-query" placeholder="Search...">
+                    </form>
+                </div>
+            </header>  
+            <?php
+              $tittle = "";
+              if($user->gender == "Male"){
+                  $tittle = "Mr. ";
+                          
+              }else if($user->gender == "Female"){
+                  $tittle = "Ms. ";
+              }
+            ?>
             <div class="content container">
-                <h4 class="mt-sm mb-xs"><?= $user->firstname; ?><small> Welcome</small></h4>
+                <h4 class="mt-sm mb-xs"><small> Welcome</small> <?php echo $tittle?><?= $user->firstname; ?> <?php echo " ". $user->lastname?> </h4>
                 <div class="row">
                     <div class="col-md-8">
                         <section class="widget">
                             <header>
-                                <h5>
-                                    <i class="fa fa-user"></i>
-                                    Account profile
-                                 </h5>
+                                
                             </header>
                             <div class="body">
                                 <ul id="myTab" class="nav nav-tabs">
-                                    <li class="active"><a href="#information" data-toggle="tab">Info</a></li>
-                                   
-                                  
-                                    <li><a href="#images" data-toggle="tab">Images</a></li>                            
+                                    <li class="active"><a href="#information" data-toggle="tab">Account info</a></li>                                  
+                                    <li class="dropdown">
+                                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
+                                            <ul class="dropdown-menu">
+            <!--                                    <li><a href="#dropdown3" data-toggle="tab">Personal Information</a></li>-->
+                                             <li><a href="#changepassword" data-toggle="modal">Change password</a></li>
+                                             <li><a href="#changepicture" data-toggle="modal">Change profile picture</a></li>
+                                            </ul>
+                                    </li>                            
 
                                 </ul>
                                 <div id="myTabContent" class="tab-content" >
-                                    <div class="tab-pane fade" id="images">
-                                            <div class="row">
-                                                <div class="col-md-5 col-sm-6 col-xs-12">
-                                                    <div class="well with-header">
-                                                        <div class="header bordered-blue">Upload a new pic</div>
-                                                        <div>
-                                                            <form action="uploadimg" method="post" accept-charset="utf-8" enctype="multipart/form-data">	
-                                                                <div class="footer-col-inner">
-                                                                    <div class="form-group">
-                                                                        <input type="hidden" name="id"  value="<?php echo $user->id ?>" />
-                                                                        <input name="userfile" type="file" size="100"   /><br>
-                                                                        <br>
-                                                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                                                    </div>
-                                                                </div><!--//footer-col-inner-->
-                                                            </form>
-                                                        </div>
-                                                    </div><!--//row-->
-                                                </div>
-                                                <div class="footer-col col-md-7 col-sm-8 newsletter">
-                                                    <div class="well with-header">
-                                                        <div class="header bordered-red">Profile Picture </div>
-<?php if (isset($img)) : foreach ($img as $rows) : ?>    
-                                                                <h0><strong><?php echo $rows->title; ?></strong></h0></br>
-                                                                <p><?php echo anchor("/delete_filesr/$rows->id/$rows->title", '<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete image</span>') ?></p>                                          
-                                                            <?php endforeach; ?>
-                                                        <?php else : ?>
-                                                            <h6>No records </h6>
-<?php endif; ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                  
                                     <div class="tab-pane fade in active" id="information">
                                         <legend class="section">Profile picture</legend>
                                         <div class="row">
@@ -141,7 +119,6 @@
                                                     <?php endif; ?>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6"></div><div class="col-sm-2"><a  class="btn btn-primary" href="#images" data-toggle="tab"><i class="fa fa-pencil" style="color:white"></i> edit</a></div></br></br>
 
                                         </div>
                                         <div>
@@ -169,13 +146,13 @@
                                         <div>
                                             <legend class="section">Address</legend>
                                             <h5><label class="col-sm-4" for="prefix">Address:</label></h5>
-                                            <div class="col-sm-4"><strong></strong></div><div class="col-sm-2 pull-right"><a  class="btn btn-primary" href="#address" data-toggle="modal"><i class="fa fa-pencil" style="color:white"></i> edit</a></div></br></br>
+                                            <div class="col-sm-4"><strong><?= $address->erf ?> <?= $address->street ?> Street, <?= $address->suburb ?></strong></div><div class="col-sm-2 pull-right"><a  class="btn btn-primary" href="#address" data-toggle="modal"><i class="fa fa-pencil" style="color:white"></i> edit</a></div></br></br>
                                             <h5><label class="col-sm-4" for="prefix">City</label></h5>
-                                            <div class="col-sm-4"><strong>Windhoek</strong></div></br></br>
+                                            <div class="col-sm-4"><strong><?php echo $address->city ?></strong></div></br></br>
                                             <h5><label class="col-sm-4" for="prefix">Region:</label></h5>
-                                            <div class="col-sm-4"><strong>Khomas</strong></div></br></br>
+                                            <div class="col-sm-4"><strong><?php echo $address->region ?></strong></div></br></br>
                                             <h5><label class="col-sm-4" for="prefix">Country:</label></h5>
-                                            <div class="col-sm-4"><strong>Namibia</strong></div></br></br>
+                                            <div class="col-sm-4"><strong><?php echo $address->country ?></strong></div></br></br>
                                         </div>
                                         <div>
                                             <article class="map-section">
@@ -185,7 +162,7 @@
                                     </div>
                                  
                                     
-
+                                   
                                     </section>
                        
                                       
@@ -213,7 +190,7 @@
 
                                                                             <br><br>
                                                                             <div class="col-md-3"><label for="gender">Gender</label></div>
-                                                                            <div class="col-md-8"><input name="gender" type="text"  class="form-control" value="<?php echo $user->gender ?>" /></div>
+                                                                            <div class="col-md-8"><input name="gender" type="text"  class="form-control" value="<?php echo $user->gender ?>" readonly="readonly" /></div>
                                                                             <br><br>
                                                                             <div class="col-md-3"><label for="exp">Birth date</label></div>
 
@@ -342,46 +319,79 @@
                                                     </form>
                                                 </div><!-- /.modal-content -->
                                             </div><!-- /.modal-dialog -->
-                                        </div> 
-                                        <div class="tab-pane fade" id="dropdown4">
-                                            <div class="row">
-                                                <div class="col-md-5 col-sm-6 col-xs-12">
-                                                    <div class="well with-header">
-                                                        <div class="header bordered-blue">Update Your Skills</div>
-                                                        <div>
-                                                            <form action="/havanayouth/createskills" method="post" accept-charset="utf-8">	
+                                        </div>                             
+                                        <div id="changepassword" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                     <form action="/havanayouth/changepassword" method="post" accept-charset="utf-8">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Change password</strong></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row" style="margin-left:5px; margin-right: 5px">
+                                                            	
                                                                 <div class="footer-col-inner">
-                                                                    <div class="form-group">
-                                                                        <input type="hidden" name="userid"  value="<?php echo $user->id ?>" />
-                                                                        <input type="hidden" name="page"  value="<?php echo "rprofile" ?>" />
-                                                                        <label for="exp">Skills</label>
-                                                                        <input name="skill" type="text" id="mobile" class="form-control" value="" placeholder="Enter a skill here" /><br>
-                                                                        <label for="exp">Rating</label>
-                                                                        <input name="rating" type="text" id="tel" class="form-control" value="" placeholder="Enter a rating here" /><br>
-                                                                        <br>
-                                                                        <button type="submit" class="btn btn-primary">Validate &amp; Submit</button>
+                                                                    <div class="form-group">  
+                                                                        <input type="hidden" name="id"  id="user_idd" value="<?php echo $user->id?>" />
+                                                                        <input type="hidden" name=""  id="r_currentpass" value="<?php echo $user->password?>" />
+                                                                        <input type="hidden" name="page"  value="rprofile" />
+                                                                        <div class="col-md-3"><label for="name">Current password</label></div>
+                                                                        <div class="col-md-8"><input name="currentpass" type="password" id="currentpass" class="form-control" value="" /></div>
+                                                                        <br><br>
+                                                                        <div class="col-md-3"><label for="name">New password</label></div>
+                                                                        <div class="col-md-8"><input name="newpass" type="password" id="newpass" class="form-control" value="" /></div>
+                                                                        <br><br>
+                                                                        <div class="col-md-3"><label for="name">Confirm password</label></div>
+                                                                        <div class="col-md-8"><input name="currentpass" type="password" id="copass" class="form-control" value="" /></div>
+                                                                        <br><br>
+                                                                        <div class="col-md-3"><label for="name"></label></div>
+                                                                        <div class="col-md-8"> <label id="msg" style="color:red"></label></div>
+                                                                        <br><br>
+                                                                       
                                                                     </div>
                                                                 </div><!--//footer-col-inner-->
-                                                            </form>
 
-                                                        </div> <!-- /content -->
-                                                    </div><!--//row-->
-                                                </div>
-                                                <div class="footer-col col-md-7 col-sm-8 newsletter">
-                                                    <div class="well with-header">
-                                                        <div class="header bordered-blue">Your current skills</div>
-<?php if (isset($skills)) : foreach ($skills as $row) : ?>    
-                                                                <h0><strong>Skill: </strong><?php echo $row->skill; ?></h0>&nbsp;&nbsp;&nbsp;
-                                                                <h0><strong>Rating: </strong><?php echo $row->rating; ?></h0></br>
-                                                                <p><?php echo anchor("/delete/$row->id/skills/profile", '<span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete skill</span>') ?></p> </br></br>
-                                                            <?php endforeach; ?>
-                                                        <?php else : ?>
-                                                            <h6>No records </h6>
-<?php endif; ?>
+                                                        </div>           
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary" onclick="validatePassword()">Save</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                       
+                                                    </div>
+                                                    </form>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div> 
+                                        <div id="changepicture" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Change profile picture</strong></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row" style="margin-left:5px; margin-right: 5px">
+                                                                <form action="uploadimg" method="post" accept-charset="utf-8" enctype="multipart/form-data">	
+                                                                <div class="footer-col-inner">
+                                                                    <div class="form-group">
+                                                                        <input type="hidden" name="page"  value="rprofile" />
+                                                                        <input type="hidden" name="id"  value="<?php echo $user->id ?>" />
+                                                                        <input name="userfile" type="file" size="100"   /><br>
+                                                                        
+                                                                    </div><!--//footer-col-inner-->
+                                                            
+
+                                                        </div>           
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary">Save</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                       
+                                                    </div>
+                                                   </form>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div> 
+                                     
                                         <div class="tab-pane fade" id="dropdown6">
                                             <div class="row">
                                                 <div class="col-md-5 col-sm-6 col-xs-12">
@@ -422,7 +432,7 @@
                                                             <form action="/havanayouth/createaddress" method="post" accept-charset="utf-8">	
                                                                 <div class="footer-col-inner">
                                                                     <div class="form-group">
-<?php if (isset($address)) : ?>  
+                                                                            <?php if (isset($address)) : ?>  
                                                                             <input type="hidden" name="id"  value="<?php echo $user->id ?>" />
                                                                             <label for="firstname">Erf</label>
                                                                             <input name="erf" type="text" class="form-control" value="<?php echo $address->erf ?>" /><br>
@@ -434,9 +444,9 @@
                                                                             <input name="city" type="text"  class="form-control" value="<?php echo $address->city ?>" /><br>
                                                                             <label for="exp">Region</label>
                                                                             <input name="region" type="text"  class="form-control" value="<?php echo $address->region ?>" /><br>
-                                                                        <?php else : ?>
+                                                                            <?php else : ?>
                                                                             <h6>No records </h6>
-<?php endif; ?>
+                                                                            <?php endif; ?>
                                                                         <br>
                                                                         <button type="submit" class="btn btn-primary">Update Details</button>
                                                                     </div>
@@ -464,15 +474,17 @@
                                         </div>
                                       
                                     </div>
-                         <div class="col-md-4">
+                                      
+                    </div>
+                   <div class="col-md-4">
                         <section class="widget large">
                             <header>
                                 <h4>
-                                    Jobs Alert &nbsp;
-                                    <span class="label label-success">412</span>
+                                    Latest vacancies &nbsp;
+                                    <span class="label label-success">3</span>
                                 </h4>
                                 <div class="actions">
-                                    <button class="btn btn-transparent btn-xs">Show All <i class="fa fa-arrow-down"></i></button>
+                                    <a class="btn btn-transparent btn-xs" href="<?php echo site_url('jobsearch'); ?>" >Show All <i class="fa fa-arrow-down"></i></a>
                                 </div>
                             </header>
                             <div class="body">
@@ -524,9 +536,7 @@
                             </div>
                         </section>
 
-                    </div>         
-                    </div>
-                  
+                    </div> 
                 </div>
             </div>
             <div class="loader-wrap hiding hide">
@@ -613,53 +623,71 @@
         <!-- page application js -->
         <script src="assets/js/forms-account.js"></script>
         <script type="text/javascript">
-                                                        function fill_qual_edit(id, inst, date, qname) {
-                                                            $("#q_id").val(id);
-                                                            $("#inst").val(inst);
-                                                            $("#o_date").val(date);
-                                                            $("#q_name").val(qname);
+    function fill_qual_edit(id, inst, date, qname) {
+        $("#q_id").val(id);
+        $("#inst").val(inst);
+        $("#o_date").val(date);
+        $("#q_name").val(qname);
 
-                                                        }
-                                                        function fill_skill_edit(id,skill, rating ) {
-                                                            $("#hid").val(id);
-                                                            $("#sskill").val(skill);
-                                                            $("#rrating").val(rating);
-                                                        }
-                                                        function fill_history_edit(id,emp, cont, title, desc, date) {
-                                                            
-                                                            
-                                                            $("#hid").val(id);
-                                                            $("#emp").val(emp);
-                                                            $("#cont").val(cont);
-                                                            $("#ttitle").val(title);
-                                                            $("#desc").val(desc);
-                                                            $("#hdate").val(date);
-                                                        }
-                                                        function getSkillID(id) {
-                                                            $("#ss_id").val(id);
-                                                        }
+    }
+    function fill_skill_edit(id,skill, rating ) {
+        $("#hid").val(id);
+        $("#sskill").val(skill);
+        $("#rrating").val(rating);
+    }
+    function fill_history_edit(id,emp, cont, title, desc, date) {
 
-                                                        function getQualificationID(id) {
-                                                            $("#qq_id").val(id);
-                                                        }
 
-                                                        function deleteQualification() {
-                                                            var id = $("#qq_id").val();
-                                                            location.href = "/havanayouth/delete/" + id + "/qualifications/yprofile";
-                                                        }
+        $("#hid").val(id);
+        $("#emp").val(emp);
+        $("#cont").val(cont);
+        $("#ttitle").val(title);
+        $("#desc").val(desc);
+        $("#hdate").val(date);
+    }
+    function getSkillID(id) {
+        $("#ss_id").val(id);
+    }
 
-                                                        function deleteSkill() {
-                                                            var id = $("#ss_id").val();
-                                                            location.href = "/havanayouth/delete/" + id + "/skills/yprofile";
-                                                        }
-                                                        function setHistoryId(id){
-                                                            $("#hh_id").val(id);
-                                                        }
-                                                        function deleteHistory(){
-                                                            var id = $("#hh_id").val();
-                                                            location.href = "/havanayouth/delete/" + id + "/work_history/yprofile";
-                                                        }
+    function getQualificationID(id) {
+        $("#qq_id").val(id);
+    }
 
+   
+   
+    function validatePassword(){
+        var current_pass = $("#currentpass").val();
+        var new_pass = $("#newpass").val();
+        var co_pass = $("#copass").val();
+        
+        
+        if(new_pass == "" || co_pass == "" || current_pass == ""){
+            $("#msg").text("Please enter values in all fields.");
+        }else{
+            if(co_pass == new_pass){
+                if(co_pass == new_pass){
+
+                var r_currentpass = $("#r_currentpass").val();
+                if(r_currentpass == current_pass){
+                   var id = $("#user_idd").val();
+                   location.href = "/havanayouth/changepassword/" + id + "/rprofile/"+new_pass;
+                   alert("Password succesfully changed!"); 
+                }else{
+                    $("#msg").text("Wrong current password! Try again.");
+                }
+                
+              }
+            }else{
+                $("#msg").text("Passwords do not match! Try again.");
+            }
+        }
+       
+      
+        
+      
+        
+    }
+   
         </script>
 
 

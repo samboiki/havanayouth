@@ -881,6 +881,7 @@
                                                                 <form action="uploadimg" method="post" accept-charset="utf-8" enctype="multipart/form-data">	
                                                                 <div class="footer-col-inner">
                                                                     <div class="form-group">
+                                                                         <input type="hidden" name="page"  value="yprofile" />
                                                                         <input type="hidden" name="id"  value="<?php echo $user->id ?>" />
                                                                         <input name="userfile" type="file" size="100"   /><br>
                                                                         

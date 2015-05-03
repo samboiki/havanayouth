@@ -449,6 +449,7 @@ class Nmrc extends Main_Controller {
                      $data['user'] = $this->crud->get_user($username);
                      $userid = $data['user']->id;
                      $data['contact'] = $this->crud->get_usercontacts($userid);
+                      $data['address'] = $this->crud->get_address($userid);
                    
                       $data['img'] = $this->crud->get_proimg($userid);
                     // echo $data['contact']->id;
@@ -1006,7 +1007,7 @@ var_dump($data);
    public function createaddress(){
        $this->load->model('crud');
        $id = $this->input->post('id');
-      
+       $page = $this->input->post('page');
        $data = array(
            'erf' => $this->input->post('erf'),
            'street' => $this->input->post('street'),
@@ -1016,7 +1017,7 @@ var_dump($data);
            'region' => $this->input->post('region'),);
       
        $this->crud->add_address($data,$id);    
-       redirect('yprofile');
+       redirect($page);
    } 
    
    public function uploadimg() {
@@ -1026,8 +1027,14 @@ var_dump($data);
       $this->load->helper('url');
        $config['upload_path']= "./images/";
        $config['allowed_types']='*';
-       $config['max_size']  = 100;
+       $config['max_size']  = 1000;
        $this->load->library('upload',$config);
+       $userID = $this->input->post('id');
+       $data['img'] = $this->crud->get_proimg($userID);
+       if(  $data["img"]==NULL){
+           
+       
+       
        
        if( !$this->upload->do_upload()){
            $error = array('error' =>  $this->upload->display_errors());
@@ -1054,8 +1061,51 @@ var_dump($data);
            'title' => $title,);
            
            $this->crud->insertprofileimg($dataimg);
-           redirect('yprofile');
+             $page = $this->input->post('page');
+           redirect($page);
           // var_dump($file);
+       }
+       }
+       else{
+           
+           $img= $data["img"];          
+           $path= "images/".$img[0]->title;        
+         @unlink($path);
+         if( !$this->upload->do_upload()){
+           $error = array('error' =>  $this->upload->display_errors());
+           
+           echo 'couldnt upload';
+           var_dump($error);
+       } else {
+           $file = $this->upload->data();
+                $config['image_library'] = 'gd2';
+                $config['source_image']	= './images/'.$file['file_name'];
+                $config['create_thumb'] = TRUE;
+                $config['maintain_ratio'] = TRUE;
+              //  $config['width']	= 1023;
+              //  $config['height']	= 326;
+                $this->load->library('image_lib', $config); 
+             
+                
+           $path= base_url().'/images/'.$file['file_name'];
+           $title = $file['file_name'];
+              $uid = $this->input->post('id');
+           $dataimg = array(
+           
+           'path' => $path,
+           'title' => $title,);
+           
+           $this->crud->updateprofile($dataimg,$uid);
+             $page = $this->input->post('page');
+           redirect($page);
+          // var_dump($file);
+       }
+         
+         
+//      if())
+//          {echo "Deleted file "; }
+//     else{echo "File can't be deleted";}
+         
        }
    } 
    
@@ -1070,7 +1120,20 @@ var_dump($data);
        $this->crud->add_skills($data);    
        redirect('yprofile');
    } 
-    
+    public function changepassword(){
+         $this->load->model('crud');
+       $id = $this->input->post('id');
+       $page = $this->input->post('page');
+       $data = array(
+           'password' => $this->input->post('newpass'),
+           
+              );
+      
+       $this->crud->New_pass($data,$id);    
+       redirect($page);
+        
+        
+    }
    public function logout(){
         $this->session->sess_destroy();
         $this->load->library('facebook');

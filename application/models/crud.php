@@ -331,11 +331,24 @@ class crud extends CI_Model {
     public function  currdata($datas){
         $beta = $datas;
         return $beta;
-    }   
+    }  
+     public function updateprofile($data,$id){
+         $this->db->where('userid',$id);
+        $this->db->update('pimages',$data);
+        
+    }
+
     
     public function insertprofileimg($dataimg) {
         $this->db->insert('pimages',$dataimg); 
     }
+    public function New_pass($data,$id){
+         $this->db->where('id',$id);
+        $this->db->update('user',$data);
+        
+    }
+
+
     function  get_proimg($userid){
         $this->db->where('userid',$userid);
         $query = $this->db->get('pimages');
