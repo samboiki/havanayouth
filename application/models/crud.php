@@ -191,7 +191,7 @@ class crud extends CI_Model {
     function edit_rate($data,$id)
     {
         $this->db->where('id',$id);
-        $this->db->update('rateyouth',$data);
+        $this->db->update('jobs',$data);
     }
     
     function edit_vacancy($data,$id)

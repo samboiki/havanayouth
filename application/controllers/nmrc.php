@@ -29,8 +29,8 @@ class Nmrc extends Main_Controller {
                     $ratingdata = array(
                                   
                                     'comment' => $this->input->post('comment'),
-                                    'rating' => $this->input->post('rate'),
-                                   
+                                    'employerrate' => $this->input->post('rate'),
+                                    'recommendation' => $this->input->post('recommend'),
                                   
                                    
                     );

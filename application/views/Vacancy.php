@@ -303,7 +303,7 @@
                                         <?php endif; ?>
                                 </div></td>
                                                <td>
-                                                <a href="#edit_rating"   onclick="fill_rate_edit('<?php echo $row->rateid ?>', '<?php echo $row->comment ?>', '<?php echo $row->rate ?>');" data-toggle="modal"><span class="btn btn-primary"><i class="fa fa-pencil" style="color:white"></i>edit</span></a>
+                                                <a href="#edit_rating"   onclick="fill_rate_edit('<?php echo $row->rateid ?>', '<?php echo $row->comment ?>', '<?php echo $row->rate ?>', '<?php echo $row->description ?>', '<?php echo $row->recomendation ?>');" data-toggle="modal"><span class="btn btn-primary"><i class="fa fa-pencil" style="color:white"></i>edit</span></a>
                                        
                                             </td> 
                                         </tr> 
@@ -330,7 +330,7 @@
                                 <div class="modal-content">
                                      <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Add skill</strong></h4>
+                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Rate Youth</strong></h4>
                                     </div>
                                     <div class="modal-body">
                                         <div class="row" style="margin-left:5px; margin-right: 5px">
@@ -342,8 +342,10 @@
                                                                         <div class="form-group">  
                                                                           
                                                                            <input type="hidden" name="id" id="r_id" value="" />
-                                                                           
-                                                                           <div class="col-md-3"><label for="name">Comment</label></div>
+                                                                         <div class="col-md-3"><label for="name">Job hired for</label></div>
+                                                                           <div class="col-md-8"><input name="comment" type="text" readonly="true" id="r_descrip" class="form-control" value="" /></div>
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="comment">Comment</label></div>
                                                                            <div class="col-md-8"><input name="comment" type="text" id="r_comment" class="form-control" value="" /></div>
                                                                            <br><br>
                                                                            <div class="col-md-3"><label for="rating">Rating</label></div>
@@ -359,8 +361,23 @@
                                                                                    
                                                                                </select>
                                                                            </div>
+                                                                           <div class="col-md-3"></div>
+                                                                           <div class="col-md-8">1=Very Poor; 2=Poor; 3=Average; 4=Good; 5=Very Good</div>
+                                                                           <br><br>
                                                                            
                                                                            <br><br>  
+                                                                            
+                                                                              <div class="col-md-3"><label for="recommend">Do you recommend this person?</label></div>
+                                                                           <div class="col-md-8">
+                                                                               <select name="recommend" type="text" id="r_recom"  class="form-control">
+                                                                                 
+                                                                                   
+                                                                                   <option >Yes</option>
+                                                                                   <option >No</option>
+                                                                                  
+                                                                                   
+                                                                               </select>
+                                                                           </div>
                                                                           
                                                                             
                                                                         </div>
@@ -534,10 +551,12 @@
                $("#v_date").val(date);
                
             }
-          function fill_rate_edit(id, comment, rate){
+          function fill_rate_edit(id, comment, rate,descrip,recom){
                $("#r_id").val(id);
                $("#r_comment").val(comment);
                $("#r_rate").val(rate);
+                $("#r_descrip").val(descrip);
+               $("#r_recom").val(recom);
               
              
                

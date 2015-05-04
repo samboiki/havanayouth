@@ -109,6 +109,7 @@
                                                 <th>
                                                     Request 
                                                 </th>
+                                                
                                                 <th>Picture</th>
                                             </tr>
                                         </thead>
@@ -131,8 +132,11 @@
                                                 <td>
                                                 <?php echo $row->skills;?>
                                                 </td>
+                                                 
                                                 <td>
                                                 <?php echo anchor("/jobrequest/$row->id/$user->id",'<span class="btn btn-primary btn-xs">sent '."$row->firstname".' a job notification <i class="fa fa-comments" style="color:white"></i></span>' ) ?> 
+                                                 <?php echo anchor("/jobrequest/$row->id/$user->id",' <a  class="btn  btn-warning" href="#address" data-toggle="modal"> View References</a>' ) ?> 
+                                                
                                                 </td>
                                                 <td>
                                                 <img class="" src="<?=$row->path;?>" width="100" height="100" alt="" />
