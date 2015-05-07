@@ -114,6 +114,11 @@
                                                                            <input name="location" type="text" class="form-control" data-parsley-trigger="change"
                                                                      data-parsley-validation-threshold="1"
                                                                      required="required" /><br>
+                                                                           <label for="title">Title</label>
+                                                                           <input name="title" type="text" class="form-control" data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required" /><br>
+                                                                           
                                                                            <label for="description">Description</label>
                                                                            <textarea class="form-control" name="description"  id="term" cols="40" rows="4"  data-parsley-trigger="change"
                                                                      data-parsley-validation-threshold="1"
@@ -157,6 +162,7 @@
                                            
                                             <th>Type</th>
                                             <th>Location</th>
+                                              <th>Title</th>
                                             <th>Description</th>
                                             <th> Due Date</th>
                                              <th></th>
@@ -166,10 +172,11 @@
                                           
                                             <td><?php echo $row->Type;?></td>
                                             <td><?php echo $row->Location;?></td>
+                                            <td><?php echo $row->Title;?></td>
                                             <td><?php echo $row->Description;?></td>
                                             <td><?php echo $row->Date;?></td>
                                                <td>
-                                                <a href="#edit_qualification"   onclick="fill_vacancy_edit('<?php echo $row->ID ?>', '<?php echo $row->Type ?>', '<?php echo $row->Location ?>', '<?php echo $row->Description ?>', '<?php echo $row->Date ?>');" data-toggle="modal"><span class="btn btn-primary"><i class="fa fa-pencil" style="color:white"></i>edit</span></a>
+                                                <a href="#edit_qualification"   onclick="fill_vacancy_edit('<?php echo $row->ID ?>', '<?php echo $row->Type ?>', '<?php echo $row->Location ?>','<?php echo $row->Title ?>', '<?php echo $row->Description ?>', '<?php echo $row->Date ?>');" data-toggle="modal"><span class="btn btn-primary"><i class="fa fa-pencil" style="color:white"></i>edit</span></a>
                                        
                                             </td> 
                                         </tr> 
@@ -210,6 +217,9 @@
                                                                            <input type="hidden" name="id" id="V_id" value="" />
                                                                            <div class="col-md-3"><label for="name">Location</label></div>
                                                                            <div class="col-md-8"><input name="location" type="text" id="v_location" class="form-control" value="" /></div>
+                                                                           <br><br>
+                                                                           <div class="col-md-3"><label for="name">Title</label></div>
+                                                                           <div class="col-md-8"><input name="title" type="text" id="v_title" class="form-control" value="" /></div>
                                                                            <br><br>
                                                                            <div class="col-md-3"><label for="name">Description</label></div>
                                                                            <div class="col-md-8"><input name="description" type="text" id="v_description" class="form-control" value="" data-parsley-trigger="change"
@@ -510,13 +520,7 @@
             <button type="button" data-value="true" class="btn btn-sm btn-default <%= display? 'active' : '' %>">Show</button>
             <button type="button" data-value="false" class="btn btn-sm btn-default <%= display? '' : 'active' %>">Hide</button>
         </div>
-    </div>
-    <div class="setting clearfix">
-        <div>White Version</div>
-        <div>
-            <a href="../white/index.html" class="btn btn-sm btn-default">&nbsp; Switch &nbsp;   <i class="fa fa-angle-right"></i></a>
-        </div>
-    </div>
+    </div>   
 </script>
 
 <script type="text/template" id="sidebar-settings-template">
@@ -543,10 +547,11 @@
         <script src="assets/js/forms-validation.js"></script>
 
     <script type="text/javascript">
-            function fill_vacancy_edit(id, type, location,description, date){
+            function fill_vacancy_edit(id, type, location,title,description, date){
                $("#V_id").val(id);
                $("#type").val(type);
                $("#v_location").val(location);
+               $("#v_title").val(title);
                $("#v_description").val(description);
                $("#v_date").val(date);
                

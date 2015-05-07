@@ -46,6 +46,7 @@ class Nmrc extends Main_Controller {
                                   
                                     'type' => $this->input->post('type'),
                                     'location' => $this->input->post('location'),
+                                     'title' => $this->input->post('title'),
                                     'description' => $this->input->post('description'),
                                     'date' => $this->input->post('date'),
                                   
@@ -82,6 +83,7 @@ class Nmrc extends Main_Controller {
                                     'type' => $this->input->post('type'),
                                     'location' => $this->input->post('location'),
                                     'description' => $this->input->post('description'),
+                                   'title' => $this->input->post('title'),
                                     'date' => $this->input->post('date'),
                                     'userid' => $this->input->post('id'),
                                    
@@ -917,6 +919,7 @@ var_dump($data);
                      $data['contact'] = $this->crud->get_usercontacts($userid);
                      $data['users'] = $this->crud->get_users();
                      $data['vacancy']= $this->crud->get_vacancy($userid);
+                     $data['references'] = $this->crud->get_references();
                     // echo $data['contact']->id;
                      $this->load->helper('form');
                      $this->load->helper('url');
@@ -957,6 +960,27 @@ var_dump($data);
          //   } else {
           //      redirect('restricted');
          //   }    
+    }
+public function manageusers(){
+    //loading required libraries and model
+        $this->load->library('facebook');
+        $this->load->library('session');
+        $this->load->model('crud');
+        
+        //check to see if user is logged in else redirect to restricted page
+        //    if($this->session->userdata('logged_in')){
+            
+                  //  if($this->session->userdata('role') == "admin"){            
+                    // var_dump($this->session->all_userdata());
+                     $username = $this->session->userdata('username');
+
+                     $data['user'] = $this->crud->get_user($username);
+                     $data['users'] = $this->crud->get_userforadmin();
+                    
+                     $this->load->helper('form');
+                     $this->load->helper('url');
+                     $this->load->view('manageusers',$data);
+           
     }
 
     public function fblogout(){

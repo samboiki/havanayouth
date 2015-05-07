@@ -87,6 +87,15 @@ class crud extends CI_Model {
         return $query->result();
     }
     
+    function  get_references(){
+        $query = $this->db->get('referencesview');
+        return $query->result();
+    }
+    function  get_userforAdmin(){
+        $query = $this->db->get('usersforadmin');
+        return $query->result();
+    }
+    
     function  get_usercontacts($userid){
         $this->db->where('userid',$userid);
         $query = $this->db->get('contact');

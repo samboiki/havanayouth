@@ -586,13 +586,7 @@
             <button type="button" data-value="true" class="btn btn-sm btn-default <%= display? 'active' : '' %>">Show</button>
             <button type="button" data-value="false" class="btn btn-sm btn-default <%= display? '' : 'active' %>">Hide</button>
             </div>
-            </div>
-            <div class="setting clearfix">
-            <div>White Version</div>
-            <div>
-            <a href="../white/index.html" class="btn btn-sm btn-default">&nbsp; Switch &nbsp;   <i class="fa fa-angle-right"></i></a>
-            </div>
-            </div>
+            </div>          
         </script>
 
         <script type="text/template" id="sidebar-settings-template">

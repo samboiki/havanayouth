@@ -6,8 +6,6 @@
     <title>havana Youth</title>
 
       <link href="css/application.css" rel="stylesheet">
-    <link rel="shortcut icon" href="img/favicon.png">
-    <link href="css/beyond.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/dataTables.bootstrap.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.png">
@@ -135,7 +133,7 @@
                                                  
                                                 <td>
                                                 <?php echo anchor("/jobrequest/$row->id/$user->id",'<span class="btn btn-primary btn-xs">sent '."$row->firstname".' a job notification <i class="fa fa-comments" style="color:white"></i></span>' ) ?> 
-                                                 <?php echo anchor("/jobrequest/$row->id/$user->id",' <a  class="btn  btn-warning" href="#address" data-toggle="modal"> View References</a>' ) ?> 
+                                                 <?php echo anchor("/jobrequest/$row->id/$user->id",'<span><a class="btn btn-warning btn-xs" href="#references" data-toggle="modal"> View references</a> </span>' ) ?>
                                                 
                                                 </td>
                                                 <td>
@@ -149,19 +147,100 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
-                    </div>  
+                           
+                        </div>         
+               <div id="references" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog">
+                                                 <section class="widget">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>References</strong></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                         <div class="wellr youth-border" style=" border-bottom: 3px; border-bottom-color: aquamarine;">
+                       <table class="table table-striped table-bordered " >
+                                    <thead>
+                                        <tr>
+                                           
+                                            <th >Name</th>
+                                            <th>Surname</th>
+                                            <th>Job Title</th>
+                                            <th> Rated</th>
+                                          
+                                        </tr>
+                                        <?php if(isset($references)) :  foreach ($references as $row) : ?>                       
+                                        <tr>
+                                          
+                                            <td ><?php echo $row->firstname;?></td>
+                                            <td><?php echo $row->lastname;?></td>
+                                            <td style=""><?php echo $row->Title;?></td>
+                                            <td> 
+                                <div class="col-sm-11">
+                                    <?php $rating = $row->rate; if ($rating == 1):?>
+                                     <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star"></i></span><span class="starred"><i class="fa fa-star"></i></span><span class="starred"><i class="fa fa-star"></i></span><span class="starred"><i class="fa fa-star"></i></span>
+                                        <?php elseif ($rating == 2): ?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star"></i></span><span class="starred"><i class="fa fa-star"></i></span><span class="starred"><i class="fa fa-star"></i></span>
+                                        <?php elseif ($rating == 3): ?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star"></i></span><span class="starred"><i class="fa fa-star"></i></span>
+                                        <?php elseif ($rating == 4): ?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star"></i></span>
+                                        <?php elseif ($rating == 5): ?>
+                                        <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span>
+                                        <?php else : ?>
+                                        <?php endif; ?>
+                                </div></td>
+                                                
+                                        </tr> 
+                                        
+                                         <?php endforeach;?>
+                                                                
+                                                                
+                                        <?php else : ?>
+                                                                <h6>No records </h6>
+                                        <?php endif; ?>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table> 
+                                                         </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                                                       
+                                                    </div>
+                                                   
+                                                </div><!-- /.modal-content -->
+                                                </section>
+                                            </div><!-- /.modal-dialog -->
+                                            
+                                        </div>
+                    </div> 
+            
+           
         </section>
+            
         </div>
         <div class="loader-wrap hiding hide">
             <i class="fa fa-circle-o-notch fa-spin"></i>
         </div>
     </div>
-<!-- common libraries. required for every page-->
-<script src="assets/lib/jquery/dist/jquery.min.js"></script>
-<!-- common application js -->
-<script src="assets/js/app.js"></script>
-<script src="assets/js/settings.js"></script>
+   <!-- common libraries. required for every page-->
+        <script src="assets/lib/jquery/dist/jquery.min.js"></script>
+        <script src="assets/lib/jquery-pjax/jquery.pjax.js"></script>
+        <script src="assets/lib/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+        <script src="assets/lib/widgster/widgster.js"></script>
+        <script src="assets/lib/underscore/underscore.js"></script>
+
+        <!-- common application js -->
+        <script src="assets/js/app.js"></script>
+        <script src="assets/js/settings.js"></script>
+        <script src="assets/lib/slimScroll/jquery.slimscroll.min.js"></script>
+        <script src="assets/lib/jquery.sparkline/index.js"></script>
+
+        <script src="assets/lib/d3/d3.min.js"></script>
+        <script src="assets/lib/nvd3/nv.d3.min.js"></script>
 
 <!-- common templates -->
 <script type="text/template" id="settings-template">
@@ -187,12 +266,6 @@
             <% display = displaySidebar%>
             <button type="button" data-value="true" class="btn btn-sm btn-default <%= display? 'active' : '' %>">Show</button>
             <button type="button" data-value="false" class="btn btn-sm btn-default <%= display? '' : 'active' %>">Hide</button>
-        </div>
-    </div>
-    <div class="setting clearfix">
-        <div>White Version</div>
-        <div>
-            <a href="../white/index.html" class="btn btn-sm btn-default">&nbsp; Switch &nbsp;   <i class="fa fa-angle-right"></i></a>
         </div>
     </div>
 </script>
