@@ -47,6 +47,7 @@ class Nmrc extends Main_Controller {
                                     'type' => $this->input->post('type'),
                                     'location' => $this->input->post('location'),
                                      'title' => $this->input->post('title'),
+                                      'wage' => $this->input->post('wage'),
                                     'description' => $this->input->post('description'),
                                     'date' => $this->input->post('date'),
                                   
@@ -84,6 +85,7 @@ class Nmrc extends Main_Controller {
                                     'location' => $this->input->post('location'),
                                     'description' => $this->input->post('description'),
                                    'title' => $this->input->post('title'),
+                                   'wage' => $this->input->post('wage'),
                                     'date' => $this->input->post('date'),
                                     'userid' => $this->input->post('id'),
                                    
@@ -199,8 +201,9 @@ class Nmrc extends Main_Controller {
                                     'lastname' => $this->input->post('lastname'),
                                     'username' => $this->input->post('username'),
                                     'password' => $this->input->post('password'),
+                                    'gender' => $this->input->post('gender'),
                                     'role' => $this->input->post('role'),
-                                    'cellphone' => $this->input->post('number')
+                                
                     );
                     
                     $this->crud->add_users($signupdata);
@@ -250,14 +253,44 @@ class Nmrc extends Main_Controller {
                          redirect('yprofile');
                     }
                     else {
-                         redirect('aprofile');
+                         redirect('index');
                     }
                     
             }
             else {
-                redirect();
-            }
+                  echo '<script>alert("the username or email is already in use");
+                window.location = "/havanayouth/registration";
+                </script>';
+                 }
    }
+   
+   public function jobsearch(){
+      $this->load->library('facebook');
+        $this->load->library('session');
+        $this->load->model('crud');
+      if($this->session->userdata('logged_in')){
+            
+                if($this->session->userdata('role') == "youth"){                  
+                    // var_dump($this->session->all_userdata());
+                     $username = $this->session->userdata('username');
+                     $data['user'] = $this->crud->get_user($username);
+                     $userid = $data['user']->id;
+                     $data['vacancies'] = $this->crud->get_vacancies();
+                     
+                     //$img = $data['img'];
+                    // var_dump($img);
+                     $this->load->helper('form');
+                     $this->load->helper('url');
+                     $this->load->view('jobsearch',$data);
+                }
+                else {
+                    echo "because of youth";
+                    redirect('restricted'); 
+                }
+            } else {
+                redirect('signin');;
+            }
+    }
    
    public function jobrequest(){
       
@@ -919,7 +952,7 @@ var_dump($data);
                      $data['contact'] = $this->crud->get_usercontacts($userid);
                      $data['users'] = $this->crud->get_users();
                      $data['vacancy']= $this->crud->get_vacancy($userid);
-                     $data['references'] = $this->crud->get_references();
+                    
                     // echo $data['contact']->id;
                      $this->load->helper('form');
                      $this->load->helper('url');
@@ -961,6 +994,30 @@ var_dump($data);
           //      redirect('restricted');
          //   }    
     }
+    public function adminSettings(){
+    //loading required libraries and model
+        $this->load->library('facebook');
+        $this->load->library('session');
+        $this->load->model('crud');
+        
+        //check to see if user is logged in else redirect to restricted page
+        //    if($this->session->userdata('logged_in')){
+            
+                  //  if($this->session->userdata('role') == "admin"){            
+                    // var_dump($this->session->all_userdata());
+                     $username = $this->session->userdata('username');
+
+                     $data['user'] = $this->crud->get_user($username);
+                     $userid = $data['user']->id;
+                     $data['contact'] = $this->crud->get_usercontacts($userid);
+                     $data['img'] = $this->crud->get_proimg($userid);
+                    // echo $data['contact']->id;
+                     $this->load->helper('form');
+                     $this->load->helper('url');
+                     $this->load->view('adminSettings',$data);
+           
+    }
+    
 public function manageusers(){
     //loading required libraries and model
         $this->load->library('facebook');
@@ -1148,12 +1205,13 @@ public function manageusers(){
    } 
     public function changepassword(){
          $this->load->model('crud');
-       $id = $this->input->post('id');
-       $page = $this->input->post('page');
-       $data = array(
-           'password' => $this->input->post('newpass'),
+         $id =  $this->uri->segment(2);
+         $page = $this->uri->segment(3);
+         $newpass = $this->uri->segment(4);
+         $data = array(
+           'password' => $newpass,
            
-              );
+       );
       
        $this->crud->New_pass($data,$id);    
        redirect($page);
@@ -1166,10 +1224,10 @@ public function manageusers(){
         // Logs off session from website
         $this->facebook->destroySession();
         // Make sure you destory website session as well.
-        redirect('index.php');
+        redirect('index');
     }
     
-   public function addQualification() {
+     public function addQualification() {
         $this->load->model('crud');
         $data = array(
             'userid' => $this->input->post('id'),
@@ -1179,6 +1237,18 @@ public function manageusers(){
         );
         $this->crud->add_qualification($data);
         redirect('yprofile');
+    }
+    
+   public function activation() {
+        $this->load->model('crud');
+        $data = array(
+            'userid' => $this->input->post('id'),
+            'name'   => $this->input->post('name'),
+            'institution' => $this->input->post('institution'),
+            'date'        => $this->input->post('date'),
+        );
+        $this->crud->add_qualification($data);
+        redirect('manageusers');
     }
     
    public function edit_qualification(){

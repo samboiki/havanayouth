@@ -111,18 +111,24 @@
                                                                             
                                                                              </select> <br>                                                                 
                                                                            <label for="location">Location</label>
-                                                                           <input name="location" type="text" class="form-control" data-parsley-trigger="change"
+                                                                           <input name="location" type="text" class="form-control" placeholder="Windhoek" data-parsley-trigger="change"
                                                                      data-parsley-validation-threshold="1"
                                                                      required="required" /><br>
                                                                            <label for="title">Title</label>
-                                                                           <input name="title" type="text" class="form-control" data-parsley-trigger="change"
+                                                                           <input name="title" type="text" placeholder="Cleaner" class="form-control" data-parsley-trigger="change"
                                                                      data-parsley-validation-threshold="1"
                                                                      required="required" /><br>
+                                                                           
                                                                            
                                                                            <label for="description">Description</label>
                                                                            <textarea class="form-control" name="description"  id="term" cols="40" rows="4"  data-parsley-trigger="change"
                                                                      data-parsley-validation-threshold="1"
                                                                      required="required"></textarea><br>
+                                                                     <label for="wage">Salary</label>
+                                                                           <input name="wage" type="text" placeholder="N$898.90" class="form-control" data-parsley-trigger="change"
+                                                                     data-parsley-validation-threshold="1"
+                                                                     required="required" /><br>
+                                                                     
                                                                            <label for="date">Closing date</label>
                                                                           
                                                                            
@@ -170,13 +176,13 @@
                                         <?php if(isset($vacancy)) :  foreach ($vacancy as $row) : ?>                       
                                         <tr>
                                           
-                                            <td><?php echo $row->Type;?></td>
-                                            <td><?php echo $row->Location;?></td>
-                                            <td><?php echo $row->Title;?></td>
-                                            <td><?php echo $row->Description;?></td>
-                                            <td><?php echo $row->Date;?></td>
+                                            <td><?php echo $row->type;?></td>
+                                            <td><?php echo $row->location;?></td>
+                                            <td><?php echo $row->title;?></td>
+                                            <td><?php echo $row->description;?></td>
+                                            <td><?php echo $row->date;?></td>
                                                <td>
-                                                <a href="#edit_qualification"   onclick="fill_vacancy_edit('<?php echo $row->ID ?>', '<?php echo $row->Type ?>', '<?php echo $row->Location ?>','<?php echo $row->Title ?>', '<?php echo $row->Description ?>', '<?php echo $row->Date ?>');" data-toggle="modal"><span class="btn btn-primary"><i class="fa fa-pencil" style="color:white"></i>edit</span></a>
+                                                <a href="#edit_qualification"   onclick="fill_vacancy_edit('<?php echo $row->id ?>', '<?php echo $row->type ?>', '<?php echo $row->location ?>','<?php echo $row->title ?>', '<?php echo $row->description ?>', '<?php echo $row->date ?>','<?php echo $row->wage?>');" data-toggle="modal"><span class="btn btn-primary"><i class="fa fa-pencil" style="color:white"></i>edit</span></a>
                                        
                                             </td> 
                                         </tr> 
@@ -240,7 +246,9 @@
                                                                            </div>
                                                                            
                                                                            <br><br>  
-                                                                          
+                                                                            <div class="col-md-3"><label for="wage">Salary</label></div>
+                                                                           <div class="col-md-8"><input name="wage" type="text" id="v_wage" class="form-control" value="" /></div>
+                                                                           <br><br>
                                                                             
                                                                         </div>
                                                                    </div><!--//footer-col-inner-->
@@ -547,13 +555,14 @@
         <script src="assets/js/forms-validation.js"></script>
 
     <script type="text/javascript">
-            function fill_vacancy_edit(id, type, location,title,description, date){
+            function fill_vacancy_edit(id, type, location,title,description, date,wage){
                $("#V_id").val(id);
                $("#type").val(type);
                $("#v_location").val(location);
                $("#v_title").val(title);
                $("#v_description").val(description);
                $("#v_date").val(date);
+                $("#v_wage").val(wage);
                
             }
           function fill_rate_edit(id, comment, rate,descrip,recom){
@@ -567,6 +576,6 @@
                
             }
             
-        </script>
+        </script>     
 </body>
 </html>

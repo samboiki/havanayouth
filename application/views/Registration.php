@@ -69,7 +69,19 @@
                                                       
                                                   </fieldset>
                                                   <fieldset>
-                                                     
+                                                       <div class="form-group">
+                                                      <div class="col-md-2"><label for="gender">Gender</label></div>
+                                                                           <div class="col-md-5">
+                                                                               <select name="gender" type="text"  class="form-control">
+                                                                                 
+                                                                                   <option >Male</option>
+                                                                                   <option >Female</option>
+                                                                                   
+                                                                               </select>
+                                                                           </div>
+                                                                           
+                                                                           <br><br> 
+                                                       </div>
                                                       <div class="form-group">
                                                             <label class="control-label col-md-2" for="email">
                                                                 E-mail
@@ -168,14 +180,13 @@
                                    <fieldset>
                                        <label class="control-label col-md-2" for="firstname">
                                                           </label>
-                                       <div class="checkbox checkbox-primary pull-left ">
+                                       <div class="checkbox checkbox-primary pull-left "  >
                                            
-                                            <input name="checkButton2" type="checkbox" value="1" class="required step5 parsley-validated">
-                                            <input id="checkbox3" type="checkbox" required="required" data-parsley-mincheck="1">
+                                            <input id="checkbox3" type="checkbox" required="required" data-parsley-mincheck="1" onclick="termsAgreed()">
                                                         <label  for="checkbox3">
                                                             
                                                         </label>
-                                                    </div>
+                                         </div>
                                      <div id="myTabContent" class="tab-content" >
                                      <div class="tab-pane fade in active" id="dropdown4">
                                 
@@ -199,8 +210,8 @@
                                     <div class="modal-footer">
                                         
                                         
-                                        <a href="<?php echo site_url('index.php');?>"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button></a>
-                                        <button type="submit" class="btn btn-primary">Register Your Account&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button><br>
+                                        <a href="<?php echo site_url('index');?>"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button></a>
+                                        <button type="submit" class="btn btn-primary enableOnInput" id="registerb"  disabled='disabled'>Register <i class="fa fa-arrow-right"></i></button><br>
                                         
                                     </div>
                                         </form>
@@ -278,6 +289,15 @@
 
         <!-- page application js -->
         <script src="assets/js/forms-validation.js"></script>
-
+        <script type="text/javascript">
+            function termsAgreed(){
+                if (document.getElementById('checkbox3').checked)
+                {
+                   $('.enableOnInput').prop('disabled', false);
+                }else{
+                   $('.enableOnInput').prop('disabled', true);
+                }
+            }
+        </script>
 </body>
 </html>

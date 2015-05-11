@@ -143,8 +143,9 @@
                                     <div class="tab-pane fade in active" id="information">
                                         <legend class="section">Profile picture</legend>
                                         <div class="row">
+                                           
                                             <div class="col-sm-4">
-
+                                                
                                                 <div class="text-align-center">
                                                     <?php if (isset($img)) : foreach ($img as $rows) : ?>    
                                                             <p><img class="img-circle" src="<?= $rows->path; ?>" width="100" height="100" alt="" /></p>
@@ -154,6 +155,7 @@
                                                     <?php endif; ?>
                                                 </div>
                                             </div>
+                                            <div class="col-sm-5" align=""></div><div class="col-sm-2" align=""><a  class="btn btn-primary" href="#changepicture" data-toggle="modal"><i class="fa fa-pencil" style="color:white"></i>change picture</a></div></br></br>
 
                                         </div>
                                         <div>
@@ -308,9 +310,9 @@
                                             <div class="col-sm-8"> :  <?php echo $row->job_description?></div>
                                             <br><br>
                                             <div class="col-sm-3"><label>Date</label></div>
-                                            <div class="col-sm-8"> :  <?php echo $row->date?></div><br><br>
+                                            <div class="col-sm-8"> :  <?php echo $row->from_date . "   to  " . $row->to_date?></div><br><br>
                                             <div class="col-sm-9"><label></label></div>
-                                            <div class="col-sm-1" align=""> <a data-toggle="modal" href="#edit_history" onclick="fill_history_edit('<?php echo $row->id ?>', '<?php echo $row->employer ?>', '<?php echo $row->contact ?>', '<?php echo $row->job_title ?>', '<?php echo $row->job_description ?>', '<?php echo $row->date ?>');"><span class="btn btn-primary btn-xs"><i class="fa fa-pencil" style="color:white"></i>edit</span></a></div>
+                                            <div class="col-sm-1" align=""> <a data-toggle="modal" href="#edit_history" onclick="fill_history_edit('<?php echo $row->id ?>', '<?php echo $row->employer ?>', '<?php echo $row->contact ?>', '<?php echo $row->job_title ?>', '<?php echo $row->job_description ?>', '<?php echo $row->from_date ?>', '<?php echo $row->to_date ?>');"><span class="btn btn-primary btn-xs"><i class="fa fa-pencil" style="color:white"></i>edit</span></a></div>
                                             <div class="col-sm-1" align=""> <a data-toggle="modal" href="#delete_history" onclick="setHistoryId('<?php echo $row->id?>')"><span class="btn btn-danger btn-xs"><i class="fa fa-trash" style="color:white"></i>delete</a></a></div>
                                             <br><br><legend></legend><br>    
                                                 <?php endforeach; ?>
@@ -738,8 +740,12 @@
                                                                         <div class="col-md-3"><label for="description">Job description</label></div>
                                                                         <div class="col-md-8"><textarea name="description" type="text" id="description" class="form-control" value="" ></textarea></div>
                                                                         <br><br><br>
-                                                                        <div class="col-md-3"><label for="name">Date</label></div>
-                                                                        <div class="col-md-8"><input name="date" type="date" id="date" class="form-control" value="" /></div>
+                                                                        <div class="col-md-3"><label for="description">From date</label></div>
+                                                                        <div class="col-md-8"><input name="from_date" type="date" id="from_date" class="form-control" value="" /></div>
+                                                                        <br><br><br>
+                                                                        
+                                                                        <div class="col-md-3"><label for="name">To date</label></div>
+                                                                        <div class="col-md-8"><input name="to_date" type="date" id="to_date" class="form-control" value="" /></div>
                                                                         <br><br
 
                                                                     </div>
@@ -782,8 +788,11 @@
                                                                         <div class="col-md-3"><label for="description">Job description</label></div>
                                                                         <div class="col-md-8"><textarea name="description" type="text" id="desc" class="form-control" value="" ></textarea></div>
                                                                         <br><br><br>
-                                                                        <div class="col-md-3"><label for="name">Date</label></div>
-                                                                        <div class="col-md-8"><input name="date" type="date" id="hdate" class="form-control" value="" /></div>
+                                                                        <div class="col-md-3"><label for="name">From date</label></div>
+                                                                        <div class="col-md-8"><input name="from_date" type="date" id="fdate" class="form-control" value="" /></div>
+                                                                        <br><br><br>
+                                                                        <div class="col-md-3"><label for="name">To date</label></div>
+                                                                        <div class="col-md-8"><input name="to_date" type="date" id="tdate" class="form-control" value="" /></div>
                                                                         <br><br
 
                                                                     </div>
@@ -842,7 +851,7 @@
                                                                     <div class="form-group">  
                                                                         <input type="hidden" name="id"  id="user_idd" value="<?php echo $user->id?>" />
                                                                         <input type="hidden" name=""  id="r_currentpass" value="<?php echo $user->password?>" />
-                                                                        <input type="hidden" name="page"  value="yprofile" />
+                                                                        <input type="hidden" name="cpage"  value="yprofile" />
                                                                         <div class="col-md-3"><label for="name">Current password</label></div>
                                                                         <div class="col-md-8"><input name="currentpass" type="password" id="currentpass" class="form-control" value="" /></div>
                                                                         <br><br>
@@ -1214,7 +1223,7 @@
         $("#sskill").val(skill);
         $("#rrating").val(rating);
     }
-    function fill_history_edit(id,emp, cont, title, desc, date) {
+    function fill_history_edit(id,emp, cont, title, desc, fdate, tdate) {
 
 
         $("#hid").val(id);
@@ -1222,7 +1231,8 @@
         $("#cont").val(cont);
         $("#ttitle").val(title);
         $("#desc").val(desc);
-        $("#hdate").val(date);
+        $("#fdate").val(fdate);
+        $("#tdate").val(tdate);
     }
     function getSkillID(id) {
         $("#ss_id").val(id);

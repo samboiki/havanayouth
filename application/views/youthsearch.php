@@ -132,16 +132,26 @@
                                                 </td>
                                                  
                                                 <td>
-                                                <?php echo anchor("/jobrequest/$row->id/$user->id",'<span class="btn btn-primary btn-xs">sent '."$row->firstname".' a job notification <i class="fa fa-comments" style="color:white"></i></span>' ) ?> 
-                                                 <?php echo anchor("/jobrequest/$row->id/$user->id",'<span><a class="btn btn-warning btn-xs" href="#references" data-toggle="modal"> View references</a> </span>' ) ?>
-                                                
+                                                    <a href="#references"   onclick="fill_references('<?php echo $row->id?>');" data-toggle="modal"><span class="btn btn-warning btn-xs">View references</span></a>
+                                                    <?php
+                                                    $this->load->model('crud');
+                                      
+                                         $data1['references'] = $this->crud->get_references( 147);
+                                     
+                                         $geting=$data1['references'];
+                                         
+                                                       
+                                                    echo anchor("/jobrequest/$row->id/$user->id",'<span class="btn btn-primary btn-xs">sent '."$row->firstname".' a job notification <i class="fa fa-comments" style="color:white"></i></span>' ) ?> 
+                                                 
+
+                                               
                                                 </td>
                                                 <td>
                                                 <img class="" src="<?=$row->path;?>" width="100" height="100" alt="" />
                                                 </td>
                                             </tr>
                                                 <?php  endforeach;?>
-                                                <?php else : ?><h6>No records </h6>
+                                                <?php else :  ?><h6>No records </h6>
                                             <?php endif; ?>
                                         </tbody>
                                     </table>
@@ -149,9 +159,12 @@
                             </div>
                            
                         </div>         
-               <div id="references" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div id="references" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+
                                             <div class="modal-dialog">
+                                                     
                                                  <section class="widget">
+                                                   
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -169,15 +182,21 @@
                                             <th> Rated</th>
                                           
                                         </tr>
-                                        <?php if(isset($references)) :  foreach ($references as $row) : ?>                       
+                                        <?php
+                                      
+                                         
+                                     
+                                    
+                                    
+                                       
+                                        if(isset($geting)) :  foreach ($geting as $reow) :?>                       
                                         <tr>
-                                          
-                                            <td ><?php echo $row->firstname;?></td>
-                                            <td><?php echo $row->lastname;?></td>
-                                            <td style=""><?php echo $row->Title;?></td>
+                                            <td ><?php echo $reow->firstname;?></td>
+                                            <td><?php echo $reow->lastname;?></td>
+                                            <td ><?php echo $reow->title;?></td>
                                             <td> 
                                 <div class="col-sm-11">
-                                    <?php $rating = $row->rate; if ($rating == 1):?>
+                                    <?php $rating = $reow->rate; if ($rating == 1):?>
                                      <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star"></i></span><span class="starred"><i class="fa fa-star"></i></span><span class="starred"><i class="fa fa-star"></i></span><span class="starred"><i class="fa fa-star"></i></span>
                                         <?php elseif ($rating == 2): ?>
                                         <span class="starred "><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star" style="color: #eac85e;"></i></span><span class="starred"><i class="fa fa-star"></i></span><span class="starred"><i class="fa fa-star"></i></span><span class="starred"><i class="fa fa-star"></i></span>
@@ -285,6 +304,16 @@
             class="btn btn-transparent btn-sm">Auto</button>
     <% } %>
 </script>
+<script type="text/javascript">
+          function fill_references(id){
+           
+         }
+         function getUserID(){
+             
+         }
+            
+        </script>
+
  <script src="assets/lib/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
         <script src="assets/lib/select2/select2.min.js"></script>
         <script src="assets/lib/moment/moment.js"></script>

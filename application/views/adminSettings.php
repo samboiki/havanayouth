@@ -29,14 +29,17 @@
         </div>
         <nav  class="sidebar nav-collapse collapse">
             <ul id="side-nav" class="side-nav">
+                  <li class="">
+                    <a href="<?php echo base_url('aprofile');?>"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
+                </li>
+                <li class="">
+                    <a href="<?php echo site_url('manageusers');?>"><i class="fa fa-users"></i> <span class="name">Management</span></a>
+                </li>
+                <li class="">
+                    <a href="<?php echo site_url('notifications');?>"><i class="fa fa-th"></i> <span class="name">Notifications</span></a>
+                </li>
                 <li class="active">
-                    <a href="<?php echo base_url('rprofile'); ?>"><i class="fa fa-user"></i> <span class="name">Profile</span></a>
-                </li>
-                <li class="">
-                    <a href="<?php echo site_url('vacancy'); ?>"><i class="fa fa-briefcase"></i> <span class="name">Vacancy</span></a>
-                </li>
-                <li class="">
-                    <a href="<?php echo site_url('youthsearch'); ?>"><i class="fa fa-users"></i> <span class="name">Recruitment</span></a>
+                    <a href="<?php echo site_url('adminSettings');?>"><i class="fa fa-user"></i> <span class="name">Profile</span></a>
                 </li>
                 <li class="visible-xs">
                     <a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out"></i> <span class="name">Sign Out</span></a>
@@ -92,7 +95,8 @@
                             </header>
                             <div class="body">
                                 <ul id="myTab" class="nav nav-tabs">
-                                    <li class="active"><a href="#information" data-toggle="tab">Account info</a></li>                                  
+                                    <li class="active"><a href="#information" data-toggle="tab">Account info</a></li>  
+                                    <li class=""><a href="#information" data-toggle="tab">New Admin Account</a></li> 
                                     <li class="dropdown">
                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
                                             <ul class="dropdown-menu">
@@ -127,38 +131,14 @@
                                                 <div class="col-sm-4"><strong><?= $user->firstname; ?></strong></div><div class="col-sm-2"></div><div class="col-sm-2"><a  class="btn btn-primary" href="#personalInfo" data-toggle="modal"><i class="fa fa-pencil" style="color:white"></i> edit</a></div></br></br>
                                                 <h5><label class="col-sm-4" for="prefix">Surname:</label></h5>
                                                 <div class="col-sm-4"><strong><?= $user->lastname; ?></strong></div></br></br>
-                                                <h5><label class="col-sm-4" for="prefix">Gender:</label></h5>
-                                                <div class="col-sm-4"><strong><?= $user->gender; ?></strong></div></br></br>
-                                                <h5><label class="col-sm-4" for="prefix">Date of Birth:</label></h5>
-                                                <div class="col-sm-4"><strong><?= $user->birth_date; ?></strong></div></br></br>
-                                        </div>
+                                                </div>
                                         <div>
                                             <legend class="section">Contact Info</legend>
                                             <h5><label class="col-sm-4" for="prefix">Mobile:</label></h5>
                                             <div class="col-sm-4"><strong><?= $contact->mobile_phone ?></strong></div><div class="col-sm-2"></div><div class="col-sm-2"><a  class="btn btn-primary" href="#contacts" data-toggle="modal"><i class="fa fa-pencil" style="color:white"></i> edit</a></div></br></br>
                                             <h5><label class="col-sm-4" for="prefix">Tel:</label></h5>
-                                            <div class="col-sm-4"><strong><?= $contact->telephone ?></strong></div></br></br>
-                                            <h5><label class="col-sm-4" for="prefix">Email:</label></h5>
-                                            <div class="col-sm-4"><strong><?= $contact->email; ?></strong></div></br></br>
-                                            <h5><label class="col-sm-4" for="prefix">Fax:</label></h5>
-                                            <div class="col-sm-4"><strong><?= $contact->fax; ?></strong></div></br></br>
-                                        </div>
-                                        <div>
-                                            <legend class="section">Address</legend>
-                                            <h5><label class="col-sm-4" for="prefix">Address:</label></h5>
-                                            <div class="col-sm-4"><strong><?= $address->erf ?> <?= $address->street ?> Street, <?= $address->suburb ?></strong></div><div class="col-sm-2 pull-right"><a  class="btn btn-primary" href="#address" data-toggle="modal"><i class="fa fa-pencil" style="color:white"></i> edit</a></div></br></br>
-                                            <h5><label class="col-sm-4" for="prefix">City</label></h5>
-                                            <div class="col-sm-4"><strong><?php echo $address->city ?></strong></div></br></br>
-                                            <h5><label class="col-sm-4" for="prefix">Region:</label></h5>
-                                            <div class="col-sm-4"><strong><?php echo $address->region ?></strong></div></br></br>
-                                            <h5><label class="col-sm-4" for="prefix">Country:</label></h5>
-                                            <div class="col-sm-4"><strong><?php echo $address->country ?></strong></div></br></br>
-                                        </div>
-                                        <div>
-                                            <article class="map-section">
-                                                <div id="map"></div><!--//map-->
-                                            </article>
-                                        </div>
+                                            <div class="col-sm-4"><strong><?= $contact->telephone ?></strong></div></br></br>                                           
+                                        </div>                                  
                                     </div>
                                  
                                     
@@ -188,20 +168,7 @@
                                                                             <div class="col-md-3"><label for="lastname">Lastname</label></div>
                                                                             <div class="col-md-8"><input name="lastname" type="text" class="form-control" value="<?php echo $user->lastname ?>" /></div>
 
-                                                                            <br><br>
-                                                                            <div class="col-md-3"><label for="gender">Gender</label></div>
-                                                                            <div class="col-md-8"><input name="gender" type="text"  class="form-control" value="<?php echo $user->gender ?>" readonly="readonly" /></div>
-                                                                            <br><br>
-                                                                            <div class="col-md-3"><label for="exp">Birth date</label></div>
-
-                                                                            <div class="col-md-8">
-                                                                                <div class="input-group">
-                                                                                    <input class="form-control date-picker" id="id-date-picker-1" name="birth_date" type="date" data-date-format="YYYY-MM-DD" placeholder="" value="<?php echo $user->birth_date ?>">
-                                                                                    <span class="input-group-addon">
-                                                                                        <i class="fa fa-calendar"></i>
-                                                                                    </span>
-                                                                                </div>
-                                                                            </div><br><br>
+                                                                          <br><br>
 
                                                                             <?php else : ?>
                                                                             <h6>No records </h6>
@@ -235,20 +202,13 @@
                                                                     <div class="form-group">
 <?php if (isset($contact)) : ?>  
                                                                             <input type="hidden" name="id"  value="<?php echo $contact->id ?>" />
-                                                                            <input type="hidden" name="page"  value="<?php echo "rprofile" ?>" />
+                                                                            <input type="hidden" name="page"  value="<?php echo "adminSettings" ?>" />
                                                                             <div class="col-md-3"><label for="mobile">Cellpnone</label></div>
                                                                             <div class="col-md-8"><input name="mobile" type="text" id="mobile" class="form-control" value="<?php echo $contact->mobile_phone ?>" /></div>
                                                                             <br><br>
                                                                             <div class="col-md-3"><label for="lastname">Telephone</label></div>
                                                                             <div class="col-md-8"><input name="tel" type="text" id="tel" class="form-control" value="<?php echo $contact->telephone ?>" /></div>
-
-                                                                            <br><br>
-                                                                            <div class="col-md-3"><label for="id_or_passport">Fax</label></div>
-                                                                            <div class="col-md-8"><input name="fax" type="text" id="fax" class="form-control" value="<?php echo $contact->fax ?>" /></div>
-                                                                            <br><br>
-                                                                            <div class="col-md-3"><label for="id_or_passport">Email</label></div>
-                                                                            <div class="col-md-8"><input name="email" type="text" id="email" class="form-control" value="<?php echo $contact->email ?>" /></div>
-                                                                            <br>   
+                                                                             <br>   
 
                                                                         <?php else : ?>
                                                                             <h6>No records </h6>
@@ -268,58 +228,7 @@
                                                 </div><!-- /.modal-content -->
                                             </div><!-- /.modal-dialog -->
                                         </div>
-                                        <div id="address" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Update Address Info</strong></h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="row" style="margin-left:5px; margin-right: 5px">
-                                                            <form action="createaddress" method="post" accept-charset="utf-8">	
-                                                                <div class="footer-col-inner">
-                                                                    <div class="form-group">
-<?php if (isset($address)) : ?>  
-                                                                            <input type="hidden" name="id"  value="<?php echo $user->id ?>" />
-                                                                            <input type="hidden" name="page"  value="<?php echo "rprofile" ?>" />
-                                                                            <div class="col-md-3"><label for="erf">Erf</label></div>
-                                                                            <div class="col-md-8"><input name="erf" type="text" id="address" class="form-control" value="<?php echo $address->erf ?>" /></div>
-                                                                            <br><br><br>
-                                                                            <div class="col-md-3"><label for="street">Street</label></div>
-                                                                            <div class="col-md-8"><input name="street" type="text" id="tel" class="form-control" value="<?php echo $address->street ?>" /></div>
-                                                                            <br><br><br>
-                                                                            <div class="col-md-3"><label for="suburb">Suburb</label></div>
-                                                                            <div class="col-md-8"><input name="suburb" type="text" id="suburb" class="form-control" value="<?php echo $address->suburb ?>" /></div>
-                                                                            <br><br><br>
-                                                                            <div class="col-md-3"><label for="city">City</label></div>
-                                                                            <div class="col-md-8"><input name="city" type="text" id="tel" class="form-control" value="<?php echo $address->city ?>" /></div>
-                                                                            <br><br><br>
-                                                                            <div class="col-md-3"><label for="region">Region</label></div>
-                                                                            <div class="col-md-8"><input name="region" type="text" id="region" class="form-control" value="<?php echo $address->region ?>" /></div>
-                                                                            <br><br><br>
-                                                                            <div class="col-md-3"><label for="country">Country</label></div>
-                                                                            <div class="col-md-8"><input name="country" type="text" id="country" class="form-control" value="<?php echo $address->country ?>" /></div>
-                                                                            <br>   
-
-                                                                        <?php else : ?>
-                                                                            <h6>No records </h6>
-<?php endif; ?>
-                                                                        <br>
-
-                                                                    </div>
-                                                                </div><!--//footer-col-inner-->
-
-                                                        </div>           
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-primary">Update</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                        </form>
-                                                    </div>
-                                                    </form>
-                                                </div><!-- /.modal-content -->
-                                            </div><!-- /.modal-dialog -->
-                                        </div>                             
+                                                               
                                        <div id="changepassword" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -334,7 +243,7 @@
                                                                     <div class="form-group">  
                                                                         <input type="hidden" name="id"  id="user_idd" value="<?php echo $user->id?>" />
                                                                         <input type="hidden" name=""  id="r_currentpass" value="<?php echo $user->password?>" />
-                                                                        <input type="hidden" name="page"  value="rprofile" />
+                                                                        <input type="hidden" name="page"  value="adminSettings" />
                                                                         <div class="col-md-3"><label for="name">Current password</label></div>
                                                                         <div class="col-md-8"><input name="currentpass" type="password" id="currentpass" class="form-control" value="" /></div>
                                                                         <br><br>
@@ -373,7 +282,7 @@
                                                                 <form action="uploadimg" method="post" accept-charset="utf-8" enctype="multipart/form-data">	
                                                                 <div class="footer-col-inner">
                                                                     <div class="form-group">
-                                                                        <input type="hidden" name="page"  value="rprofile" />
+                                                                        <input type="hidden" name="page"  value="adminSettings" />
                                                                         <input type="hidden" name="id"  value="<?php echo $user->id ?>" />
                                                                         <input name="userfile" type="file" size="100"   /><br>
                                                                         
@@ -402,7 +311,7 @@
                                                                     <div class="form-group">
 <?php if (isset($contact)) : ?>  
                                                                             <input type="hidden" name="id"  value="<?php echo $contact->id ?>" />
-                                                                            <input type="hidden" name="page"  value="<?php echo "rprofile" ?>" />
+                                                                            <input type="hidden" name="page"  value="<?php echo "adminSettings" ?>" />
                                                                             <input name="mobile" type="text" id="mobile" class="form-control" value="<?php echo $contact->mobile_phone ?>" /><br>
                                                                             <input name="tel" type="text" id="tel" class="form-control" value="<?php echo $contact->telephone ?>" /><br>
                                                                             <input name="fax" type="text" id="fax" class="form-control" value="<?php echo $contact->fax ?>" /><br>
@@ -422,56 +331,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade" id="dropdown9">
-                                            <div class="row">
-                                                <div class="col-md-5 col-sm-6 col-xs-12">
-                                                    <div class="well with-header">
-                                                        <div class="header bordered-blue">Update Your Residential Details</div>
-                                                        <div>
-                                                            <form action="/havanayouth/createaddress" method="post" accept-charset="utf-8">	
-                                                                <div class="footer-col-inner">
-                                                                    <div class="form-group">
-                                                                            <?php if (isset($address)) : ?>  
-                                                                            <input type="hidden" name="id"  value="<?php echo $user->id ?>" />
-                                                                            <label for="firstname">Erf</label>
-                                                                            <input name="erf" type="text" class="form-control" value="<?php echo $address->erf ?>" /><br>
-                                                                            <label for="lastname">Street</label>
-                                                                            <input name="street" type="text"  class="form-control" value="<?php echo $address->street ?>" /><br>
-                                                                            <label for="exp">Suburb</label>
-                                                                            <input name="suburb" type="text"  class="form-control" value="<?php echo $address->suburb ?>" /><br>
-                                                                            <label for="exp">City</label>
-                                                                            <input name="city" type="text"  class="form-control" value="<?php echo $address->city ?>" /><br>
-                                                                            <label for="exp">Region</label>
-                                                                            <input name="region" type="text"  class="form-control" value="<?php echo $address->region ?>" /><br>
-                                                                            <?php else : ?>
-                                                                            <h6>No records </h6>
-                                                                            <?php endif; ?>
-                                                                        <br>
-                                                                        <button type="submit" class="btn btn-primary">Update Details</button>
-                                                                    </div>
-                                                                </div><!--//footer-col-inner-->
-                                                            </form>
-
-                                                        </div> <!-- /content -->
-                                                    </div><!--//row-->
-                                                </div>
-                                                <div class="footer-col col-md-7 col-sm-8 newsletter">
-                                                    <div class="well with-header">
-                                                        <div class="header bordered-blue">Address Details</div>
-<?php if (isset($address)) : ?>    
-                                                            <h0><strong>Erf #: </strong><?php echo $address->erf ?></h0></br></br>
-                                                            <h0><strong>Street: </strong><?php echo $address->street ?></h0></br></br>
-                                                            <h0><strong>Suburb: </strong><?php echo $address->suburb ?></h0></br></br>
-                                                            <h0><strong>City: </strong><?php echo $address->city ?></h0></br></br>
-                                                            <h0><strong>Region: </strong><?php echo $address->region ?></h0></br></br>
-                                                        <?php else : ?>
-                                                            <h6>No records </h6>
-<?php endif; ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                      
+                                     
                                     </div>
                                       
                     </div>

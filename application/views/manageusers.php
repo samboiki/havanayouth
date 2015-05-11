@@ -30,10 +30,13 @@
                     <a href="<?php echo base_url('aprofile');?>"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
                 </li>
                 <li class="active">
-                    <a href="<?php echo site_url('manageusers');?>"><i class="fa fa-area-chart"></i> <span class="name">Management</span></a>
+                    <a href="<?php echo site_url('manageusers');?>"><i  class="fa fa-users"></i> <span class="name">Management</span></a>
                 </li>
                 <li class="">
                     <a href="<?php echo site_url('notifications');?>"><i class="fa fa-th"></i> <span class="name">Notifications</span></a>
+                </li>
+                <li class="">
+                    <a href="<?php echo site_url('adminSettings');?>"><i class="fa fa-user"></i> <span class="name">Profile</span></a>
                 </li>
                 <li class="visible-xs">
                     <a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out"></i> <span class="name">Sign Out</span></a>
@@ -167,13 +170,15 @@
                                                 <?php echo $row->role;?>
                                                 </td> 
                                                 <td> 
+                                                    
                                                       <?php
                                                     
                                                     if($row->role == "employer" ||$row->role == "youth" ){
-                                                        echo anchor("/jobrequest/$row->id/$user->id",'<span><a class="btn btn-danger btn-xs" href="#references" data-toggle="modal"> Deactivate User</a> </span>' );
+                                                    
+                                                        echo anchor("/jobrequest/$row->id/$user->id",'<span><a class="btn btn-danger btn-xs" href="#deactivate" data-toggle="modal"> Deactivate User</a> </span>' );
 
                                                     }else {
-                                                        echo anchor("/jobrequest/$row->id/$user->id",'<span><a class="btn btn-warning btn-xs" href="#references" data-toggle="modal"> Activate User</a> </span>' );
+                                                        echo anchor("/jobrequest/$row->id/$user->id",'<span><a class="btn btn-warning btn-xs" href="#activate" data-toggle="modal"> Activate User</a> </span>' );
                                                     }
                                                     ?>                             
                                                 </td>
@@ -188,359 +193,82 @@
                             </div>
                            
                         </div> 
+              <div id="deactivate" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Deactivating a User</strong></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row" style="margin-left:5px; margin-right: 5px">
+                                                          	
+                                                                <div class="footer-col-inner">
+                                                                    <div class="form-group">
+
+                                                                            <input type="text" name="id" id="userid" value="" />
+                                                                            <input type="hidden" name="page"  value="aprofile" />
+                                                                             <input type="hidden" name="adminid"  value="<?php echo $user->id ?>" />
+                                                                            <label for="comment">Please provide a comment for Deactivating the User</label>
+                                                                            <input name="comment" type="text" id="comm" class="form-control" value="" />
+                                                                             <br><br>
+                                                                        <div class="col-md-3"><label for="name"></label></div>
+                                                                        <div class="col-md-8"> <label id="msg1" style="color:red"></label></div>
+                                                                        <br><br>
+               
+
+                                                                    </div>
+                                                                </div><!--//footer-col-inner-->
+
+                                                        </div>           
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary" onclick="ValidateComm()">Deactivate</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                        </form>
+                                                    </div>
+                                                    </form>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div>
                 
+<div id="activate" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title  bordered-blue" id="myModalLabel2"><strong>Activating a User</strong></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row" style="margin-left:5px; margin-right: 5px">
+                                                       	
+                                                                <div class="footer-col-inner">
+                                                                    <div class="form-group">
+
+                                                                            <input type="hidden" name="id"  value="" />
+                                                                            <input type="hidden" name="page"  value="" />
+                                                                            <label for="com">Please provide a comment for Activating the User</label>
+                                                                            <input name="com" type="text" id="comm2" class="form-control" value="" />
+                                                                             <br><br>
+                                                                        <div class="col-md-3"><label for="name"></label></div>
+                                                                        <div class="col-md-8"> <label id="msg" style="color:red"></label></div>
+                                                                        <br><br>
+               
+
+                                                                    </div>
+                                                                </div><!--//footer-col-inner-->
+
+                                                        </div>           
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary" onclick="ValidateComm2()">Activate</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                        </form>
+                                                    </div>
+                                                    </form>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div>
             </div>
-            <div class="col-lg-4">
-                <section class="widget large">
-                    <header>
-                        <h4>
-                            Feed
-                            <span class="label label-success">412</span>
-                        </h4>
-                        <div class="actions">
-                            <button class="btn btn-transparent btn-xs">Show All <i class="fa fa-arrow-down"></i></button>
-                        </div>
-                    </header>
-                    <div class="body">
-                        <div id="feed" class="feed">
-                            <div class="wrapper">
-                                <div class="vertical-line"></div>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-comment"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">John Doe</a> commented on <a href="#">What Makes Good Code Good</a>.
-                                        </div>
-                                        <div class="time pull-left">
-                                            3 h
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-check color-green"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">Merge request #42</a> has been approved by <a href="#">Jessica Lori</a>.
-                                        </div>
-                                        <div class="time pull-left">
-                                            10 h
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <img src="img/14.jpg" class="img-circle" alt="">
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            New user <a href="#">Greg Wilson</a> registered.
-                                        </div>
-                                        <div class="time pull-left">
-                                            Today
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-bolt color-orange"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            Server fail level raises above normal. <a href="#">See logs</a> for details.
-                                        </div>
-                                        <div class="time pull-left">
-                                            Yesterday
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-database"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">Database usage report</a> is ready.
-                                        </div>
-                                        <div class="time pull-left">
-                                            Yesterday
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-shopping-cart"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">Order #233985</a> needs additional processing.
-                                        </div>
-                                        <div class="time pull-left">
-                                            Wednesday
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-arrow-down"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">Load more...</a>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="widget widget-tabs">
-                    <header>
-                        <ul class="nav nav-tabs">
-                            <li class="active">
-                                <a href="#stats" data-toggle="tab">Users</a>
-                            </li>
-                            <li>
-                                <a href="#report" data-toggle="tab">Favorites</a>
-                            </li>
-                            <li>
-                                <a href="#dropdown1" data-toggle="tab">Commenters</a>
-                            </li>
-                        </ul>
-                    </header>
-                    <div class="body tab-content">
-                        <div id="stats" class="tab-pane active clearfix">
-                            <h5 class="tab-header"><span class="label label-primary"><i class="fa fa-facebook"></i></span> Last logged-in users</h5>
-                            <ul class="news-list">
-                                <li>
-                                    <img src="img/1.jpg" alt="" class="pull-left img-circle"/>
-                                    <div class="news-item-info">
-                                        <div class="name"><a href="#">Finees Lund</a></div>
-                                        <div class="position">Product Designer</div>
-                                        <div class="time">Last logged-in: Mar 20, 18:46</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="img/3.jpg" alt="" class="pull-left img-circle"/>
-                                    <div class="news-item-info">
-                                        <div class="name"><a href="#">Erebus Novak</a></div>
-                                        <div class="position">Software Engineer</div>
-                                        <div class="time">Last logged-in: Mar 23, 9:02</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="img/2.jpg" alt="" class="pull-left img-circle"/>
-                                    <div class="news-item-info">
-                                        <div class="name"><a href="#">Leopoldo Reier</a></div>
-                                        <div class="position">Chief Officer</div>
-                                        <div class="time">Last logged-in: Jun 6, 15:34</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="img/13.jpg" alt="" class="pull-left img-circle"/>
-                                    <div class="news-item-info">
-                                        <div class="name"><a href="#">Frans Garey</a></div>
-                                        <div class="position">Financial Assistant</div>
-                                        <div class="time">Last logged-in: Jun 8, 17:20</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="img/14.jpg" alt="" class="pull-left img-circle"/>
-                                    <div class="news-item-info">
-                                        <div class="name"><a href="#">Jessica Johnsson</a></div>
-                                        <div class="position">Sales Manager</div>
-                                        <div class="time">Last logged-in: Jun 8, 9:13</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="report" class="tab-pane">
-                            <h5 class="tab-header"><i class="fa fa-star"></i> Popular contacts</h5>
-                            <ul class="news-list news-list-no-hover">
-                                <li>
-                                    <img src="img/14.jpg" alt="" class="pull-left img-circle"/>
-                                    <div class="news-item-info">
-                                        <div class="name"><a href="#">Jessica Johnsson</a></div>
-                                        <div class="options">
-                                            <button class="btn btn-xs btn-success">
-                                                <i class="fa fa-phone"></i>
-                                                Call
-                                            </button>
-                                            <button class="btn btn-xs btn-warning">
-                                                <i class="fa fa-envelope-o"></i>
-                                                Message
-                                            </button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="img/13.jpg" alt="" class="pull-left img-circle"/>
-                                    <div class="news-item-info">
-                                        <div class="name"><a href="#">Frans Garey</a></div>
-                                        <div class="options">
-                                            <button class="btn btn-xs btn-success">
-                                                <i class="fa fa-phone"></i>
-                                                Call
-                                            </button>
-                                            <button class="btn btn-xs btn-warning">
-                                                <i class="fa fa-envelope-o"></i>
-                                                Message
-                                            </button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="img/3.jpg" alt="" class="pull-left img-circle"/>
-                                    <div class="news-item-info">
-                                        <div class="name"><a href="#">Erebus Novak</a></div>
-                                        <div class="options">
-                                            <button class="btn btn-xs btn-success">
-                                                <i class="fa fa-phone"></i>
-                                                Call
-                                            </button>
-                                            <button class="btn btn-xs btn-warning">
-                                                <i class="fa fa-envelope-o"></i>
-                                                Message
-                                            </button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="img/2.jpg" alt="" class="pull-left img-circle"/>
-                                    <div class="news-item-info">
-                                        <div class="name"><a href="#">Leopoldo Reier</a></div>
-                                        <div class="options">
-                                            <button class="btn btn-xs btn-success">
-                                                <i class="fa fa-phone"></i>
-                                                Call
-                                            </button>
-                                            <button class="btn btn-xs btn-warning">
-                                                <i class="fa fa-envelope-o"></i>
-                                                Message
-                                            </button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="img/1.jpg" alt="" class="pull-left img-circle"/>
-                                    <div class="news-item-info">
-                                        <div class="name"><a href="#">Finees Lund</a></div>
-                                        <div class="options">
-                                            <button class="btn btn-xs btn-success">
-                                                <i class="fa fa-phone"></i>
-                                                Call
-                                            </button>
-                                            <button class="btn btn-xs btn-warning">
-                                                <i class="fa fa-envelope-o"></i>
-                                                Message
-                                            </button>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="dropdown1" class="tab-pane">
-                            <h5 class="tab-header"><i class="fa fa-comments"></i> Top Commenters</h5>
-                            <ul class="news-list">
-                                <li>
-                                    <img src="img/13.jpg" alt="" class="pull-left img-circle"/>
-                                    <div class="news-item-info">
-                                        <div class="name"><a href="#">Frans Garey</a></div>
-                                        <div class="comment">
-                                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-                                            sed quia
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="img/1.jpg" alt="" class="pull-left img-circle"/>
-                                    <div class="news-item-info">
-                                        <div class="name"><a href="#">Finees Lund</a></div>
-                                        <div class="comment">
-                                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                                            eu fugiat.
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="img/14.jpg" alt="" class="pull-left img-circle"/>
-                                    <div class="news-item-info">
-                                        <div class="name"><a href="#">Jessica Johnsson</a></div>
-                                        <div class="comment">
-                                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                            deserunt.
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="img/3.jpg" alt="" class="pull-left img-circle"/>
-                                    <div class="news-item-info">
-                                        <div class="name"><a href="#">Erebus Novak</a></div>
-                                        <div class="comment">
-                                            Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium
-                                            doloremque.
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="img/2.jpg" alt="" class="pull-left img-circle"/>
-                                    <div class="news-item-info">
-                                        <div class="name"><a href="#">Leopoldo Reier</a></div>
-                                        <div class="comment">
-                                            Laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis
-                                            et quasi.
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-                <section class="widget">
-                    <header>
-                        <h4>
-                            Server Overview
-                        </h4>
-                        <div class="actions">
-                            <small class="text-muted pull-right">2 days ago</small>
-                        </div>
-                    </header>
-                    <div class="body">
-                        <ul class="server-stats">
-                            <li>
-                                <div class="key pull-right">CPU</div>
-                                <div class="stat">
-                                    <div class="info">60% / 37&deg;C / 3.3 Ghz</div>
-                                    <div class="progress progress-small">
-                                        <div class="progress-bar progress-bar-danger" style="width: 90%;"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="key pull-right">Mem</div>
-                                <div class="stat">
-                                    <div class="info">29% / 4GB (16 GB)</div>
-                                    <div class="progress progress-small">
-                                        <div class="progress-bar" style="width: 29%;"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="key pull-right">LAN</div>
-                                <div class="stat">
-                                    <div class="info">6 Mb/s <i class="fa fa-caret-down"></i> &nbsp; 3 Mb/s <i class="fa fa-caret-up"></i></div>
-                                    <div class="progress progress-small">
-                                        <div class="progress-bar progress-bar-inverse" style="width: 48%;"></div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-            </div>
+          
           
         </div>
         </div>
@@ -616,6 +344,35 @@
     <% } %>
 </script>
 
+<script type="text/javascript">
+    function ValidateComm2(){
+        var comme = $("#comm2").val();       
+        var comme = $("#page").val();
+        var comme = $("#adminid").val();
+        var comme = $("#userid").val();
+        if(comme == ""){
+            $("#msg").text("Please enter values.");
+        }
+        else{
+            
+             location.href = "/havanayouth/activation/" + comme + "/aprofile/"+new_pass;
+        }
+}
+ function fill_references(id){
+    
+    var la = $("#userid").val(id); 
+    
+}
+
+function ValidateComm(){
+        var commV = $("#comm").val();       
+        
+        if(commV == ""){
+            $("#msg1").text("Please enter value.");
+        }
+}
+
+</script>
   <script src="assets/lib/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
         <script src="assets/lib/select2/select2.min.js"></script>
         <script src="assets/lib/moment/moment.js"></script>

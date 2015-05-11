@@ -87,10 +87,13 @@ class crud extends CI_Model {
         return $query->result();
     }
     
-    function  get_references(){
+    function  get_references($id){
+        $this->db->where('youthid',$id);
         $query = $this->db->get('referencesview');
         return $query->result();
     }
+    
+    
     function  get_userforAdmin(){
         $query = $this->db->get('usersforadmin');
         return $query->result();
@@ -187,6 +190,51 @@ class crud extends CI_Model {
     
     function add_users($signupdata){
       $this->db->insert('user',$signupdata);
+    }
+    
+    function  get_vacancies(){
+        $query = $this->db->get('vacancy');
+        $vdata = $query->result();
+        $data = array();
+        foreach ($vdata as $row){
+            $userid =   $row->userid;
+            $firstname = "";
+            $lastname  = "";
+            $img ="";
+            //get employer details
+            $this->db->where('id',$userid);
+            $query = $this->db->get('user');
+            $empdata = $query->result();
+            foreach ($empdata as $erow){
+                $firstname = $erow->firstname;
+                $lastname = $erow->lastname;
+            }
+            
+            //get employer profile picture
+            $this->db->where('userid',$userid);
+            $query = $this->db->get('pimages');
+            $pdata = $query->result();
+            foreach ($pdata as $prow){
+                $img = $prow->path;
+            }
+            if($img ==""){
+                    
+                $img = "http://localhost/havanayouth//images/default.jpg";
+            }
+            //all vacancy data in array
+            array_push($data,  array(
+                    "id"           => $row->id,
+                    "title"        => $row->title,
+                    "description"  => $row->description,
+                    "wage"         => $row->wage,
+                    "date"        => $row->date,
+                    "firstname"   => $firstname,
+                    "lastname"   => $lastname,
+                    "img"        => $img
+                    )
+            );
+        }
+        return $data;
     }
     
     function jobs($jobs){
@@ -358,6 +406,7 @@ class crud extends CI_Model {
     }
 
 
+    
     function  get_proimg($userid){
         $this->db->where('userid',$userid);
         $query = $this->db->get('pimages');

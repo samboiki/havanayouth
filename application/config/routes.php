@@ -42,7 +42,6 @@ $default_controller = "nmrc";
 $controller_exceptions = array('admin','forums');
 
 $route['default_controller'] = $default_controller;
-$route['default_controller'] = 'jobrequest';
 $route["^((?!\b".implode('\b|\b', $controller_exceptions)."\b).*)$"] = $default_controller.'/$1';
 $route['404_override'] = '';
 

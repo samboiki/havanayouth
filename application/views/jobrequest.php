@@ -51,7 +51,7 @@
                                             tabindex="-1"
                                             name="vacancy">
                                         <?php if(isset($vacancy)) : foreach($vacancy as $row) :  ?>
-                                        <option value="<?php echo $row->ID?>"><?=$row->Description?></option>
+                                        <option value="<?php echo $row->id?>"><?=$row->description?></option>
                                         
                                         <?php  endforeach;?>
                                         <?php else : ?><h6>No records </h6>
