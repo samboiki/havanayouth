@@ -44,7 +44,22 @@
                 </li>
             </ul><br><br><br><br>
 
-            <?php $this->load->view('sponsors'); ?>
+            <h5 class="sidebar-nav-title">Sponsors</h5>
+            <!-- A place for sidebar notifications & alerts -->
+            <div class="sidebar-alerts">
+                <div class="alert fade in">
+                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
+                    <span class="text-white fw-semi-bold">POLY</span> <br>
+                     <a href="http://www.polytechnic.edu.na" >   <img src="assets/img/jpeg/POLY.jpg" alt="Second slide"  style="height: 100px;width: 120px"></a>
+                    <small>call us 0612079111</small>
+                </div>
+                <div class="alert fade in">
+                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
+                    <span class="text-white fw-semi-bold">NCRST</span> <br>
+                      <a href="http://www.ncrst.na/" >   <img src="assets/img/jpeg/NCRST.jpeg" alt="Second slide" style="height: 100px;width: 120px"></a>
+                    <small>call us 0614317000 </small>
+                </div>
+            </div>
 
         </nav>    
         <div class="wrap">

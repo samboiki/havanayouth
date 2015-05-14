@@ -42,46 +42,22 @@
                     <a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out"></i> <span class="name">Sign Out</span></a>
                     <p><?php echo anchor("$logout_url",'<span class="name"><i class="fa fa-sign-out" style="color:white"></i>Sign Out</span>' ) ?></p>
                 </li>
-            </ul>
-        
-            <h5 class="sidebar-nav-title">Projects</h5>
+            </ul>    <h5 class="sidebar-nav-title">Sponsors</h5>
             <!-- A place for sidebar notifications & alerts -->
             <div class="sidebar-alerts">
                 <div class="alert fade in">
                     <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">Sales Report</span> <br>
-                    <div class="progress progress-xs mt-xs mb-0">
-                        <div class="progress-bar progress-bar-gray-light" style="width: 16%"></div>
-                    </div>
-                    <small>Calculating x-axis bias... 65%</small>
+                    <span class="text-white fw-semi-bold">POLY</span> <br>
+                     <a href="http://www.polytechnic.edu.na" >   <img src="assets/img/jpeg/POLY.jpg" alt="Second slide"  style="height: 100px;width: 120px"></a>
+                    <small>call us 0612079111</small>
                 </div>
                 <div class="alert fade in">
                     <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">Personal Responsibility</span> <br>
-                    <div class="progress progress-xs mt-xs mb-0">
-                        <div class="progress-bar progress-bar-danger" style="width: 23%"></div>
-                    </div>
-                    <small>Provide required notes</small>
+                    <span class="text-white fw-semi-bold">NCRST</span> <br>
+                      <a href="http://www.ncrst.na/" >   <img src="assets/img/jpeg/NCRST.jpeg" alt="Second slide" style="height: 100px;width: 120px"></a>
+                    <small>call us 0614317000 </small>
                 </div>
             </div>
-            
-            <h5 class="sidebar-nav-title">Sponsors</h5>
-            <!-- A place for sidebar notifications & alerts -->
-            <div class="sidebar-alerts">
-                <div class="alert fade in">
-                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">MTC</span> <br>
-                        <img src="assets/img/jpeg/mtc.jpg" alt="Second slide">
-                    <small>call us 06123456</small>
-                </div>
-                <div class="alert fade in">
-                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                    <span class="text-white fw-semi-bold">Fnb</span> <br>
-                        <img src="assets/img/jpeg/fnb.jpg" alt="Second slide">
-                    <small>call us 06123456</small>
-                </div>
-            </div>
-        
         </nav>     
     <div class="wrap">
         <header class="page-header">
