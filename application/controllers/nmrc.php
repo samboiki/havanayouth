@@ -75,6 +75,7 @@ class Nmrc extends Main_Controller {
                 </script>';
                    
    }
+   
 
    public function post_vacancy(){
        
@@ -154,8 +155,13 @@ class Nmrc extends Main_Controller {
                     } elseif ($role == 'youth') {
                          redirect('yprofile');
                     }
-                    else {
+                    elseif ($role == 'admin') {
                          redirect('aprofile');
+                    }
+                    else {
+                         echo '<script>alert("Access denied");
+                window.location = "/havanayouth/signin";
+                </script>';
                     }
                 
             } else {
@@ -1239,16 +1245,60 @@ public function manageusers(){
         redirect('yprofile');
     }
     
+      public function activation1() {
+       $this->load->model('crud');
+        $id = $this->uri->segment(2);
+         
+     $str=$this->uri->segment(4);
+          
+          if (strpos($str, 'youth') !== FALSE)
+          {
+    $role="youth";
+          }
+else{
+    $role="employer";
+}
+
+        $data1 = array(
+            'role' => $role,    
+        );
+         $this->crud->updaterole($data1,$id);
+        $data = array(
+            'userid' => $this->uri->segment(2),
+            'adminid' => $this->uri->segment(3),
+            'action' => $this->uri->segment(5),
+             'actdate' => date("Y-m-d"),
+            
+        );
+        
+         $this->crud->add_actitioon($data);
+    
+          
+          echo '<script>alert("Activated successful");
+                window.location = "/havanayouth/manageusers";
+                </script>';
+    }
+    
    public function activation() {
         $this->load->model('crud');
-        $data = array(
-            'userid' => $this->input->post('id'),
-            'name'   => $this->input->post('name'),
-            'institution' => $this->input->post('institution'),
-            'date'        => $this->input->post('date'),
+        $id = $this->uri->segment(2);
+        $data1 = array(
+            'role' => $this->uri->segment(4)."".$this->uri->segment(5),    
         );
-        $this->crud->add_qualification($data);
-        redirect('manageusers');
+         $this->crud->updaterole($data1,$id);
+        $data = array(
+            'userid' => $this->uri->segment(2),
+            'adminid' => $this->uri->segment(3),
+            'action' => $this->uri->segment(5),
+               'actdate' => date("Y-m-d"),
+            
+        );
+        
+         $this->crud->add_actitioon($data);
+     
+      echo '<script>alert("Deactivated successful");
+                window.location = "/havanayouth/manageusers";
+                </script>';
     }
     
    public function edit_qualification(){

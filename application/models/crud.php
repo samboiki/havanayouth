@@ -98,7 +98,15 @@ class crud extends CI_Model {
         $query = $this->db->get('usersforadmin');
         return $query->result();
     }
-    
+    function add_actitioon($activationdata){
+           $this->db->insert('activation',$activationdata);
+        
+    }
+     function  updaterole($newrole,$id){
+         $this->db->where('id',$id);
+        $this->db->update('user',$newrole);
+         
+     }
     function  get_usercontacts($userid){
         $this->db->where('userid',$userid);
         $query = $this->db->get('contact');

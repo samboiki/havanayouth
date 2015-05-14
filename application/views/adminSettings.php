@@ -95,8 +95,7 @@
                             </header>
                             <div class="body">
                                 <ul id="myTab" class="nav nav-tabs">
-                                    <li class="active"><a href="#information" data-toggle="tab">Account info</a></li>  
-                                    <li class=""><a href="#information" data-toggle="tab">New Admin Account</a></li> 
+                                    <li class="active"><a href="#information" data-toggle="tab">Account info</a></li> 
                                     <li class="dropdown">
                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
                                             <ul class="dropdown-menu">

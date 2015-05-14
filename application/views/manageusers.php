@@ -114,9 +114,9 @@
         <div class="content container">
        <h4 class="mt-sm mb-xs"><small> Welcom Admin</small></h4>
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                
-                 <div class="col-xs-12 col-md-12">
+                 <div class="col-xs-12 col-md-19">
                             <div class="widget">
                                 <div class="well youth-border" style=" border-bottom: 3px; border-bottom-color: aquamarine; alignment-baseline: middle">
                                     <strong>Activate OR Deactivate Users</strong>
@@ -138,7 +138,7 @@
                                                     Gender 
                                                 </th>
                                                 <th>
-                                                    Technical Skills
+                                                    Username
                                                 </th>
                                                 <th>
                                                     User Type 
@@ -164,7 +164,7 @@
                                                 <?php echo $row->gender;?>
                                                 </td> 
                                                  <td>
-                                                <?php echo $row->gender;?>
+                                                <?php echo $row->username;?>
                                                 </td> 
                                                 <td>
                                                 <?php echo $row->role;?>
@@ -175,10 +175,9 @@
                                                     
                                                     if($row->role == "employer" ||$row->role == "youth" ){
                                                     
-                                                        echo anchor("/jobrequest/$row->id/$user->id",'<span><a class="btn btn-danger btn-xs" href="#deactivate" data-toggle="modal"> Deactivate User</a> </span>' );
-
+                                                     echo anchor("/activation/$row->id/$user->id/$row->role/Deactivated",'<span class="btn btn-danger btn-xs">  Deactivate User</span>' ); 
                                                     }else {
-                                                        echo anchor("/jobrequest/$row->id/$user->id",'<span><a class="btn btn-warning btn-xs" href="#activate" data-toggle="modal"> Activate User</a> </span>' );
+                                                        echo anchor("/activation1/$row->id/$user->id/$row->role/Activated",'<span class="btn btn-warning btn-xs">  Activate User</span>' ); 
                                                     }
                                                     ?>                             
                                                 </td>
@@ -208,7 +207,6 @@
 
                                                                             <input type="text" name="id" id="userid" value="" />
                                                                             <input type="hidden" name="page"  value="aprofile" />
-                                                                             <input type="hidden" name="adminid"  value="<?php echo $user->id ?>" />
                                                                             <label for="comment">Please provide a comment for Deactivating the User</label>
                                                                             <input name="comment" type="text" id="comm" class="form-control" value="" />
                                                                              <br><br>
@@ -348,7 +346,6 @@
     function ValidateComm2(){
         var comme = $("#comm2").val();       
         var comme = $("#page").val();
-        var comme = $("#adminid").val();
         var comme = $("#userid").val();
         if(comme == ""){
             $("#msg").text("Please enter values.");
